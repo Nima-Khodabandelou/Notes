@@ -9,7 +9,6 @@ Robust
 Secure
 High-level
 Multi-threaded
-
 No explicit pointer support, goto, operator overloading, call by reference, structures and unions
 
 
