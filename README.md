@@ -10,6 +10,7 @@ Secure
 High-level
 Multi-threaded
 - Does not support:
-explicit pointer, goto, operator overloading, call by reference, structures and unions
+explicit pointer,
+goto, operator overloading, call by reference, structures and unions
 
 
