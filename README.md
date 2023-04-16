@@ -3,8 +3,8 @@
 Core concepts of Java SE
 
 - Main Java features:
-    Used for Desktop, Mobile, and Web application development
-    platform-independent
+    1- Used for Desktop, Mobile, and Web application development
+    2- platform-independent
     Robust
     Secure
     High-level
