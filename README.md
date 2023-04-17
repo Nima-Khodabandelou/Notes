@@ -28,4 +28,17 @@ Core concepts of Java SE
     
       structures and unions
 
+- Super keyword:
+
+       A reference variable used for refering to the immediate parent class object
+       
+       Called implicitly by the class constructor if not provided  
+       
+       Can refer to immediate parent class instance variable
+       
+       For immediate parent class method invocation
+       
+       To differentiate between local and instance variables in the class constructor
+       
+       Must be the first statement in constructor
 
