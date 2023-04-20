@@ -16,6 +16,7 @@ First of all SOLID Principles (not specific to Java):
 
 	3- Liskov Substitution: if class A is a subtype of class B, one should be able to replace B with A
 	   without disrupting the behavior of the program.
+	   
 	   A popular Example:
 	   
 	public interface Vehicle {
@@ -48,7 +49,9 @@ First of all SOLID Principles (not specific to Java):
 	   methods in each interface.
 	5- Dependency Inversion: Decoupling software modules -> high-level/low-level modules and details
 	   depend on abstractions.
+	   
 	example:
+	
 	public class SalesDepartment {
 		public void customerSupport() {
 		}
@@ -65,7 +68,9 @@ First of all SOLID Principles (not specific to Java):
 			warehouseDepartment.qualityControl();
 		}
 	}
+	
 	Manager class depends on low-level modules -> refactor using abstraction: 
+	
 	public interface Departments {
 		void department();
 	}
