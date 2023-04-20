@@ -63,18 +63,21 @@ Core concepts of Java SE
       - Just-in-time (JIT): An interpreter to improve performance 
 
       - Compiler: transforms instruction set of a Java virtual machine (JVM) to the instruction set of a specific
-      CPU (Java code to Bytecode).
+        CPU (Java code to Bytecode).
 
-      JIT compiles parts of the bytecode having similar functionality, and therefore reduces compilation time. 
+      - JIT compiles parts of the bytecode having similar functionality, and therefore reduces compilation time. 
 
-      Classloader: JVM subsystem  for loading class files using java.lang.ClassLoader.loadClass(). part of the Java Runtime Environment
+      - Classloader: JVM subsystem  for loading class files using java.lang.ClassLoader.loadClass(). part of the
+        Java Runtime Environment
 
-      Three built-in classloaders:
+      - Three built-in classloaders:
 
-            Bootstrap ClassLoader: The first classloader in native code (e.g. c++) which loads rt.jar file containing all core libraries and class files of Java SE
-                                   There are various implementations of this Bootstrap class loader for various platforms.
+            Bootstrap ClassLoader: The first classloader in native code (e.g. c++) which loads rt.jar file
+                                   containing all core libraries and class files of Java SE. There are various
+                                   implementations of this Bootstrap class loader for various platforms.
 
-            Extension ClassLoader: Its parent is Bootstrap classloader used for loading Java core extension classes in order to be available to all applications                                          running on each platform. 
+            Extension ClassLoader: Its parent is Bootstrap classloader used for loading Java core extension
+                                   classes in order to be available to all applications running on each platform. 
 
             System/Application ClassLoader: loads our files in the classpath.
             
@@ -82,11 +85,12 @@ Core concepts of Java SE
 
 - Acccess modifiers:
 
-      Default: accessible within the package only.
+      - Default: accessible within the package only.
       
-      Protected: accessible by the class and sub-class of the same package, or by the sub-class in another packages.
+      - Protected: accessible by the class and sub-class of the same package, or by the sub-class in another
+        packages.
       
-      Public: accessible anywhere
+      - Public: accessible anywhere
       
-      Private: accessible within the class
+      - Private: accessible within the class
        
