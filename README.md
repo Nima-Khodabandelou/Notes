@@ -60,9 +60,9 @@ Core concepts of Java SE
 
 - Interpreter/Compiler:
 
-      Just-in-time (JIT): An interpreter to improve performance 
+      - Just-in-time (JIT): An interpreter to improve performance 
 
-      Compiler: transforms instruction set of a Java virtual machine (JVM) to the instruction set of a specific
+      - Compiler: transforms instruction set of a Java virtual machine (JVM) to the instruction set of a specific
       CPU (Java code to Bytecode).
 
       JIT compiles parts of the bytecode having similar functionality, and therefore reduces compilation time. 
