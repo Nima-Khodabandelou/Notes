@@ -158,16 +158,16 @@ Interpreter/Compiler:
       Classloader: Part of the Java Runtime Environment for loading class files. Three built-in
                    classloaders:
 				   
-						Bootstrap ClassLoader: The first classloader in native code (e.g. c++) which
-                                               loads rt.jar file containing all core libraries and
-											   class files of Java SE There are various implementations
-											   of this Bootstrap class loader for various platforms.
+			Bootstrap ClassLoader: The first classloader in native code (e.g. c++) which
+		                               loads rt.jar file containing all core libraries and
+					       class files of Java SE There are various implementations
+					       of this Bootstrap class loader for various platforms.
 
-						Extension ClassLoader: Its parent is Bootstrap classloader loads core extension
-    						                   classes to be available to all applications running on
-											   each platform. 
+			Extension ClassLoader: Its parent is Bootstrap classloader loads core extension
+					       classes to be available to all applications running on
+					       each platform. 
 
-						System/Application ClassLoader: Loads files in the classpath.
+			System/Application ClassLoader: Loads files in the classpath.
             
 Local variables not initialized to any default value.
 
@@ -175,7 +175,8 @@ Acccess modifiers:
 
       Default: accessible within the package only.
       
-      Protected: accessible by the class and sub-class of the same package, or by the sub-class in another packages.
+      Protected: accessible by the class and sub-class of the same package, or by the sub-class in another
+                 packages.
       
       Public: accessible anywhere
       
