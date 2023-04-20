@@ -156,18 +156,17 @@ Interpreter/Compiler:
                 of a specific CPU (Java code to Bytecode).      
 
       Classloader: Part of the Java Runtime Environment for loading class files. Three built-in
-                   classloaders:
-				   
-			Bootstrap ClassLoader: The first classloader in native code (e.g. c++) which
-		                               loads rt.jar file containing all core libraries and
-					       class files of Java SE There are various implementations
-					       of this Bootstrap class loader for various platforms.
+                   classloaders:				   
+		Bootstrap ClassLoader: The first classloader in native code (e.g. c++) which
+				       loads rt.jar file containing all core libraries and
+				       class files of Java SE There are various implementations
+				       of this Bootstrap class loader for various platforms.
 
-			Extension ClassLoader: Its parent is Bootstrap classloader loads core extension
-					       classes to be available to all applications running on
-					       each platform. 
+		Extension ClassLoader: Its parent is Bootstrap classloader loads core extension
+				       classes to be available to all applications running on
+				       each platform. 
 
-			System/Application ClassLoader: Loads files in the classpath.
+		System/Application ClassLoader: Loads files in the classpath.
             
 Local variables not initialized to any default value.
 
