@@ -107,7 +107,7 @@ Main Java features:
     
       Multi-threaded
     
-- Does not support:
+Does not support:
 
       pointers (Handles it internally)
     
@@ -119,7 +119,7 @@ Main Java features:
     
       structures and unions
 
-- Super keyword:
+Super keyword:
 
        A reference variable used for refering to the immediate parent class object
        
@@ -133,21 +133,21 @@ Main Java features:
        
        Must be the first statement in constructor
        
-- Path and Classpath:
+Path and Classpath:
 
        PATH: An environment variable used by the operating system to locate the executables
 
        Classpath: Java specific used to locate class files. it can be a directory, ZIP, JAR, etc.
 
-- Source files: 
+Source files: 
 
        Each source Java file may have multiple classes among which only one shall be public.
        
        Source file name shall be the same as class name.
 
-- OS Architecture: Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
+OS Architecture: Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 
-- Interpreter/Compiler:
+Interpreter/Compiler:
 
       Just-in-time (JIT): An interpreter to improve performance by compiling parts of the bytecode
                         having similar functionality, and therefore reducing compilation time.  
@@ -169,9 +169,9 @@ Main Java features:
 
 						System/Application ClassLoader: Loads files in the classpath.
             
-- Local variables not initialized to any default value.
+Local variables not initialized to any default value.
 
-- Acccess modifiers:
+Acccess modifiers:
 
       Default: accessible within the package only.
       
