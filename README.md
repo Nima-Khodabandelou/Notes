@@ -129,7 +129,7 @@ Core concepts of Java SE
     
       structures and unions
 ##
-Super keyword
+- Super keyword
 
        A reference variable used for refering to the immediate parent class object
        
@@ -143,23 +143,23 @@ Super keyword
        
        Must be the first statement in constructor
 ##       
-Path and Classpath
+- Path and Classpath
 
        PATH: An environment variable used by the operating system to locate the executables
 
        Classpath: Java specific used to locate class files. it can be a directory, ZIP, JAR, etc.
 ## 
-Source files
+- Source files
 
        Each source Java file may have multiple classes among which only one shall be public.
        
        Source file name shall be the same as class name.
 ## 
-OS Architecture
+- OS Architecture
 
 Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 ## 
-Interpreter/Compiler
+- Interpreter/Compiler
 
       Just-in-time (JIT): To improve performance by compiling parts of the bytecode
                         having similar functionality, and therefore reducing compilation time.  
@@ -180,11 +180,11 @@ Interpreter/Compiler
 
 		System/Application ClassLoader: Loads files in the classpath.
 ##             
-Local variables
+- Local variables
 
-not initialized to any default value.
+	not initialized to any default value.
 ## 
-Acccess modifiers
+- Acccess modifiers
 
       Default: accessible within the package only.
       
@@ -195,9 +195,9 @@ Acccess modifiers
       
       Private: accessible within the class
 ## 
-delete, next, main, exit or null are not keyword
+- delete, next, main, exit or null are not keyword
 ##
-Final keyword
+- Final keyword
 
 	A final class cannot be subclassed.
 	
@@ -233,7 +233,7 @@ Final keyword
 			x=1;
 		}
 ##
-Immutability
+- Immutability
 
 	once create an object, not allowed to change the content. If try to change and alteration successfully done -> a new object will be created.
 	
@@ -336,18 +336,18 @@ Immutability
 				this.testMap=hm;
 			}
 ##
-static methods/variables -> shared among all the objects of the class. 
+- static methods/variables -> shared among all the objects of the class. 
 ##
-static variables stored in class area, do not need to create the object to access such variables.
+- static variables stored in class area, do not need to create the object to access such variables.
 ##
-packages
+- packages
 
  avoid the name clashes.
  provides easier access control.
  can  have the hidden classes.
  easier to locate the related classes.
 ##
-Object
+- Object
 
  real-time entity having state and behavior.
  an instance of class
@@ -356,7 +356,7 @@ Object
  created using new keyword.
  All object references <-> initialized to null.
 ##
-constructor
+- constructor
 
  special type of method to initialize the state
  invoked when  class is instantiated,and  memory allocated for object
@@ -365,404 +365,451 @@ constructor
  is not inherited.
  can't be final.
 ##
-parameterized constructor
+- parameterized constructor
 
 	Ex:
-	class Student3{  
-		int id;  
-		String name; 
-		void display(){System.out.println(id+" "+name);}  
-		public static void main(String args[]){  
-			Student3 s1=new Student3();  
-			Student3 s2=new Student3();  
+	
+		class Student3{  
+			int id;  
+			String name; 
+			void display(){System.out.println(id+" "+name);}  
+			public static void main(String args[]){  
+				Student3 s1=new Student3();  
+				Student3 s2=new Student3();  
+				s1.display();  
+				s2.display();  
+			}  
+		}  
+##
+- copy values of one object into another
+
+	 By constructor
+
+	 By assigning the values of one object into another
+
+	 By clone() method of Object class
+
+		ex: 
+		class Student6{  
+		    int id;  
+		    String name;  
+		    //constructor to initialize integer and string  
+		    Student6(int i,String n){  
+		    id = i;  
+		    name = n;  
+		    }  
+		    //constructor to initialize another object  
+		    Student6(Student6 s){  
+		    id = s.id;  
+		    name =s.name;  
+		    }  
+		    void display(){System.out.println(id+" "+name);}   
+		    public static void main(String args[]){  
+				Student6 s1 = new Student6(111,"Karan");  
+				Student6 s2 = new Student6(s1);  
+				s1.display();  
+				s2.display();  
+		   }  
+		}  
+##
+- method
+
+	exposes behavior of object
+
+	must have a return type
+
+	is invoked explicitly
+
+	is not provided by the compiler in any case.
+
+	method name may or may not be same as class name.
+## 
+- Type promotion in Java
+
+	Byte -> Short -> Int 
+
+	Char -> Int
+
+	Int -> Long -> Float -> Double
+
+		Ex:
+		public class Test  
+		{  
+		    Test(int a, int b)  
+		    {  
+			System.out.println("a = "+a+" b = "+b);  
+		    }  
+		    Test(int a, float b)  
+		    {  
+			System.out.println("a = "+a+" b = "+b);  
+		    }  
+		    public static void main (String args[])  
+		    {  
+			byte a = 10;   
+			byte b = 15;  
+			Test test = new Test(a,b);  
+		    }  
+		}
+
+		ex:
+		class Test   
+		{  
+		    int i;   
+		}  
+		public class Main   
+		{  
+		    public static void main (String args[])   
+		    {  
+			Test test = new Test();   
+			System.out.println(test.i);  
+		    }  
+		}  
+
+		ex:
+		class Test   
+		{  
+		    int test_a, test_b;  
+		    Test(int a, int b)   
+		    {  
+		    test_a = a;   
+		    test_b = b;   
+		    }  
+		    public static void main (String args[])   
+		    {  
+			Test test = new Test();   
+			System.out.println(test.test_a+" "+test.test_b);  
+		    }  
+		} 
+##
+- Static variable
+
+	 gets memory only once in the class area at the time of class loading.
+
+	 makes your program more memory efficient. 
+
+	 belongs to the class rather than the object
+## 
+- static method
+
+	 can't use non-static data member
+
+	 can't call non-static method directly.
+## 
+- this and super
+
+	cannot be used in static context as they are non-static.
+
+		ex:
+		class Student8{  
+		   int rollno;  
+		   String name;  
+		   static String college ="ITS";       
+		   Student8(int r,String n){  
+			rollno = r;  
+			name = n;  
+		   }  
+		   void display (){System.out.println(rollno+" "+name+" "+college);}  
+		   public static void main(String args[]){  
+			Student8 s1 = new Student8(111,"Karan");  
+			Student8 s2 = new Student8(222,"Aryan");     
 			s1.display();  
 			s2.display();  
+		   }  
 		}  
-	}  
 ##
-copy values of one object into another
+- main method
 
- By constructor
- By assigning the values of one object into another
- By clone() method of Object class
+	static -> Because object not required to call the static method.
+
+	non-static main method -> JVM have to create its object first then call main() -> extra memory allocation.
+##
+- can't override static methods.
+##
+- Static block
+
+	 to initialize the static data member.
+
+	 executed before the main method at the time of classloading.
+## 
+- Constructors
+
+	invoked when object created -> no sense to make constructors static.
+## 
+- abstract methods
+
+	-> static -> become part of the class -> can directly call it which is unnecessary.
+## 
+- can declare static variables and methods in abstract class
+## 
+- this
+
+	Call to this() must be the first statement in constructor
  
-ex: 
-class Student6{  
-    int id;  
-    String name;  
-    //constructor to initialize integer and string  
-    Student6(int i,String n){  
-    id = i;  
-    name = n;  
-    }  
-    //constructor to initialize another object  
-    Student6(Student6 s){  
-    id = s.id;  
-    name =s.name;  
-    }  
-    void display(){System.out.println(id+" "+name);}   
-    public static void main(String args[]){  
-		Student6 s1 = new Student6(111,"Karan");  
-		Student6 s2 = new Student6(s1);  
-		s1.display();  
-		s2.display();  
-   }  
-}  
-##
-method
-
- exposes behavior of object
- must have a return type
- is invoked explicitly
- is not provided by the compiler in any case. 
- method name may or may not be same as class name.
-## 
-Type promotion in Java
-
-Byte -> Short -> Int 
-Char -> Int
-Int -> Long -> Float -> Double
-
-Ex:
-public class Test  
-{  
-    Test(int a, int b)  
-    {  
-        System.out.println("a = "+a+" b = "+b);  
-    }  
-    Test(int a, float b)  
-    {  
-        System.out.println("a = "+a+" b = "+b);  
-    }  
-    public static void main (String args[])  
-    {  
-        byte a = 10;   
-        byte b = 15;  
-        Test test = new Test(a,b);  
-    }  
-}
-
-ex:
-class Test   
-{  
-    int i;   
-}  
-public class Main   
-{  
-    public static void main (String args[])   
-    {  
-        Test test = new Test();   
-        System.out.println(test.i);  
-    }  
-}  
-
-ex:
-class Test   
-{  
-    int test_a, test_b;  
-    Test(int a, int b)   
-    {  
-    test_a = a;   
-    test_b = b;   
-    }  
-    public static void main (String args[])   
-    {  
-        Test test = new Test();   
-        System.out.println(test.test_a+" "+test.test_b);  
-    }  
-} 
-##
-Static variable
-
- gets memory only once in the class area at the time of class loading.
- makes your program more memory efficient. 
- belongs to the class rather than the object
-## 
-static method
-
- can't use non-static data member
- can't call non-static method directly.
-## 
-this and super
-
-cannot be used in static context as they are non-static.
-
-ex:
-class Student8{  
-   int rollno;  
-   String name;  
-   static String college ="ITS";       
-   Student8(int r,String n){  
-	rollno = r;  
-	name = n;  
-   }  
-   void display (){System.out.println(rollno+" "+name+" "+college);}  
-   public static void main(String args[]){  
-	Student8 s1 = new Student8(111,"Karan");  
-	Student8 s2 = new Student8(222,"Aryan");     
-	s1.display();  
-	s2.display();  
-   }  
-}  
-##
-main method
-
-static -> Because object not required to call the static method.
-
-non-static main method -> JVM have to create its object first then call main() -> extra memory allocation.
-##
-can't override static methods.
-##
-Static block
-
- to initialize the static data member.
- executed before the main method at the time of classloading.
-## 
-Constructors
-
-invoked when object created -> no sense to make constructors static.
-## 
-abstract methods
-
--> static -> become part of the class -> can directly call it which is unnecessary.
-## 
-can declare static variables and methods in abstract class
-## 
-this
-
- - Call to this() must be the first statement in constructor
+	to distinguish local variable and instance variable   
  
- - to distinguish local variable and instance variable   
+	to invoke method of current class. If don't use this keyword, compiler automatically adds
  
- - to invoke method of current class. If don't use this keyword, compiler automatically adds
- 
-	ex:
-	class A{  
-	 void m(){System.out.println("hello m");}  
-	 void n(){  
-	  System.out.println("hello n");  
-	 //m();//same as this.m()  
-	 this.m();  
-	 }  
-	 }  
-	class TestThis4{  
-	 public static void main(String args[]){  
-	 A a=new A();  
-	 a.n();  
-	}} 
+		ex:
+		class A{  
+			void m(){System.out.println("hello m");}  
+			void n(){  
+				System.out.println("hello n");  
+				//m();//same as this.m()  
+				this.m();  
+			}  
+		}  
+		
+		class TestThis4{  
+			public static void main(String args[]){  
+			A a=new A();  
+			a.n();  
+		}} 
 
- - used for constructor chaining
-    ex:
-	class A{  
-		A(){System.out.println("hello a");}  
-		A(int x){  
-		this();  
-		System.out.println(x);  
+	used for constructor chaining
+	
+		ex:
+		class A{  
+			A(){System.out.println("hello a");}  
+			A(int x){  
+			this();  
+			System.out.println(x);  
+			}  
 		}  
-	}  
-	class TestThis5{  
-		public static void main(String args[]){  
-		A a=new A(10);  
-	}}
-	ex:
-	class A{  
-		A(){  
-		this(5);  
-		System.out.println("hello a");  
+		class TestThis5{  
+			public static void main(String args[]){  
+			A a=new A(10);  
+		}}
+		
+		ex:
+		class A{  
+			A(){  
+			this(5);  
+			System.out.println("hello a");  
+			}  
+			A(int x){  
+			System.out.println(x);  
+			}  
 		}  
-		A(int x){  
-		System.out.println(x);  
+		class TestThis6{  
+			public static void main(String args[]){  
+			A a=new A();  
+		}}  
+		
+		ex:
+		class Student{  
+			int rollno;  
+			String name,course;  
+			float fee;  
+			Student(int rollno,String name,String course){  
+				this.rollno=rollno;  
+				this.name=name;  
+				this.course=course;  
+			}  		
+			Student(int rollno,String name,String course,float fee){  
+				this(rollno,name,course);//reusing constructor  
+				this.fee=fee;  
+			}  
+			void display(){System.out.println(rollno+" "+name+" "+course+" "+fee);}  
 		}  
-	}  
-	class TestThis6{  
-		public static void main(String args[]){  
-		A a=new A();  
-	}}  
-	ex:
-	class Student{  
-		int rollno;  
-		String name,course;  
-		float fee;  
-		Student(int rollno,String name,String course){  
-			this.rollno=rollno;  
-			this.name=name;  
-			this.course=course;  
-		}  		
-		Student(int rollno,String name,String course,float fee){  
-			this(rollno,name,course);//reusing constructor  
-			this.fee=fee;  
-		}  
-		void display(){System.out.println(rollno+" "+name+" "+course+" "+fee);}  
-	}  
-	class TestThis7{  
-		public static void main(String args[]){  
-			Student s1=new Student(111,"ankit","java");  
-			Student s2=new Student(112,"sumit","java",6000f);  
-			s1.display();  
-			s2.display();  
-	}}  
+		class TestThis7{  
+			public static void main(String args[]){  
+				Student s1=new Student(111,"ankit","java");  
+				Student s2=new Student(112,"sumit","java",6000f);  
+				s1.display();  
+				s2.display();  
+		}}  
 
- -to pass as an argument in the method. used in the event handling
-    ex:
-	class S2{  
-	  void m(S2 obj){  
-	  System.out.println("method is invoked");  
-	  }  
-	  void p(){  
-	  m(this);  
-	  }  
-	  public static void main(String args[]){  
-	  S2 s1 = new S2();  
-	  s1.p();  
-	  }  
-	}  
-
- -to pass as argument in the constructor call. useful if have to use one object in multiple classes
-    ex:
-	class B{  
-	  A4 obj;  
-	  B(A4 obj){  
-		this.obj=obj;  
-	  }  
-	  void display(){  
-		System.out.println(obj.data);//using data member of A4 class  
-	  }  
-	}  	  
-	class A4{  
-	  int data=10;  
-	  A4(){  
-	   B b=new B(this);  
-	   b.display();  
-	  }  
-	  public static void main(String args[]){  
-	   A4 a=new A4();  
-	  }  
-	}     
-
- -as statement from method -> return type of method must be class type
-    ex: 
-	class A5{  
-		void m(){  
-		System.out.println(this);//prints same reference ID  
+	to pass as an argument in the method. used in the event handling
+	
+		ex:
+		class S2{  
+			void m(S2 obj){  
+			System.out.println("method is invoked");  
+			}  
+			void p(){  
+			m(this);  
+			}  
+			public static void main(String args[]){  
+			S2 s1 = new S2();  
+			s1.p();  
+			}  
 		}  
-		public static void main(String args[]){  
-			A5 obj=new A5();  
-			System.out.println(obj);//prints the reference ID  
-			obj.m();  
-		}  
-	} 
- -is the final reference in Java.
-    ex:
-	public class Test  
-	{  
-		public Test()  
+
+	to pass as argument in the constructor call. useful if have to use one object in multiple classes
+	
+	    ex:
+		class B{  
+		  A4 obj;  
+		  B(A4 obj){  
+			this.obj=obj;  
+		  }  
+		  void display(){  
+			System.out.println(obj.data);//using data member of A4 class  
+		  }  
+		}  	  
+		class A4{  
+		  int data=10;  
+		  A4(){  
+		   B b=new B(this);  
+		   b.display();  
+		  }  
+		  public static void main(String args[]){  
+		   A4 a=new A4();  
+		  }  
+		}     
+
+ 	as statement from method -> return type of method must be class type
+		ex: 
+		class A5{  
+			void m(){  
+			System.out.println(this);//prints same reference ID  
+			}  
+			public static void main(String args[]){  
+				A5 obj=new A5();  
+				System.out.println(obj);//prints the reference ID  
+				obj.m();  
+			}  
+		} 
+		
+ 	is the final reference in Java.
+	
+		ex:
+		public class Test  
 		{  
-			this = null;   
-			System.out.println("Test class constructor called");  
+			public Test()  
+			{  
+				this = null;   
+				System.out.println("Test class constructor called");  
+			}  
+			public static void main (String args[])  
+			{  
+				Test t = new Test();  
+			}  
 		}  
-		public static void main (String args[])  
-		{  
-			Test t = new Test();  
-		}  
-	}  
- -possible but not good to refer static members <--> it is unnecessary to access static variables through objects
- -to perform constructor chaining within the same class
+		
+ 	possible but not good to refer static members <--> it is unnecessary to access static variables through objects
+	
+ 	to perform constructor chaining within the same class
  
-public class Employee  
-{  
-    int id,age;   
-    String name, address;  
-    public Employee (int age)  
-    {  
-        this.age = age;  
-    }  
-    public Employee(int id, int age)  
-    {  
-        this(age);  
-        this.id = id;  
-    }  
-    public Employee(int id, int age, String name, String address)  
-    {  
-        this(id, age);  
-        this.name = name;   
-        this.address = address;   
-    }  
-    public static void main (String args[])  
-    {  
-        Employee emp = new Employee(105, 22, "Vikas", "Delhi");  
-        System.out.println("ID: "+emp.id+" Name:"+emp.name+" age:"+emp.age+" address: "+emp.address);  
-    }      
-}
-## 
-advantages of passing this into method instead of current class object:
- this is final -> cannot be assigned to any new value whereas current class object might not be final.
- this can be used in the synchronized block.
-## 
-Inheritance:
- code reusability -> sub-class need not to redefine method of super-class unless it needs to provide specific implementation.
- Runtime polymorphism -> simulate inheritance with real-time objects -> makes OOPs more realistic. 
- provides data hiding -> super-class can hide data from sub-class.
- makes Method overriding possible
-## 
-Aggregation (has-a): relationship between two classes -> aggregate class contains a reference to the class it owns
-public class Address {  
-	...		  
-}  
-public class Emp {  
-	int id;  
-	String name;  
-	Address address; 
-	...	
-}  
-## 
-composition:
- When an object contains other object, if contained object cannot exist without existence of container object
- particular case of aggregation representing stronger relationship between two objects.
- Ex: class contains students. student cannot exist without a class.
-## 
-pointer: variable refers to memory address. not used in Java
-## 
-super keyword:
- to refer to immediate parent class.
- instance of subclass created -> instance of parent class created implicitly referred by super
- called in constructor implicitly by compiler if no super or this. 
- to refer to immediate parent class instance variable.
- to invoke the immediate parent class method.
- to invoke immediate parent class constructor.
- for initializing super-class variables within sub-class constructor 
- must be first statement in constructor
- for constructor chaining
- ex:
-	class Person  
-	{  
-		String name,address;  
-		int age;  
-		public Person(int age, String name, String address)  
+		public class Employee  
 		{  
+		    int id,age;   
+		    String name, address;  
+		    public Employee (int age)  
+		    {  
 			this.age = age;  
-			this.name = name;  
-			this.address = address;  
-		}  
-	}  
-	class Employee extends Person  
-	{  
-		float salary;  
-		public Employee(int age, String name, String address, float salary)  
-		{  
-			super(age,name,address);  
-			this.salary = salary;  
-		}  
-	}  
-	public class Test  
-	{  
-		public static void main (String args[])  
-		{  
-			Employee e = new Employee(22, "Mukesh", "Delhi", 90000);  
-			System.out.println("Name: "+e.name+" Salary: "+e.salary+" Age: "+e.age+" Address: "+e.address);  
-		}  
-	}  
+		    }  
+		    public Employee(int id, int age)  
+		    {  
+			this(age);  
+			this.id = id;  
+		    }  
+		    public Employee(int id, int age, String name, String address)  
+		    {  
+			this(id, age);  
+			this.name = name;   
+			this.address = address;   
+		    }  
+		    public static void main (String args[])  
+		    {  
+			Employee emp = new Employee(105, 22, "Vikas", "Delhi");  
+			System.out.println("ID: "+emp.id+" Name:"+emp.name+" age:"+emp.age+" address: "+emp.address);  
+		    }      
+		}
+## 
+advantages of passing this into method instead of current class object
 
-Can't use this() and super() both in constructor
+	this is final -> cannot be assigned to any new value whereas current class object might not be final.
+ 
+	this can be used in the synchronized block.
+## 
+Inheritance
+
+	code reusability -> sub-class need not to redefine method of super-class unless it needs to provide specific implementation.
+
+	Runtime polymorphism -> simulate inheritance with real-time objects -> makes OOPs more realistic. 
+
+	provides data hiding -> super-class can hide data from sub-class.
+
+	makes Method overriding possible
+## 
+Aggregation (has-a)
+
+	relationship between two classes -> aggregate class contains a reference to the class it owns
+
+		public class Address {  
+			...		  
+		}  
+		public class Emp {  
+			int id;  
+			String name;  
+			Address address; 
+			...	
+		}  
+## 
+composition
+
+	When an object contains other object, if contained object cannot exist without existence of container object
+	
+	particular case of aggregation representing stronger relationship between two objects.
+	
+	Ex: class contains students. student cannot exist without a class.
+## 
+pointer
+
+	variable refers to memory address. not used in Java
+## 
+super keyword
+
+	to refer to immediate parent class.
+	
+	instance of subclass created -> instance of parent class created implicitly referred by super
+	
+	called in constructor implicitly by compiler if no super or this. 
+	
+	to refer to immediate parent class instance variable.
+	
+	to invoke the immediate parent class method.
+	
+	to invoke immediate parent class constructor.
+	
+	for initializing super-class variables within sub-class constructor 
+	
+	must be first statement in constructor
+	
+	for constructor chaining
+	
+	ex:
+		class Person  
+		{  
+			String name,address;  
+			int age;  
+			public Person(int age, String name, String address)  
+			{  
+				this.age = age;  
+				this.name = name;  
+				this.address = address;  
+			}  
+		}  
+		class Employee extends Person  
+		{  
+			float salary;  
+			public Employee(int age, String name, String address, float salary)  
+			{  
+				super(age,name,address);  
+				this.salary = salary;  
+			}  
+		}  
+		public class Test  
+		{  
+			public static void main (String args[])  
+			{  
+				Employee e = new Employee(22, "Mukesh", "Delhi", 90000);  
+				System.out.println("Name: "+e.name+" Salary: "+e.salary+" Age: "+e.age+" Address: "+e.address);  
+			}  
+		}  
+
+	Can't use this() and super() both in constructor
 ## 
 object cloning: 
  create exact copy of object -> clone() method -> java.lang.Cloneable interface 
