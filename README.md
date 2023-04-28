@@ -190,146 +190,129 @@ Acccess modifiers:
       Private: accessible within the class
 ## 
 delete, next, main, exit or null are not keyword
-## 
+##
+Final keyword:
 	A final class cannot be subclassed.
 	A final method cannot be overridden.
 	create and document a class carefully or declare it final for safety reasons.
 	making a class final: no other programmer can improve it. can’t fix any problem with it --> lose extensibility
 	If methods of class called by other methods, should consider making the called methods final. Otherwise, overriding them can affect the work of callers.
-
-If constructor calls other methods, should generally declare these methods final.
-
-making all methods of the class final -> can extend the class
-marking the class itself final -> can't extend
-
-can’t reassign final reference variable, But the object it refers to is mutable.
- final Cat cat = new Cat();
- cat.setWeight(5) -> valid
- 
-class constants should be uppercase, with components separated by underscore (“_”) characters:
- static final int MAX_WIDTH = 999;
- 
-final field must be initialized before the constructor completes. For static final
-fields, initialize them:
-	upon declaration as shown in the above example
-	in the static initializer block
-
-For instance final fields, initialize them:
-	upon declaration
-	in the instance initializer block
-	in the constructor
-
-A final argument can’t be changed inside a method:
-	public void methodWithFinalArguments(final int x) {
-		x=1;
-	}
-
-Immutability: once create an object, not allowed to change the content. If try to change and alteration successfully done, a new object will be created.
-
-immutable obj --> its state doesn’t change after it has been initialized. ex -> String class instantiated, value never changes.
-
-immutable object can’t be updated -> programs need to create a new object for every change of state.
-
-benefits of immutable obj:
-	good for caching purposes <--> don’t have to worry about the value changes
-	inherently thread-safe
-	
-create immutable class:
-	Declare class as final.
-	all fields private.
-	No setter.
-	all mutable fields final.
-	Initialize all fields using constructor performing deep copy.
-	return copy of obj by cloning it rather than returning the actual object reference.
-Ex:
-public final class FinalClassExample {
-	private final int id;	
-	private final String name;	
-	private final HashMap<String,String> testMap;	
-	public int getId() {
-		return id;
-	}
-	public String getName() {
-		return name;
-	}
-	// Getter function for mutable objects
-	public HashMap<String, String> getTestMap() {
-		return (HashMap<String, String>) testMap.clone();
-	}
-	// Constructor method performing deep copy	
-	public FinalClassExample(int i, String n, HashMap<String,String> hm){
-		this.id=i;
-		this.name=n;
-		HashMap<String,String> tempMap=new HashMap<String,String>();
-		String key;
-		Iterator<String> it = hm.keySet().iterator();
-		while(it.hasNext()){
-			key=it.next();
-			tempMap.put(key, hm.get(key));
+        If constructor calls other methods, should generally declare these methods final.
+	making all methods of the class final -> can extend the class
+	marking the class itself final -> can't extend the class
+	can’t reassign final reference variable, But the object it refers to is mutable.ex:
+	 final Cat cat = new Cat();
+	 cat.setWeight(5) -> valid
+	class constants should be uppercase nad final, with components separated by underscore:
+	 static final int MAX_WIDTH = 999;
+	static final fileds -> initialize them	upon declaration in the static initializer block
+	instance final fields -> initialize them upon declaration in the instance initializer block in the constructor
+	A final argument can’t be changed inside a method:
+		public void methodWithFinalArguments(final int x) {
+			x=1;
 		}
-		this.testMap=tempMap;
-	}
-	// Test the immutable class
-	public static void main(String[] args) {
-		HashMap<String, String> h1 = new HashMap<String,String>();
-		h1.put("1", "first");
-		h1.put("2", "second");		
-		String s = "original";		
-		int i=10;		
-		FinalClassExample ce = new FinalClassExample(i,s,h1);		
-		// print the ce values
-		System.out.println("ce id: "+ce.getId());
-		System.out.println("ce name: "+ce.getName());
-		System.out.println("ce testMap: "+ce.getTestMap());
-		// change the local variable values
-		i=20;
-		s="modified";
-		h1.put("3", "third");
-		// print the values again
-		System.out.println("ce id after local variable change: "+ce.getId());
-		System.out.println("ce name after local variable change: "+ce.getName());
-		System.out.println("ce testMap after local variable change: "+ce.getTestMap());		
-		HashMap<String, String> hmTest = ce.getTestMap();
-		hmTest.put("4", "new");		
-		System.out.println("ce testMap after changing variable from getter methods: "+ce.getTestMap());
-	}
-}
-output shows HashMap values didn’t change because constructor uses deep copy and 
-getter function returns a clone of original object.
-can make changes to the FinalClassExample.java file to show what happens when use shallow copy
-and return object insetad of a copy.
-Make the following changes:
-// Getter function for mutable objects
-	public HashMap<String, String> getTestMap() {
-		return testMap;
-	}
-	//Constructor method performing shallow copy
-	public FinalClassExample(int i, String n, HashMap<String,String> hm){
-		System.out.println("Performing Shallow Copy for Object initialization");
-		this.id=i;
-		this.name=n;
-		this.testMap=hm;
-	}
-	
-
+##
+Immutability
+	once create an object, not allowed to change the content. If try to change and alteration successfully done -> a new object will be created.
+	immutable obj --> its state doesn’t change after it has been initialized. ex -> String class instantiated, value never changes.
+	immutable object can’t be updated -> programs need to create a new object for every change of state.
+	benefits of immutable obj:
+		good for caching purposes <--> don’t have to worry about the value changes
+		inherently thread-safe	
+	create immutable class:
+		Declare class as final
+		all fields private
+		No setter
+		all mutable fields final
+		Initialize all fields using constructor performing deep copy
+		return copy of obj by cloning it rather than returning the actual object reference
+		Ex:
+		public final class FinalClassExample {
+			private final int id;	
+			private final String name;	
+			private final HashMap<String,String> testMap;	
+			public int getId() {
+				return id;
+			}
+			public String getName() {
+				return name;
+			}
+			// Getter function for mutable objects
+			public HashMap<String, String> getTestMap() {
+				return (HashMap<String, String>) testMap.clone();
+			}
+			// Constructor method performing deep copy	
+			public FinalClassExample(int i, String n, HashMap<String,String> hm){
+				this.id=i;
+				this.name=n;
+				HashMap<String,String> tempMap=new HashMap<String,String>();
+				String key;
+				Iterator<String> it = hm.keySet().iterator();
+				while(it.hasNext()){
+					key=it.next();
+					tempMap.put(key, hm.get(key));
+				}
+				this.testMap=tempMap;
+			}
+			// Test the immutable class
+			public static void main(String[] args) {
+				HashMap<String, String> h1 = new HashMap<String,String>();
+				h1.put("1", "first");
+				h1.put("2", "second");		
+				String s = "original";		
+				int i=10;		
+				FinalClassExample ce = new FinalClassExample(i,s,h1);		
+				// print the ce values
+				System.out.println("ce id: "+ce.getId());
+				System.out.println("ce name: "+ce.getName());
+				System.out.println("ce testMap: "+ce.getTestMap());
+				// change the local variable values
+				i=20;
+				s="modified";
+				h1.put("3", "third");
+				// print the values again
+				System.out.println("ce id after local variable change: "+ce.getId());
+				System.out.println("ce name after local variable change: "+ce.getName());
+				System.out.println("ce testMap after local variable change: "+ce.getTestMap());		
+				HashMap<String, String> hmTest = ce.getTestMap();
+				hmTest.put("4", "new");		
+				System.out.println("ce testMap after changing variable from getter methods: "+ce.getTestMap());
+			}
+		}
+		output shows HashMap values didn’t change because constructor uses deep copy and 
+		getter function returns a clone of original object.
+		can make changes to the FinalClassExample.java file to show what happens when use shallow copy
+		and return object insetad of a copy.
+		Make the following changes:
+		// Getter function for mutable objects
+			public HashMap<String, String> getTestMap() {
+				return testMap;
+			}
+			//Constructor method performing shallow copy
+			public FinalClassExample(int i, String n, HashMap<String,String> hm){
+				System.out.println("Performing Shallow Copy for Object initialization");
+				this.id=i;
+				this.name=n;
+				this.testMap=hm;
+			}
+##
 methods or variables defined as static are shared among all the objects of the class. 
 static variables stored in class area, do not need to create the object to access such variables.
-
+##
 packages:
  avoid the name clashes.
  provides easier access control.
  can  have the hidden classes.
  easier to locate the related classes.
-
+##
 Object is:
  real-time entity having state and behavior.
  an instance of class
  instance variables <-> state of object
  methods <-> behavior of object.
  created using new keyword.
-
-All object references <-> initialized to null.
-
+ All object references <-> initialized to null.
+##
 constructor:
  special type of method to initialize the state
  invoked when  class is instantiated,and  memory allocated for object
@@ -337,21 +320,22 @@ constructor:
  must not have explicit return type.
  is not inherited.
  can't be final.
- 
-parameterized constructor: initialize instance variables with given values.
-Ex:
-class Student3{  
-	int id;  
-	String name; 
-	void display(){System.out.println(id+" "+name);}  
-	public static void main(String args[]){  
-		Student3 s1=new Student3();  
-		Student3 s2=new Student3();  
-		s1.display();  
-		s2.display();  
+##
+parameterized constructor
+	initialize instance variables with given values.
+	Ex:
+	class Student3{  
+		int id;  
+		String name; 
+		void display(){System.out.println(id+" "+name);}  
+		public static void main(String args[]){  
+			Student3 s1=new Student3();  
+			Student3 s2=new Student3();  
+			s1.display();  
+			s2.display();  
+		}  
 	}  
-}  
-
+##
 copy values of one object into another:
  By constructor
  By assigning the values of one object into another
@@ -378,14 +362,14 @@ class Student6{
 		s2.display();  
    }  
 }  
-
+##
 method:
  exposes behavior of object
  must have a return type
  is invoked explicitly
  is not provided by the compiler in any case. 
  method name may or may not be same as class name.
- 
+## 
 Type promotion in Java:
 Byte -> Short -> Int 
 Char -> Int
@@ -436,16 +420,16 @@ class Test
         System.out.println(test.test_a+" "+test.test_b);  
     }  
 } 
-
+##
 Static variable:
  gets memory only once in the class area at the time of class loading.
  makes your program more memory efficient. 
  belongs to the class rather than the object
- 
+## 
 static method:
  can't use non-static data member
  can't call non-static method directly.
- 
+## 
 this and super cannot be used in static context as they are non-static.
 ex:
 class Student8{  
@@ -464,23 +448,22 @@ class Student8{
 	s2.display();  
    }  
 }  
-for pic -> https://www.javatpoint.com/corejava-interview-questions  No.39
-
+##
 main method static -> Because object not required to call the static method.
 non-static main method -> JVM have to create its object first then call main() -> extra memory allocation.
-
+##
 can't override static methods.
-
+##
 Static block:
  to initialize the static data member.
  executed before the main method at the time of classloading.
- 
+## 
 Constructors invoked when object created -> no sense to make constructors static.
-
+## 
 abstract methods static -> become part of the class -> can directly call it which is unnecessary.
-
+## 
 can declare static variables and methods in abstract class
-
+## 
 this:
  -Call to this() must be the first statement in constructor
  -to distinguish local variable and instance variable   
@@ -642,16 +625,17 @@ public class Employee
         System.out.println("ID: "+emp.id+" Name:"+emp.name+" age:"+emp.age+" address: "+emp.address);  
     }      
 }
+## 
 advantages of passing this into method instead of current class object:
  this is final -> cannot be assigned to any new value whereas current class object might not be final.
  this can be used in the synchronized block.
-
+## 
 Inheritance:
  code reusability -> sub-class need not to redefine method of super-class unless it needs to provide specific implementation.
  Runtime polymorphism -> simulate inheritance with real-time objects -> makes OOPs more realistic. 
  provides data hiding -> super-class can hide data from sub-class.
  makes Method overriding possible
-
+## 
 Aggregation (has-a): relationship between two classes -> aggregate class contains a reference to the class it owns
 public class Address {  
 	...		  
@@ -662,14 +646,14 @@ public class Emp {
 	Address address; 
 	...	
 }  
-
+## 
 composition:
  When an object contains other object, if contained object cannot exist without existence of container object
  particular case of aggregation representing stronger relationship between two objects.
  Ex: class contains students. student cannot exist without a class.
-
+## 
 pointer: variable refers to memory address. not used in Java
-
+## 
 super keyword:
  to refer to immediate parent class.
  instance of subclass created -> instance of parent class created implicitly referred by super
@@ -711,7 +695,7 @@ super keyword:
 	}  
 
 Can't use this() and super() both in constructor
-
+## 
 object cloning: 
  create exact copy of object -> clone() method -> java.lang.Cloneable interface 
  syntax -> protected Object clone() throws CloneNotSupportedException 
@@ -752,7 +736,7 @@ object cloning:
 		 
 		}  
 	}
-
+## 
 Method overloading -> multiple methods with same name but different signatures.
  ways:
 	Changing number of arguments
@@ -803,21 +787,19 @@ Method overloading -> multiple methods with same name but different signatures.
 	} 
 
 static method -> part of the class not the object -> can't be overridden
-
+## 
 override any overloaded method
-
 Override <--> IS-A (super/sub relationship)
-
+## 
 change scope of overridden method in subclass to be less restricitve <-> (public < default < protected < private)
-
-
+## 
 modify superclass throws while override in subclass: 
   No exception in superclass & checked exception in subclass -> error
   No exception in superclass & unchecked exception in subclass
   exception in superclass (exc1) & exception other than exc1, exc1 child, and runtime exception in SubClass -> error
   exception in superclass (exc1) & child exception of exc1 in SubClass
   exception in superclass & no exception in SubClass
-  
+##   
 covariance: how subtype is accepted when only supertype is defined
 covariant return type: the overriden method return type may vary in the same direction as the subclass ->
                        override method by changing return type if return type of subclass overriding method is subclass type.
@@ -860,17 +842,17 @@ public class Test
     {  
 	    // Runtime polymorphism between Base and Derived
 		// presence of baseMethod checked in Base -> compiled successfully
-		// at runtime, checks baseMethod overridden by Derived -> if yes Derived method is
-called
+		// at runtime, checks baseMethod overridden by Derived -> if yes Derived method is called
         Base b = new Derived();  // reference variable b (of type Base) refers to instance of Derived.
         b.baseMethod();  
     }  
 }
- 
+##  
 cannot override inherited final method. 
 can't inherit final class
 constructor can never be final
-interface can never be final 
+interface can never be final
+ex:	
 class Bike10{  
   final int speedlimit;//blank final variable      
   Bike10(){  
@@ -889,11 +871,11 @@ class Main {
    System.out.println(i);  
  }  
 }  
-
+## 
 compile-time polymorphism (static binding, early binding, or overloading) -> (object type determined/call to method resolved) at compile-time -> fast execution
 runtime polymorphism (dynamic binding, late binding, overriding, dynamic method dispatch) -> (object type determined/call to overridden method resolved) at runtime.
  an overridden method called through reference variable of superclass. determination of the method to be called is based on object being referred to by reference variable.
- 
+ex: 
 class Bike{  
   void run(){System.out.println("running");}  
 }  
@@ -918,7 +900,6 @@ private, final or static method in class -> static binding.
 class Animal{  
  void eat(){System.out.println("animal is eating...");}  
 }  
-  
 class Dog extends Animal{  
  void eat(){System.out.println("dog is eating...");}  
   
@@ -928,14 +909,14 @@ class Dog extends Animal{
   a.eat();  
  }  
 }  
-
+## 
 instanceof: compares the instance with type.
 	Simple1 s=new Simple1();  
 	System.out.println(s instanceof Simple1);//true
-
+## 
 Abstraction: help focus on what object does instead of how it does
 encapsulation: wraps code and data into single unit
-
+## 
 abstract class:
  can have abstract and non-abstract methods, data member, constructor, and even main()
  can have constructors and static methods
@@ -943,12 +924,12 @@ abstract class:
  can never be instantiated even if it contains constructor and implemented methods
  can provide implementation of interface
  can extend another Java class
- 
+##  
 interface methods -> abstract by default
 static + abstract -> not allowed
-
+## 
 Marker interface interface with no data member and member functions -> Serializable, Cloneable.
-
+##
 Interface can't provide implementation of abstract class.
 interface can extend another interface
 Members of interface are public by default
@@ -1012,27 +993,26 @@ public class Main
         System.out.println("result = "+result);  
     }  
 }  
-
+##
 Encapsulation:
 read-only  class -> all fields private. only getter returning private property of class to main method 
 write-only class -> all fields private. only setter setting value passed from main to private fields
-
+##
 package: 
  group of similar type of classes, interfaces, and sub-packages.
  access protection
  removes naming collision
-
-
+##
 try block followed by either catch OR finally block
- 
+##
 Checked Exception: checked at compile-time. SQLException, ClassNotFoundException, etc.
 Unchecked Exception: handled at runtime. ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
 Error: not recoverable -> cause program to exit. OutOfMemoryError, AssertionError, etc.
 advantage of exception handling:  maintain normal flow of application.
-
+##
 throw -> to throw exception
 throws -> to declare possible exceptions that may occure in method
-
+##
 Hierarchy of Java Exception classes:
 	Throwable -> Exception, Error
 	Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
@@ -1040,13 +1020,13 @@ Hierarchy of Java Exception classes:
 						IndexOutOfBoundsException
 	IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
 	Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
-	
+##	
 Common exception Scenarios:
 	divide number by zero -> ArithmeticException.
 	performing operation on null variable -> NullPointerException	
 	variable formatting mismatched -> NumberFormatException
 	array size exceed -> ArrayIndexOutOfBoundsException
-	
+##	
 Exception Propagation:
 	[thrown from top -> not caught -> drops down previous] --> so on until caught or reach the very bottom of call stack
 	
@@ -1089,13 +1069,13 @@ class TestExceptionPropagation2{
    System.out.println("normal flow");  
   }  
 }
- 
+## 
 Nested try block: Sometimes a situation may arise where a part of a 
 [block -> one error & entire block -> another error] -> nested exception
- 
+## 
 Finally: executes after try-catch
          not executes if program exits
-
+##
 custom exceptions: extends Exception 
 ex:
 public class WrongFileNameException extends Exception {  
@@ -1156,9 +1136,9 @@ public class TestCustomException2
         System.out.println("rest of the code...");    
     }  
 }
-
+##
 can not throw basic data type from a block
-
+ex:
 public class Main{  
     public static void main(String []args){  
         try  
@@ -1192,8 +1172,7 @@ public class Main{
             c.add(10,20);  
         }  
     }  
-} 
-
+}
 ex: propagation
 public class Main   
 {  
@@ -1265,7 +1244,7 @@ public class Calculation
         System.out.println("result = "+result);  
     }  
 }  
-
+##
 String pool: space reserved in heap used to store strings
  create string literal -> JVM checks string pool -> If exists -> a reference returns
                                                     If not    ->  new string instance creates 
@@ -1277,16 +1256,17 @@ class Testimmutablestring{
    System.out.println(s); 
  }  
 } 
-
+##
 create string object:
 1) String Literal:
 	String s ="welcome";  
-    String s2="Welcome";//It doesn't create a new instance
-2) new keyword
+        String s2="Welcome";//It doesn't create a new instance
+2) new keyword:
 	String s=new String("Welcome");//creates two objects and one reference variable
 	new object in heap refered by s,
-	literal "Welcome" in string pool. The variable s
-
+	literal object "Welcome" in string pool
+	The ref variable s
+ex:
 public class Test   
 {
   public static void main (String args[])  
@@ -1303,7 +1283,7 @@ public class Test
 	  }	  
   }  
 }
-
+ex:
 public class Test   
 {  
     public static void main (String args[])  
@@ -1314,37 +1294,36 @@ public class Test
         System.out.println(s1 ==s2);  
     }  
 }  
-
+##
 String cons compare to StringBuffer:
 	String  immutable
 	String  slow creates a new instance on concatThe 
 	String  overrides  equals()  
-
+##
 StringBuffer is synchronized -> thread safe -> two StringBuffer methods can't be called simultaneously
 StringBuffer is less efficient than StringBuilder.	
-
+##
 immutable class and all its members are final
-
+##
 toString(): returns string representation of object -> overriding -> desired output
-
+##
 String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
-
+##
 java.util.regex: 
 	MatchResult Interface
 	Matcher class
 	Pattern class
 	PatternSyntaxException class
-
+##
 Metacharacters: ^, $, ., *, +, etc. <- not regular characters fro regex engine -> use backslash to treat them ordinary.
-
-
+##
 Nested classes: can access all members of outer class including private ->  used for readability and maintainability
  static nested class
  non-static nested class (inner-class)
  disadvantages:
   Inner classes increase total number of classes and workload of JVM
   less support by IDEs to inner class
-
+##
 inner classe:
 	Member Inner Class:	created within class and outside method.
 	Anonymous Inner Class:	
@@ -1367,7 +1346,7 @@ public class Person {
 	  Person p = new Person();  
 	}  
 } 
-
+##
 nested interface: 
  interface within class
  public if declared inside interface
@@ -1387,12 +1366,12 @@ class TestNestedInterface1 implements Showable.Message{
   message.msg();  
  }  
 }  
- 
+## 
 class inside interface -> static nested class by compiler
-
+##
 Garbage Collection: removing unused objects from memory
 gc() to garbage collect -> depends on JVM whether to perform
-
+##
 public class TestGarbage1{  
  public void finalize(){System.out.println("object is garbage collected");}  
  public static void main(String args[]){  
@@ -1403,7 +1382,7 @@ public class TestGarbage1{
   System.gc();  
  }  
 }  
-
+##
 unreferencing an object by:
 	nulling the reference
 		Employee e=new Employee(); -> e=null; 
@@ -1412,11 +1391,11 @@ unreferencing an object by:
 		Employee e2=new Employee();  
 		e1=e2;//e1 available for garbage collection
 	anonymous object -> new Employee(); 
-
+##
 an unreferenced object can be referenced again
-
+##
 Garbage collector is Daemon thread.
-
+##
 Java Runtime class -> to execute process, invoke GC, get total and free memory, ...
 only one instance of Runtime class
 Runtime.getRuntime() returns singleton instance of Runtime class.
@@ -1425,7 +1404,7 @@ public class Runtime1{
   Runtime.getRuntime().exec("notepad");//will open a new notepad  
  }  
 }  
-
+##
 hierarchy of InputStream and OutputStream:
 OutputStream -> FileOutputStream, ByteArrayOutputStream, FilterOutputStream, PipedOutputStream
                 ObjectOutputStream
@@ -1436,6 +1415,6 @@ FilterInputStream -> DataInputStream, BufferedInputStream, PushBackInputStream
 
 stream: sequence of data composed of bytes from source to destination
 three automatic streams:
-System.out: standard output 
-System.in: standard input 
-System.err: standard error
+	System.out: standard output 
+	System.in: standard input 
+	System.err: standard error
