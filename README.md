@@ -2,17 +2,20 @@
 
 Core concepts of Java SE
 ##
-SOLID Principles (not specific to Java)
+- SOLID Principles (not specific to Java)
 
-Single Responsibility for Each class <-> Just one reason needed to change that class.
-	Advantages
+	1- Single Responsibility for Each class <-> Just one reason needed to change that class.
 
-	 Testing –> fewer test cases for each class.
-	 Lower coupling –> fewer dependencies.
-	 Smaller and well-organized classes
+		Advantages:
+
+			Testing –> fewer test cases for each class.
+			Lower coupling –> fewer dependencies.
+			Smaller and well-organized classes
 		 
-	2- Class shoud be Opened for Extension and Closed for Modification. Otherwise, modifying
-	   the existing code -> potential new bugs.
+	2- Class shoud be Opened for Extension and Closed for Modification.
+	
+	   Otherwise -> modifying the existing code -> potential new bugs.
+	   
 	   If fixing bugs -> extend the class
 
 	3- Liskov Substitution: if class A is a subtype of class B, one should be able to replace B with A
@@ -20,88 +23,87 @@ Single Responsibility for Each class <-> Just one reason needed to change that c
 	   
 	   A popular Example:
 	   
-	public interface Vehicle {
-		void turnOnICEngine();
-		void accelerate();
-	}
-
-	public class Mustang implements Vehicle {
-		private Engine engine;
-		//Constructors, getters + setters
-		public void turnOnICEngine() {
-			engine.on();
+		public interface Vehicle {
+			void turnOnICEngine();
+			void accelerate();
 		}
-		public void accelerate() {
-			engine.powerOn(5000);
+		public class Mustang implements Vehicle {
+			private Engine engine;
+			//Constructors, getters + setters
+			public void turnOnICEngine() {
+				engine.on();
+			}
+			public void accelerate() {
+				engine.powerOn(5000);
+			}
 		}
-	}
-
-	public class Tesla implements Vehicle {
-		public void turnOnICEngine() 
-			// This new Vehicle is electric -> changes the program behavior!
-			//-> Liskov Substitution violated!
-			throw new AssertionError("Tesla doesn't have Internal Combustion (IC) engine!");
+		public class Tesla implements Vehicle {
+			public void turnOnICEngine() 
+				// This new Vehicle is electric -> changes the program behavior!
+				//-> Liskov Substitution violated!
+				throw new AssertionError("Tesla doesn't have Internal Combustion (IC) engine!");
+			}
+			public void accelerate() {
+				//Too much for Tesla!
+			}
+			// Possible Soultion -> Code another interface for taking into account the non-ICEngine ones.
 		}
-		public void accelerate() {
-			//Too much for Tesla!
-		}
-		// Possible Soultion -> Code another interface for taking into account the non-ICEngine ones.
-	}
 
 	4- Interface Segregation: larger interfaces be splited into smaller ones -> More specific
-	   methods in each interface.
-	5- Dependency Inversion: Decoupling software modules -> high-level/low-level modules and details
-	   depend on abstractions.
+		   methods in each interface.
 	   
-	example:
+	5- Dependency Inversion: Decoupling software modules -> high-level/low-level modules and details
+		   depend on abstractions.
+	   
+		example:
 	
-	public class SalesDepartment {
-		public void customerSupport() {
-		}
-	}   
-	public class WarehouseDepartment {
-		public void qualityControl() {
-		}
-	}
-	public class Manager {
-		private SalesDepartment salesDepartment = new SalesDepartment();
-		private WarehouseDepartment warehouseDepartment = new WarehouseDepartment();
-		public void OrderInquiry() {
-			salesDepartment.customerSupport();
-			warehouseDepartment.qualityControl();
-		}
-	}
-	
-	Manager class depends on low-level modules -> refactor using abstraction: 
-	
-	public interface Departments {
-		void department();
-	}
-	public class SalesDepartment implements Departments {
-		@Override
-		public void department() {
-			customerSupport();
-		}
-		private void customerSupport() {}
-	}
-	public class WarehouseDepartment implements Departments {
-		@Override
-		public void department() {
-			qualityControl();
-		}
-		public void qualityControl() {}
-	}
-	public class Manager {
-		private List<Departments> departments;
-		public Manager(List<Departments> departments) {
-			this.departments = departments;
-		}
-		public void OrderInquiry() {
-			departments.forEach(d->d.department());
-		}
-	}
+			public class SalesDepartment {
+				public void customerSupport() {
+				}
+			}   
+			public class WarehouseDepartment {
+				public void qualityControl() {
+				}
+			}
+			public class Manager {
+				private SalesDepartment salesDepartment = new SalesDepartment();
+				private WarehouseDepartment warehouseDepartment = new WarehouseDepartment();
+				public void OrderInquiry() {
+					salesDepartment.customerSupport();
+					warehouseDepartment.qualityControl();
+				}
+			}
+
+			Manager class depends on low-level modules -> refactor using abstraction: 
+
+			public interface Departments {
+				void department();
+			}
+			public class SalesDepartment implements Departments {
+				@Override
+				public void department() {
+					customerSupport();
+				}
+				private void customerSupport() {}
+			}
+			public class WarehouseDepartment implements Departments {
+				@Override
+				public void department() {
+					qualityControl();
+				}
+				public void qualityControl() {}
+			}
+			public class Manager {
+				private List<Departments> departments;
+				public Manager(List<Departments> departments) {
+					this.departments = departments;
+				}
+				public void OrderInquiry() {
+					departments.forEach(d->d.department());
+				}
+			}
 ##
-Main Java features
+- Main Java features
 
       Used for Desktop, Mobile, and Web application development
     
@@ -115,7 +117,7 @@ Main Java features
     
       Multi-threaded
 ##    
-Does not support
+- Java Does not support
 
       pointers (Handles it internally)
     
