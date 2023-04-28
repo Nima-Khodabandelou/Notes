@@ -226,21 +226,36 @@ Final keyword:
 			x=1;
 		}
 ##
-Immutability
+Immutability:
+
 	once create an object, not allowed to change the content. If try to change and alteration successfully done -> a new object will be created.
+	
 	immutable obj --> its state doesn’t change after it has been initialized. ex -> String class instantiated, value never changes.
+	
 	immutable object can’t be updated -> programs need to create a new object for every change of state.
+	
 	benefits of immutable obj:
+	
 		good for caching purposes <--> don’t have to worry about the value changes
+		
 		inherently thread-safe	
+		
 	create immutable class:
+	
 		Declare class as final
+		
 		all fields private
+		
 		No setter
+		
 		all mutable fields final
+		
 		Initialize all fields using constructor performing deep copy
+		
 		return copy of obj by cloning it rather than returning the actual object reference
+		
 		Ex:
+		
 		public final class FinalClassExample {
 			private final int id;	
 			private final String name;	
@@ -293,11 +308,15 @@ Immutability
 				System.out.println("ce testMap after changing variable from getter methods: "+ce.getTestMap());
 			}
 		}
+		
 		output shows HashMap values didn’t change because constructor uses deep copy and 
 		getter function returns a clone of original object.
+		
 		can make changes to the FinalClassExample.java file to show what happens when use shallow copy
 		and return object insetad of a copy.
+		
 		Make the following changes:
+		
 		// Getter function for mutable objects
 			public HashMap<String, String> getTestMap() {
 				return testMap;
