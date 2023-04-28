@@ -1406,15 +1406,21 @@ public class Runtime1{
 }  
 ##
 hierarchy of InputStream and OutputStream:
+	
 OutputStream -> FileOutputStream, ByteArrayOutputStream, FilterOutputStream, PipedOutputStream
-                ObjectOutputStream
-FilterOutputStream -> DataOutputStream, BufferedOutputStream, PrintStream
+                ObjectOutputStream, FilterOutputStream -> DataOutputStream, BufferedOutputStream, PrintStream
+	
 InputStream -> FileInputStream, ByteArrayInputStream, FilterInputStream, PipedInputStream
                ObjectInputStream
+	
 FilterInputStream -> DataInputStream, BufferedInputStream, PushBackInputStream
 
 stream: sequence of data composed of bytes from source to destination
+	
 three automatic streams:
+	
 	System.out: standard output 
+	
 	System.in: standard input 
+	
 	System.err: standard error
