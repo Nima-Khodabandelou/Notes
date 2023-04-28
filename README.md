@@ -193,20 +193,34 @@ delete, next, main, exit or null are not keyword
 ##
 Final keyword:
 	A final class cannot be subclassed.
+	
 	A final method cannot be overridden.
+	
 	create and document a class carefully or declare it final for safety reasons.
+	
 	making a class final: no other programmer can improve it. can’t fix any problem with it --> lose extensibility
+	
 	If methods of class called by other methods, should consider making the called methods final. Otherwise, overriding them can affect the work of callers.
+	
         If constructor calls other methods, should generally declare these methods final.
+	
 	making all methods of the class final -> can extend the class
+	
 	marking the class itself final -> can't extend the class
-	can’t reassign final reference variable, But the object it refers to is mutable.ex:
+	
+	can’t reassign final reference variable, But the object it refers to is mutable.
+	ex:
 	 final Cat cat = new Cat();
 	 cat.setWeight(5) -> valid
+	 
 	class constants should be uppercase nad final, with components separated by underscore:
+	
 	 static final int MAX_WIDTH = 999;
+	 
 	static final fileds -> initialize them	upon declaration in the static initializer block
+	
 	instance final fields -> initialize them upon declaration in the instance initializer block in the constructor
+	
 	A final argument can’t be changed inside a method:
 		public void methodWithFinalArguments(final int x) {
 			x=1;
