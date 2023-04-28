@@ -191,12 +191,11 @@ Acccess modifiers:
 ## 
 delete, next, main, exit or null are not keyword
 ## 
-- A final class cannot be subclassed.
-- A final method cannot be overridden.
-- create and document a class carefully or declare it final for safety reasons.
-- making a class final: no other programmer can improve it. can’t fix any problem with it --> lose extensibility
-- If methods of class called by other methods, should consider making the called methods final. Otherwise, overriding them
-can affect the work of callers.
+	A final class cannot be subclassed.
+	A final method cannot be overridden.
+	create and document a class carefully or declare it final for safety reasons.
+	making a class final: no other programmer can improve it. can’t fix any problem with it --> lose extensibility
+	If methods of class called by other methods, should consider making the called methods final. Otherwise, overriding them can affect the work of callers.
 
 If constructor calls other methods, should generally declare these methods final.
 
