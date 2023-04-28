@@ -330,6 +330,7 @@ Immutability:
 			}
 ##
 methods or variables defined as static are shared among all the objects of the class. 
+
 static variables stored in class area, do not need to create the object to access such variables.
 ##
 packages:
