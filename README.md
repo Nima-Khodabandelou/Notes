@@ -25,6 +25,7 @@ First of all SOLID Principles (not specific to Java):
 		void turnOnICEngine();
 		void accelerate();
 	}
+
 	public class Mustang implements Vehicle {
 		private Engine engine;
 		//Constructors, getters + setters
@@ -35,6 +36,7 @@ First of all SOLID Principles (not specific to Java):
 			engine.powerOn(5000);
 		}
 	}
+
 	public class Tesla implements Vehicle {
 		public void turnOnICEngine() 
 			// This new Vehicle is electric -> changes the program behavior!
