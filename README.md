@@ -4,9 +4,10 @@ Core concepts of Java SE
 ##
 SOLID Principles (not specific to Java):
 
-	1- Single Responsibility for Each class <-> Just one reason needed to change that class.
+Single Responsibility for Each class <-> Just one reason needed to change that class.
 	
-		 Advantages:
+		 Advantages
+		 
 			 Testing –> fewer test cases for each class.
 			 Lower coupling –> fewer dependencies.
 			 Smaller and well-organized classes
@@ -101,7 +102,7 @@ SOLID Principles (not specific to Java):
 		}
 	}
 ##
-Main Java features:
+Main Java features
 
       Used for Desktop, Mobile, and Web application development
     
@@ -115,7 +116,7 @@ Main Java features:
     
       Multi-threaded
 ##    
-Does not support:
+Does not support
 
       pointers (Handles it internally)
     
@@ -127,7 +128,7 @@ Does not support:
     
       structures and unions
 ##
-Super keyword:
+Super keyword
 
        A reference variable used for refering to the immediate parent class object
        
@@ -141,21 +142,23 @@ Super keyword:
        
        Must be the first statement in constructor
 ##       
-Path and Classpath:
+Path and Classpath
 
        PATH: An environment variable used by the operating system to locate the executables
 
        Classpath: Java specific used to locate class files. it can be a directory, ZIP, JAR, etc.
 ## 
-Source files: 
+Source files
 
        Each source Java file may have multiple classes among which only one shall be public.
        
        Source file name shall be the same as class name.
 ## 
-OS Architecture: Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
+OS Architecture
+
+Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 ## 
-Interpreter/Compiler:
+Interpreter/Compiler
 
       Just-in-time (JIT): To improve performance by compiling parts of the bytecode
                         having similar functionality, and therefore reducing compilation time.  
@@ -176,9 +179,11 @@ Interpreter/Compiler:
 
 		System/Application ClassLoader: Loads files in the classpath.
 ##             
-Local variables not initialized to any default value.
+Local variables
+
+not initialized to any default value.
 ## 
-Acccess modifiers:
+Acccess modifiers
 
       Default: accessible within the package only.
       
@@ -191,7 +196,8 @@ Acccess modifiers:
 ## 
 delete, next, main, exit or null are not keyword
 ##
-Final keyword:
+Final keyword
+
 	A final class cannot be subclassed.
 	
 	A final method cannot be overridden.
@@ -226,7 +232,7 @@ Final keyword:
 			x=1;
 		}
 ##
-Immutability:
+Immutability
 
 	once create an object, not allowed to change the content. If try to change and alteration successfully done -> a new object will be created.
 	
@@ -329,17 +335,19 @@ Immutability:
 				this.testMap=hm;
 			}
 ##
-methods or variables defined as static are shared among all the objects of the class. 
+static methods/variables -> shared among all the objects of the class. 
 ##
 static variables stored in class area, do not need to create the object to access such variables.
 ##
-packages:
+packages
+
  avoid the name clashes.
  provides easier access control.
  can  have the hidden classes.
  easier to locate the related classes.
 ##
-Object is:
+Object
+
  real-time entity having state and behavior.
  an instance of class
  instance variables <-> state of object
@@ -347,7 +355,8 @@ Object is:
  created using new keyword.
  All object references <-> initialized to null.
 ##
-constructor:
+constructor
+
  special type of method to initialize the state
  invoked when  class is instantiated,and  memory allocated for object
  Every time an object created using new keyword, default constructor is called 
