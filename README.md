@@ -2,15 +2,15 @@
 
 Core concepts of Java SE
 ##
-SOLID Principles (not specific to Java):
+SOLID Principles (not specific to Java)
 
 Single Responsibility for Each class <-> Just one reason needed to change that class.
 	
-		 Advantages
-		 
-			 Testing –> fewer test cases for each class.
-			 Lower coupling –> fewer dependencies.
-			 Smaller and well-organized classes
+Advantages
+
+	 Testing –> fewer test cases for each class.
+	 Lower coupling –> fewer dependencies.
+	 Smaller and well-organized classes
 		 
 	2- Class shoud be Opened for Extension and Closed for Modification. Otherwise, modifying
 	   the existing code -> potential new bugs.
