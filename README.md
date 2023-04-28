@@ -370,10 +370,12 @@ parameterized constructor
 		}  
 	}  
 ##
-copy values of one object into another:
+copy values of one object into another
+
  By constructor
  By assigning the values of one object into another
  By clone() method of Object class
+ 
 ex: 
 class Student6{  
     int id;  
@@ -397,17 +399,20 @@ class Student6{
    }  
 }  
 ##
-method:
+method
+
  exposes behavior of object
  must have a return type
  is invoked explicitly
  is not provided by the compiler in any case. 
  method name may or may not be same as class name.
 ## 
-Type promotion in Java:
+Type promotion in Java
+
 Byte -> Short -> Int 
 Char -> Int
 Int -> Long -> Float -> Double
+
 Ex:
 public class Test  
 {  
@@ -426,6 +431,7 @@ public class Test
         Test test = new Test(a,b);  
     }  
 }
+
 ex:
 class Test   
 {  
@@ -439,6 +445,7 @@ public class Main
         System.out.println(test.i);  
     }  
 }  
+
 ex:
 class Test   
 {  
@@ -455,16 +462,21 @@ class Test
     }  
 } 
 ##
-Static variable:
+Static variable
+
  gets memory only once in the class area at the time of class loading.
  makes your program more memory efficient. 
  belongs to the class rather than the object
 ## 
-static method:
+static method
+
  can't use non-static data member
  can't call non-static method directly.
 ## 
-this and super cannot be used in static context as they are non-static.
+this and super
+
+cannot be used in static context as they are non-static.
+
 ex:
 class Student8{  
    int rollno;  
@@ -483,25 +495,37 @@ class Student8{
    }  
 }  
 ##
-main method static -> Because object not required to call the static method.
+main method
+
+static -> Because object not required to call the static method.
+
 non-static main method -> JVM have to create its object first then call main() -> extra memory allocation.
 ##
 can't override static methods.
 ##
-Static block:
+Static block
+
  to initialize the static data member.
  executed before the main method at the time of classloading.
 ## 
-Constructors invoked when object created -> no sense to make constructors static.
+Constructors
+
+invoked when object created -> no sense to make constructors static.
 ## 
-abstract methods static -> become part of the class -> can directly call it which is unnecessary.
+abstract methods
+
+-> static -> become part of the class -> can directly call it which is unnecessary.
 ## 
 can declare static variables and methods in abstract class
 ## 
-this:
- -Call to this() must be the first statement in constructor
- -to distinguish local variable and instance variable   
- -to invoke method of current class. If don't use this keyword, compiler automatically adds
+this
+
+ - Call to this() must be the first statement in constructor
+ 
+ - to distinguish local variable and instance variable   
+ 
+ - to invoke method of current class. If don't use this keyword, compiler automatically adds
+ 
 	ex:
 	class A{  
 	 void m(){System.out.println("hello m");}  
@@ -517,7 +541,7 @@ this:
 	 a.n();  
 	}} 
 
- -used for constructor chaining
+ - used for constructor chaining
     ex:
 	class A{  
 		A(){System.out.println("hello a");}  
