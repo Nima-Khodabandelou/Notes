@@ -330,7 +330,7 @@ Immutability:
 			}
 ##
 methods or variables defined as static are shared among all the objects of the class. 
-
+##
 static variables stored in class area, do not need to create the object to access such variables.
 ##
 packages:
@@ -356,7 +356,7 @@ constructor:
  can't be final.
 ##
 parameterized constructor
-	initialize instance variables with given values.
+
 	Ex:
 	class Student3{  
 		int id;  
