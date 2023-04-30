@@ -218,8 +218,8 @@ Core concepts of Java SE
       can’t reassign final reference variable, But the object it refers to is mutable.
       
       ex:
-      final Cat cat = new Cat();
-      cat.setWeight(5) -> valid
+	      final Cat cat = new Cat();
+	      cat.setWeight(5) -> valid
 	 
       class constants should be uppercase nad final, with components separated by underscore:
 	
