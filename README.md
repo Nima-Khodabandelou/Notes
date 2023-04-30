@@ -1502,27 +1502,36 @@ public class TestGarbage1{
  }  
 }  
 ##
-unreferencing an object by:
+unreferencing an object by
+
 	nulling the reference
+	
 		Employee e=new Employee(); -> e=null; 
+		
 	assigning reference to another
+	
 		Employee e1=new Employee();  
 		Employee e2=new Employee();  
 		e1=e2;//e1 available for garbage collection
+		
 	anonymous object -> new Employee(); 
 ##
-an unreferenced object can be referenced again
+An unreferenced object can be referenced again
 ##
-Garbage collector is Daemon thread.
-##
-Java Runtime class -> to execute process, invoke GC, get total and free memory, ...
-only one instance of Runtime class
-Runtime.getRuntime() returns singleton instance of Runtime class.
-public class Runtime1{  
- public static void main(String args[])throws Exception{  
-  Runtime.getRuntime().exec("notepad");//will open a new notepad  
- }  
-}  
+Java Runtime class
+
+	-> to execute process, invoke GC, get total and free memory, ...
+
+	only one instance of Runtime class
+
+	Runtime.getRuntime() returns singleton instance of Runtime class.
+
+	ex:
+	public class Runtime1{  
+	 public static void main(String args[])throws Exception{  
+	  Runtime.getRuntime().exec("notepad");//will open a new notepad  
+	 }  
+	}  
 ##
 hierarchy of InputStream and OutputStream
 	
