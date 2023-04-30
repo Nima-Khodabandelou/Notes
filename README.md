@@ -157,7 +157,7 @@ Core concepts of Java SE
 ## 
 - OS Architecture
 
-Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
+      Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 ## 
 - Interpreter/Compiler
 
@@ -182,7 +182,7 @@ Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 ##             
 - Local variables
 
-		not initialized to any default value.
+      not initialized to any default value.
 ## 
 - Acccess modifiers
 
@@ -199,24 +199,24 @@ Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 ##
 - Final keyword
 
-	A final class cannot be subclassed.
+      A final class cannot be subclassed.
 	
-	A final method cannot be overridden.
+      A final method cannot be overridden.
 	
-	create and document a class carefully or declare it final for safety reasons.
+      create and document a class carefully or declare it final for safety reasons.
 	
-	making a class final: no other programmer can improve it. can’t fix any problem with it --> lose extensibility
+      making a class final: no other programmer can improve it. can’t fix any problem with it --> lose extensibility
 	
-	If methods of class called by other methods, should consider making the called methods final. Otherwise, overriding them can affect the work of callers.
+      If methods of class called by other methods, should consider making the called methods final. Otherwise, overriding them can affect the work of callers.
 	
-        If constructor calls other methods, should generally declare these methods final.
+      If constructor calls other methods, should generally declare these methods final.
 	
-	making all methods of the class final -> can extend the class
+      making all methods of the class final -> can extend the class
 	
-	marking the class itself final -> can't extend the class
+      marking the class itself final -> can't extend the class
 	
-	can’t reassign final reference variable, But the object it refers to is mutable.
-	ex:
+      can’t reassign final reference variable, But the object it refers to is mutable.
+      ex:
 	 final Cat cat = new Cat();
 	 cat.setWeight(5) -> valid
 	 
