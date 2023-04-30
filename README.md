@@ -237,19 +237,19 @@ Core concepts of Java SE
 ##
 - Immutability
 
-	once create an object, not allowed to change the content. If try to change and alteration successfully done -> a new object will be created.
+      once create an object, not allowed to change the content. If try to change and alteration successfully done -> a new object will be created.
 	
-	immutable obj --> its state doesn’t change after it has been initialized. ex -> String class instantiated, value never changes.
+      immutable obj --> its state doesn’t change after it has been initialized. ex -> String class instantiated, value never changes.
 	
-	immutable object can’t be updated -> programs need to create a new object for every change of state.
+      immutable object can’t be updated -> programs need to create a new object for every change of state.
 	
-	benefits of immutable obj:
+      benefits of immutable obj:
 	
 		good for caching purposes <--> don’t have to worry about the value changes
 		
 		inherently thread-safe	
 		
-	create immutable class:
+      create immutable class:
 	
 		Declare class as final
 		
@@ -344,144 +344,157 @@ Core concepts of Java SE
 ##
 - packages
 
- avoid the name clashes.
- provides easier access control.
- can  have the hidden classes.
- easier to locate the related classes.
+      avoid the name clashes.
+      
+      provides easier access control.
+      
+      can  have the hidden classes.
+      
+      easier to locate the related classes.
 ##
 - Object
 
- real-time entity having state and behavior.
- an instance of class
- instance variables <-> state of object
- methods <-> behavior of object.
- created using new keyword.
- All object references <-> initialized to null.
+      real-time entity having state and behavior.
+      
+      an instance of class
+      
+      instance variables <-> state of object
+      
+      methods <-> behavior of object.
+      
+      created using new keyword.
+      
+      All object references <-> initialized to null.
 ##
 - constructor
 
- special type of method to initialize the state
- invoked when  class is instantiated,and  memory allocated for object
- Every time an object created using new keyword, default constructor is called 
- must not have explicit return type.
- is not inherited.
- can't be final.
+      special type of method to initialize the state
+      
+      invoked when  class is instantiated,and memory allocated for object
+      
+      Every time an object created using new keyword, default constructor is called 
+      
+      must not have explicit return type.
+      
+      is not inherited.
+      
+      can't be final.
 ##
 - parameterized constructor
 
-	Ex:
+      Ex:
 	
-		class Student3{  
-			int id;  
-			String name; 
-			void display(){System.out.println(id+" "+name);}  
-			public static void main(String args[]){  
-				Student3 s1=new Student3();  
-				Student3 s2=new Student3();  
-				s1.display();  
-				s2.display();  
-			}  
+	class Student3{  
+		int id;  
+		String name; 
+		void display(){System.out.println(id+" "+name);}  
+		public static void main(String args[]){  
+			Student3 s1=new Student3();  
+			Student3 s2=new Student3();  
+			s1.display();  
+			s2.display();  
 		}  
+	}  
 ##
 - copy values of one object into another
 
-	 By constructor
+      By constructor
 
-	 By assigning the values of one object into another
+      By assigning the values of one object into another
 
-	 By clone() method of Object class
+      By clone() method of Object class
 
-		ex: 
-		class Student6{  
-		    int id;  
-		    String name;  
-		    //constructor to initialize integer and string  
-		    Student6(int i,String n){  
-		    id = i;  
-		    name = n;  
-		    }  
-		    //constructor to initialize another object  
-		    Student6(Student6 s){  
-		    id = s.id;  
-		    name =s.name;  
-		    }  
-		    void display(){System.out.println(id+" "+name);}   
-		    public static void main(String args[]){  
-				Student6 s1 = new Student6(111,"Karan");  
-				Student6 s2 = new Student6(s1);  
-				s1.display();  
-				s2.display();  
-		   }  
-		}  
+	ex: 
+	class Student6{  
+	    int id;  
+	    String name;  
+	    //constructor to initialize integer and string  
+	    Student6(int i,String n){  
+	    id = i;  
+	    name = n;  
+	    }  
+	    //constructor to initialize another object  
+	    Student6(Student6 s){  
+	    id = s.id;  
+	    name =s.name;  
+	    }  
+	    void display(){System.out.println(id+" "+name);}   
+	    public static void main(String args[]){  
+			Student6 s1 = new Student6(111,"Karan");  
+			Student6 s2 = new Student6(s1);  
+			s1.display();  
+			s2.display();  
+	   }  
+	}  
 ##
 - method
 
-	exposes behavior of object
+      exposes behavior of object
 
-	must have a return type
+      must have a return type
 
-	is invoked explicitly
+      is invoked explicitly
 
-	is not provided by the compiler in any case.
+      is not provided by the compiler in any case.
 
-	method name may or may not be same as class name.
+      method name may or may not be same as class name.
 ## 
 - Type promotion in Java
 
-	Byte -> Short -> Int 
+      Byte -> Short -> Int 
 
-	Char -> Int
+      Char -> Int
 
-	Int -> Long -> Float -> Double
+      Int -> Long -> Float -> Double
 
-		Ex:
-		public class Test  
-		{  
-		    Test(int a, int b)  
-		    {  
-			System.out.println("a = "+a+" b = "+b);  
-		    }  
-		    Test(int a, float b)  
-		    {  
-			System.out.println("a = "+a+" b = "+b);  
-		    }  
-		    public static void main (String args[])  
-		    {  
-			byte a = 10;   
-			byte b = 15;  
-			Test test = new Test(a,b);  
-		    }  
-		}
+	Ex:
+	public class Test  
+	{  
+	    Test(int a, int b)  
+	    {  
+		System.out.println("a = "+a+" b = "+b);  
+	    }  
+	    Test(int a, float b)  
+	    {  
+		System.out.println("a = "+a+" b = "+b);  
+	    }  
+	    public static void main (String args[])  
+	    {  
+		byte a = 10;   
+		byte b = 15;  
+		Test test = new Test(a,b);  
+	    }  
+	}
 
-		ex:
-		class Test   
-		{  
-		    int i;   
-		}  
-		public class Main   
-		{  
-		    public static void main (String args[])   
-		    {  
-			Test test = new Test();   
-			System.out.println(test.i);  
-		    }  
-		}  
+	ex:
+	class Test   
+	{  
+	    int i;   
+	}  
+	public class Main   
+	{  
+	    public static void main (String args[])   
+	    {  
+		Test test = new Test();   
+		System.out.println(test.i);  
+	    }  
+	}  
 
-		ex:
-		class Test   
-		{  
-		    int test_a, test_b;  
-		    Test(int a, int b)   
-		    {  
-		    test_a = a;   
-		    test_b = b;   
-		    }  
-		    public static void main (String args[])   
-		    {  
-			Test test = new Test();   
-			System.out.println(test.test_a+" "+test.test_b);  
-		    }  
-		} 
+	ex:
+	class Test   
+	{  
+	    int test_a, test_b;  
+	    Test(int a, int b)   
+	    {  
+	    test_a = a;   
+	    test_b = b;   
+	    }  
+	    public static void main (String args[])   
+	    {  
+		Test test = new Test();   
+		System.out.println(test.test_a+" "+test.test_b);  
+	    }  
+	} 
 ##
 - Static variable
 
