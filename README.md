@@ -382,7 +382,8 @@ Core concepts of Java SE
 ##
 - parameterized constructor
 
-      Ex:	
+      Ex:
+      
 	class Student3{  
 		int id;  
 		String name; 
