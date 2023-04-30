@@ -404,8 +404,8 @@ Core concepts of Java SE
 
       By clone() method of Object class
 
-	ex: 
-	class Student6{  
+      ex: 
+      class Student6{  
 	    int id;  
 	    String name;  
 	    //constructor to initialize integer and string  
@@ -425,7 +425,7 @@ Core concepts of Java SE
 			s1.display();  
 			s2.display();  
 	   }  
-	}  
+      }  
 ##
 - method
 
@@ -447,9 +447,8 @@ Core concepts of Java SE
 
       Int -> Long -> Float -> Double
 
-	Ex:
-	public class Test  
-	{  
+      Ex:
+      public class Test	{  
 	    Test(int a, int b)  
 	    {  
 		System.out.println("a = "+a+" b = "+b);  
@@ -464,11 +463,10 @@ Core concepts of Java SE
 		byte b = 15;  
 		Test test = new Test(a,b);  
 	    }  
-	}
+      }
 
-	ex:
-	class Test   
-	{  
+      ex:
+      class Test {  
 	    int i;   
 	}  
 	public class Main   
@@ -478,11 +476,10 @@ Core concepts of Java SE
 		Test test = new Test();   
 		System.out.println(test.i);  
 	    }  
-	}  
+      }  
 
-	ex:
-	class Test   
-	{  
+      ex:
+      class Test {  
 	    int test_a, test_b;  
 	    Test(int a, int b)   
 	    {  
@@ -494,7 +491,7 @@ Core concepts of Java SE
 		Test test = new Test();   
 		System.out.println(test.test_a+" "+test.test_b);  
 	    }  
-	} 
+      } 
 ##
 - Static variable
 
@@ -514,8 +511,8 @@ Core concepts of Java SE
 
       cannot be used in static context as they are non-static.
 
-	ex:
-	class Student8{  
+      ex:
+      class Student8{  
 	   int rollno;  
 	   String name;  
 	   static String college ="ITS";       
@@ -530,7 +527,7 @@ Core concepts of Java SE
 		s1.display();  
 		s2.display();  
 	   }  
-	}  
+      }  
 ##
 - main method
 
@@ -564,39 +561,39 @@ Core concepts of Java SE
  
       to invoke method of current class. If don't use this keyword, compiler automatically adds
  
-	ex:
-	class A{  
+      ex:
+      class A{  
 		void m(){System.out.println("hello m");}  
 		void n(){  
 			System.out.println("hello n");  
 			//m();//same as this.m()  
 			this.m();  
 		}  
-	}  
+      }  
 
-	class TestThis4{  
+      class TestThis4{  
 		public static void main(String args[]){  
 		A a=new A();  
 		a.n();  
-	}} 
+      }} 
 
       used for constructor chaining
 	
-	ex:
-	class A{  
+      ex:
+      class A{  
 		A(){System.out.println("hello a");}  
 		A(int x){  
 		this();  
 		System.out.println(x);  
 		}  
 	}  
-	class TestThis5{  
+      class TestThis5{  
 		public static void main(String args[]){  
 		A a=new A(10);  
-	}}
+      }}
 
-	ex:
-	class A{  
+      ex:
+      class A{  
 		A(){  
 		this(5);  
 		System.out.println("hello a");  
@@ -604,14 +601,14 @@ Core concepts of Java SE
 		A(int x){  
 		System.out.println(x);  
 		}  
-	}  
-	class TestThis6{  
+      }  
+      class TestThis6{  
 		public static void main(String args[]){  
 		A a=new A();  
-	}}  
+      }}  
 
-	ex:
-	class Student{  
+      ex:
+      class Student{  
 		int rollno;  
 		String name,course;  
 		float fee;  
@@ -625,19 +622,19 @@ Core concepts of Java SE
 			this.fee=fee;  
 		}  
 		void display(){System.out.println(rollno+" "+name+" "+course+" "+fee);}  
-	}  
-	class TestThis7{  
+      }  
+      class TestThis7{  
 		public static void main(String args[]){  
 			Student s1=new Student(111,"ankit","java");  
 			Student s2=new Student(112,"sumit","java",6000f);  
 			s1.display();  
 			s2.display();  
-	}}  
+      }}  
 
       to pass as an argument in the method. used in the event handling
 	
-	ex:
-	class S2{  
+      ex:
+      class S2{  
 		void m(S2 obj){  
 		System.out.println("method is invoked");  
 		}  
@@ -648,12 +645,12 @@ Core concepts of Java SE
 		S2 s1 = new S2();  
 		s1.p();  
 		}  
-	}  
+      }  
 
       to pass as argument in the constructor call. useful if have to use one object in multiple classes
 	
-	ex:
-	class B{  
+      ex:
+      class B{  
 	  A4 obj;  
 	  B(A4 obj){  
 		this.obj=obj;  
@@ -661,8 +658,8 @@ Core concepts of Java SE
 	  void display(){  
 		System.out.println(obj.data);//using data member of A4 class  
 	  }  
-	}  	  
-	class A4{  
+      }  	  
+      class A4{  
 	  int data=10;  
 	  A4(){  
 	   B b=new B(this);  
@@ -671,12 +668,12 @@ Core concepts of Java SE
 	  public static void main(String args[]){  
 	   A4 a=new A4();  
 	  }  
-	}     
+      }     
 
       as statement from method -> return type of method must be class type
       
-	ex: 
-	class A5{  
+      ex: 
+      class A5{  
 		void m(){  
 		System.out.println(this);//prints same reference ID  
 		}  
@@ -685,12 +682,12 @@ Core concepts of Java SE
 			System.out.println(obj);//prints the reference ID  
 			obj.m();  
 		}  
-	} 
+      } 
 		
       is the final reference in Java.
 	
-	ex:
-	public class Test  
+      ex:
+      public class Test  
 	{  
 		public Test()  
 		{  
@@ -701,14 +698,14 @@ Core concepts of Java SE
 		{  
 			Test t = new Test();  
 		}  
-	}  
+      }  
 		
       possible but not good to refer static members <--> it is unnecessary to access static variables through objects
 	
       to perform constructor chaining within the same class
  
-	public class Employee  
-	{  
+      public class Employee  
+      {  
 	    int id,age;   
 	    String name, address;  
 	    public Employee (int age)  
@@ -731,74 +728,74 @@ Core concepts of Java SE
 		Employee emp = new Employee(105, 22, "Vikas", "Delhi");  
 		System.out.println("ID: "+emp.id+" Name:"+emp.name+" age:"+emp.age+" address: "+emp.address);  
 	    }      
-	}
+      }
 ## 
 - advantages of passing this into method instead of current class object
 
-	this is final -> cannot be assigned to any new value whereas current class object might not be final.
+      this is final -> cannot be assigned to any new value whereas current class object might not be final.
  
-	this can be used in the synchronized block.
+      this can be used in the synchronized block.
 ## 
 - Inheritance
 
-	code reusability -> sub-class need not to redefine method of super-class unless it needs to provide specific implementation.
+      code reusability -> sub-class need not to redefine method of super-class unless it needs to provide specific implementation.
 
-	Runtime polymorphism -> simulate inheritance with real-time objects -> makes OOPs more realistic. 
+      Runtime polymorphism -> simulate inheritance with real-time objects -> makes OOPs more realistic. 
 
-	provides data hiding -> super-class can hide data from sub-class.
+      provides data hiding -> super-class can hide data from sub-class.
 
-	makes Method overriding possible
+      makes Method overriding possible
 ## 
 - Aggregation (has-a)
 
-	relationship between two classes -> aggregate class contains a reference to the class it owns
+      relationship between two classes -> aggregate class contains a reference to the class it owns
 
-	ex:
-	public class Address {  
+      ex:
+      public class Address {  
 		...		  
-	}  
-	public class Emp {  
+      }  
+      public class Emp {  
 		int id;  
 		String name;  
 		Address address; 
 		...	
-	}  
+      }  
 ## 
 - composition
 
-	When an object contains other object, if contained object cannot exist without existence of container object
+      When an object contains other object, if contained object cannot exist without existence of container object
 
-	particular case of aggregation representing stronger relationship between two objects.
+      particular case of aggregation representing stronger relationship between two objects.
 
-	Ex: class contains students. student cannot exist without a class.
+      Ex: class contains students. student cannot exist without a class.
 ## 
 - pointer
 
-	variable refers to memory address. not used in Java
+      variable refers to memory address. not used in Java
 ## 
 - super keyword
 
-	to refer to immediate parent class.
+      to refer to immediate parent class.
 	
-	instance of subclass created -> instance of parent class created implicitly referred by super
+      instance of subclass created -> instance of parent class created implicitly referred by super
 	
-	called in constructor implicitly by compiler if no super or this. 
+      called in constructor implicitly by compiler if no super or this. 
 	
-	to refer to immediate parent class instance variable.
+      to refer to immediate parent class instance variable.
 	
-	to invoke the immediate parent class method.
+      to invoke the immediate parent class method.
 	
-	to invoke immediate parent class constructor.
+      to invoke immediate parent class constructor.
 	
-	for initializing super-class variables within sub-class constructor 
+      for initializing super-class variables within sub-class constructor 
 	
-	must be first statement in constructor
+      must be first statement in constructor
 	
-	for constructor chaining
+      for constructor chaining
 	
-	ex:
-		class Person  
-		{  
+      ex:
+      class Person  
+      {  
 			String name,address;  
 			int age;  
 			public Person(int age, String name, String address)  
@@ -824,19 +821,19 @@ Core concepts of Java SE
 				Employee e = new Employee(22, "Mukesh", "Delhi", 90000);  
 				System.out.println("Name: "+e.name+" Salary: "+e.salary+" Age: "+e.age+" Address: "+e.address);  
 			}  
-		}  
+      }  
 
-	Can't use this() and super() both in constructor
+      Can't use this() and super() both in constructor
 ## 
 - object cloning
 
-	create exact copy of object -> clone() method -> java.lang.Cloneable interface 
+      create exact copy of object -> clone() method -> java.lang.Cloneable interface 
 
-	syntax -> protected Object clone() throws CloneNotSupportedException 
+      syntax -> protected Object clone() throws CloneNotSupportedException 
 
-	clone() method saves extra processing compared to new keyword
+      clone() method saves extra processing compared to new keyword
  
-	Advantage
+      Advantage
 
 		don't need to write lengthy and repetitive codes.
 
@@ -844,7 +841,7 @@ Core concepts of Java SE
 
 		fastest way to copy array  
 
-	Disadvantage
+      Disadvantage
 
 		have to change a lot of syntaxes
 
@@ -858,8 +855,8 @@ Core concepts of Java SE
 
 		supports only shallow copying -> need to override it if need deep cloning.
 	
-	ex: 
-		class Student18 implements Cloneable{  
+      ex: 
+      class Student18 implements Cloneable{  
 			int rollno;  
 			String name;  
 
@@ -869,8 +866,8 @@ Core concepts of Java SE
 		}  
 		public Object clone()throws CloneNotSupportedException{  
 			return super.clone();  
-		}  
-		public static void main(String args[]){  
+      }  
+      public static void main(String args[]){  
 			try{  
 				Student18 s1=new Student18(101,"amit");  
 
@@ -882,23 +879,23 @@ Core concepts of Java SE
 			}catch(CloneNotSupportedException c){}  
 
 			}  
-		}
+      }
 ## 
 - Method overloading
 
-	multiple methods with same name but different signatures.
+      multiple methods with same name but different signatures.
 
-	ways:
+      ways:
 		Changing number of arguments
 		
 		Changing data type of arguments
 		
- 	increases readability
+      increases readability
 	
-	Type promotion is method overloading
+      Type promotion is method overloading
 	
-	ex:
-	class OverloadingCalculation1{  
+      ex:
+      class OverloadingCalculation1{  
 	  void sum(int a,long b){System.out.println(a+b);}  
 	  void sum(int a,int b,int c){System.out.println(a+b+c);} 
 	  
@@ -907,10 +904,10 @@ Core concepts of Java SE
 	  obj.sum(20,20);//now second int literal will be promoted to long  
 	  obj.sum(20,20,20);  
 	  }  
-	} 
+      } 
 
- 	ex:
-	class OverloadingCalculation3{    
+      ex:
+      class OverloadingCalculation3{    
 	  void sum(int a,long b){System.out.println("a method invoked");}    
 	  void sum(long a,int b){System.out.println("b method invoked");}    
 
@@ -918,94 +915,94 @@ Core concepts of Java SE
 	  OverloadingCalculation3 obj=new OverloadingCalculation3();    
 	  obj.sum(20,20);//now ambiguity    
 	  }    
-	}
+      }
 
-	ex:
-	class Base  
-	{  
+      ex:
+      class Base  
+      {  
 		void method(int a){  
 			System.out.println("Base class method called with integer a = "+a);  
 		}  
 
 		void method(double d){System.out.println("Base class method called with double d ="+d);}  
-	}    
-	class Derived extends Base  
-	{  
+      }    
+      class Derived extends Base  
+      {  
 		@Override  
 		void method(double d) {System.out.println("Derived class method called with double d ="+d);}  
-	}    
-	public class Main  
-	{      
+      }    
+      public class Main  
+      {      
 		public static void main(String[] args)  
 		{  
 			new Derived().method(10);  
 		}  
-	} 
+      } 
 
 - static method -> part of the class not the object -> can't be overridden
 ## 
 - override any overloaded method
 
-	Override <--> IS-A (super/sub relationship)
+      Override <--> IS-A (super/sub relationship)
 ## 
 - change scope of overridden method in subclass to be less restricitve <-> (public < default < protected < private)
 ## 
 - modify superclass throws while override in subclass
 
-	No exception in superclass & checked exception in subclass -> error
+      No exception in superclass & checked exception in subclass -> error
 
-	No exception in superclass & unchecked exception in subclass
+      No exception in superclass & unchecked exception in subclass
 
-	exception in superclass (exc1) & exception other than exc1, exc1 child, and runtime exception in SubClass -> error
+      exception in superclass (exc1) & exception other than exc1, exc1 child, and runtime exception in SubClass -> error
 
-	exception in superclass (exc1) & child exception of exc1 in SubClass
+      exception in superclass (exc1) & child exception of exc1 in SubClass
 
-	exception in superclass & no exception in SubClass
+      exception in superclass & no exception in SubClass
 ##   
 - covariance
 
-	how subtype is accepted when only supertype is defined
+      how subtype is accepted when only supertype is defined
 	
-	covariant return type: the overriden method return type may vary in the same direction as the subclass ->
+      covariant return type: the overriden method return type may vary in the same direction as the subclass ->
                        override method by changing return type if return type of subclass overriding method is subclass type.
 		       
-	class A{  
+      class A{  
 		A get(){return this;}  
 	}   
-	class B1 extends A{  
+      class B1 extends A{  
 		B1 get(){return this;}  
 	    void message(){System.out.println("welcome to covariant return type");}  
-	public static void main(String args[]){  
+      public static void main(String args[]){  
 		new B1().get().message();  
 		}  
 	}  
 	
-	ex:
-	public class Producer {
+      ex:
+      public class Producer {
 	    public Object produce(String input) {
 		Object result = input.toLowerCase();
 		return result;
 	    }
-	}
-	public class IntegerProducer extends Producer {
+      }
+      public class IntegerProducer extends Producer {
 	    @Override
 	    public Integer produce(String input) {
 		return Integer.parseInt(input);
 	    }
-	}
+      }
 	
-	Object as return type in super -> more concrete return type in child -> covariant return type -> produce numbers from characters
+      Object as return type in super -> more concrete return type in child -> covariant return type -> produce numbers from characters
 	
-	ex:
-	class Base   
+      ex:
+      class Base   
 	{  
 	    public void baseMethod(){System.out.println("BaseMethod called ...");}  
 	}  
-	class Derived extends Base   
+      class Derived extends Base   
 	{  
 	    public void baseMethod() {System.out.println("Derived method called ...");}  
 	}  
-	public class Test   
+      public class Test   
 	{  
 	    public static void main (String args[])  
 	    {  
@@ -1015,20 +1012,20 @@ Core concepts of Java SE
 		Base b = new Derived();  // reference variable b (of type Base) refers to instance of Derived.
 		b.baseMethod();  
 	    }  
-	}
+      }
 ##
 - final
 
-	cannot override inherited final method. 
+      cannot override inherited final method. 
 
-	can't inherit final class
+      can't inherit final class
 
-	constructor can never be final
+      constructor can never be final
 
-	interface can never be final
+      interface can never be final
 
-	ex:	
-	class Bike10{  
+      ex:	
+      class Bike10{  
 	  final int speedlimit;//blank final variable      
 	  Bike10(){  
 	  speedlimit=70;  
@@ -1037,30 +1034,30 @@ Core concepts of Java SE
 	  public static void main(String args[]){  
 	    new Bike10();  
 	 }  
-	}
+      }
 	
-	ex:
-	class Main {  
+      ex:
+      class Main {  
 	 public static void main(String args[]){  
 	   final int i; // can be initialized only once 
 	   i = 20;  
 	   System.out.println(i);  
 	 }  
-	}  
+      }  
 ## 
 - compile-time polymorphism (static binding, early binding, or overloading)
 
-	(object type determined/call to method resolved) at compile-time -> fast execution
+      (object type determined/call to method resolved) at compile-time -> fast execution
 ##	
 - runtime polymorphism (dynamic binding, late binding, overriding, dynamic method dispatch)
 
-	(object type determined/call to overridden method resolved) at runtime.
+      (object type determined/call to overridden method resolved) at runtime.
 ##
 - overridden method
 
-	called through reference variable of superclass
+      called through reference variable of superclass
 
-	determination of the method to be called is based on object being referred to by reference variable.
+      determination of the method to be called is based on object being referred to by reference variable.
 
 	ex: 
 	class Bike{  
