@@ -151,9 +151,9 @@ Core concepts of Java SE
 ## 
 - Source files
 
-     Each source Java file may have multiple classes among which only one shall be public.
+      Each source Java file may have multiple classes among which only one shall be public.
 
-     Source file name shall be the same as class name.
+      Source file name shall be the same as class name.
 ## 
 - OS Architecture
 
