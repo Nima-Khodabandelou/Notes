@@ -717,13 +717,13 @@ Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 		    }      
 		}
 ## 
-advantages of passing this into method instead of current class object
+- advantages of passing this into method instead of current class object
 
 	this is final -> cannot be assigned to any new value whereas current class object might not be final.
  
 	this can be used in the synchronized block.
 ## 
-Inheritance
+- Inheritance
 
 	code reusability -> sub-class need not to redefine method of super-class unless it needs to provide specific implementation.
 
@@ -733,21 +733,22 @@ Inheritance
 
 	makes Method overriding possible
 ## 
-Aggregation (has-a)
+- Aggregation (has-a)
 
 	relationship between two classes -> aggregate class contains a reference to the class it owns
 
-		public class Address {  
-			...		  
-		}  
-		public class Emp {  
-			int id;  
-			String name;  
-			Address address; 
-			...	
-		}  
+	ex:
+	public class Address {  
+		...		  
+	}  
+	public class Emp {  
+		int id;  
+		String name;  
+		Address address; 
+		...	
+	}  
 ## 
-composition
+- composition
 
 	When an object contains other object, if contained object cannot exist without existence of container object
 	
@@ -755,11 +756,11 @@ composition
 	
 	Ex: class contains students. student cannot exist without a class.
 ## 
-pointer
+- pointer
 
 	variable refers to memory address. not used in Java
 ## 
-super keyword
+- super keyword
 
 	to refer to immediate parent class.
 	
@@ -811,7 +812,7 @@ super keyword
 
 	Can't use this() and super() both in constructor
 ## 
-object cloning
+- object cloning
 
 	create exact copy of object -> clone() method -> java.lang.Cloneable interface 
 
@@ -819,55 +820,55 @@ object cloning
 
 	clone() method saves extra processing compared to new keyword
  
-Advantage
+	Advantage
 
-	don't need to write lengthy and repetitive codes.
+		don't need to write lengthy and repetitive codes.
 
-	easiest -> Just define parent class, implement Cloneable in it, provide clone().
+		easiest -> Just define parent class, implement Cloneable in it, provide clone().
 
-	fastest way to copy array  
-  
-Disadvantage
- 
-	have to change a lot of syntaxes
+		fastest way to copy array  
 
-	have to implement cloneable interface while it doesn't have any methods. just to tell JVM.
+	Disadvantage
 
-	is protected -> have to provide our own clone() and indirectly call Object.clone()
+		have to change a lot of syntaxes
 
-	doesn't invoke constructor -> no control over object construction  
+		have to implement cloneable interface while it doesn't have any methods. just to tell JVM.
 
-	If clone method in child class -> all of its superclasses should define clone() or inherit. 
+		is protected -> have to provide our own clone() and indirectly call Object.clone()
 
-	supports only shallow copying -> need to override it if need deep cloning.
+		doesn't invoke constructor -> no control over object construction  
+
+		If clone method in child class -> all of its superclasses should define clone() or inherit. 
+
+		supports only shallow copying -> need to override it if need deep cloning.
 	
-ex: 
-	class Student18 implements Cloneable{  
-		int rollno;  
-		String name;  
+	ex: 
+		class Student18 implements Cloneable{  
+			int rollno;  
+			String name;  
 
-		Student18(int rollno,String name){  
-		this.rollno=rollno;  
-		this.name=name;  
-	}  
-	public Object clone()throws CloneNotSupportedException{  
-		return super.clone();  
-	}  
-	public static void main(String args[]){  
-		try{  
-			Student18 s1=new Student18(101,"amit");  
-
-			Student18 s2=(Student18)s1.clone();  
-
-			System.out.println(s1.rollno+" "+s1.name);  
-			System.out.println(s2.rollno+" "+s2.name);  
-
-		}catch(CloneNotSupportedException c){}  
-
+			Student18(int rollno,String name){  
+			this.rollno=rollno;  
+			this.name=name;  
 		}  
-	}
+		public Object clone()throws CloneNotSupportedException{  
+			return super.clone();  
+		}  
+		public static void main(String args[]){  
+			try{  
+				Student18 s1=new Student18(101,"amit");  
+
+				Student18 s2=(Student18)s1.clone();  
+
+				System.out.println(s1.rollno+" "+s1.name);  
+				System.out.println(s2.rollno+" "+s2.name);  
+
+			}catch(CloneNotSupportedException c){}  
+
+			}  
+		}
 ## 
-Method overloading
+- Method overloading
 
 	multiple methods with same name but different signatures.
 
@@ -883,8 +884,8 @@ Method overloading
 	ex:
 	class OverloadingCalculation1{  
 	  void sum(int a,long b){System.out.println(a+b);}  
-	  void sum(int a,int b,int c){System.out.println(a+b+c);}  
-
+	  void sum(int a,int b,int c){System.out.println(a+b+c);} 
+	  
 	  public static void main(String args[]){  
 	  OverloadingCalculation1 obj=new OverloadingCalculation1();  
 	  obj.sum(20,20);//now second int literal will be promoted to long  
@@ -925,27 +926,27 @@ Method overloading
 		}  
 	} 
 
-static method -> part of the class not the object -> can't be overridden
+- static method -> part of the class not the object -> can't be overridden
 ## 
-override any overloaded method
+- override any overloaded method
 
-Override <--> IS-A (super/sub relationship)
+	Override <--> IS-A (super/sub relationship)
 ## 
-change scope of overridden method in subclass to be less restricitve <-> (public < default < protected < private)
+- change scope of overridden method in subclass to be less restricitve <-> (public < default < protected < private)
 ## 
-modify superclass throws while override in subclass
+- modify superclass throws while override in subclass
 
-  No exception in superclass & checked exception in subclass -> error
-  
-  No exception in superclass & unchecked exception in subclass
-  
-  exception in superclass (exc1) & exception other than exc1, exc1 child, and runtime exception in SubClass -> error
-  
-  exception in superclass (exc1) & child exception of exc1 in SubClass
-  
-  exception in superclass & no exception in SubClass
+	No exception in superclass & checked exception in subclass -> error
+
+	No exception in superclass & unchecked exception in subclass
+
+	exception in superclass (exc1) & exception other than exc1, exc1 child, and runtime exception in SubClass -> error
+
+	exception in superclass (exc1) & child exception of exc1 in SubClass
+
+	exception in superclass & no exception in SubClass
 ##   
-covariance
+- covariance
 
 	how subtype is accepted when only supertype is defined
 	
@@ -1000,7 +1001,7 @@ covariance
 	    }  
 	}
 ##
-final
+- final
 
 	cannot override inherited final method. 
 
@@ -1031,15 +1032,19 @@ final
 	 }  
 	}  
 ## 
-compile-time polymorphism (static binding, early binding, or overloading)
+- compile-time polymorphism (static binding, early binding, or overloading)
 
 	(object type determined/call to method resolved) at compile-time -> fast execution
 ##	
-runtime polymorphism (dynamic binding, late binding, overriding, dynamic method dispatch)
+- runtime polymorphism (dynamic binding, late binding, overriding, dynamic method dispatch)
 
 	(object type determined/call to overridden method resolved) at runtime.
 ##
-an overridden method called through reference variable of superclass. determination of the method to be called is based on object being referred to by reference variable.
+- overridden method
+
+	called through reference variable of superclass
+
+	determination of the method to be called is based on object being referred to by reference variable.
 
 	ex: 
 	class Bike{  
@@ -1053,7 +1058,7 @@ an overridden method called through reference variable of superclass. determinat
 	  }  
 	}
 
-data members cannot be overridden -> no Runtime Polymorphism by data members 
+	data members cannot be overridden -> no Runtime Polymorphism by data members 
 
 	ex:
 	class Bike{  
@@ -1070,8 +1075,7 @@ data members cannot be overridden -> no Runtime Polymorphism by data members
 	 void eat(){System.out.println("animal is eating...");}  
 	}  
 	class Dog extends Animal{  
-	 void eat(){System.out.println("dog is eating...");}  
-
+	 void eat(){System.out.println("dog is eating...");} 
 	 public static void main(String args[]){  
 	  Animal a=new Dog(); //instance of Dog is also an instance of Animal -> object type cannot determined by compiler because ->
 			      //compiler knows only its base type
@@ -1079,45 +1083,45 @@ data members cannot be overridden -> no Runtime Polymorphism by data members
 	 }  
 	}  
 ## 
-instanceof
+- instanceof
 
-	compares the instance with type.
+	compares the instance with type
 	
-		Simple1 s=new Simple1(); 
-
+	ex:
+		Simple1 s=new Simple1();
 		System.out.println(s instanceof Simple1);//true
 ## 
-Abstraction
+- Abstraction
 
 	help focus on what object does instead of how it does
 ##	
-encapsulation
+- encapsulation
 
 	wraps code and data into single unit
 ## 
-abstract class
+- abstract class
 
- can have abstract and non-abstract methods, data member, constructor, and even main()
- 
- can have constructors and static methods
- 
- can have final methods -> force subclass not to change method body 
- 
- can never be instantiated even if it contains constructor and implemented methods
- 
- can provide implementation of interface
- 
- can extend another Java class
+	can have abstract and non-abstract methods, data member, constructor, and even main()
+
+	can have constructors and static methods
+
+	can have final methods -> force subclass not to change method body 
+
+	can never be instantiated even if it contains constructor and implemented methods
+
+	can provide implementation of interface
+
+	can extend another Java class
 ##  
-interface methods -> abstract by default
+- interface methods -> abstract by default
 
-static + abstract -> not allowed
+- static + abstract -> not allowed
 ## 
-Marker interface
+- Marker interface
 
 	interface with no data member and member functions -> Serializable, Cloneable.
 ##
-Interface
+- Interface
 
 	can't provide implementation of abstract class.
 	
@@ -1189,37 +1193,41 @@ Interface
 	    }  
 	}  
 ##
-Encapsulation
+- Encapsulation
 
-read-only  class -> all fields private. only getter returning private property of class to main method 
+	read-only  class -> all fields private. only getter returning private property of class to main method 
 
-write-only class -> all fields private. only setter setting value passed from main to private fields
+	write-only class -> all fields private. only setter setting value passed from main to private fields
 ##
-package
+- package
 
- group of similar type of classes, interfaces, and sub-packages.
- 
- access protection
- 
- removes naming collision
+	group of similar type of classes, interfaces, and sub-packages.
+
+	access protection
+
+	removes naming collision
 ##
-try block followed by either catch OR finally block
+- try block followed by either catch OR finally block
 ##
-Checked Exception
+- Exceptions
 
-checked at compile-time. SQLException, ClassNotFoundException, etc.
+	Checked Exception
 
-Unchecked Exception: handled at runtime. ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
+		checked at compile-time. SQLException, ClassNotFoundException, etc.
 
-Error: not recoverable -> cause program to exit. OutOfMemoryError, AssertionError, etc.
+	Unchecked Exception
 
-advantage of exception handling:  maintain normal flow of application.
+		handled at runtime. ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
+
+	Error: not recoverable -> cause program to exit. OutOfMemoryError, AssertionError, etc.
+
+	advantage of exception handling:  maintain normal flow of application.
 ##
-throw -> to throw exception
+- throw -> to throw exception
 
-throws -> to declare possible exceptions that may occure in method
+- throws -> to declare possible exceptions that may occure in method
 ##
-Hierarchy of Java Exception classes
+- Hierarchy of Java Exception classes
 
 	Throwable -> Exception, Error
 	
@@ -1232,7 +1240,7 @@ Hierarchy of Java Exception classes
 	
 	Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
 ##	
-Common exception Scenarios
+- Common exception Scenarios
 
 	divide number by zero -> ArithmeticException.
 	
@@ -1242,7 +1250,7 @@ Common exception Scenarios
 	
 	array size exceed -> ArrayIndexOutOfBoundsException
 ##	
-Exception Propagation
+- Exception Propagation
 
 	[thrown from top -> not caught -> drops down previous] --> continues until caught or reach the very bottom of call stack
 	
@@ -1288,17 +1296,17 @@ Exception Propagation
 	  }  
 	}
 ## 
-Nested try block
+- Nested try block
 
 	[sub-block -> one error & entire block -> another error] -> nested exception
 ## 
-Finally:
+- Finally:
 
 	executes after try-catch
 
 	not executes if program exits
 ##
-custom exceptions: extends Exception
+- custom exceptions: extends Exception
 
 	ex:
 	public class WrongFileNameException extends Exception {  
@@ -1360,7 +1368,7 @@ custom exceptions: extends Exception
 	    }  
 	}
 ##
-One can not throw basic data type from a block
+- One can not throw basic data type from a block
 
 	ex:
 	public class Main{  
@@ -1472,7 +1480,7 @@ One can not throw basic data type from a block
 	    }  
 	}  
 ##
-String pool
+- String pool
 
 	space reserved in heap used to store strings
 	
@@ -1481,16 +1489,16 @@ String pool
 		If exists -> a reference returns
 		
 		If not    ->  new string instance creates 
-ex:													
-class Testimmutablestring{  
- public static void main(String args[]){  
-   String s="Sachin";  
-   s.concat(" Tendulkar"); 
-   System.out.println(s); 
- }  
-} 
+	ex:													
+	class Testimmutablestring{  
+	 public static void main(String args[]){  
+	   String s="Sachin";  
+	   s.concat(" Tendulkar"); 
+	   System.out.println(s); 
+	 }  
+	} 
 ##
-create string object
+- create string object
 
 	String Literal
 	
@@ -1525,19 +1533,20 @@ create string object
 		  }	  
 	  }  
 	}
-ex:
-public class Test   
-{  
-    public static void main (String args[])  
-    {  
-        String s1 = "Sharma is a good player";  
-        String s2 = new String("Sharma is a good player");  
-        s2 = s2.intern(); // returns object reference from string pool -> s2 changes to reference of s1
-        System.out.println(s1 ==s2);  
-    }  
-}  
+	
+	ex:
+	public class Test   
+	{  
+	    public static void main (String args[])  
+	    {  
+		String s1 = "Sharma is a good player";  
+		String s2 = new String("Sharma is a good player");  
+		s2 = s2.intern(); // returns object reference from string pool -> s2 changes to reference of s1
+		System.out.println(s1 ==s2);  
+	    }  
+	}  
 ##
-String disadvantages compare to StringBuffer
+- String disadvantages compare to StringBuffer
 
 	String  immutable
 	
@@ -1545,19 +1554,19 @@ String disadvantages compare to StringBuffer
 	
 	String  overrides  equals()  
 ##
-StringBuffer
+- StringBuffer
 
 	synchronized -> thread safe -> two StringBuffer methods can't be called simultaneously
 
 	less efficient than StringBuilder.	
 ##
-immutable class and all its members are final
+- immutable class and all its members are final
 ##
-toString(): returns string representation of object -> overriding -> desired output
+- toString(): returns string representation of object -> overriding -> desired output
 ##
-String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
+- String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
 ##
-java.util.regex
+- java.util.regex
 
 	MatchResult Interface
 	
@@ -1567,11 +1576,11 @@ java.util.regex
 	
 	PatternSyntaxException class
 ##
-Metacharacters
+- Metacharacters
 
 	^, $, ., *, +, etc. <- not regular characters fro regex engine -> use backslash to treat them ordinary.
 ##
-Nested classes
+- Nested classes
 
 	can access all members of outer class including private ->  used for readability and maintainability
 	
@@ -1584,7 +1593,7 @@ Nested classes
 		Inner classes increase total number of classes and workload of JVM
 		less support by IDEs to inner class
 ##
-inner class
+- inner class
 
 	Member Inner Class
 	
@@ -1617,7 +1626,7 @@ inner class
 		}  
 	} 
 ##
-nested interface
+- nested interface
 
 	interface within class
 	public if declared inside interface
@@ -1640,9 +1649,9 @@ nested interface
 	 }  
 	}  
 ## 
-class inside interface -> static nested class by compiler
+- class inside interface -> static nested class by compiler
 ##
-Garbage Collection
+- Garbage Collection
 
 	removing unused objects from memory
 
@@ -1660,7 +1669,7 @@ Garbage Collection
 	 }  
 	}  
 ##
-unreferencing an object by
+- unreferencing an object by
 
 	nulling the reference
 	
@@ -1674,9 +1683,9 @@ unreferencing an object by
 		
 	anonymous object -> new Employee(); 
 ##
-An unreferenced object can be referenced again
+- An unreferenced object can be referenced again
 ##
-Java Runtime class
+- Java Runtime class
 
 	-> to execute process, invoke GC, get total and free memory, ...
 
@@ -1691,7 +1700,7 @@ Java Runtime class
 	 }  
 	}  
 ##
-hierarchy of InputStream and OutputStream
+- hierarchy of InputStream and OutputStream
 	
 	OutputStream -> FileOutputStream, ByteArrayOutputStream, FilterOutputStream, PipedOutputStream
 			ObjectOutputStream, FilterOutputStream -> DataOutputStream, BufferedOutputStream, PrintStream
