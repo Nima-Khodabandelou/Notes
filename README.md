@@ -1488,19 +1488,23 @@ class TestNestedInterface1 implements Showable.Message{
 ## 
 class inside interface -> static nested class by compiler
 ##
-Garbage Collection: removing unused objects from memory
-gc() to garbage collect -> depends on JVM whether to perform
-##
-public class TestGarbage1{  
- public void finalize(){System.out.println("object is garbage collected");}  
- public static void main(String args[]){  
-  TestGarbage1 s1=new TestGarbage1();  
-  TestGarbage1 s2=new TestGarbage1();  
-  s1=null;  
-  s2=null;  
-  System.gc();  
- }  
-}  
+Garbage Collection
+
+	removing unused objects from memory
+
+	gc() to garbage collect -> depends on JVM whether to perform
+
+	ex:
+	public class TestGarbage1{  
+	 public void finalize(){System.out.println("object is garbage collected");}  
+	 public static void main(String args[]){  
+	  TestGarbage1 s1=new TestGarbage1();  
+	  TestGarbage1 s2=new TestGarbage1();  
+	  s1=null;  
+	  s2=null;  
+	  System.gc();  
+	 }  
+	}  
 ##
 unreferencing an object by
 
