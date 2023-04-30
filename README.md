@@ -751,9 +751,9 @@ Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 - composition
 
 	When an object contains other object, if contained object cannot exist without existence of container object
-	
+
 	particular case of aggregation representing stronger relationship between two objects.
-	
+
 	Ex: class contains students. student cannot exist without a class.
 ## 
 - pointer
