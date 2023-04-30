@@ -182,7 +182,7 @@ Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
 ##             
 - Local variables
 
-	not initialized to any default value.
+		not initialized to any default value.
 ## 
 - Acccess modifiers
 
