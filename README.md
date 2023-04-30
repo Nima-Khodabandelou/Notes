@@ -1113,14 +1113,17 @@ Encapsulation:
 read-only  class -> all fields private. only getter returning private property of class to main method 
 write-only class -> all fields private. only setter setting value passed from main to private fields
 ##
-package: 
+package
+
  group of similar type of classes, interfaces, and sub-packages.
  access protection
  removes naming collision
 ##
 try block followed by either catch OR finally block
 ##
-Checked Exception: checked at compile-time. SQLException, ClassNotFoundException, etc.
+Checked Exception
+
+checked at compile-time. SQLException, ClassNotFoundException, etc.
 Unchecked Exception: handled at runtime. ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
 Error: not recoverable -> cause program to exit. OutOfMemoryError, AssertionError, etc.
 advantage of exception handling:  maintain normal flow of application.
@@ -1128,7 +1131,8 @@ advantage of exception handling:  maintain normal flow of application.
 throw -> to throw exception
 throws -> to declare possible exceptions that may occure in method
 ##
-Hierarchy of Java Exception classes:
+Hierarchy of Java Exception classes
+
 	Throwable -> Exception, Error
 	Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
 	RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException,
