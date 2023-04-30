@@ -385,15 +385,15 @@ Core concepts of Java SE
       Ex:
       
       class Student3{  
-	int id;  
-	String name; 
-	void display(){System.out.println(id+" "+name);}  
-	public static void main(String args[]){  
+	      int id;  
+	      String name; 
+	      void display(){System.out.println(id+" "+name);}  
+	      public static void main(String args[]){  
 		Student3 s1=new Student3();  
 		Student3 s2=new Student3();  
 		s1.display();  
 		s2.display();  
-	}  
+	      }  
       }  
 ##
 - copy values of one object into another
