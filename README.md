@@ -4,7 +4,7 @@ Core concepts of Java SE
 ##
 - SOLID Principles (not specific to Java)
 
-	1- Single Responsibility for Each class <-> Just one reason needed to change that class.
+      1- Single Responsibility for Each class <-> Just one reason needed to change that class.
 
 		Advantages:
 
@@ -12,13 +12,13 @@ Core concepts of Java SE
 			Lower coupling –> fewer dependencies.
 			Smaller and well-organized classes
 		 
-	2- Class shoud be Opened for Extension and Closed for Modification.
+      2- Class shoud be Opened for Extension and Closed for Modification.
 	
 	   Otherwise -> modifying the existing code -> potential new bugs.
 	   
 	   If fixing bugs -> extend the class
 
-	3- Liskov Substitution: if class A is a subtype of class B, one should be able to replace B with A
+      3- Liskov Substitution: if class A is a subtype of class B, one should be able to replace B with A
 	   without disrupting the behavior of the program.
 	   
 	   A popular Example:
@@ -49,10 +49,10 @@ Core concepts of Java SE
 			// Possible Soultion -> Code another interface for taking into account the non-ICEngine ones.
 		}
 
-	4- Interface Segregation: larger interfaces be splited into smaller ones -> More specific
+      4- Interface Segregation: larger interfaces be splited into smaller ones -> More specific
 		   methods in each interface.
 	   
-	5- Dependency Inversion: Decoupling software modules -> high-level/low-level modules and details
+      5- Dependency Inversion: Decoupling software modules -> high-level/low-level modules and details
 		   depend on abstractions.
 	   
 		example:
@@ -105,17 +105,17 @@ Core concepts of Java SE
 ##
 - Main Java features
 
-		Used for Desktop, Mobile, and Web application development
+      Used for Desktop, Mobile, and Web application development
 
-		Platform-independent
+      Platform-independent
 
-		Robust
+      Robust
 
-		Secure
+      Secure
 
-		High-level
+      High-level
 
-		Multi-threaded
+      Multi-threaded
 ##    
 - Java Does not support
 
