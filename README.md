@@ -216,19 +216,21 @@ Core concepts of Java SE
       marking the class itself final -> can't extend the class
 	
       can’t reassign final reference variable, But the object it refers to is mutable.
+      
       ex:
-	 final Cat cat = new Cat();
-	 cat.setWeight(5) -> valid
+      final Cat cat = new Cat();
+      cat.setWeight(5) -> valid
 	 
-	class constants should be uppercase nad final, with components separated by underscore:
+      class constants should be uppercase nad final, with components separated by underscore:
 	
-	 static final int MAX_WIDTH = 999;
+      static final int MAX_WIDTH = 999;
 	 
-	static final fileds -> initialize them	upon declaration in the static initializer block
+      static final fileds -> initialize them	upon declaration in the static initializer block
 	
-	instance final fields -> initialize them upon declaration in the instance initializer block in the constructor
+      instance final fields -> initialize them upon declaration in the instance initializer block in the constructor
 	
-	A final argument can’t be changed inside a method:
+      A final argument can’t be changed inside a method
+      
 		public void methodWithFinalArguments(final int x) {
 			x=1;
 		}
