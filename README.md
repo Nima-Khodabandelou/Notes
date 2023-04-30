@@ -811,26 +811,41 @@ super keyword
 
 	Can't use this() and super() both in constructor
 ## 
-object cloning: 
- create exact copy of object -> clone() method -> java.lang.Cloneable interface 
- syntax -> protected Object clone() throws CloneNotSupportedException 
- clone() method saves extra processing compared to new keyword
- Advantage:
-  don't need to write lengthy and repetitive codes.
-  easiest -> Just define parent class, implement Cloneable in it, provide clone().
-  fastest way to copy array  
- Disadvantage:
-  have to change a lot of syntaxes
-  have to implement cloneable interface while it doesn't have any methods. just to tell JVM.
-  is protected -> have to provide our own clone() and indirectly call Object.clone()
-  doesn't invoke constructor -> no control over object construction  
-  If clone method in child class -> all of its superclasses should define clone() or inherit. 
-  supports only shallow copying -> need to override it if need deep cloning.
-  ex: 
+object cloning
+
+	create exact copy of object -> clone() method -> java.lang.Cloneable interface 
+
+	syntax -> protected Object clone() throws CloneNotSupportedException 
+
+	clone() method saves extra processing compared to new keyword
+ 
+Advantage
+
+	don't need to write lengthy and repetitive codes.
+
+	easiest -> Just define parent class, implement Cloneable in it, provide clone().
+
+	fastest way to copy array  
+  
+Disadvantage
+ 
+	have to change a lot of syntaxes
+
+	have to implement cloneable interface while it doesn't have any methods. just to tell JVM.
+
+	is protected -> have to provide our own clone() and indirectly call Object.clone()
+
+	doesn't invoke constructor -> no control over object construction  
+
+	If clone method in child class -> all of its superclasses should define clone() or inherit. 
+
+	supports only shallow copying -> need to override it if need deep cloning.
+	
+ex: 
 	class Student18 implements Cloneable{  
 		int rollno;  
 		String name;  
-		 
+
 		Student18(int rollno,String name){  
 		this.rollno=rollno;  
 		this.name=name;  
@@ -841,51 +856,60 @@ object cloning:
 	public static void main(String args[]){  
 		try{  
 			Student18 s1=new Student18(101,"amit");  
-			 
+
 			Student18 s2=(Student18)s1.clone();  
-			 
+
 			System.out.println(s1.rollno+" "+s1.name);  
 			System.out.println(s2.rollno+" "+s2.name);  
-		 
+
 		}catch(CloneNotSupportedException c){}  
-		 
+
 		}  
 	}
 ## 
-Method overloading -> multiple methods with same name but different signatures.
- ways:
-	Changing number of arguments
-	Changing data type of arguments
- increases readability
- Type promotion is method overloading
- ex:
+Method overloading
+
+	multiple methods with same name but different signatures.
+
+	ways:
+		Changing number of arguments
+		
+		Changing data type of arguments
+		
+ 	increases readability
+	
+	Type promotion is method overloading
+	
+	ex:
 	class OverloadingCalculation1{  
 	  void sum(int a,long b){System.out.println(a+b);}  
 	  void sum(int a,int b,int c){System.out.println(a+b+c);}  
-	 
+
 	  public static void main(String args[]){  
 	  OverloadingCalculation1 obj=new OverloadingCalculation1();  
 	  obj.sum(20,20);//now second int literal will be promoted to long  
 	  obj.sum(20,20,20);  
 	  }  
-	}  
-  ex:
+	} 
+
+ 	ex:
 	class OverloadingCalculation3{    
 	  void sum(int a,long b){System.out.println("a method invoked");}    
 	  void sum(long a,int b){System.out.println("b method invoked");}    
-	   
+
 	  public static void main(String args[]){    
 	  OverloadingCalculation3 obj=new OverloadingCalculation3();    
 	  obj.sum(20,20);//now ambiguity    
 	  }    
 	}
-  ex:
+
+	ex:
 	class Base  
 	{  
 		void method(int a){  
 			System.out.println("Base class method called with integer a = "+a);  
 		}  
-		   
+
 		void method(double d){System.out.println("Base class method called with double d ="+d);}  
 	}    
 	class Derived extends Base  
@@ -904,219 +928,279 @@ Method overloading -> multiple methods with same name but different signatures.
 static method -> part of the class not the object -> can't be overridden
 ## 
 override any overloaded method
+
 Override <--> IS-A (super/sub relationship)
 ## 
 change scope of overridden method in subclass to be less restricitve <-> (public < default < protected < private)
 ## 
-modify superclass throws while override in subclass: 
+modify superclass throws while override in subclass
+
   No exception in superclass & checked exception in subclass -> error
+  
   No exception in superclass & unchecked exception in subclass
+  
   exception in superclass (exc1) & exception other than exc1, exc1 child, and runtime exception in SubClass -> error
+  
   exception in superclass (exc1) & child exception of exc1 in SubClass
+  
   exception in superclass & no exception in SubClass
 ##   
-covariance: how subtype is accepted when only supertype is defined
-covariant return type: the overriden method return type may vary in the same direction as the subclass ->
+covariance
+
+	how subtype is accepted when only supertype is defined
+	
+	covariant return type: the overriden method return type may vary in the same direction as the subclass ->
                        override method by changing return type if return type of subclass overriding method is subclass type.
-class A{  
-	A get(){return this;}  
-}   
-class B1 extends A{  
-	B1 get(){return this;}  
-    void message(){System.out.println("welcome to covariant return type");}  
-public static void main(String args[]){  
-	new B1().get().message();  
+		       
+	class A{  
+		A get(){return this;}  
+	}   
+	class B1 extends A{  
+		B1 get(){return this;}  
+	    void message(){System.out.println("welcome to covariant return type");}  
+	public static void main(String args[]){  
+		new B1().get().message();  
+		}  
 	}  
-}  
-ex:
-public class Producer {
-    public Object produce(String input) {
-        Object result = input.toLowerCase();
-        return result;
-    }
-}
-public class IntegerProducer extends Producer {
-    @Override
-    public Integer produce(String input) {
-        return Integer.parseInt(input);
-    }
-}
-Object as return type in super -> more concrete return type in child -> covariant return type -> produce numbers from characters
-ex:
-class Base   
-{  
-    public void baseMethod(){System.out.println("BaseMethod called ...");}  
-}  
-class Derived extends Base   
-{  
-    public void baseMethod() {System.out.println("Derived method called ...");}  
-}  
-public class Test   
-{  
-    public static void main (String args[])  
-    {  
-	    // Runtime polymorphism between Base and Derived
-		// presence of baseMethod checked in Base -> compiled successfully
-		// at runtime, checks baseMethod overridden by Derived -> if yes Derived method is called
-        Base b = new Derived();  // reference variable b (of type Base) refers to instance of Derived.
-        b.baseMethod();  
-    }  
-}
-##  
-cannot override inherited final method. 
-can't inherit final class
-constructor can never be final
-interface can never be final
-ex:	
-class Bike10{  
-  final int speedlimit;//blank final variable      
-  Bike10(){  
-  speedlimit=70;  
-  System.out.println(speedlimit);  
-  }    
-  public static void main(String args[]){  
-    new Bike10();  
- }  
-}
-ex:
-class Main {  
- public static void main(String args[]){  
-   final int i; // can be initialized only once 
-   i = 20;  
-   System.out.println(i);  
- }  
-}  
+	
+	ex:
+	public class Producer {
+	    public Object produce(String input) {
+		Object result = input.toLowerCase();
+		return result;
+	    }
+	}
+	public class IntegerProducer extends Producer {
+	    @Override
+	    public Integer produce(String input) {
+		return Integer.parseInt(input);
+	    }
+	}
+	
+	Object as return type in super -> more concrete return type in child -> covariant return type -> produce numbers from characters
+	
+	ex:
+	class Base   
+	{  
+	    public void baseMethod(){System.out.println("BaseMethod called ...");}  
+	}  
+	class Derived extends Base   
+	{  
+	    public void baseMethod() {System.out.println("Derived method called ...");}  
+	}  
+	public class Test   
+	{  
+	    public static void main (String args[])  
+	    {  
+		    // Runtime polymorphism between Base and Derived
+			// presence of baseMethod checked in Base -> compiled successfully
+			// at runtime, checks baseMethod overridden by Derived -> if yes Derived method is called
+		Base b = new Derived();  // reference variable b (of type Base) refers to instance of Derived.
+		b.baseMethod();  
+	    }  
+	}
+##
+final
+
+	cannot override inherited final method. 
+
+	can't inherit final class
+
+	constructor can never be final
+
+	interface can never be final
+
+	ex:	
+	class Bike10{  
+	  final int speedlimit;//blank final variable      
+	  Bike10(){  
+	  speedlimit=70;  
+	  System.out.println(speedlimit);  
+	  }    
+	  public static void main(String args[]){  
+	    new Bike10();  
+	 }  
+	}
+	
+	ex:
+	class Main {  
+	 public static void main(String args[]){  
+	   final int i; // can be initialized only once 
+	   i = 20;  
+	   System.out.println(i);  
+	 }  
+	}  
 ## 
-compile-time polymorphism (static binding, early binding, or overloading) -> (object type determined/call to method resolved) at compile-time -> fast execution
-runtime polymorphism (dynamic binding, late binding, overriding, dynamic method dispatch) -> (object type determined/call to overridden method resolved) at runtime.
- an overridden method called through reference variable of superclass. determination of the method to be called is based on object being referred to by reference variable.
-ex: 
-class Bike{  
-  void run(){System.out.println("running");}  
-}  
-class Splendor extends Bike{  
-  void run(){System.out.println("running safely with 60km");}  
-  public static void main(String args[]){  
-    Bike b = new Splendor();//upcasting  
-    b.run();  
-  }  
-}  
+compile-time polymorphism (static binding, early binding, or overloading)
+
+	(object type determined/call to method resolved) at compile-time -> fast execution
+##	
+runtime polymorphism (dynamic binding, late binding, overriding, dynamic method dispatch)
+
+	(object type determined/call to overridden method resolved) at runtime.
+##
+an overridden method called through reference variable of superclass. determination of the method to be called is based on object being referred to by reference variable.
+
+	ex: 
+	class Bike{  
+	  void run(){System.out.println("running");}  
+	}  
+	class Splendor extends Bike{  
+	  void run(){System.out.println("running safely with 60km");}  
+	  public static void main(String args[]){  
+	    Bike b = new Splendor();//upcasting  
+	    b.run();  
+	  }  
+	}
+
 data members cannot be overridden -> no Runtime Polymorphism by data members 
-class Bike{  
- int speedlimit=90;  
-}  
-class Honda3 extends Bike{  
- int speedlimit=150;  
-public static void main(String args[]){  
-  Bike obj=new Honda3();  
-  System.out.println(obj.speedlimit);
-}  
-private, final or static method in class -> static binding.
-class Animal{  
- void eat(){System.out.println("animal is eating...");}  
-}  
-class Dog extends Animal{  
- void eat(){System.out.println("dog is eating...");}  
-  
- public static void main(String args[]){  
-  Animal a=new Dog(); //instance of Dog is also an instance of Animal -> object type cannot determined by compiler because ->
-                      //compiler knows only its base type
-  a.eat();  
- }  
-}  
+
+	ex:
+	class Bike{  
+	 int speedlimit=90;  
+	}  
+	class Honda3 extends Bike{  
+	 int speedlimit=150;  
+	public static void main(String args[]){  
+	  Bike obj=new Honda3();  
+	  System.out.println(obj.speedlimit);
+	}  
+	private, final or static method in class -> static binding.
+	class Animal{  
+	 void eat(){System.out.println("animal is eating...");}  
+	}  
+	class Dog extends Animal{  
+	 void eat(){System.out.println("dog is eating...");}  
+
+	 public static void main(String args[]){  
+	  Animal a=new Dog(); //instance of Dog is also an instance of Animal -> object type cannot determined by compiler because ->
+			      //compiler knows only its base type
+	  a.eat();  
+	 }  
+	}  
 ## 
-instanceof: compares the instance with type.
-	Simple1 s=new Simple1();  
-	System.out.println(s instanceof Simple1);//true
+instanceof
+
+	compares the instance with type.
+	
+		Simple1 s=new Simple1(); 
+
+		System.out.println(s instanceof Simple1);//true
 ## 
-Abstraction: help focus on what object does instead of how it does
-encapsulation: wraps code and data into single unit
+Abstraction
+
+	help focus on what object does instead of how it does
+##	
+encapsulation
+
+	wraps code and data into single unit
 ## 
-abstract class:
+abstract class
+
  can have abstract and non-abstract methods, data member, constructor, and even main()
+ 
  can have constructors and static methods
+ 
  can have final methods -> force subclass not to change method body 
+ 
  can never be instantiated even if it contains constructor and implemented methods
+ 
  can provide implementation of interface
+ 
  can extend another Java class
 ##  
 interface methods -> abstract by default
+
 static + abstract -> not allowed
 ## 
-Marker interface interface with no data member and member functions -> Serializable, Cloneable.
+Marker interface
+
+	interface with no data member and member functions -> Serializable, Cloneable.
 ##
-Interface can't provide implementation of abstract class.
-interface can extend another interface
-Members of interface are public by default
-object reference can be cast to interface reference when it implements referenced interface
-ex:
-abstract class Bike{  
-   Bike(){System.out.println("bike is created");}  
-   abstract void run();  
-   void changeGear(){System.out.println("gear changed");}  
- }  
- class Honda extends Bike{  
- void run(){System.out.println("running safely..");}  
- }  
- class TestAbstraction2{  
- public static void main(String args[]){  
-  Bike obj = new Honda();  
-  obj.run();  
-  obj.changeGear();  
- }  
-} 
-ex:
-interface A{  
-	void a();  
-	void b();  
-	void c();  
-	void d();  
-}    
-abstract class B implements A{  
-	public void c(){System.out.println("I am c");}  
-}   
-class M extends B{  
-	public void a(){System.out.println("I am a");}  
-	public void b(){System.out.println("I am b");}  
-	public void d(){System.out.println("I am d");}  
-}    
-class Test5{  
-public static void main(String args[]){  
-	A a=new M();  
-	a.a();  
-	a.b();  
-	a.c();  
-	a.d();  
-}}  
-ex:
-abstract class Calculate  
-{  
-    abstract int multiply(int a, int b);  
-}     
-public class Main  
-{  
-    public static void main(String[] args)  
-    {  
-        int result = new Calculate()  
-        {      
-            @Override  
-            int multiply(int a, int b)  
-            {  
-                return a*b;  
-            }  
-        }.multiply(12,32);  
-        System.out.println("result = "+result);  
-    }  
-}  
+Interface
+
+	can't provide implementation of abstract class.
+	
+	can extend another interface
+	
+	Members of interface are public by default
+	
+	object reference can be cast to interface reference when it implements referenced interface
+	
+	ex:
+	abstract class Bike{  
+	   Bike(){System.out.println("bike is created");}  
+	   abstract void run();  
+	   void changeGear(){System.out.println("gear changed");}  
+	 }  
+	 class Honda extends Bike{  
+	 void run(){System.out.println("running safely..");}  
+	 }  
+	 class TestAbstraction2{  
+	 public static void main(String args[]){  
+	  Bike obj = new Honda();  
+	  obj.run();  
+	  obj.changeGear();  
+	 }  
+	} 
+
+	ex:
+	interface A{  
+		void a();  
+		void b();  
+		void c();  
+		void d();  
+	}    
+	abstract class B implements A{  
+		public void c(){System.out.println("I am c");}  
+	}   
+	class M extends B{  
+		public void a(){System.out.println("I am a");}  
+		public void b(){System.out.println("I am b");}  
+		public void d(){System.out.println("I am d");}  
+	}    
+	class Test5{  
+	public static void main(String args[]){  
+		A a=new M();  
+		a.a();  
+		a.b();  
+		a.c();  
+		a.d();  
+	}} 
+
+	ex:
+	abstract class Calculate  
+	{  
+	    abstract int multiply(int a, int b);  
+	}     
+	public class Main  
+	{  
+	    public static void main(String[] args)  
+	    {  
+		int result = new Calculate()  
+		{      
+		    @Override  
+		    int multiply(int a, int b)  
+		    {  
+			return a*b;  
+		    }  
+		}.multiply(12,32);  
+		System.out.println("result = "+result);  
+	    }  
+	}  
 ##
-Encapsulation:
+Encapsulation
+
 read-only  class -> all fields private. only getter returning private property of class to main method 
+
 write-only class -> all fields private. only setter setting value passed from main to private fields
 ##
 package
 
  group of similar type of classes, interfaces, and sub-packages.
+ 
  access protection
+ 
  removes naming collision
 ##
 try block followed by either catch OR finally block
@@ -1124,249 +1208,279 @@ try block followed by either catch OR finally block
 Checked Exception
 
 checked at compile-time. SQLException, ClassNotFoundException, etc.
+
 Unchecked Exception: handled at runtime. ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
+
 Error: not recoverable -> cause program to exit. OutOfMemoryError, AssertionError, etc.
+
 advantage of exception handling:  maintain normal flow of application.
 ##
 throw -> to throw exception
+
 throws -> to declare possible exceptions that may occure in method
 ##
 Hierarchy of Java Exception classes
 
 	Throwable -> Exception, Error
+	
 	Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
+	
 	RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException,
 						IndexOutOfBoundsException
+						
 	IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
+	
 	Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
 ##	
-Common exception Scenarios:
+Common exception Scenarios
+
 	divide number by zero -> ArithmeticException.
+	
 	performing operation on null variable -> NullPointerException	
+	
 	variable formatting mismatched -> NumberFormatException
+	
 	array size exceed -> ArrayIndexOutOfBoundsException
 ##	
-Exception Propagation:
-	[thrown from top -> not caught -> drops down previous] --> so on until caught or reach the very bottom of call stack
+Exception Propagation
+
+	[thrown from top -> not caught -> drops down previous] --> continues until caught or reach the very bottom of call stack
 	
-Unchecked -> propagated by default
-ex: 
-class TestExceptionPropagation1{  
-  void m(){  
-    int data=50/0;  
-  }  
-  void n(){  
-    m();  
-  }  
-  void p(){  
-   try{  
-    n();  
-   }catch(Exception e){System.out.println("exception handled");}  
-  }  
-  public static void main(String args[]){  
-   TestExceptionPropagation1 obj=new TestExceptionPropagation1();  
-   obj.p();  
-   System.out.println("normal flow...");  
-  }  
-}  
-ex:
-class TestExceptionPropagation2{  
-  void m(){  
-    throw new java.io.IOException("device error");//checked exception  
-  }  
-  void n(){  
-    m();  
-  }  
-  void p(){  
-   try{  
-    n();  
-   }catch(Exception e){System.out.println("exception handeled");}  
-  }  
-  public static void main(String args[]){  
-   TestExceptionPropagation2 obj=new TestExceptionPropagation2();  
-   obj.p();  
-   System.out.println("normal flow");  
-  }  
-}
+	Unchecked -> propagated by default
+	
+	ex: 
+	class TestExceptionPropagation1{  
+	  void m(){  
+	    int data=50/0;  
+	  }  
+	  void n(){  
+	    m();  
+	  }  
+	  void p(){  
+	   try{  
+	    n();  
+	   }catch(Exception e){System.out.println("exception handled");}  
+	  }  
+	  public static void main(String args[]){  
+	   TestExceptionPropagation1 obj=new TestExceptionPropagation1();  
+	   obj.p();  
+	   System.out.println("normal flow...");  
+	  }  
+	}  
+	
+	ex:
+	class TestExceptionPropagation2{  
+	  void m(){  
+	    throw new java.io.IOException("device error");//checked exception  
+	  }  
+	  void n(){  
+	    m();  
+	  }  
+	  void p(){  
+	   try{  
+	    n();  
+	   }catch(Exception e){System.out.println("exception handeled");}  
+	  }  
+	  public static void main(String args[]){  
+	   TestExceptionPropagation2 obj=new TestExceptionPropagation2();  
+	   obj.p();  
+	   System.out.println("normal flow");  
+	  }  
+	}
 ## 
-Nested try block: Sometimes a situation may arise where a part of a 
-[block -> one error & entire block -> another error] -> nested exception
+Nested try block
+
+	[sub-block -> one error & entire block -> another error] -> nested exception
 ## 
-Finally: executes after try-catch
-         not executes if program exits
+Finally:
+
+	executes after try-catch
+
+	not executes if program exits
 ##
-custom exceptions: extends Exception 
-ex:
-public class WrongFileNameException extends Exception {  
-    public WrongFileNameException(String errorMessage) {  
-    super(errorMessage);  
-    }  
-}  
-ex:
-class InvalidAgeException  extends Exception  
-{  
-    public InvalidAgeException (String str)  
-    {  
-        super(str);  
-    }  
-}    
-public class TestCustomException1  
-{  
-    static void validate (int age) throws InvalidAgeException{    
-       if(age < 18){  
-        throw new InvalidAgeException("age is not valid to vote");    
-    }  
-       else {   
-        System.out.println("welcome to vote");   
-        }  
-     }  
-    public static void main(String args[])  
-    {  
-        try  
-        {  
-            validate(13);  
-        }  
-        catch (InvalidAgeException ex)  
-        {  
-            System.out.println("Caught the exception");    
-            System.out.println("Exception occured: " + ex);  
-        }    
-        System.out.println("rest of the code...");    
-    }  
-}  
-ex:
-class MyCustomException extends Exception  
-{  
-    
-}      
-public class TestCustomException2  
-{  
-    public static void main(String args[])  
-    {  
-        try  
-        {  
-            throw new MyCustomException();  
-        }  
-        catch (MyCustomException ex)  
-        {  
-            System.out.println("Caught the exception");  
-            System.out.println(ex.getMessage());  
-        }  
-        System.out.println("rest of the code...");    
-    }  
-}
+custom exceptions: extends Exception
+
+	ex:
+	public class WrongFileNameException extends Exception {  
+	    public WrongFileNameException(String errorMessage) {  
+	    super(errorMessage);  
+	    }  
+	}
+
+	ex:
+	class InvalidAgeException  extends Exception  
+	{  
+	    public InvalidAgeException (String str)  
+	    {  
+		super(str);  
+	    }  
+	}    
+	public class TestCustomException1  
+	{  
+	    static void validate (int age) throws InvalidAgeException{    
+	       if(age < 18){  
+		throw new InvalidAgeException("age is not valid to vote");    
+	    }  
+	       else {   
+		System.out.println("welcome to vote");   
+		}  
+	     }  
+	    public static void main(String args[])  
+	    {  
+		try  
+		{  
+		    validate(13);  
+		}  
+		catch (InvalidAgeException ex)  
+		{  
+		    System.out.println("Caught the exception");    
+		    System.out.println("Exception occured: " + ex);  
+		}    
+		System.out.println("rest of the code...");    
+	    }  
+	}
+
+	ex:
+	class MyCustomException extends Exception { } 
+
+	public class TestCustomException2  
+	{  
+	    public static void main(String args[])  
+	    {  
+		try  
+		{  
+		    throw new MyCustomException();  
+		}  
+		catch (MyCustomException ex)  
+		{  
+		    System.out.println("Caught the exception");  
+		    System.out.println(ex.getMessage());  
+		}  
+		System.out.println("rest of the code...");    
+	    }  
+	}
 ##
-can not throw basic data type from a block
-ex:
-public class Main{  
-    public static void main(String []args){  
-        try  
-        {  
-            throw 90;   
-        }  
-        catch(int e){  
-            System.out.println("Caught the exception "+e);  
-        }                
-    }  
-} 
-ex: // throw a custom exception class from try block and catch it in catch block
-class Calculation extends Exception  // class type is throwable
-{  
-    public Calculation()   
-    {  
-        System.out.println("Calculation class is instantiated");  
-    }  
-    public void add(int a, int b)  
-    {  
-        System.out.println("The sum is "+(a+b));  
-    }  
-}  
-public class Main{  
-     public static void main(String []args){  
-        try  
-        {  
-            throw new Calculation();   
-        }  
-        catch(Calculation c){  
-            c.add(10,20);  
-        }  
-    }  
-}
-ex: propagation
-public class Main   
-{  
-    void a()  
-    {  
-        try{  
-        System.out.println("a(): Main called");  
-        b();  
-        }catch(Exception e)  
-        {  
-            System.out.println("Exception is caught");  
-        }  
-    }  
-    void b() throws Exception  
-    {  
-     try{  
-         System.out.println("b(): Main called");  
-         c();  
-     }catch(Exception e){  
-         throw new Exception();  
-     }  
-     finally   
-     {  
-         System.out.println("finally block is called");  
-     }  
-    }  
-    void c() throws Exception   
-    {  
-        throw new Exception();  
-    }  
-  
-    public static void main (String args[])  
-    {  
-        Main m = new Main();  
-        m.a();  
-    }  
-}  
-ex:
-public class Calculation   
-{  
-    int a;   
-    public Calculation(int a)  
-    {  
-        this.a = a;  
-    }  
-    public int add()  
-    {  
-        a = a+10;   
-        try   
-        {  
-            a = a+10;   
-            try   
-            {  
-                a = a*10;   
-                throw new Exception();   
-            }catch(Exception e){  
-                a = a - 10;  
-            }  
-        }catch(Exception e)  
-        {  
-            a = a - 10;   
-        }  
-        return a;  
-    }        
-    public static void main (String args[])  
-    {  
-        Calculation c = new Calculation(10);  
-        int result = c.add();  
-        System.out.println("result = "+result);  
-    }  
-}  
+One can not throw basic data type from a block
+
+	ex:
+	public class Main{  
+	    public static void main(String []args){  
+		try  
+		{  
+		    throw 90;   
+		}  
+		catch(int e){  
+		    System.out.println("Caught the exception "+e);  
+		}                
+	    }  
+	} 
+	
+	ex: // throw a custom exception class from try block and catch it in catch block
+	class Calculation extends Exception  // class type is throwable
+	{  
+	    public Calculation()   
+	    {  
+		System.out.println("Calculation class is instantiated");  
+	    }  
+	    public void add(int a, int b)  
+	    {  
+		System.out.println("The sum is "+(a+b));  
+	    }  
+	}  
+	public class Main{  
+	     public static void main(String []args){  
+		try  
+		{  
+		    throw new Calculation();   
+		}  
+		catch(Calculation c){  
+		    c.add(10,20);  
+		}  
+	    }  
+	}
+	
+	ex: propagation
+	public class Main   
+	{  
+	    void a()  
+	    {  
+		try{  
+		System.out.println("a(): Main called");  
+		b();  
+		}catch(Exception e)  
+		{  
+		    System.out.println("Exception is caught");  
+		}  
+	    }  
+	    void b() throws Exception  
+	    {  
+	     try{  
+		 System.out.println("b(): Main called");  
+		 c();  
+	     }catch(Exception e){  
+		 throw new Exception();  
+	     }  
+	     finally   
+	     {  
+		 System.out.println("finally block is called");  
+	     }  
+	    }  
+	    void c() throws Exception   
+	    {  
+		throw new Exception();  
+	    }  
+
+	    public static void main (String args[])  
+	    {  
+		Main m = new Main();  
+		m.a();  
+	    }  
+	}  
+	
+	ex:
+	public class Calculation   
+	{  
+	    int a;   
+	    public Calculation(int a)  
+	    {  
+		this.a = a;  
+	    }  
+	    public int add()  
+	    {  
+		a = a+10;   
+		try   
+		{  
+		    a = a+10;   
+		    try   
+		    {  
+			a = a*10;   
+			throw new Exception();   
+		    }catch(Exception e){  
+			a = a - 10;  
+		    }  
+		}catch(Exception e)  
+		{  
+		    a = a - 10;   
+		}  
+		return a;  
+	    }        
+	    public static void main (String args[])  
+	    {  
+		Calculation c = new Calculation(10);  
+		int result = c.add();  
+		System.out.println("result = "+result);  
+	    }  
+	}  
 ##
-String pool: space reserved in heap used to store strings
- create string literal -> JVM checks string pool -> If exists -> a reference returns
-                                                    If not    ->  new string instance creates 
+String pool
+
+	space reserved in heap used to store strings
+	
+ 	create string literal -> JVM checks string pool ->
+	
+		If exists -> a reference returns
+		
+		If not    ->  new string instance creates 
 ex:													
 class Testimmutablestring{  
  public static void main(String args[]){  
@@ -1376,32 +1490,41 @@ class Testimmutablestring{
  }  
 } 
 ##
-create string object:
-1) String Literal:
-	String s ="welcome";  
-        String s2="Welcome";//It doesn't create a new instance
-2) new keyword:
-	String s=new String("Welcome");//creates two objects and one reference variable
-	new object in heap refered by s,
-	literal object "Welcome" in string pool
-	The ref variable s
-ex:
-public class Test   
-{
-  public static void main (String args[])  
-  {  
-      String a = new String("Sharma is a good player");  
-      String b = "Sharma is a good player";  
-      if(a == b) // == -> references of two objects are equal or not
-      {  
-          System.out.println("a == b");  
-      }  
-      if(a.equals(b)) // checks for the content 
-      {  
-          System.out.println("a equals b");  
-	  }	  
-  }  
-}
+create string object
+
+	String Literal
+	
+		String s ="welcome";
+		
+		String s2="Welcome";//It doesn't create a new instance
+		
+	new keyword
+	
+		String s=new String("Welcome");//creates two objects and one reference variable
+		
+		new object in heap refered by s,
+		
+		literal object "Welcome" in string pool
+		
+		The ref variable s
+		
+	ex:
+	public class Test   
+	{
+	  public static void main (String args[])  
+	  {  
+	      String a = new String("Sharma is a good player");  
+	      String b = "Sharma is a good player";  
+	      if(a == b) // == -> references of two objects are equal or not
+	      {  
+		  System.out.println("a == b");  
+	      }  
+	      if(a.equals(b)) // checks for the content 
+	      {  
+		  System.out.println("a equals b");  
+		  }	  
+	  }  
+	}
 ex:
 public class Test   
 {  
@@ -1414,13 +1537,19 @@ public class Test
     }  
 }  
 ##
-String cons compare to StringBuffer:
+String disadvantages compare to StringBuffer
+
 	String  immutable
+	
 	String  slow creates a new instance on concatThe 
+	
 	String  overrides  equals()  
 ##
-StringBuffer is synchronized -> thread safe -> two StringBuffer methods can't be called simultaneously
-StringBuffer is less efficient than StringBuilder.	
+StringBuffer
+
+	synchronized -> thread safe -> two StringBuffer methods can't be called simultaneously
+
+	less efficient than StringBuilder.	
 ##
 immutable class and all its members are final
 ##
@@ -1428,63 +1557,88 @@ toString(): returns string representation of object -> overriding -> desired out
 ##
 String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
 ##
-java.util.regex: 
+java.util.regex
+
 	MatchResult Interface
+	
 	Matcher class
+	
 	Pattern class
+	
 	PatternSyntaxException class
 ##
-Metacharacters: ^, $, ., *, +, etc. <- not regular characters fro regex engine -> use backslash to treat them ordinary.
+Metacharacters
+
+	^, $, ., *, +, etc. <- not regular characters fro regex engine -> use backslash to treat them ordinary.
 ##
-Nested classes: can access all members of outer class including private ->  used for readability and maintainability
- static nested class
- non-static nested class (inner-class)
- disadvantages:
-  Inner classes increase total number of classes and workload of JVM
-  less support by IDEs to inner class
+Nested classes
+
+	can access all members of outer class including private ->  used for readability and maintainability
+	
+	static nested class
+	
+	non-static nested class (inner-class)
+	
+	disadvantages
+	
+		Inner classes increase total number of classes and workload of JVM
+		less support by IDEs to inner class
 ##
-inner classe:
-	Member Inner Class:	created within class and outside method.
-	Anonymous Inner Class:	
-	 created for implementing an interface or extending class.
-     name is decided by compiler
-	Local Inner Class:	
-	 created within the method.
-	 local variable must be constant to access it in local inner class
-ex:
-public class Person {  
-	String name, age, address;  
-	class Employee{  
-	  float salary=10000;  
-	}  
-	class BusinessMen{  
-	  final String gstin="£4433drt3$";   
-	}  
-	public static void main (String args[])  
-	{  
-	  Person p = new Person();  
-	}  
-} 
+inner class
+
+	Member Inner Class
+	
+		created within class and outside method.
+		
+	Anonymous Inner Class
+	
+		created for implementing an interface or extending class.
+		
+		name is decided by compiler
+		
+	Local Inner Class
+	
+		created within the method.
+		
+		local variable must be constant to access it in local inner class
+		
+	ex:
+	public class Person {  
+		String name, age, address;  
+		class Employee{  
+		  float salary=10000;  
+		}  
+		class BusinessMen{  
+		  final String gstin="£4433drt3$";   
+		}  
+		public static void main (String args[])  
+		{  
+		  Person p = new Person();  
+		}  
+	} 
 ##
-nested interface: 
- interface within class
- public if declared inside interface
- any access modifier if declared within class
- are static
-interface Showable{  
-  void show();  
-  interface Message{  // cannot be accessed directly
-   void msg();  
-  }  
-}  
-class TestNestedInterface1 implements Showable.Message{  
- public void msg(){System.out.println("Hello nested interface");}  
-  
- public static void main(String args[]){  
-  Showable.Message message=new TestNestedInterface1();//upcasting here  
-  message.msg();  
- }  
-}  
+nested interface
+
+	interface within class
+	public if declared inside interface
+	any access modifier if declared within class
+	static
+
+	ex:
+	interface Showable{  
+	  void show();  
+	  interface Message{  // cannot be accessed directly
+	   void msg();  
+	  }  
+	}  
+	class TestNestedInterface1 implements Showable.Message{  
+	 public void msg(){System.out.println("Hello nested interface");}  
+
+	 public static void main(String args[]){  
+	  Showable.Message message=new TestNestedInterface1();//upcasting here  
+	  message.msg();  
+	 }  
+	}  
 ## 
 class inside interface -> static nested class by compiler
 ##
