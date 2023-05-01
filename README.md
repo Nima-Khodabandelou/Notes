@@ -70,15 +70,18 @@ Core concepts of Java SE
 				}
 			}
 			public class Manager {
-				private SalesDepartment salesDepartment = new SalesDepartment();
-				private WarehouseDepartment warehouseDepartment = new WarehouseDepartment();
+				private SalesDepartment salesDepartment =
+				new SalesDepartment();
+				private WarehouseDepartment warehouseDepartment =
+				new WarehouseDepartment();
 				public void OrderInquiry() {
 					salesDepartment.customerSupport();
 					warehouseDepartment.qualityControl();
 				}
 			}
 
-			Manager class depends on low-level modules -> refactor using abstraction: 
+			Manager class depends on low-level modules
+			-> refactor using abstraction: 
 
 			public interface Departments {
 				void department();
@@ -135,7 +138,8 @@ Core concepts of Java SE
 ##
 - Super keyword
 
-       A reference variable used for refering to the immediate parent class object
+       A reference variable used for refering to the immediate parent
+       class object
        
        Called implicitly by the class constructor if not provided  
        
@@ -143,19 +147,23 @@ Core concepts of Java SE
        
        For immediate parent class method invocation
        
-       To differentiate between local and instance variables in the class constructor
+       To differentiate between local and instance variables in the class
+       constructor
        
        Must be the first statement in constructor
 ##       
 - Path and Classpath
 
-       PATH: An environment variable used by the operating system to locate the executables
+       PATH: An environment variable used by the operating system to locate the
+       executables
 
-       Classpath: Java specific used to locate class files. it can be a directory, ZIP, JAR, etc.
+       Classpath: Java specific used to locate class files. it can be a directory,
+       ZIP, JAR, etc.
 ## 
 - Source files
 
-      Each source Java file may have multiple classes among which only one shall be public.
+      Each source Java file may have multiple classes among which only one shall
+      be public.
 
       Source file name shall be the same as class name.
 ## 
@@ -166,21 +174,23 @@ Core concepts of Java SE
 - Interpreter/Compiler
 
       Just-in-time (JIT): To improve performance by compiling parts of the bytecode
-                        having similar functionality, and therefore reducing compilation time.  
+                        having similar functionality, and therefore reducing
+			compilation time.  
 
-      Compiler: transforms instruction set of a Java virtual machine (JVM) to the instruction set
-                of a specific CPU (Java code to Bytecode).      
+      Compiler: transforms instruction set of a Java virtual machine (JVM) to
+      the instruction set of a specific CPU (Java code to Bytecode).      
 
-      Classloader: Part of the Java Runtime Environment for loading class files. Three built-in
-                   classloaders:				   
-		Bootstrap ClassLoader: The first classloader in native code (e.g. c++) which
-				       loads rt.jar file containing all core libraries and
-				       class files of Java SE There are various implementations
-				       of this Bootstrap class loader for various platforms.
+      Classloader: Part of the Java Runtime Environment for loading class files.
+      Three built-in classloaders:				   
+		Bootstrap ClassLoader: The first classloader in native code
+		(e.g. c++) which loads rt.jar file containing all core
+		libraries and class files of Java SE There are various
+		implementations of this Bootstrap class loader for
+		various platforms.
 
-		Extension ClassLoader: Its parent is Bootstrap classloader loads core extension
-				       classes to be available to all applications running on
-				       each platform. 
+		Extension ClassLoader: Its parent is Bootstrap classloader loads
+		core extension classes to be available to all applications running
+		on each platform. 
 
 		System/Application ClassLoader: Loads files in the classpath.
 ##             
@@ -192,8 +202,8 @@ Core concepts of Java SE
 
       Default: accessible within the package only.
       
-      Protected: accessible by the class and sub-class of the same package, or by the sub-class in another
-                 packages.
+      Protected: accessible by the class and sub-class of the same package, or by
+      the sub-class in another packages.
       
       Public: accessible anywhere
       
@@ -209,9 +219,11 @@ Core concepts of Java SE
 	
       create and document a class carefully or declare it final for safety reasons.
 	
-      making a class final: no other programmer can improve it. can’t fix any problem with it --> lose extensibility
+      making a class final: no other programmer can improve it. can’t fix any
+      problem with it --> lose extensibility
 	
-      If methods of class called by other methods, should consider making the called methods final. Otherwise, overriding them can affect the work of callers.
+      If methods of class called by other methods, should consider making the
+      called methods final. Otherwise, overriding them can affect the work of callers.
 	
       If constructor calls other methods, should generally declare these methods final.
 	
@@ -225,13 +237,16 @@ Core concepts of Java SE
 	      final Cat cat = new Cat();
 	      cat.setWeight(5) -> valid
 	 
-      class constants should be uppercase nad final, with components separated by underscore:
+      class constants should be uppercase nad final, with components separated by
+      underscore:
 	
       static final int MAX_WIDTH = 999;
 	 
-      static final fileds -> initialize them	upon declaration in the static initializer block
+      static final fileds -> initialize them	upon declaration in the static
+      initializer block
 	
-      instance final fields -> initialize them upon declaration in the instance initializer block in the constructor
+      instance final fields -> initialize them upon declaration in the instance
+      initializer block in the constructor
 	
       A final argument can’t be changed inside a method
       
@@ -241,15 +256,19 @@ Core concepts of Java SE
 ##
 - Immutability
 
-      once create an object, not allowed to change the content. If try to change and alteration successfully done -> a new object will be created.
+      once create an object, not allowed to change the content. If try to change
+      and alteration successfully done -> a new object will be created.
 	
-      immutable obj --> its state doesn’t change after it has been initialized. ex -> String class instantiated, value never changes.
+      immutable obj --> its state doesn’t change after it has been initialized.
+      ex -> String class instantiated, value never changes.
 	
-      immutable object can’t be updated -> programs need to create a new object for every change of state.
+      immutable object can’t be updated -> programs need to create a new object
+      for every change of state.
 	
       benefits of immutable obj:
 	
-		good for caching purposes <--> don’t have to worry about the value changes
+		good for caching purposes <--> don’t have to worry about the
+		value changes
 		
 		inherently thread-safe	
 		
@@ -265,7 +284,8 @@ Core concepts of Java SE
 		
 		Initialize all fields using constructor performing deep copy
 		
-		return copy of obj by cloning it rather than returning the actual object reference
+		return copy of obj by cloning it rather than returning the
+		actual object reference
 		
 		Ex:
 		
@@ -284,10 +304,12 @@ Core concepts of Java SE
 				return (HashMap<String, String>) testMap.clone();
 			}
 			// Constructor method performing deep copy	
-			public FinalClassExample(int i, String n, HashMap<String,String> hm){
+			public FinalClassExample(int i, String n,
+			HashMap<String,String> hm){
 				this.id=i;
 				this.name=n;
-				HashMap<String,String> tempMap=new HashMap<String,String>();
+				HashMap<String,String> tempMap=
+				new HashMap<String,String>();
 				String key;
 				Iterator<String> it = hm.keySet().iterator();
 				while(it.hasNext()){
@@ -298,7 +320,8 @@ Core concepts of Java SE
 			}
 			// Test the immutable class
 			public static void main(String[] args) {
-				HashMap<String, String> h1 = new HashMap<String,String>();
+				HashMap<String, String> h1 =
+				new HashMap<String,String>();
 				h1.put("1", "first");
 				h1.put("2", "second");		
 				String s = "original";		
@@ -313,20 +336,24 @@ Core concepts of Java SE
 				s="modified";
 				h1.put("3", "third");
 				// print the values again
-				System.out.println("ce id after local variable change: "+ce.getId());
-				System.out.println("ce name after local variable change: "+ce.getName());
-				System.out.println("ce testMap after local variable change: "+ce.getTestMap());		
+				System.out.println("ce id after local variable change:
+				"+ce.getId());
+				System.out.println("ce name after local variable change:
+				"+ce.getName());
+				System.out.println("ce testMap after local variable
+				change: "+ce.getTestMap());		
 				HashMap<String, String> hmTest = ce.getTestMap();
 				hmTest.put("4", "new");		
-				System.out.println("ce testMap after changing variable from getter methods: "+ce.getTestMap());
+				System.out.println("ce testMap after changing variable
+				from getter methods: "+ce.getTestMap());
 			}
 		}
 		
-		output shows HashMap values didn’t change because constructor uses deep copy and 
-		getter function returns a clone of original object.
+		output shows HashMap values didn’t change because constructor uses
+		deep copy and getter function returns a clone of original object.
 		
-		can make changes to the FinalClassExample.java file to show what happens when use shallow copy
-		and return object insetad of a copy.
+		can make changes to the FinalClassExample.java file to show what
+		happens when use shallow copy and return object insetad of a copy.
 		
 		Make the following changes:
 		
@@ -335,8 +362,10 @@ Core concepts of Java SE
 				return testMap;
 			}
 			//Constructor method performing shallow copy
-			public FinalClassExample(int i, String n, HashMap<String,String> hm){
-				System.out.println("Performing Shallow Copy for Object initialization");
+			public FinalClassExample(int i, String n,
+			HashMap<String,String> hm){
+				System.out.println("Performing Shallow
+				Copy for Object initialization");
 				this.id=i;
 				this.name=n;
 				this.testMap=hm;
@@ -344,7 +373,8 @@ Core concepts of Java SE
 ##
 - static methods/variables -> shared among all the objects of the class. 
 ##
-- static variables stored in class area, do not need to create the object to access such variables.
+- static variables stored in class area, do not need to create the object to
+ access such variables.
 ##
 - packages
 
@@ -376,7 +406,8 @@ Core concepts of Java SE
       
       invoked when  class is instantiated,and memory allocated for object
       
-      Every time an object created using new keyword, default constructor is called 
+      Every time an object created using new keyword, default constructor
+      is called 
       
       must not have explicit return type.
       
@@ -537,7 +568,8 @@ Core concepts of Java SE
 
       static -> Because object not required to call the static method.
 
-      non-static main method -> JVM have to create its object first then call main() -> extra memory allocation.
+      non-static main method -> JVM have to create its object first then
+      call main() -> extra memory allocation.
 ##
 - can't override static methods.
 ##
@@ -553,7 +585,8 @@ Core concepts of Java SE
 ## 
 - abstract methods
 
-      -> static -> become part of the class -> can directly call it which is unnecessary.
+      -> static -> become part of the class -> can directly call it which
+      is unnecessary.
 ## 
 - can declare static variables and methods in abstract class
 ## 
@@ -563,7 +596,8 @@ Core concepts of Java SE
  
       to distinguish local variable and instance variable   
  
-      to invoke method of current class. If don't use this keyword, compiler automatically adds
+      to invoke method of current class. If don't use this keyword, compiler
+      automatically adds
  
       ex:
       class A{  
@@ -651,7 +685,8 @@ Core concepts of Java SE
 		}  
       }  
 
-      to pass as argument in the constructor call. useful if have to use one object in multiple classes
+      to pass as argument in the constructor call. useful if have to use one
+      object in multiple classes
 	
       ex:
       class B{  
@@ -704,7 +739,8 @@ Core concepts of Java SE
 		}  
       }  
 		
-      possible but not good to refer static members <--> it is unnecessary to access static variables through objects
+      possible but not good to refer static members <--> it is unnecessary to
+      access static variables through objects
 	
       to perform constructor chaining within the same class
  
@@ -730,21 +766,25 @@ Core concepts of Java SE
 	    public static void main (String args[])  
 	    {  
 		Employee emp = new Employee(105, 22, "Vikas", "Delhi");  
-		System.out.println("ID: "+emp.id+" Name:"+emp.name+" age:"+emp.age+" address: "+emp.address);  
+		System.out.println("ID: "+emp.id+" Name:"+emp.name+" age:"+
+		emp.age+" address: "+emp.address);  
 	    }      
       }
 ## 
 - advantages of passing this into method instead of current class object
 
-      this is final -> cannot be assigned to any new value whereas current class object might not be final.
+      this is final -> cannot be assigned to any new value whereas current
+      class object might not be final.
  
       this can be used in the synchronized block.
 ## 
 - Inheritance
 
-      code reusability -> sub-class need not to redefine method of super-class unless it needs to provide specific implementation.
+      code reusability -> sub-class need not to redefine method of super-class
+      unless it needs to provide specific implementation.
 
-      Runtime polymorphism -> simulate inheritance with real-time objects -> makes OOPs more realistic. 
+      Runtime polymorphism -> simulate inheritance with real-time objects
+      -> makes OOPs more realistic. 
 
       provides data hiding -> super-class can hide data from sub-class.
 
@@ -752,7 +792,8 @@ Core concepts of Java SE
 ## 
 - Aggregation (has-a)
 
-      relationship between two classes -> aggregate class contains a reference to the class it owns
+      relationship between two classes -> aggregate class contains a reference
+      to the class it owns
 
       ex:
       public class Address {  
@@ -767,9 +808,11 @@ Core concepts of Java SE
 ## 
 - composition
 
-      When an object contains other object, if contained object cannot exist without existence of container object
+      When an object contains other object, if contained object cannot
+      exist without existence of container object
 
-      particular case of aggregation representing stronger relationship between two objects.
+      particular case of aggregation representing stronger relationship
+      between two objects.
 
       Ex: class contains students. student cannot exist without a class.
 ## 
@@ -781,7 +824,8 @@ Core concepts of Java SE
 
       to refer to immediate parent class.
 	
-      instance of subclass created -> instance of parent class created implicitly referred by super
+      instance of subclass created -> instance of parent class created
+      implicitly referred by super
 	
       called in constructor implicitly by compiler if no super or this. 
 	
@@ -812,7 +856,8 @@ Core concepts of Java SE
 		class Employee extends Person  
 		{  
 			float salary;  
-			public Employee(int age, String name, String address, float salary)  
+			public Employee(int age, String name, String address,
+			float salary)  
 			{  
 				super(age,name,address);  
 				this.salary = salary;  
@@ -822,8 +867,10 @@ Core concepts of Java SE
 		{  
 			public static void main (String args[])  
 			{  
-				Employee e = new Employee(22, "Mukesh", "Delhi", 90000);  
-				System.out.println("Name: "+e.name+" Salary: "+e.salary+" Age: "+e.age+" Address: "+e.address);  
+				Employee e = new Employee(22, "Mukesh",
+				"Delhi", 90000);  
+				System.out.println("Name: "+e.name+" Salary:
+				"+e.salary+" Age: "+e.age+" Address: "+e.address);  
 			}  
       }  
 
@@ -831,7 +878,8 @@ Core concepts of Java SE
 ## 
 - object cloning
 
-      create exact copy of object -> clone() method -> java.lang.Cloneable interface 
+      create exact copy of object -> clone() method -> java.lang.Cloneable
+      interface 
 
       syntax -> protected Object clone() throws CloneNotSupportedException 
 
@@ -841,7 +889,8 @@ Core concepts of Java SE
 
 		don't need to write lengthy and repetitive codes.
 
-		easiest -> Just define parent class, implement Cloneable in it, provide clone().
+		easiest -> Just define parent class, implement Cloneable
+		in it, provide clone().
 
 		fastest way to copy array  
 
@@ -849,15 +898,20 @@ Core concepts of Java SE
 
 		have to change a lot of syntaxes
 
-		have to implement cloneable interface while it doesn't have any methods. just to tell JVM.
+		have to implement cloneable interface while it doesn't
+		have any methods. just to tell JVM.
 
-		is protected -> have to provide our own clone() and indirectly call Object.clone()
+		is protected -> have to provide our own clone() and
+		indirectly call Object.clone()
 
-		doesn't invoke constructor -> no control over object construction  
+		doesn't invoke constructor -> no control over object
+		construction  
 
-		If clone method in child class -> all of its superclasses should define clone() or inherit. 
+		If clone method in child class -> all of its superclasse
+		s should define clone() or inherit. 
 
-		supports only shallow copying -> need to override it if need deep cloning.
+		supports only shallow copying -> need to override it if
+		need deep cloning.
 	
       ex: 
       class Student18 implements Cloneable{  
@@ -925,15 +979,18 @@ Core concepts of Java SE
       class Base  
       {  
 		void method(int a){  
-			System.out.println("Base class method called with integer a = "+a);  
+			System.out.println("Base class method called with
+			integer a = "+a);  
 		}  
 
-		void method(double d){System.out.println("Base class method called with double d ="+d);}  
+		void method(double d){System.out.println("Base class
+		method called with double d ="+d);}  
       }    
       class Derived extends Base  
       {  
 		@Override  
-		void method(double d) {System.out.println("Derived class method called with double d ="+d);}  
+		void method(double d) {System.out.println("Derived class
+		method called with double d ="+d);}  
       }    
       public class Main  
       {      
@@ -949,7 +1006,8 @@ Core concepts of Java SE
 
       Override <--> IS-A (super/sub relationship)
 ## 
-- change scope of overridden method in subclass to be less restricitve <-> (public < default < protected < private)
+- change scope of overridden method in subclass to be less
+ restricitve <-> (public < default < protected < private)
 ## 
 - modify superclass throws while override in subclass
 
@@ -957,7 +1015,8 @@ Core concepts of Java SE
 
       No exception in superclass & unchecked exception in subclass
 
-      exception in superclass (exc1) & exception other than exc1, exc1 child, and runtime exception in SubClass -> error
+      exception in superclass (exc1) & exception other than exc1, exc1 child,
+      and runtime exception in SubClass -> error
 
       exception in superclass (exc1) & child exception of exc1 in SubClass
 
@@ -967,15 +1026,18 @@ Core concepts of Java SE
 
       how subtype is accepted when only supertype is defined
 	
-      covariant return type: the overriden method return type may vary in the same direction as the subclass ->
-                       override method by changing return type if return type of subclass overriding method is subclass type.
+      covariant return type: the overriden method return type may vary in
+      the same direction as the subclass ->
+                       override method by changing return type if return
+		       type of subclass overriding method is subclass type.
 		       
       class A{  
 		A get(){return this;}  
 	}   
       class B1 extends A{  
 		B1 get(){return this;}  
-	    void message(){System.out.println("welcome to covariant return type");}  
+	    void message(){System.out.println("welcome to covariant return
+	    type");}  
       public static void main(String args[]){  
 		new B1().get().message();  
 		}  
@@ -995,25 +1057,32 @@ Core concepts of Java SE
 	    }
       }
 	
-      Object as return type in super -> more concrete return type in child -> covariant return type -> produce numbers from characters
+      Object as return type in super -> more concrete return type in child ->
+      covariant return type -> produce numbers from characters
 	
       ex:
       class Base   
 	{  
-	    public void baseMethod(){System.out.println("BaseMethod called ...");}  
+	    public void baseMethod(){System.out.println("BaseMethod
+	    called ...");}  
 	}  
       class Derived extends Base   
 	{  
-	    public void baseMethod() {System.out.println("Derived method called ...");}  
+	    public void baseMethod() {System.out.println("Derived method
+	    called ...");}  
 	}  
       public class Test   
 	{  
 	    public static void main (String args[])  
 	    {  
 		    // Runtime polymorphism between Base and Derived
-			// presence of baseMethod checked in Base -> compiled successfully
-			// at runtime, checks baseMethod overridden by Derived -> if yes Derived method is called
-		Base b = new Derived();  // reference variable b (of type Base) refers to instance of Derived.
+			// presence of baseMethod checked in Base
+			//-> compiled successfully
+			// at runtime, checks baseMethod overridden by
+			//Derived -> if yes Derived method is called
+		// reference variable b (of type Base) refers to instance
+		//of Derived.
+		Base b = new Derived();  
 		b.baseMethod();  
 	    }  
       }
@@ -1051,9 +1120,11 @@ Core concepts of Java SE
 ## 
 - compile-time polymorphism (static binding, early binding, or overloading)
 
-      (object type determined/call to method resolved) at compile-time -> fast execution
+      (object type determined/call to method resolved) at
+      compile-time -> fast execution
 ##	
-- runtime polymorphism (dynamic binding, late binding, overriding, dynamic method dispatch)
+- runtime polymorphism (dynamic binding, late binding, overriding,
+-  dynamic method dispatch)
 
       (object type determined/call to overridden method resolved) at runtime.
 ##
@@ -1061,7 +1132,8 @@ Core concepts of Java SE
 
       called through reference variable of superclass
 
-      determination of the method to be called is based on object being referred to by reference variable.
+      determination of the method to be called is based on object being
+      referred to by reference variable.
 
 	ex: 
 	class Bike{  
@@ -1094,7 +1166,8 @@ Core concepts of Java SE
 	class Dog extends Animal{  
 	 void eat(){System.out.println("dog is eating...");} 
 	 public static void main(String args[]){  
-	  Animal a=new Dog(); //instance of Dog is also an instance of Animal -> object type cannot determined by compiler because ->
+	  Animal a=new Dog(); //instance of Dog is also an instance of
+	  Animal -> object type cannot determined by compiler because ->
 			      //compiler knows only its base type
 	  a.eat();  
 	 }  
@@ -1118,13 +1191,15 @@ Core concepts of Java SE
 ## 
 - abstract class
 
-	can have abstract and non-abstract methods, data member, constructor, and even main()
+	can have abstract and non-abstract methods, data member, constructor,
+	and even main()
 
 	can have constructors and static methods
 
 	can have final methods -> force subclass not to change method body 
 
-	can never be instantiated even if it contains constructor and implemented methods
+	can never be instantiated even if it contains constructor and
+	implemented methods
 
 	can provide implementation of interface
 
@@ -1136,7 +1211,8 @@ Core concepts of Java SE
 ## 
 - Marker interface
 
-	interface with no data member and member functions -> Serializable, Cloneable.
+	interface with no data member and member functions -> Serializable,
+	Cloneable.
 ##
 - Interface
 
@@ -1146,7 +1222,8 @@ Core concepts of Java SE
 	
 	Members of interface are public by default
 	
-	object reference can be cast to interface reference when it implements referenced interface
+	object reference can be cast to interface reference when it
+	implements referenced interface
 	
 	ex:
 	abstract class Bike{  
@@ -1212,9 +1289,11 @@ Core concepts of Java SE
 ##
 - Encapsulation
 
-	read-only  class -> all fields private. only getter returning private property of class to main method 
+	read-only  class -> all fields private. only getter returning private
+	property of class to main method 
 
-	write-only class -> all fields private. only setter setting value passed from main to private fields
+	write-only class -> all fields private. only setter setting value
+	passed from main to private fields
 ##
 - package
 
@@ -1234,9 +1313,11 @@ Core concepts of Java SE
 
 	Unchecked Exception
 
-		handled at runtime. ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
+		handled at runtime. ArithmaticException, NullPointerException,
+		ArrayIndexOutOfBoundsException, etc.
 
-	Error: not recoverable -> cause program to exit. OutOfMemoryError, AssertionError, etc.
+	Error: not recoverable -> cause program to exit. OutOfMemoryError,
+	AssertionError, etc.
 
 	advantage of exception handling:  maintain normal flow of application.
 ##
@@ -1248,12 +1329,14 @@ Core concepts of Java SE
 
 	Throwable -> Exception, Error
 	
-	Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
+	Exception -> IOException, SQLException, ClassNotFoundException,
+	RuntimeException
 	
-	RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException,
-						IndexOutOfBoundsException
+	RuntimeException -> ArithmeticException, NullPointerException,
+	NumberFormatException, IndexOutOfBoundsException
 						
-	IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
+	IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException,
+	StringIndexOutOfBoundsException
 	
 	Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
 ##	
@@ -1269,7 +1352,8 @@ Core concepts of Java SE
 ##	
 - Exception Propagation
 
-	[thrown from top -> not caught -> drops down previous] --> continues until caught or reach the very bottom of call stack
+	[thrown from top -> not caught -> drops down previous]
+	--> continues until caught or reach the very bottom of call stack
 	
 	Unchecked -> propagated by default
 	
@@ -1315,7 +1399,8 @@ Core concepts of Java SE
 ## 
 - Nested try block
 
-	[sub-block -> one error & entire block -> another error] -> nested exception
+	[sub-block -> one error & entire block -> another error]
+	-> nested exception
 ## 
 - Finally:
 
@@ -1400,7 +1485,8 @@ Core concepts of Java SE
 	    }  
 	} 
 	
-	ex: // throw a custom exception class from try block and catch it in catch block
+	ex: // throw a custom exception class from try block and catch
+	//it in catch block
 	class Calculation extends Exception  // class type is throwable
 	{  
 	    public Calculation()   
@@ -1525,7 +1611,9 @@ Core concepts of Java SE
 		
 	new keyword
 	
-		String s=new String("Welcome");//creates two objects and one reference variable
+		//creates two objects and one reference variable
+		String s=new String("Welcome");
+		
 		
 		new object in heap refered by s,
 		
@@ -1558,7 +1646,9 @@ Core concepts of Java SE
 	    {  
 		String s1 = "Sharma is a good player";  
 		String s2 = new String("Sharma is a good player");  
-		s2 = s2.intern(); // returns object reference from string pool -> s2 changes to reference of s1
+		 // returns object reference from string
+		 //pool -> s2 changes to reference of s1
+		s2 = s2.intern();
 		System.out.println(s1 ==s2);  
 	    }  
 	}  
@@ -1573,15 +1663,18 @@ Core concepts of Java SE
 ##
 - StringBuffer
 
-	synchronized -> thread safe -> two StringBuffer methods can't be called simultaneously
+	synchronized -> thread safe -> two StringBuffer methods
+	can't be called simultaneously
 
 	less efficient than StringBuilder.	
 ##
 - immutable class and all its members are final
 ##
-- toString(): returns string representation of object -> overriding -> desired output
+- toString(): returns string representation of object ->
+-  overriding -> desired output
 ##
-- String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
+- String is in string pool until garbage collection -> not good
+-  for stornjng password -> CharArray() is better and can be set to blank 
 ##
 - java.util.regex
 
@@ -1595,11 +1688,13 @@ Core concepts of Java SE
 ##
 - Metacharacters
 
-	^, $, ., *, +, etc. <- not regular characters fro regex engine -> use backslash to treat them ordinary.
+	^, $, ., *, +, etc. <- not regular characters fro regex
+	engine -> use backslash to treat them ordinary.
 ##
 - Nested classes
 
-	can access all members of outer class including private ->  used for readability and maintainability
+	can access all members of outer class including private
+	->  used for readability and maintainability
 	
 	static nested class
 	
@@ -1607,8 +1702,8 @@ Core concepts of Java SE
 	
 	disadvantages
 	
-		Inner classes increase total number of classes and workload of JVM
-		less support by IDEs to inner class
+		Inner classes increase total number of classes
+		and workload of JVM less support by IDEs to inner class
 ##
 - inner class
 
@@ -1626,7 +1721,8 @@ Core concepts of Java SE
 	
 		created within the method.
 		
-		local variable must be constant to access it in local inner class
+		local variable must be constant to access it in local
+		inner class
 		
 	ex:
 	public class Person {  
@@ -1676,7 +1772,8 @@ Core concepts of Java SE
 
 	ex:
 	public class TestGarbage1{  
-	 public void finalize(){System.out.println("object is garbage collected");}  
+	 public void finalize(){System.out.println("object is
+	 garbage collected");}  
 	 public static void main(String args[]){  
 	  TestGarbage1 s1=new TestGarbage1();  
 	  TestGarbage1 s2=new TestGarbage1();  
@@ -1719,13 +1816,18 @@ Core concepts of Java SE
 ##
 - hierarchy of InputStream and OutputStream
 	
-	OutputStream -> FileOutputStream, ByteArrayOutputStream, FilterOutputStream, PipedOutputStream
-			ObjectOutputStream, FilterOutputStream -> DataOutputStream, BufferedOutputStream, PrintStream
+	OutputStream -> FileOutputStream, ByteArrayOutputStream,
+	                FilterOutputStream, PipedOutputStream
+			ObjectOutputStream,
+			FilterOutputStream -> DataOutputStream,
+			BufferedOutputStream, PrintStream
 
-	InputStream -> FileInputStream, ByteArrayInputStream, FilterInputStream, PipedInputStream
+	InputStream -> FileInputStream, ByteArrayInputStream,
+	               FilterInputStream, PipedInputStream
 		       ObjectInputStream
 
-	FilterInputStream -> DataInputStream, BufferedInputStream, PushBackInputStream
+	FilterInputStream -> DataInputStream, BufferedInputStream,
+	                     PushBackInputStream
 
 	stream: sequence of data composed of bytes from source to destination
 
