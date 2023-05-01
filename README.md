@@ -19,8 +19,8 @@ Core concepts of Java SE
 	   
 	   If fixing bugs -> extend the class
 
-      3- Liskov Substitution: if class A is a subtype of class B, one should be able to replace B with A
-	   without disrupting the behavior of the program.
+      3- Liskov Substitution: if class A is a subtype of class B, one should
+      be able to replace B with A without disrupting the behavior of the program.
 	   
 	   A popular Example:
 	   
@@ -40,21 +40,24 @@ Core concepts of Java SE
 		}
 		public class Tesla implements Vehicle {
 			public void turnOnICEngine() 
-				// This new Vehicle is electric -> changes the program behavior!
+				// This new Vehicle is electric -> changes the
+				// program behavior!
 				//-> Liskov Substitution violated!
-				throw new AssertionError("Tesla doesn't have Internal Combustion (IC) engine!");
+				throw new AssertionError("Tesla doesn't have
+				Internal Combustion (IC) engine!");
 			}
 			public void accelerate() {
 				//Too much for Tesla!
 			}
-			// Possible Soultion -> Code another interface for taking into account the non-ICEngine ones.
+			// Possible Soultion -> Code another interface for
+			//taking into account the non-ICEngine ones.
 		}
 
-      4- Interface Segregation: larger interfaces be splited into smaller ones -> More specific
-		   methods in each interface.
+      4- Interface Segregation: larger interfaces be splited into smaller
+      ones -> More specific methods in each interface.
 	   
-      5- Dependency Inversion: Decoupling software modules -> high-level/low-level modules and details
-		   depend on abstractions.
+      5- Dependency Inversion: Decoupling software modules
+      -> high-level/low-level modules and details depend on abstractions.
 	   
 		example:
 	
