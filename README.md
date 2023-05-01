@@ -5,8 +5,7 @@ Core concepts of Java SE
 - SOLID Principles (not specific to Java)
 
       1- Single Responsibility for Each class <-> Just one reason needed
-      
-         to change that class.
+      to change that class.
 
 		Advantages:
 
