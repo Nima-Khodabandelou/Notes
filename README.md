@@ -91,7 +91,7 @@ Core concepts of Java SE
 				public void department() {
 					customerSupport();
 				}
-				private void customerSupport() {}
+				public void customerSupport() {}
 			}
 			public class WarehouseDepartment implements Departments {
 				@Override
