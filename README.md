@@ -35,7 +35,8 @@ Core concepts of Java SE
 				engine.on();
 			}
 			public void accelerate() {
-				engine.powerOn(5000);
+				accelValue=5000;
+				engine.powerOn(accelValue);
 			}
 		}
 		public class Tesla implements Vehicle {
@@ -289,10 +290,10 @@ Core concepts of Java SE
 		
 		Ex:
 		
-		public final class FinalClassExample {
+		public final class DeepOrShallowCopy {
 			private final int id;	
 			private final String name;	
-			private final HashMap<String,String> testMap;	
+			private final HashMap<String,String> hashMap;	
 			public int getId() {
 				return id;
 			}
@@ -300,23 +301,23 @@ Core concepts of Java SE
 				return name;
 			}
 			// Getter function for mutable objects
-			public HashMap<String, String> getTestMap() {
-				return (HashMap<String, String>) testMap.clone();
+			public HashMap<String, String> getterForMutableObjects() {
+				return (HashMap<String, String>) hashMap.clone();
 			}
 			// Constructor method performing deep copy	
-			public FinalClassExample(int i, String n,
-			HashMap<String,String> hm){
+			public DeepOrShallowCopy(int i, String n,
+			HashMap<String,String> hMap){
 				this.id=i;
 				this.name=n;
-				HashMap<String,String> tempMap=
+				HashMap<String,String> hashMap=
 				new HashMap<String,String>();
 				String key;
-				Iterator<String> it = hm.keySet().iterator();
+				Iterator<String> it = hMap.keySet().iterator();
 				while(it.hasNext()){
 					key=it.next();
-					tempMap.put(key, hm.get(key));
+					hashMap.put(key, hMap.get(key));
 				}
-				this.testMap=tempMap;
+				this.hashMap=hashMap;
 			}
 			// Test the immutable class
 			public static void main(String[] args) {
@@ -326,49 +327,42 @@ Core concepts of Java SE
 				h1.put("2", "second");		
 				String s = "original";		
 				int i=10;		
-				FinalClassExample ce = new FinalClassExample(i,s,h1);		
-				// print the ce values
+				DeepOrShallowCopy ce = new DeepOrShallowCopy(i,s,h1);		
 				System.out.println("ce id: "+ce.getId());
 				System.out.println("ce name: "+ce.getName());
-				System.out.println("ce testMap: "+ce.getTestMap());
-				// change the local variable values
+				System.out.println("ce hashMap: "+ce.getterForMutableObjects());
 				i=20;
 				s="modified";
 				h1.put("3", "third");
-				// print the values again
 				System.out.println("ce id after local variable change:
 				"+ce.getId());
 				System.out.println("ce name after local variable change:
 				"+ce.getName());
-				System.out.println("ce testMap after local variable
-				change: "+ce.getTestMap());		
-				HashMap<String, String> hmTest = ce.getTestMap();
+				System.out.println("ce hashMap after local variable
+				change: "+ce.getterForMutableObjects());		
+				HashMap<String, String> hmTest = ce.getterForMutableObjects();
 				hmTest.put("4", "new");		
-				System.out.println("ce testMap after changing variable
-				from getter methods: "+ce.getTestMap());
+				System.out.println("ce hashMap after changing variable
+				from getter methods: "+ce.getterForMutableObjects());
 			}
 		}
 		
-		output shows HashMap values didn’t change because constructor uses
-		deep copy and getter function returns a clone of original object.
+		deep copy -> getter function returns a clone of original object ->
+		             HashMap values didn’t change 
 		
-		can make changes to the FinalClassExample.java file to show what
-		happens when use shallow copy and return object insetad of a copy.
-		
-		Make the following changes:
+		shallow copy:
 		
 		// Getter function for mutable objects
-			public HashMap<String, String> getTestMap() {
+			public HashMap<String, String> getterForMutableObjects() {
 				return testMap;
 			}
-			//Constructor method performing shallow copy
-			public FinalClassExample(int i, String n,
-			HashMap<String,String> hm){
+			public DeepOrShallowCopy(int i, String n,
+			HashMap<String,String> hMap){
 				System.out.println("Performing Shallow
 				Copy for Object initialization");
 				this.id=i;
 				this.name=n;
-				this.testMap=hm;
+				this.testMap=hMap;
 			}
 ##
 - static methods/variables -> shared among all the objects of the class. 
@@ -1840,10 +1834,10 @@ Core concepts of Java SE
 		System.err: standard error
 
 
-
+##
 Reader/Writer class hierarchy  character-oriented,
 InputStream/OutputStream class hierarchy is byte-oriented.
-
+##
 ByteStream:  input-output of 8-bit 
 
 CharacterStream: input/output for 16-bit
@@ -1858,27 +1852,27 @@ CharacterStream : Reader classes and Writer classes.
 reading streams of characters -> FileReader
    
     
-
+##
 BufferedOutputStream
  internally uses buffer to store data.
  more efficiency than writing data directly into stream.
  
 BufferedInputStream
  read information from stream
-
+##
 FilePermission: alter permissions of a directory or file related to a path. -> two path types:
  all subdirectories and files 
  all directory and files within directory excluding subdirectories.
   
-
+##
 FilterStream: filters read data, adds line numbers,...
-
+##
 I/O filter:
  reads one stream and writes to another,
  usually altering data
 
 
-
+##
 take input from console:
  BufferedReader (efficient): use InputStreamReader to take input from console -> pass input to BufferedReader.
 	
@@ -1888,11 +1882,11 @@ take input from console:
 	 provides many methods to read
 	 parse various primitive values.
 	 widely used with regex
-    
+##    
 Using Console class:
  read console input, texts, passwords (not be displayed to user).
      
-
+##
 Serialization
 
  writing state of object into byte stream
@@ -1906,83 +1900,84 @@ Serialization
  implement writeObject()/readObject() along with throw NotSerializableException in subclass. 
  
   
-class Person implements Serializable   
-{   
-    String name = " ";  
-    public Person(String name)    
-    {   
-        this.name = name;   
-    }         
-}   
-class Employee extends Person  
-{   
-    float salary;  
-    public Employee(String name, float salary)    
-    {   
-        super(name);   
-        this.salary = salary;   
-    }   
-    private void writeObject(ObjectOutputStream out) throws IOException   
-    {   
-        throw new NotSerializableException();   
-    }   
-    private void readObject(ObjectInputStream in) throws IOException   
-    {   
-        throw new NotSerializableException();   
-    }   
-        
-}   
-public class Test   
-{   
-    public static void main(String[] args)    
-            throws Exception    
-    {   
-        Employee emp = new Employee("Sharma", 10000);   
-            
-        System.out.println("name = " + emp.name);   
-        System.out.println("salary = " + emp.salary);   
-            
-        FileOutputStream fos = new FileOutputStream("abc.ser");   
-        ObjectOutputStream oos = new ObjectOutputStream(fos);   
-                
-        oos.writeObject(emp);   
-                
-        oos.close();   
-        fos.close();   
-                
-        System.out.println("Object has been serialized");   
-            
-        FileInputStream f = new FileInputStream("ab.txt");   
-        ObjectInputStream o = new ObjectInputStream(f);   
-                
-        Employee emp1 = (Employee)o.readObject();   
-                
-        o.close();   
-        f.close();   
-                
-        System.out.println("Object has been deserialized");   
-            
-        System.out.println("name = " + emp1.name);   
-        System.out.println("salary = " + emp1.salary);   
-    }   
-}   
+	class Person implements Serializable   
+	{   
+		String name = " ";  
+		public Person(String name)    
+		{   
+			this.name = name;   
+		}         
+	}   
+	class Employee extends Person  
+	{   
+		float salary;  
+		public Employee(String name, float salary)    
+		{   
+			super(name);   
+			this.salary = salary;   
+		}   
+		private void writeObject(ObjectOutputStream out) throws IOException   
+		{   
+			throw new NotSerializableException();   
+		}   
+		private void readObject(ObjectInputStream in) throws IOException   
+		{   
+			throw new NotSerializableException();   
+		}   
+			
+	}   
+	public class Test   
+	{   
+		public static void main(String[] args)    
+				throws Exception    
+		{   
+			Employee emp = new Employee("Sharma", 10000);   
+				
+			System.out.println("name = " + emp.name);   
+			System.out.println("salary = " + emp.salary);   
+				
+			FileOutputStream fos = new FileOutputStream("abc.ser");   
+			ObjectOutputStream oos = new ObjectOutputStream(fos);   
+					
+			oos.writeObject(emp);   
+					
+			oos.close();   
+			fos.close();   
+					
+			System.out.println("Object has been serialized");   
+				
+			FileInputStream f = new FileInputStream("ab.txt");   
+			ObjectInputStream o = new ObjectInputStream(f);   
+					
+			Employee emp1 = (Employee)o.readObject();   
+					
+			o.close();   
+			f.close();   
+					
+			System.out.println("Object has been deserialized");   
+				
+			System.out.println("name = " + emp1.name);   
+			System.out.println("salary = " + emp1.salary);   
+		}   
+	}   
 
-
+##
 Deserialization:
  
-class Depersist{  
- public static void main(String args[])throws Exception{  
-    
-  ObjectInputStream in=new ObjectInputStream(new FileInputStream("f.txt"));  
-  Student s=(Student)in.readObject();  
-  System.out.println(s.id+" "+s.name);  
-  
-  in.close();  
- }  
-}  
-
+	class Depersist{  
+	 public static void main(String args[])throws Exception{  
+		
+	  ObjectInputStream in=new ObjectInputStream(new FileInputStream("f.txt"));  
+	  Student s=(Student)in.readObject();  
+	  System.out.println(s.id+" "+s.name);  
+	  
+	  in.close();  
+	 }  
+	} 
+	
+##
 transient data member can not be serialized
-
+##
 Externalizable interface: write state of object into byte stream in compressed format
 
 
@@ -1995,77 +1990,60 @@ Externalizable interface: write state of object into byte stream in compressed f
 					must call public default constructor
 					contains two methods -> writeExternal and readExternal
 
-
-
+##
 Socket programming
  socket: endpoint for communications between machines -> connection mechanism: TCP
  communication between applications running on different JRE.
  connection-oriented -> Socket and ServerSocket classes
  connectionless -> DatagramSocket
-
  
-client needs:
-	server IP address
-	port number
+	client needs:
+		server IP address
+		port number
 
-
-
-steps for TCP connection:
- server -> ServerSocket instantiation -> port number
+ steps for TCP connection:
+  server -> ServerSocket instantiation -> port number
  
-server -> accept() method -> wait until client attempts to connect 
+ server -> accept() method -> wait until client attempts to connect 
 
-client creats socket 
+ client creats socket 
 
-connection established -> socket object for client 
+ connection established -> socket object for client 
 
-server uses accept() to return a reference to new socket 
+ server uses accept() to return a reference to new socket 
 
 
-public class MyServer {  
-public static void main(String[] args){  
-try{  
-ServerSocket ss=new ServerSocket(6666);  
-Socket s=ss.accept();//establishes connection   
-DataInputStream dis=new DataInputStream(s.getInputStream());  
-String  str=(String)dis.readUTF();  
-System.out.println("message= "+str);  
-ss.close();  
-}catch(Exception e){System.out.println(e);}  
-}  
-}  
-import java.io.*;  
-import java.net.*;  
-public class MyClient {  
-public static void main(String[] args) {  
-try{    
-Socket s=new Socket("localhost",6666);  
-DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
-dout.writeUTF("Hello Server");  
-dout.flush();  
-dout.close();  
-s.close();  
-}catch(Exception e){System.out.println(e);}  
-}  
-}  
+	public class MyServer {  
+		public static void main(String[] args){  
+		try{  
+			ServerSocket ss=new ServerSocket(6666);  
+			Socket s=ss.accept();//establishes connection   
+			DataInputStream dis=new DataInputStream(s.getInputStream());  
+			String  str=(String)dis.readUTF();  
+			System.out.println("message= "+str);  
+			ss.close();  
+			}catch(Exception e){System.out.println(e);}  
+		}  
+	}  
+  
+	public class MyClient {  
+		public static void main(String[] args) {  
+		try{    
+			Socket s=new Socket("localhost",6666);  
+			DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
+			dout.writeUTF("Hello Server");  
+			dout.flush();  
+			dout.close();  
+			s.close();  
+			}catch(Exception e){System.out.println(e);}  
+		}  
+	}  
 
-convert a numeric IP address like 192.18.97.39 into a hostname like java.sun.com:
-By InetAddress.getByName("192.18.97.39").getHostName() where 192.18.97.39 is the IP address:
-import java.io.*;    
-import java.net.*;    
-public class InetDemo{    
-public static void main(String[] args){    
-try{    
-InetAddress ip=InetAddress.getByName("195.201.10.8");  
-System.out.println("Host Name: "+ip.getHostName());    
-}catch(Exception e){System.out.println(e);}    
-}    
-}    
-
+##
 Reflection
  examining/ modifying runtime behavior of class 
  
-
+##
 java.lang.Class:
  get metadata of class at runtime
  change runtime behavior
@@ -2074,30 +2052,30 @@ java.lang.Class:
  
   getClass() -> returns instance of java.lang.Class <- if know type (also for primitives)
   
-  .clas -> If no instance but type available -> append ".class" to name of type (also for primitives)
+  .class -> If no instance but type available -> append ".class" to name of type (also for primitives)
 
 
-class Simple{    
- public Simple()  
- {  
-   System.out.println("Constructor of Simple class is invoked");  
- }  
- void message(){System.out.println("Hello Java");}    
-}        
-class Test1{    
- public static void main(String args[]){    
-  try{    
-  Class c=Class.forName("Simple");    
-  Simple s=(Simple)c.newInstance();    
-  s.message();    
-  }catch(Exception e){System.out.println(e);}    
- }    
-}    
-
+	class Simple{    
+	 public Simple()  
+	 {  
+	   System.out.println("Constructor of Simple class is invoked");  
+	 }  
+	 void message(){System.out.println("Hello Java");}    
+	}        
+	class Test1{    
+	 public static void main(String args[]){    
+	  try{    
+	  Class c=Class.forName("Simple");    
+	  Simple s=(Simple)c.newInstance();    
+	  s.message();    
+	  }catch(Exception e){System.out.println(e);}    
+	 }    
+	}
+    
+##
 newInstance():
  invoke constructor at runtime. 
-
-
+##
 javap:
  disassembles class file -> gives info about fields/constructors/ methods
 
@@ -2138,7 +2116,7 @@ m.setAccessible(true);
 m.invoke(obj,4);  
 }}  
 
-
+##
 access private constructor -> getDeclaredConstructor()
 
 ex:  
@@ -2228,7 +2206,7 @@ NoSuchMethodException, SecurityException
    ob.craeteObjByConstructorName(30, "Alto");  
 }  
 }  
-
+##
 Wrapper classes
 
   conversion of objects to primitives (unboxing) and primitives to objects (autoboxing)
@@ -2240,7 +2218,7 @@ Wrapper classes
 	long	Long
 	float	Float
 	double	Double
-
+##
 Unboxing and autoboxing -> automatic in Java
  valueOf()/xxxValue() for manual conversion
 
@@ -2260,28 +2238,11 @@ public class Test1
   }  
   }  
 }  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##
 native method implemented in another language
-
+##
 strictfp: get same floating-point arithmetic result on all platforms
-
-
-
+##
 System class
  cannot be instantiated.
  for
@@ -2295,9 +2256,7 @@ System class
 	 static printstream err,
 	 static inputstream in,
 	 standard output stream.
-
-
-
+##
 Singleton class:
  instantiates only once
  make by
@@ -2332,7 +2291,7 @@ public class Main
     }  
 }  
       
-
+##
 Locale:
  
 public class LocaleExample {  
@@ -2351,27 +2310,24 @@ System.out.println(locale.getCountry());
 }  
 
 ResourceBundle.getBundle -> specific locale 
-
+##
 JavaBean:
  reusable software component
  encapsulates many objects into one in order to access it from multiple
   places. 
  easy maintenance. 
 ex:
-package mypack;  
+  
 public class Employee implements java.io.Serializable{  
-private int id;  
-private String name;  
-public Employee(){}  
-public void setId(int id){this.id=id;}  
-public int getId(){return id;}  
-public void setName(String name){this.name=name;}  
-public String getName(){return name;}  
+	private int id;  
+	private String name;  
+	public Employee(){}  
+	public void setId(int id){this.id=id;}  
+	public int getId(){return id;}  
+	public void setName(String name){this.name=name;}  
+	public String getName(){return name;}  
 } 
- 
-
-
-
+##
 RMI (Remote Method Invocation)
  for distributed application
  allows object -> invoke methods on object in another JVM by stub (for client side) and skeleton
@@ -2391,7 +2347,7 @@ RMI (Remote Method Invocation)
 		invokes method on actual remote object
 		writes and transmits (marshals) result to caller
 
-RMI programs:
+RMI in programs:
 	Create remote interface.
 	Provide implementation of remote interface
 	Compile implementation class and create stub and skeleton
@@ -2402,13 +2358,12 @@ RMI programs:
     HTTP-tunneling: doesn't need setup to work within firewall
 	 handles HTTP through proxy servers
 	 not allow outbound TCP
-
+##
 JRMP (Java Remote Method Protocol) Java-specific,
  stream-based protocol -> looks up and refers to remote objects
  requires both client and server to use objects
  wire level -> runs under RMI and over TCP/IP
-
-
+##
 Multitasking -> to utilize CPU
 
 
@@ -2417,7 +2372,7 @@ Multitasking -> to utilize CPU
 
  Thread-based Multitasking (Multithreading) ->
   same address space for threads
-  
+##  
 Multithreading
  
  thread: lightweight sub-process
@@ -2431,15 +2386,12 @@ Multithreading
     no user block
     doesn't affect other threads in case of exception  
   saves time
- 
-
-
-
+##
 Life cycle of a Thread (Thread States):
  New: thread created -> new state -> code not run yet
  Active: start() -> two states within: runnable and running
   ready to run thread moved to runnable state -> time to run <- thread scheduler
-
+##
 fixed time to each thread -> time over -> voluntarily gives up CPU to other thread
 
 threads wait for their turn to run
@@ -2447,82 +2399,66 @@ threads wait for their turn to run
  
 Blocked/ Waiting <->  thread inactive 
 
+ex:
 class ABC implements Runnable  
 {  
-public void run()  
-{  
-try  
-{  
-// moving thread t2 to the state timed waiting  
-Thread.sleep(100);  
-}  
-catch (InterruptedException ie)  
-{  
-ie.printStackTrace();  
+	public void run()  
+	{  
+		try {  
+	// moving thread t2 to the state timed waiting  
+			Thread.sleep(100);}  
+		catch (InterruptedException ie) { 
+			ie.printStackTrace();}    
+		System.out.println("The state of thread t1 while it invoked the method join() on thread t2 -"+
+		ThreadState.t1.getState());  
+		try {Thread.sleep(200);}  
+		catch (InterruptedException ie) {  
+			ie.printStackTrace();}     
+	}  
 }    
-System.out.println("The state of thread t1 while it invoked the method join() on thread t2 -"+
- ThreadState.t1.getState());  
-try  
+public class ThreadState implements Runnable
 {  
-Thread.sleep(200);  
-}  
-catch (InterruptedException ie)  
-{  
-ie.printStackTrace();  
-}     
-}  
-}    
-public class ThreadState implements Runnable  
-{  
-public static Thread t1;  
-public static ThreadState obj;  
-public static void main(String argvs[])  
-{  
-obj = new ThreadState();  
-t1 = new Thread(obj);   
-// thread t1 is spawned   
-// The thread t1 is currently in the NEW state.  
-System.out.println("The state of thread t1 after spawning it - " + t1.getState());  
-// invoking the start() method on the thread t1  
-t1.start();    
-// thread t1 is moved to the Runnable state  
-System.out.println("The state of thread t1 after invoking the method start() on it - " + t1.getState());  
-}  
+	public static Thread t1;  
+	public static ThreadState obj;  
+	public static void main(String argvs[])  
+	{  
+		obj = new ThreadState();  
+		t1 = new Thread(obj);   
+		// thread t1 is spawned   
+		// The thread t1 is currently in the NEW state.  
+		System.out.println("The state of thread t1 after spawning it - " + t1.getState());  
+		// invoking the start() method on the thread t1  
+		t1.start();    
+		// thread t1 is moved to the Runnable state  
+		System.out.println("The state of thread t1 after invoking the method start() on it - " + t1.getState());  
+	}  
   
-public void run()  
-{  
-ABC myObj = new ABC();  
-Thread t2 = new Thread(myObj);    
-// thread t2 is created and is currently in the NEW state.  
-System.out.println("The state of thread t2 after spawning it - "+ t2.getState());  
-t2.start();  
-// thread t2 is moved to the runnable state  
-System.out.println("the state of thread t2 after calling the method start() on it - " + t2.getState());  
-// try-catch block for the smooth flow of the  program  
-try  
-{  
-// moving the thread t1 to the state timed waiting   
-Thread.sleep(200);  
+	public void run()
+    {  
+		ABC myObj = new ABC();  
+		Thread t2 = new Thread(myObj);    
+		// thread t2 is created and is currently in the NEW state.  
+		System.out.println("The state of thread t2 after spawning it - "+ t2.getState());  
+		t2.start();  
+		// thread t2 is moved to the runnable state  
+		System.out.println("the state of thread t2 after calling the method start() on it - " + t2.getState());  
+		// try-catch block for the smooth flow of the  program  
+		try  {  
+		// moving the thread t1 to the state timed waiting   
+		Thread.sleep(200);}  
+		catch (InterruptedException ie)  {  
+		ie.printStackTrace();}  
+		System.out.println("The state of thread t2 after invoking the method sleep() on it - "+ t2.getState());  
+		// try-catch block for the smooth flow of the  program  
+		try  {  
+		// waiting for thread t2 to complete its execution  
+		t2.join();}  
+		catch (InterruptedException ie) {  
+		ie.printStackTrace();}  
+		System.out.println("The state of thread t2 when it has completed it's execution - " + t2.getState());  
+	}  
 }  
-catch (InterruptedException ie)  
-{  
-ie.printStackTrace();  
-}  
-System.out.println("The state of thread t2 after invoking the method sleep() on it - "+ t2.getState());  
-// try-catch block for the smooth flow of the  program  
-try  
-{  
-// waiting for thread t2 to complete its execution  
-t2.join();  
-}  
-catch (InterruptedException ie)  
-{  
-ie.printStackTrace();  
-}  
-System.out.println("The state of thread t2 when it has completed it's execution - " + t2.getState());  
-}  
-}  
-
+##
 two ways to create a thread:
 Thread class:
  provide constructors/methods to create
@@ -2537,8 +2473,7 @@ Thread class:
 
 
 
-
-Java Thread Example by extending Thread class
+ex: extending Thread class
 class Multi extends Thread{  
 public void run(){  
 System.out.println("thread is running...");  
@@ -2549,7 +2484,7 @@ t1.start();
  }  
 }  
 
-Java Thread Example by implementing Runnable interface
+ex: implementing Runnable interface
 class Multi3 implements Runnable{  
 public void run(){  
 System.out.println("thread is running...");  
@@ -2560,7 +2495,7 @@ Thread t1 =new Thread(m1);   // Using the constructor Thread(Runnable r)
 t1.start();  
  }  
 } 
-
+##
 Synchronization:
  control access of multiple threads to any shared resource To prevent
   thread interference
@@ -2574,7 +2509,7 @@ Synchronization:
 	static synchronization:	 synchronized static method -> lock will on class not object
  notify(): unblock waiting thread
  notifyAll(): unblock all threads in waiting state
-
+##
 Deadlock: every thread waiting for resource held by some other waiting thread ->
           Neither of thread executes nor gets chance to execute -> code breaks
 
@@ -2584,24 +2519,21 @@ avoid deadlock:
 	no Nested lock: when provide locks to threads to give one lock to only one thread at particular time
 	no unnecessary locks
     Use thread join: wait for thread til another thread finishes
- 
-
-
+##
 method/class used by multiple threads at time without any race condition -> class is thread-safe
  ways:
 	Synchronization
 	Volatile keyword
 	ock based mechanism
 	atomic wrapper classes
-
-
+##
 Java Thread pool
  threads group, supervised by service provider, waiting for task
  size depends on number of threads kept at reserve
  advantages:
   performance
   stability
-
+##
 Concurrency:
  Executor Interface to execute new task
 	example:
@@ -2629,9 +2561,9 @@ Concurrency:
 		  }  
 	   }  
 	}     
-
+##
 BlockingQueue subinterface: for operations
-	example:      
+	ex:      
 	public class TestThread {  
 	   public static void main(final String[] arguments) throws InterruptedException {  
 		  BlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(10);  
@@ -2740,25 +2672,24 @@ BlockingQueue subinterface: for operations
 			}  
 		}  
 	}
-
+##
 Callable interface can but Runnable can't:
  return result
  throw checked exception
-
+##
 Atomic action:
  operation in a single unit of task without interference of other operations
  cannot be stopped between task
  Once started it fill stop after the completion of task
  examples: reads and writes operation for the primitive variable (except long and double)
-
+##
 java.util.concurrent.locks.Lock pros over synchronized block:
  guarantee of sequence in which waiting thread given access
  timeout option if lock not granted 
  Lock()/Unlock()/... can be called in different methods
- 
- 
+##
 ExecutorService subinterface -> to managee lifecycle
-example:      
+ex:      
 import java.util.concurrent.ExecutorService;  
 import java.util.concurrent.Executors;  
 import java.util.concurrent.TimeUnit;   
@@ -2794,129 +2725,121 @@ public class TestThread {
       }  
    }         
 }  
-
+##
 Asynchronous Programming: one job completed by multiple threads -> maximum usability
-
+##
 Java Future interface: result of concurrent process
-
-
+##
 Array/Collection:
  store references
  manipulate data
  Arrays: fixed size, store homogeneous, no ready-made methods   
  Collections: variable size, heterogeneous, readymade methods 
-
+##
 1)	ArrayList not synchronized.	Vector: synchronized.
 2)	ArrayList not a legacy class.	Vector: legacy class.
-3)	ArrayList increases its size by 50% of the array size.	Vector increases its size by
- doubling the array size.
-4)	ArrayList not ?thread-safe? as not synchronized.	Vector list thread-safe as
- it's every method is synchronized.
-5) What is the difference between ArrayList and LinkedList?
-
+3)	ArrayList increases its size by 50% of the array size.
+	Vector increases its size by doubling the array size.
+4)	ArrayList not ?thread-safe? as not synchronized.
+	Vector list thread-safe as it's every method is synchronized.
+##
 1)	ArrayList uses a dynamic array.	LinkedList uses a doubly linked list.
 2)	ArrayList not efficient for manipulation because too much is required.
 	LinkedList efficient for manipulation.
 3)	ArrayList better to store and fetch data.	LinkedList better to manipulate data.
 4)	ArrayList provides random access.	LinkedList does not provide random access.
-5)	ArrayList takes less memory overhead as it stores only object	LinkedList takes
-    more memory overhead as it stores object and address
-Iterator traverses elements in forward direction only whereas ListIterator
- traverses elements into forward and backward direction.
-
+5)	ArrayList takes less memory overhead as it stores only object
+	LinkedList takes more memory overhead as it stores object and address
+    Iterator traverses elements in forward direction only whereas ListIterator
+     traverses elements into forward and backward direction.
+##
 1)	Iterator traverses elements in forward direction only.
 	ListIterator traverses elements in backward and forward directions both.
-2)	Iterator can be used in List, Set, and Queue.	ListIterator can be used in List only.
+2)	Iterator can be used in List, Set, and Queue.
+	ListIterator can be used in List only.
 3)	Iterator can only perform remove operation while traversing collection.
-	ListIterator can perform add, remove, and set operation while traversing collection.
-1)	Iterator traverse legacy and non-legacy elements.	Enumeration traverse only legacy elements.
+	ListIterator can perform add, remove, and
+     set operation while traversing collection.
+1)	Iterator traverse legacy and non-legacy elements.
+	Enumeration traverse only legacy elements.
 2)	Iterator is fail-fast.	Enumeration is not fail-fast.
-3)	Iterator is slower than Enumeration.	Enumeration is faster than Iterator.
+3)	Iterator is slower than Enumeration.
+	Enumeration is faster than Iterator.
 4)	Iterator can perform remove operation while traversing collection.
 	The Enumeration can perform only traverse operation on collection.
-
+##
 List contain duplicate elements
 List is ordered collection maintains insertion order 
 List contains single legacy class which is Vector class whereas Set interface does not have any legacy
  class.
 List allow n number of null values whereas Set only allows single null value.
-
+##
 HashSet maintains no order, TreeSet maintains ascending order.
 HashSet impended by hash table, TreeSet implemented by Tree structure.
 HashSet performs faster than TreeSet.
 HashSet backed by HashMap, TreeSet backed by TreeMap.
-
+##
 Set contains values only, Map contains key and values.
 Set contains unique values, Map contain unique Keys with duplicate values.
 Set holds single number of null value, Map include single null key with n number of null values.
-
+##
 HashSet contains only values whereas HashMap includes entry (key, value).
 HashSet can iterate, HashMap needs to convert into Set to iterate.
 HashSet implements Set, HashMap implements Map
 HashSet no duplicate value, HashMap contain duplicate values with unique keys.
 HashSet contains only single number of null value whereas HashMap hold single null key
  with n number of null values.
-
-
+##
 HashMap maintains no order, TreeMap maintains ascending order.
 HashMap implemented by hash table, TreeMap implemented by Tree 
 HashMap sorted by Key or value, TreeMap sorted by Key.
 HashMap contain null key with multiple null values, TreeMap cannot hold null key
  but can have multiple null values.
-
-1)	HashMap not synchronized.	Hashtable synchronized.
+##
+1)	HashMap not synchronized.
+	Hashtable synchronized.
 2)	HashMap contain one null key and multiple null values.
 	Hashtable cannot contain any null key or null value.
-3)	HashMap not thread-safe -> useful for non-threaded applications.	Hashtable is thread-safe, and it can be shared between various threads.
+3)	HashMap not thread-safe -> useful for non-threaded applications.
+	Hashtable is thread-safe, and it can be shared between various threads.
 4)	HashMap inherits AbstractMap class,	Hashtable inherits Dictionary class.
-
+##
 Collection is interface, Collections is class.
 Collection -> List, Set, Queue. Collections -> sort and synchronize collection elements.
-
-
+##
 hashCode() -> same integer if two keys by calling equals() are identical.
-
+##
 possible that two hash code numbers have different or same keys
-
-
+##
 equals() -> override to check objects based on property.
-
-
-
+##
 synchronize List, Set and Map by Collections
-
-
+##
 generic collection:
  not need typecasting if using generic class
  type-safe
  checked at compile time
  makes code bug detectable at compile time -> more stable code
- 
-
+##
 hash-collision: Two keys with same hash value
  to avoid -> keep Two separate entries in a single hash bucket
              Separate Chaining
              Open Addressing
-			 
+##			 
 Dictionary: key-value pairs.
-
+##
 load factor default size: 0.75.
 default capacity: initial capacity * load factor
- 
-
+##
 Fail-fast iterator: throws ConcurrentmodificationException in case of structural modification 
                     not require any extra space in memory.
-
-
+##
 unmodifiableCollection() -> make Java ArrayList Read-Only
-
-
-
+##
 remove duplicates from ArrayList:
  by HashSet: not preserve insertion order.
  by LinkedHashSet: maintain insertion order
- 
-
+ex:
 public class ReverseArrayList {  
 public static void main(String[] args) {  
      List list = new ArrayList<>();  
@@ -2938,8 +2861,8 @@ public static void main(String[] args) {
      }  
     }  
 }  
-
-sort ArrayList in descending order:
+##
+ex: sort ArrayList in descending order:
 
 public class ReverseArrayList {  
 public static void main(String[] args) {  
@@ -2969,7 +2892,7 @@ public static void main(String[] args) {
        
 }  
 }  
-
+##
 synchronize ArrayList:
  Using Collections.synchronizedList() 
  Using CopyOnWriteArrayList<T>
