@@ -625,27 +625,27 @@ Core concepts of Java SE
 
       cannot be used in static context as they are non-static. 
 
-	  Can't use this() and super() both in constructor
+      Can't use this() and super() both in constructor
 	  
-	  this:	  
+      this:	  
 	   
-	   possible but not good to refer static members <--> it is unnecessary to
-       access static variables through objects
+       possible but not good to refer static members <--> it is unnecessary to
+        access static variables through objects
 	
        to perform constructor chaining within the same class
 	  
-	   to pass as an argument in the method. used in the event handling 
+       to pass as an argument in the method. used in the event handling 
 
-       Call to this() must be the first statement in constructor
+       must be the first statement in constructor
 
-	   to pass as argument in the constructor call. useful if have to use one
+       to pass as argument in the constructor call. useful if have to use one
        object in multiple classes
 	  
-	   as statement from method -> return type of method must be class type
+       as statement from method -> return type of method must be class type
  
        to distinguish local variable and instance variable   
  
-       to invoke method of current class. If don't use this keyword, compiler
+       to invoke method of current class. If don't use 'this' keyword, compiler
        automatically adds
 	  
        advantages of passing this into method instead of current class object
@@ -659,18 +659,16 @@ Core concepts of Java SE
 
       super:
 
-        to refer to immediate parent class.
+        to refer to immediate parent class obj
 	
-        instance of subclass created -> instance of parent class created
-        implicitly referred by super
-	
-        called in constructor implicitly by compiler if no super or this. 
-	
-        to refer to immediate parent class instance variable.
+	to refer to immediate parent class instance variable
 	
         to invoke the immediate parent class method.
 	
-        to invoke immediate parent class constructor.
+        to invoke immediate parent class constructor.	
+	
+        instance of subclass created -> instance of parent class created
+        implicitly referred by super   
 	
         for initializing super-class variables within sub-class constructor 
 	
@@ -678,19 +676,12 @@ Core concepts of Java SE
 	
         for constructor chaining
 		
-        A reference variable used for refering to the immediate parent
-        class object
-       
         Called implicitly by the class constructor if not provided  
        
         Can refer to immediate parent class instance variable
        
-        For immediate parent class method invocation
-       
-        To differentiate between local and instance variables in the class
-        constructor
-       
-        Must be the first statement in constructor		
+        To differentiate between local and instance variables in class
+        constructor		
 		
       ex:
       class Employee
