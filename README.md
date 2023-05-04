@@ -968,7 +968,7 @@ Core concepts of Java SE
       particular case of aggregation representing stronger relationship
       between two objects.
 
-      Ex: class contains Employees. Employee cannot exist without a class.
+      Ex: Company contains Employees. Employee cannot exist without a class.
 ## 
 - pointer
 
