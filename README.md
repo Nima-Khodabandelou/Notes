@@ -197,6 +197,70 @@ Core concepts of Java SE
       Private: accessible within the class
 ## 
 - delete, next, main, exit or null are not keyword
+## 
+- Inheritance
+
+      code reusability -> sub-class need not to redefine method of super-class
+      unless it needs to provide specific implementation.
+
+      Runtime polymorphism -> simulate inheritance with real-time objects
+      -> makes OOPs more realistic. 
+
+      provides data hiding -> super-class can hide data from sub-class.
+
+      makes Method overriding possible
+##
+- packages
+
+      avoid the name clashes.
+      
+      provides easier access control.
+      
+      can  have the hidden classes.
+      
+      easier to locate the related classes.
+##
+- Object
+
+      real-time entity having state and behavior.
+      
+      an instance of class
+      
+      instance variables <-> state of object
+      
+      methods <-> behavior of object.
+      
+      created using new keyword.
+      
+      All object references <-> initialized to null.
+##
+- constructor
+
+      special type of method to initialize the state
+      
+      invoked when class instantiated, obj created, and memory
+       allocated for object -> so no sense to make constructors static
+      
+      Every time an object created using new keyword, default constructor
+      is called 
+      
+      must not have explicit return type.
+      
+      is not inherited.
+      
+      can't be final           
+##	  
+- method
+
+      exposes behavior of object
+
+      must have a return type
+
+      is invoked explicitly
+
+      is not provided by the compiler in any case.
+
+      method name may or may not be same as class name      
 ##
 - Final keyword
 
@@ -404,163 +468,13 @@ Core concepts of Java SE
   can't use non-static data member
 
   can't call non-static method directly
+  can't override static method
   
  Static block
 
   to initialize the static data member.
 
   executed before the main method at the time of classloading. 
-##
-- packages
-
-      avoid the name clashes.
-      
-      provides easier access control.
-      
-      can  have the hidden classes.
-      
-      easier to locate the related classes.
-##
-- Object
-
-      real-time entity having state and behavior.
-      
-      an instance of class
-      
-      instance variables <-> state of object
-      
-      methods <-> behavior of object.
-      
-      created using new keyword.
-      
-      All object references <-> initialized to null.
-##
-- constructor
-
-      special type of method to initialize the state
-      
-      invoked when  class is instantiated,and memory allocated for object
-      
-      Every time an object created using new keyword, default constructor
-      is called 
-      
-      must not have explicit return type.
-      
-      is not inherited.
-      
-      can't be final.
-##
-- copy values of one object into another
-
-      By constructor
-
-      By assigning the values of one object into another
-
-      By clone() method of Object class
-
-      ex: 
-      class Employee{  
-	    int id;  
-	    String name; 
-		
-	    Employee(int i,String n)
-		{  
-	    id = i;  
-	    name = n;  
-	    }  
-		
-	    Employee(Employee s)
-		{  
-	    id = s.id;  
-	    name =s.name;  
-	    }  
-		
-	    void show(){System.out.println(id+" "+name);}   
-		
-	    public static void main(String args[])
-		{  
-			Employee s1 = new Employee(111,"Karan");  
-			Employee s2 = new Employee(s1);
-			
-			s1.show();  
-			s2.show();  
-	    }  
-      }  
-## 
-- object cloning <--> shallow copy
-
-      create exact copy of object -> clone() method -> java.lang.Cloneable
-      interface 
-
-      syntax -> protected Object clone() throws CloneNotSupportedException 
-
-      clone() method saves extra processing compared to new keyword
- 
-      Advantage
-
-		don't need to write lengthy and repetitive codes.
-
-		easiest -> Just define parent class, implement Cloneable
-		in it, provide clone().
-
-		fastest way to copy array  
-
-      Disadvantage
-
-		have to change a lot of syntaxes
-
-		have to implement cloneable interface while it doesn't
-		have any methods. just to tell JVM.
-
-		is protected -> have to provide our own clone() and
-		indirectly call Object.clone()
-
-		doesn't invoke constructor -> no control over object
-		construction  
-
-		If clone method in child class -> all of its superclasse
-		s should define clone() or inherit. 
-
-		supports only shallow copying -> need to override it if
-		need deep cloning.
-	
-      ex: 
-      class Employee implements Cloneable{  
-			int number;  
-			String name;  
-
-			Employee(int number,String name){  
-			this.number=number;  
-			this.name=name;  
-		}  
-		public Object clone()throws CloneNotSupportedException{  
-			return super.clone();  
-      }  
-      public static void main(String args[]){  
-			try{  
-				Employee s1=new Employee(101,"amit");  
-
-				Employee s2=(Employee)s1.clone();  
-
-				System.out.println(s1.number+" "+s1.name);  
-				System.out.println(s2.number+" "+s2.name);  
-
-			}catch(CloneNotSupportedException c){}  
-
-			}  
-      }
-##	  
-- method
-
-      exposes behavior of object
-
-      must have a return type
-
-      is invoked explicitly
-
-      is not provided by the compiler in any case.
-
-      method name may or may not be same as class name.
 ## 
 - Type promotion in Java
 
@@ -921,35 +835,114 @@ Core concepts of Java SE
       static -> Because object not required to call the static method.
 
       non-static main method -> JVM have to create its object first then
-      call main() -> extra memory allocation.
-##
-- can't override static methods.
-
+      call main() -> extra memory allocation
 ## 
-- Constructors
+- abstract
 
-      invoked when object created -> no sense to make constructors static.
-## 
-- abstract methods
-
-      -> static -> become part of the class -> can directly call it which
+      method -> static -> become part of the class -> can directly call it which
       is unnecessary.
+      
+      class -> can declare static variables and methods
+##
+- copy values of one object into another
+
+      By constructor
+
+      By assigning the values of one object into another
+
+      By clone() method of Object class
+
+      ex: 
+      class Employee{  
+	    int id;  
+	    String name; 
+		
+	    Employee(int i,String n)
+		{  
+	    id = i;  
+	    name = n;  
+	    }  
+		
+	    Employee(Employee s)
+		{  
+	    id = s.id;  
+	    name =s.name;  
+	    }  
+		
+	    void show(){System.out.println(id+" "+name);}   
+		
+	    public static void main(String args[])
+		{  
+			Employee s1 = new Employee(111,"Karan");  
+			Employee s2 = new Employee(s1);
+			
+			s1.show();  
+			s2.show();  
+	    }  
+      }  
 ## 
-- can declare static variables and methods in abstract class
-## 
+- object cloning <--> shallow copy
 
-## 
-- Inheritance
+      create exact copy of object -> clone() method -> java.lang.Cloneable
+      interface 
 
-      code reusability -> sub-class need not to redefine method of super-class
-      unless it needs to provide specific implementation.
+      syntax -> protected Object clone() throws CloneNotSupportedException 
 
-      Runtime polymorphism -> simulate inheritance with real-time objects
-      -> makes OOPs more realistic. 
+      clone() method saves extra processing compared to new keyword
+ 
+      Advantage
 
-      provides data hiding -> super-class can hide data from sub-class.
+		don't need to write lengthy and repetitive codes.
 
-      makes Method overriding possible
+		easiest -> Just define parent class, implement Cloneable
+		in it, provide clone().
+
+		fastest way to copy array  
+
+      Disadvantage
+
+		have to change a lot of syntaxes
+
+		have to implement cloneable interface while it doesn't
+		have any methods. just to tell JVM.
+
+		is protected -> have to provide our own clone() and
+		indirectly call Object.clone()
+
+		doesn't invoke constructor -> no control over object
+		construction  
+
+		If clone method in child class -> all of its superclasse
+		s should define clone() or inherit. 
+
+		supports only shallow copying -> need to override it if
+		need deep cloning.
+	
+      ex: 
+      class Employee implements Cloneable{  
+			int number;  
+			String name;  
+
+			Employee(int number,String name){  
+			this.number=number;  
+			this.name=name;  
+		}  
+		public Object clone()throws CloneNotSupportedException{  
+			return super.clone();  
+      }  
+      public static void main(String args[]){  
+			try{  
+				Employee s1=new Employee(101,"amit");  
+
+				Employee s2=(Employee)s1.clone();  
+
+				System.out.println(s1.number+" "+s1.name);  
+				System.out.println(s2.number+" "+s2.name);  
+
+			}catch(CloneNotSupportedException c){}  
+
+			}  
+      }      
 ## 
 - Aggregation (has-a)
 
