@@ -676,9 +676,7 @@ Core concepts of Java SE
 	
         for constructor chaining
 		
-        Called implicitly by the class constructor if not provided  
-       
-        Can refer to immediate parent class instance variable
+        Called implicitly by the class constructor if not provided 
        
         To differentiate between local and instance variables in class
         constructor		
