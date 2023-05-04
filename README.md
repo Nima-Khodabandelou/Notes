@@ -198,6 +198,30 @@ Core concepts of Java SE
 ## 
 - delete, next, main, exit or null are not keyword
 ## 
+- Abstraction
+
+	help focus on what object does instead of how it does
+##	
+- encapsulation
+
+	wraps code and data into single unit
+##
+- Encapsulation
+
+	read-only  class -> all fields private. only getter returning private
+	property of class to main method 
+
+	write-only class -> all fields private. only setter setting value
+	passed from main to private fields
+##
+- package
+
+	group of similar type of classes, interfaces, and sub-packages.
+
+	access protection
+
+	removes naming collision	
+## 
 - Inheritance
 
       code reusability -> sub-class need not to redefine method of super-class
@@ -1089,13 +1113,6 @@ Core concepts of Java SE
 
       static method -> part of the class not the object -> can't be overridden
 ## 
-- override any overloaded method
-
-      Override <--> IS-A (super/sub relationship)
-## 
-- change scope of overridden method in subclass to be less
- restricitve <-> (public < default < protected < private)
-## 
 - modify superclass throws while override in subclass
 
       No exception in superclass & checked exception in subclass -> error
@@ -1202,6 +1219,13 @@ Core concepts of Java SE
 ##
 - overridden method
 
+    Override <--> IS-A (super/sub relationship)
+
+    override any overloaded method      
+ 
+    change scope of overridden method in subclass to be less
+        restricitve <-> (public < default < protected < private)
+
       called through reference variable of superclass
 
       determination of the method to be called is based on object being
@@ -1275,14 +1299,7 @@ Core concepts of Java SE
 	ex:
 		Simple1 s=new Simple1();
 		System.out.println(s instanceof Simple1);//true
-## 
-- Abstraction
 
-	help focus on what object does instead of how it does
-##	
-- encapsulation
-
-	wraps code and data into single unit
 ## 
 - abstract class
 
@@ -1405,22 +1422,6 @@ Core concepts of Java SE
 		System.out.println("result = "+result);  
 	    }  
 	}  
-##
-- Encapsulation
-
-	read-only  class -> all fields private. only getter returning private
-	property of class to main method 
-
-	write-only class -> all fields private. only setter setting value
-	passed from main to private fields
-##
-- package
-
-	group of similar type of classes, interfaces, and sub-packages.
-
-	access protection
-
-	removes naming collision
 ##
 - try block followed by either catch OR finally block
 ##
@@ -1833,8 +1834,6 @@ Core concepts of Java SE
 
 	less efficient than StringBuilder.	
 ##
-- immutable class and all its members are final
-##
 - toString(): returns string representation of object ->
 -  overriding -> desired output
 ##
@@ -2032,8 +2031,7 @@ ByteStream : InputStream classes and OutputStream
 
 CharacterStream : Reader classes and Writer classes.
 
-reading streams of characters -> FileReader
-   
+reading streams of characters -> FileReader   
     
 ##
 BufferedOutputStream
