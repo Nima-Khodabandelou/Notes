@@ -301,9 +301,40 @@ Core concepts of Java SE
 	
       A final argument can’t be changed inside a method
       
+      constructor can never be final
+
+      interface can never be final      
+      
 		public void methodWithFinalArguments(final int x) {
 			x=1;
 		}
+
+      ex:	
+		class Bike
+		{  
+			final int speedlimit;
+			
+			Bike()
+			{  
+				speedlimit=70;  
+				System.out.println(speedlimit);  
+			}
+			
+			public static void main(String args[])
+			{  
+			  new Bike();  
+			}  
+		}
+	
+      ex:
+      class Main
+	  {  
+	   public static void main(String args[]){  
+	    final int i;  
+	    i = 20;  
+	    System.out.println(i);  
+	   }  
+      }  		
 ##
 - Immutability
 
@@ -1158,43 +1189,6 @@ Core concepts of Java SE
 			    b.baseMethod();  
 			}  
 		}
-##
-- final
-
-      cannot override inherited final method. 
-
-      can't inherit final class
-
-      constructor can never be final
-
-      interface can never be final
-
-      ex:	
-		class Bike
-		{  
-			final int speedlimit;
-			
-			Bike()
-			{  
-				speedlimit=70;  
-				System.out.println(speedlimit);  
-			}
-			
-			public static void main(String args[])
-			{  
-			  new Bike();  
-			}  
-		}
-	
-      ex:
-      class Main
-	  {  
-	   public static void main(String args[]){  
-	    final int i;  
-	    i = 20;  
-	    System.out.println(i);  
-	   }  
-      }  
 ## 
 - compile-time polymorphism (static binding, early binding, or overloading)
 
