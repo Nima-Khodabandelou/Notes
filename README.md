@@ -117,13 +117,14 @@ Core concepts of Java SE
 
       Platform-independent
 
-      Robust
-
       Secure
 
       High-level
 
       Multi-threaded
+      
+      Robust <- Memory Efficient and Multi-Threaded
+      
 ##    
 - Java Does not support
 
