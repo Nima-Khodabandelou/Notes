@@ -2257,18 +2257,23 @@ Socket programming
 
 ##
 Reflection
+
  examining/ modifying runtime behavior of class 
  
 ##
 java.lang.Class:
- get metadata of class at runtime
- change runtime behavior
- instantiate:
-  forName() -> load class dynamically <- if know fully qualified name of class (not for primitive types)
+
+      get metadata of class at runtime
  
-  getClass() -> returns instance of java.lang.Class <- if know type (also for primitives)
-  
-  .class -> If no instance but type available -> append ".class" to name of type (also for primitives)
+      change runtime behavior
+ 
+      instantiate:
+      
+	  forName() -> load class dynamically <- if know fully qualified name of class (not for primitive types)
+
+	  getClass() -> returns instance of java.lang.Class <- if know type (also for primitives)
+
+	  .class -> If no instance but type available -> append ".class" to name of type (also for primitives)
 
 
 	class Simple
@@ -2301,14 +2306,17 @@ java.lang.Class:
 	}
     
 ##
-newInstance():
+newInstance()
+
  invoke constructor at runtime. 
 ##
-javap:
+javap
+
  disassembles class file -> gives info about fields/constructors/ methods
 
 (java.lang.Class + java.lang.reflect.Method) -> change class runtime behaviour
  -> access private method from outside <-
+ 
 	1) setAccessible(boolean status) throws SecurityException
 	  
 	2) invoke(Object method, Object... args) throws IllegalAccessException,
@@ -2444,8 +2452,11 @@ Wrapper classes
   conversion of objects to primitives (unboxing) and primitives to objects (autoboxing)
 
 ##
-Unboxing and autoboxing -> automatic in Java
- valueOf()/xxxValue() for manual conversion
+Unboxing and autoboxing -> 
+	
+      automatic in Java
+	
+      valueOf()/xxxValue() for manual conversion
 
 public class TestClass  
 {  
@@ -2468,23 +2479,36 @@ native method implemented in another language
 strictfp: get same floating-point arithmetic result on all platforms
 ##
 System class
+	
  cannot be instantiated.
+	
  used for
+	
 	Standard input
+	
 	Error output streams
+	
 	Standard output
+	
 	utility method to copy the portion of an array
+	
 	utilities to load files and libraries
 	
  fields:
 	 static printstream err,
+	
 	 static inputstream in,
+	
 	 standard output stream.
 ##
 Singleton class:
+	
  instantiates only once
+	
  make by
+	
   private constructor
+	
   static getInstance
 
 class Singleton{  
@@ -2538,10 +2562,14 @@ public class LocaleExample
 ResourceBundle.getBundle -> specific locale 
 ##
 JavaBean:
+	
  reusable software component
+	
  encapsulates many objects into one in order to access it from multiple
   places. 
+	
  easy maintenance. 
+	
 ex:
   
 public class Employee implements java.io.Serializable
@@ -2570,75 +2598,121 @@ public class Employee implements java.io.Serializable
 } 
 ##
 RMI (Remote Method Invocation)
- for distributed application
- allows object -> invoke methods on object in another JVM by stub (for client side) and skeleton
- stub: for client side
-       outgoing requests are routed through it
-       tasks:
+	
+      for distributed application
+	
+      allows object -> invoke methods on object in another JVM by stub (for client side) and skeleton
+	
+       stub: for client side
+	
+         outgoing requests are routed through it
+	
+         tasks:
 		initiates connection
+	
 		writes and transmits (marshals) parameters
+	
 		waits for result.
+	
 		reads (unmarshals) result
+	
 		returns result to caller
 
- skeleton: gateway for server side
-        incoming requests routed through it 
-       tasks:
+       skeleton: gateway for server side
+	
+         incoming requests routed through it 
+	
+         tasks:
 		reads parameter for remote method
+	
 		invokes method on actual remote object
+	
 		writes and transmits (marshals) result to caller
 
-	RMI in programs:
+      RMI in programs:
+	
 		Create remote interface.
+	
 		Provide implementation of remote interface
+	
 		Compile implementation class and create stub and skeleton
 		 using rmic
+	
 		Start registry service by rmiregistry
+	
 		Create and start remote application
+	
 		Create and start client application
-		HTTP-tunneling: doesn't need setup to work within firewall
+	
+		HTTP-tunneling:
+	
+	         doesn't need setup to work within firewall
+	
 		 handles HTTP through proxy servers
+	
 		 not allow outbound TCP
 ##
-JRMP (Java Remote Method Protocol) Java-specific,
+JRMP (Java Remote Method Protocol):
+	
+ Java-specific
+	
  stream-based protocol -> looks up and refers to remote objects
+	
  requires both client and server to use objects
+	
  wire level -> runs under RMI and over TCP/IP
 ##
-Multitasking -> to utilize CPU
+Multitasking 
+	
+     to utilize CPU
 
 
- Process-based Multitasking (Multiprocessing) ->
-  an address for each process in memory
+     Process-based Multitasking (Multiprocessing) ->
+	
+       an address for each process in memory
 
- Thread-based Multitasking (Multithreading) ->
-  same address space for threads
+     Thread-based Multitasking (Multithreading) ->
+	
+       same address space for threads
 ##  
 Multithreading
  
- thread: lightweight sub-process
- smallest unit of processing
- multithreading better than multiprocessing:
-  threads use shared memory area
-  context-switching between threads takes less time than process
+      thread: lightweight sub-process
+	
+      smallest unit of processing
+	
+      multithreading better than multiprocessing:
+	
+        threads use shared memory area
+	
+        context-switching between threads takes less time than process
 
- Advantages:
-  threads are independent
-    no user block
-    doesn't affect other threads in case of exception  
-  saves time
+      Advantages:
+	
+         threads are independent
+	
+         no user block
+	
+         doesn't affect other threads in case of exception  
+	
+         saves time
 ##
-Life cycle of a Thread (Thread States):
- New: thread created -> new state -> code not run yet
- Active: start() -> two states within: runnable and running
-  ready to run thread moved to runnable state -> time to run <- thread scheduler
-##
-fixed time to each thread -> time over -> voluntarily gives up CPU to other thread
+threads:
+	
+      Life cycle of a Thread (Thread States)
+	
+        New: thread created -> new state -> code not run yet
+	
+        Active: start() -> two states within: runnable and running
+	
+        ready to run thread moved to runnable state -> time to run <- thread scheduler
 
-threads wait for their turn to run
+      fixed time to each thread -> time over -> voluntarily gives up CPU to other thread
+
+      threads wait for their turn to run
 
  
-Blocked/ Waiting <->  thread inactive 
+      Blocked/ Waiting <->  thread inactive 
 
 ex:
 class ABC implements Runnable  
@@ -2699,11 +2773,14 @@ public class ThreadState implements Runnable
 		System.out.println("The state of thread t2 when it has completed it's execution - " + t2.getState());  
 	}  
 }  
-##
-two ways to create a thread:
-Thread class:
- provide constructors/methods to create
- perform operations on a thread.
+
+      two ways to create a thread:
+	
+        Thread class:
+	
+          provide constructors/methods to create
+	
+          perform operations on a thread.
               extends Object class and implements Runnable interface.
 
 	Commonly used Constructors:
