@@ -1213,7 +1213,7 @@ Core concepts of Java SE
       compile-time -> fast execution
 ##	
 - runtime polymorphism (dynamic binding, late binding, overriding,
--  dynamic method dispatch)
+   dynamic method dispatch)
 
       (object type determined/call to overridden method resolved) at runtime.
 ##
@@ -1835,10 +1835,10 @@ Core concepts of Java SE
 	less efficient than StringBuilder.	
 ##
 - toString(): returns string representation of object ->
--  overriding -> desired output
+   overriding -> desired output
 ##
 - String is in string pool until garbage collection -> not good
--  for stornjng password -> CharArray() is better and can be set to blank 
+   for stornjng password -> CharArray() is better and can be set to blank 
 ##
 - java.util.regex
 
@@ -1995,6 +1995,7 @@ Core concepts of Java SE
 	OutputStream -> FileOutputStream, ByteArrayOutputStream,
 	                FilterOutputStream, PipedOutputStream
 			ObjectOutputStream,
+			
 			FilterOutputStream -> DataOutputStream,
 			BufferedOutputStream, PrintStream
 
@@ -2002,8 +2003,9 @@ Core concepts of Java SE
 	               FilterInputStream, PipedInputStream
 		       ObjectInputStream
 
-	FilterInputStream -> DataInputStream, BufferedInputStream,
-	                     PushBackInputStream
+	               FilterInputStream -> DataInputStream,
+		          BufferedInputStream,
+	                  PushBackInputStream
 
 	stream: sequence of data composed of bytes from source to destination
 
@@ -2016,30 +2018,33 @@ Core concepts of Java SE
 		System.err: standard error
 
 
-##
-Reader/Writer class hierarchy  character-oriented,
-InputStream/OutputStream class hierarchy is byte-oriented.
-##
-ByteStream:  input-output of 8-bit 
 
-CharacterStream: input/output for 16-bit
+      Reader/Writer class hierarchy -> character-oriented,
+      InputStream/OutputStream class hierarchy -> byte-oriented.
+
+      ByteStream:  input-output of 8-bit 
+
+      CharacterStream: input/output for 16-bit
  
-Important ByteStream class: FileInputStream and FileOutputStream.
-Important CharacterStream class:  FileReader and FileWriter.
+      Important ByteStream class: FileInputStream and FileOutputStream.
+      
+      Important CharacterStream class:  FileReader and FileWriter.
 
-ByteStream : InputStream classes and OutputStream
+      ByteStream : InputStream classes and OutputStream
 
-CharacterStream : Reader classes and Writer classes.
+      CharacterStream : Reader classes and Writer classes.
 
-reading streams of characters -> FileReader   
+      reading streams of characters -> FileReader   
     
 ##
-BufferedOutputStream
- internally uses buffer to store data.
- more efficiency than writing data directly into stream.
+      BufferedOutputStream
+      
+       internally uses buffer to store data.
+       more efficiency than writing data directly into stream.
  
-BufferedInputStream
- read information from stream
+      BufferedInputStream
+      
+       read information from stream
 ##
 FilePermission: alter permissions of a directory or file related to a path. -> two path types:
  all subdirectories and files 
@@ -2048,30 +2053,38 @@ FilePermission: alter permissions of a directory or file related to a path. -> t
 ##
 FilterStream: filters read data, adds line numbers,...
 ##
-I/O filter:
+I/O filter
+
  reads one stream and writes to another,
  usually altering data
 
-
 ##
 take input from console:
- BufferedReader (efficient): use InputStreamReader to take input from console -> pass input to BufferedReader.
+
+      BufferedReader (efficient): use InputStreamReader to
+      take input from console -> pass input to BufferedReader.
 	
 
- Scanner class:
+      Scanner class
 	 breaks input into tokens 
+	 
 	 provides many methods to read
-	 parse various primitive values.
+	 
+	 parse various primitive values
+	 
 	 widely used with regex
 ##    
 Using Console class:
- read console input, texts, passwords (not be displayed to user).
+
+      read console input, texts, passwords (not be displayed to user).
      
 ##
 Serialization
 
  writing state of object into byte stream
+ 
  used in Hibernate, RMI, JPA, EJB and JMS
+ 
  used to travel object's state on network (known as marshaling).
 
  to save state to storage for later restoration
