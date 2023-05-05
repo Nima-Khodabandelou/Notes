@@ -2821,17 +2821,31 @@ class Multi3 implements Runnable
 } 
 ##
 Synchronization:
+
  control access of multiple threads to any shared resource To prevent
+
   thread interference
+
   consistency problem 
+
  allows only one thread to be executed at a time 
+
  ways:
-	synchronized method
-	synchronized block
+
+  	synchronized method
+
+  	synchronized block
+
     	for specific resource of method
+
 		scope is smaller than method
-	static synchronization:	 synchronized static method -> lock will on class not object
+
+	static synchronization:	
+
+ synchronized static method -> lock will on class not object
+
  notify(): unblock waiting thread
+
  notifyAll(): unblock all threads in waiting state
 ##
 Deadlock: every thread waiting for resource held by some other waiting thread ->
@@ -2840,25 +2854,39 @@ Deadlock: every thread waiting for resource held by some other waiting thread ->
 detect deadlock: run code on cmd -> collect Thread Dump, possible deadlock message 
 
 avoid deadlock:
-	no Nested lock: when provide locks to threads to give one lock to only one thread at particular time
+
+	no Nested lock: when provide locks to threads to give one lock to only one thread at     particular time
+
 	no unnecessary locks
+
     Use thread join: wait for thread til another thread finishes
 ##
 method/class used by multiple threads at time without any race condition -> class is thread-safe
+
  ways:
-	Synchronization
-	Volatile keyword
-	ock based mechanism
-	atomic wrapper classes
+
+ 	Synchronization
+
+	 Volatile keyword
+
+ 	ock based mechanism
+
+ 	atomic wrapper classes
 ##
 Java Thread pool
+
  threads group, supervised by service provider, waiting for task
+
  size depends on number of threads kept at reserve
+
  advantages:
+
   performance
+
   stability
 ##
 Concurrency:
+
  Executor Interface to execute new task
 	example:
 	public class TestThread
