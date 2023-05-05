@@ -3113,80 +3113,113 @@ Asynchronous Programming: one job completed by multiple threads -> maximum usabi
 Java Future interface: result of concurrent process
 ##
 Array/Collection:
+
  store references
+
  manipulate data
- Arrays: fixed size, store homogeneous, no ready-made methods   
+
+ Arrays: fixed size, store homogeneous, no ready-made methods  
+ 
  Collections: variable size, heterogeneous, readymade methods 
 ##
 1)	ArrayList not synchronized.	Vector: synchronized.
+
 2)	ArrayList not a legacy class.	Vector: legacy class.
+
 3)	ArrayList increases its size by 50% of the array size.
 	Vector increases its size by doubling the array size.
+
 4)	ArrayList not ?thread-safe? as not synchronized.
 	Vector list thread-safe as it's every method is synchronized.
 ##
 1)	ArrayList uses a dynamic array.	LinkedList uses a doubly linked list.
+
 2)	ArrayList not efficient for manipulation because too much is required.
 	LinkedList efficient for manipulation.
+
 3)	ArrayList better to store and fetch data.	LinkedList better to manipulate data.
+
 4)	ArrayList provides random access.	LinkedList does not provide random access.
+
 5)	ArrayList takes less memory overhead as it stores only object
 	LinkedList takes more memory overhead as it stores object and address
-    Iterator traverses elements in forward direction only whereas ListIterator
-     traverses elements into forward and backward direction.
 ##
 1)	Iterator traverses elements in forward direction only.
 	ListIterator traverses elements in backward and forward directions both.
+
 2)	Iterator can be used in List, Set, and Queue.
 	ListIterator can be used in List only.
+
 3)	Iterator can only perform remove operation while traversing collection.
 	ListIterator can perform add, remove, and
      set operation while traversing collection.
+
 1)	Iterator traverse legacy and non-legacy elements.
 	Enumeration traverse only legacy elements.
+
 2)	Iterator is fail-fast.	Enumeration is not fail-fast.
+
 3)	Iterator is slower than Enumeration.
 	Enumeration is faster than Iterator.
+
 4)	Iterator can perform remove operation while traversing collection.
 	The Enumeration can perform only traverse operation on collection.
 ##
 List contain duplicate elements
+
 List is ordered collection maintains insertion order 
-List contains single legacy class which is Vector class whereas Set interface does not have any legacy
- class.
+
+List contains single legacy class which is Vector class whereas Set interface does not have any legacy class.
+
 List allow n number of null values whereas Set only allows single null value.
 ##
 HashSet maintains no order, TreeSet maintains ascending order.
+
 HashSet impended by hash table, TreeSet implemented by Tree structure.
+
 HashSet performs faster than TreeSet.
+
 HashSet backed by HashMap, TreeSet backed by TreeMap.
 ##
 Set contains values only, Map contains key and values.
+
 Set contains unique values, Map contain unique Keys with duplicate values.
+
 Set holds single number of null value, Map include single null key with n number of null values.
 ##
 HashSet contains only values whereas HashMap includes entry (key, value).
+
 HashSet can iterate, HashMap needs to convert into Set to iterate.
+
 HashSet implements Set, HashMap implements Map
+
 HashSet no duplicate value, HashMap contain duplicate values with unique keys.
+
 HashSet contains only single number of null value whereas HashMap hold single null key
  with n number of null values.
 ##
 HashMap maintains no order, TreeMap maintains ascending order.
+
 HashMap implemented by hash table, TreeMap implemented by Tree 
+
 HashMap sorted by Key or value, TreeMap sorted by Key.
+
 HashMap contain null key with multiple null values, TreeMap cannot hold null key
  but can have multiple null values.
 ##
 1)	HashMap not synchronized.
 	Hashtable synchronized.
+
 2)	HashMap contain one null key and multiple null values.
 	Hashtable cannot contain any null key or null value.
+
 3)	HashMap not thread-safe -> useful for non-threaded applications.
 	Hashtable is thread-safe, and it can be shared between various threads.
+
 4)	HashMap inherits AbstractMap class,	Hashtable inherits Dictionary class.
 ##
 Collection is interface, Collections is class.
+
 Collection -> List, Set, Queue. Collections -> sort and synchronize collection elements.
 ##
 hashCode() -> same integer if two keys by calling equals() are identical.
@@ -3198,14 +3231,21 @@ equals() -> override to check objects based on property.
 synchronize List, Set and Map by Collections
 ##
 generic collection:
+
  not need typecasting if using generic class
+
  type-safe
+
  checked at compile time
+
  makes code bug detectable at compile time -> more stable code
 ##
 hash-collision: Two keys with same hash value
+
  to avoid -> keep Two separate entries in a single hash bucket
+
              Separate Chaining
+
              Open Addressing
 ##			 
 Dictionary: key-value pairs.
@@ -3219,7 +3259,9 @@ Fail-fast iterator: throws ConcurrentmodificationException in case of structural
 unmodifiableCollection() -> make Java ArrayList Read-Only
 ##
 remove duplicates from ArrayList:
+
  by HashSet: not preserve insertion order.
+
  by LinkedHashSet: maintain insertion order
 ex:
 public class ReverseArrayList
@@ -3284,6 +3326,8 @@ public class ReverseArrayList
 }  
 ##
 synchronize ArrayList:
+
  Using Collections.synchronizedList() 
+
  Using CopyOnWriteArrayList<T>
 
