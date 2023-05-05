@@ -2046,9 +2046,13 @@ Core concepts of Java SE
       
        read information from stream
 ##
-FilePermission: alter permissions of a directory or file related to a path. -> two path types:
- all subdirectories and files 
- all directory and files within directory excluding subdirectories.
+FilePermission:
+
+      alter permissions of a directory or file related to a path. -> two path types:
+      
+      all subdirectories and files 
+ 
+      all directory and files within directory excluding subdirectories.
   
 ##
 FilterStream: filters read data, adds line numbers,...
