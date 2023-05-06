@@ -10,7 +10,9 @@ Core concepts of Java SE
 		Advantages:
 
 			Testing –> fewer test cases for each class.
+
 			Lower coupling –> fewer dependencies.
+
 			Smaller and well-organized classes
 		 
       2- Class shoud be Opened for Extension and Closed for Modification.
