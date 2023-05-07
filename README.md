@@ -4,12 +4,12 @@ Core concepts of Java SE
 ##
 - SOLID Principles (not specific to Java)
 
-      1- Single Responsibility for Each class <-> Just one reason needed
-      to change that class.
+      1- Single Responsibility for Each class -> Just one reason 
+      to change the class.
 
 		Advantages:
 
-			Testing –> fewer test cases for each class.
+			Fewer tests for each class.
 
 			Lower coupling –> fewer dependencies.
 
@@ -17,11 +17,11 @@ Core concepts of Java SE
 		 
       2- Class shoud be Opened for Extension and Closed for Modification.
 	
-	   Otherwise -> modifying the existing code -> potential new bugs.
+	   Otherwise -> modifying the existing code -> potential new bugs
 	   
 	   If fixing bugs -> extend the class
 
-      3- Liskov Substitution: if class A is a subtype of class B, one should
+      3- Liskov Substitution: If class A is a subtype of class B, one should
       be able to replace B with A without disrupting the behavior of the program.
 	   
 	   ex1:
@@ -57,10 +57,10 @@ Core concepts of Java SE
 		}
 
       4- Interface Segregation: larger interfaces be splited into smaller
-      ones -> More specific methods in each interface.
+      ones -> More specific methods in each interface
 	   
       5- Dependency Inversion: Decoupling software modules
-      -> high-level/low-level modules and details depend on abstractions.
+      -> high/low-level modules and details depend on abstractions
 	   
 		example:
 	
@@ -115,7 +115,7 @@ Core concepts of Java SE
 ##
 - Main Java features
 
-      Used for Desktop, Mobile, and Web application development
+      For Desktop, Mobile, and Web
 
       Platform-independent
 
@@ -143,45 +143,49 @@ Core concepts of Java SE
 ##       
 - Path and Classpath
 
-       PATH: An environment variable used by the operating system to locate the
+       PATH: An environment variable used by the O.S. to locate the
        executables
 
-       Classpath: Java specific used to locate class files. it can be a directory,
-       ZIP, JAR, etc.
+       Classpath: Java specific used to locate class files/dir./
+       ZIP/JAR/...
 ## 
 - Source files
 
-      Each source Java file may have multiple classes among which only one shall
-      be public.
+      Each Java file -> multiple classes -> only one public
 
-      Source file name shall be the same as class name.
+      Source file name -> same as class name
 ## 
-- OS Architecture
+- O.S. Architecture
 
-      Java is neutral w.r.t to OS architecture (32 bit or 64 bit).
+      Java is neutral w.r.t to O.S. architecture (32/64 bit)
 ## 
 - Interpreter/Compiler
 
-      Just-in-time (JIT): To improve performance by compiling parts of the bytecode
-                        having similar functionality, and therefore reducing
-			compilation time.  
+      Just-in-time (JIT): To improve performance by compiling parts of bytecode
+                        having similar functionality -> reducing compilation time  
 
-      Compiler: transforms instruction set of a Java virtual machine (JVM) to
-      the instruction set of a specific CPU (Java code to Bytecode).      
+      Compiler: transforms instruction set of JVM to instruction set of specific
+      CPU (Java code to Bytecode)      
 
-      Classloader: Part of the Java Runtime Environment for loading class files.
-      Three built-in classloaders:				   
-		Bootstrap ClassLoader: The first classloader in native code
-		(e.g. c++) which loads rt.jar file containing all core
-		libraries and class files of Java SE There are various
-		implementations of this Bootstrap class loader for
-		various platforms.
+      Classloader: Part of JRE for loading class files
+      Built-in classloaders
+      
+		Bootstrap
+		
+		  First classloader in native code (e.g. c++)
+		
+		  loads Java SE core libs and class files
+		
+		  various implementations for various platforms
 
-		Extension ClassLoader: Its parent is Bootstrap classloader loads
-		core extension classes to be available to all applications running
-		on each platform. 
+		Extension
+		
+		  Child of Bootstrap
+		
+		  Loads core extension classes to be available to all applications running
+		  on each platform. 
 
-		System/Application ClassLoader: Loads files in the classpath.
+		System/Application: Loads files in classpath
 ##             
 - Local variables
 
