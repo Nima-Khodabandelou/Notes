@@ -187,102 +187,108 @@ Core concepts of Java SE
 
 		System/Application: Loads files in classpath
 ##             
-- Local variables
-
-      not initialized to any default value.
+- Local variables not initialize to default value
 ## 
 - Acccess modifiers
 
-      Default: accessible within the package only.
+      Default: accessible within package
       
-      Protected: accessible by the class and sub-class of the same package, or by
-      the sub-class in another packages.
+      Protected: accessible by class and sub-class of same package, or by
+      sub-class in another package
       
       Public: accessible anywhere
       
-      Private: accessible within the class
+      Private: accessible within class
 ## 
 - delete, next, main, exit or null are not keyword
 ## 
 - Abstraction
 
-	help focus on what object does instead of how it does
+	focus on what object does instead of how it does
 ##	
 - encapsulation
 
 	wraps code and data into single unit
-##
-- Encapsulation
 
-	read-only  class -> all fields private. only getter returning private
-	property of class to main method 
+	read-only class 
+	
+	  private fileds
+	
+	  no setter
+	
+	  getter return private fields to main method 
 
-	write-only class -> all fields private. only setter setting value
-	passed from main to private fields
+	write-only class
+	
+	  private fileds
+	
+	  no getter
+	
+	  setter set value passed from main to private fields
 ##
 - package
 
-	group of similar type of classes, interfaces, and sub-packages.
+	group of similar classes/interfaces/sub-packages
 
 	access protection
 
-	removes naming collision	
+	no naming collision	
 ## 
 - Inheritance
 
-      code reusability -> sub-class need not to redefine method of super-class
-      unless it needs to provide specific implementation.
+      code reusability -> sub need not redefine method of super
+      unless need to provide specific impl
 
       Runtime polymorphism -> simulate inheritance with real-time objects
       -> makes OOPs more realistic. 
 
-      provides data hiding -> super-class can hide data from sub-class.
+      provides data hiding -> super hide data from sub
 
-      makes Method overriding possible
+      Method overriding 
 ##
 - packages
 
-      avoid the name clashes.
+      no name clashe
       
-      provides easier access control.
+      easier access control.
       
-      can  have the hidden classes.
+      hidden classes.
       
-      easier to locate the related classes.
+      easier to locate related classes
 ##
 - Object
 
-      real-time entity having state and behavior.
+      real-time entity having state and behavior
       
-      an instance of class
+      instance of class
       
-      instance variables <-> state of object
+      instance variables <-> object state
       
-      methods <-> behavior of object.
+      methods <-> object behavior
       
-      created using new keyword.
+      create using new keyword.
       
-      All object references <-> initialized to null.
+      obj refs <-> initialize to null
 ##
 - constructor
 
-      special type of method to initialize the state
+      special method to initialize state
       
-      invoked when class instantiated, obj created, and memory
-       allocated for object -> so no sense to make constructors static
+      invoke when class instantiate, obj created, and memory
+       allocated for object -> no sense to make it static
       
-      Every time an object created using new keyword, default constructor
-      is called 
+      default constructor called on obj creation
+       using new keyword
       
-      must not have explicit return type.
+      no explicit return type.
       
-      is not inherited.
+      not inherited
       
       can't be final           
 ##	  
 - method
 
-      exposes behavior of object
+      exposes obj behavior
 
       must have a return type
 
