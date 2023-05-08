@@ -32,26 +32,26 @@ Core concepts of Java SE
 ## 
 - OOP
 
-      Object
+      obj
 
          real-time entity having state and behavior
       
          instance of class
       
-         instance variables <-> object state
+         instance variables <-> obj state
       
-         methods <-> object behavior
+         methods <-> obj behavior
       
          create using new keyword.
       
-         obj refs <-> initialize to null
+         obj refs <-> init to null
 	 
       Inheritance
 
          code reusability -> sub need not redefine method of super
          unless need to provide specific impl
 
-         Runtime polymorphism -> simulate inheritance with real-time objects
+         Runtime polymorphism -> simulate inheritance with real-time objs
          -> makes OOPs more realistic. 
 
          provides data hiding -> super hide data from sub
@@ -60,7 +60,7 @@ Core concepts of Java SE
 
       Abstraction
 
-	focus on what object does instead of how it does
+	focus on what obj does instead of how it does
 	
       encapsulation
 
@@ -86,8 +86,8 @@ Core concepts of Java SE
 
 	      Default: accessible within package
 
-	      Protected: accessible by class and sub-class of same package, or by
-	      sub-class in another package
+	      Protected: accessible by class and sub of same package, or by
+	      sub in another package
 
 	      Public: accessible anywhere
 
@@ -95,10 +95,10 @@ Core concepts of Java SE
 	      
       constructor
 
-	      special method to initialize state
+	      special method to init state
 
 	      invoke when class instantiate, obj created, and memory
-	       allocated for object -> no sense to make it static
+	       allocated for obj -> no sense to make it static
 
 	      default constructor called on obj creation
 	       using new keyword
@@ -125,7 +125,7 @@ Core concepts of Java SE
       
       delete, next, main, exit or null are not keyword
       
-      Local variables not initialize to default value      
+      Local variables not init to default value      
 ##    
 - Java Does not support
 
@@ -135,7 +135,7 @@ Core concepts of Java SE
     
       operator overloading
     
-      call by reference
+      call by ref
     
       structures and unions
 ##       
@@ -180,16 +180,16 @@ Core concepts of Java SE
 		
 		  Child of Bootstrap
 		
-		  Loads core extension classes to be available to all applications running
+		  Loads core extension classes to be available to all apps running
 		  on each platform. 
 
-		System/Application: Loads files in classpath
+		System/app: Loads files in classpath
 ##
 - package
 
       group of similar classes/interfaces/sub-packages
 
-      no name clashe
+      no name clash
       
       easier access control.
       
@@ -225,7 +225,7 @@ Core concepts of Java SE
 	
       can extend class with all methods final
 	
-      can’t reassign final reference variable But object it refers to is mutable
+      can’t reassign final ref variable But obj it refers to is mutable
       
       ex:
 	      final Cat cat = new Cat();
@@ -235,9 +235,9 @@ Core concepts of Java SE
 	
          static final int MAX_WIDTH = 999;
 	 
-      static final fileds: initialize upon declaration in static initializer block
+      static final fileds: init upon declaration in static init block
 	
-      instance final fields: initialize upon declaration in instance initializer
+      instance final fields: init upon declaration in instance initializer
       block in constructor
 	
       final argument can’t be changed inside method
@@ -246,11 +246,11 @@ Core concepts of Java SE
  ##
 - Immutability
 
-      create immut. object -> not allowed to change/update content ->
+      create immut. obj -> not allowed to change/update content ->
 	  If try to change and alteration successfully done -> 
-	  create new object
+	  create new obj
 	
-      immut. obj -> state doesn’t change after initialization
+      immut. obj -> state doesn’t change after init
 	
       benefits:
 	
@@ -268,10 +268,10 @@ Core concepts of Java SE
 		
 		all mutable fields final
 		
-		Initialize all fields using constructor performing deep copy
+		Init all fields using constructor performing deep copy
 		
 		return copy of obj by cloning rather than returning
-		actual object reference
+		actual obj ref
 		
 		deep copy -> getter function returns clone of original obj ->
 		             HashMap values don't change 
@@ -300,7 +300,7 @@ Core concepts of Java SE
   
       Static block
 
-	  to initialize static data members
+	  to init static data members
 
 	  execute before main method at time of class loading 
 ## 
@@ -321,7 +321,7 @@ Core concepts of Java SE
       this:	  
 	   
        possible but not good to refer static members <--> it is unnecessary to
-        access static variables through objects
+        access static variables through objs
 	
        to perform constructor chaining within same class
 	  
@@ -335,14 +335,14 @@ Core concepts of Java SE
        to invoke method of current class -> If don't use 'this', compiler
        automatically adds
 	  
-       advantages of passing this into method instead of current class object
+       advantages of passing this into method instead of current class obj
 
          this is final -> cannot be assigned to any new value whereas current
-         class object might not be final
+         class obj might not be final
  
          this can be used in synchronized block
 		 
-       is final reference in Java
+       is final ref in Java
 
       super:
 
@@ -353,7 +353,7 @@ Core concepts of Java SE
         instance of sub creates -> instance of parent creates
         implicitly referred by super   
 	
-        for initializing super vars within sub constructor 
+        for init super vars within sub constructor 
 	
         for constructor chaining
 		
@@ -380,15 +380,15 @@ Core concepts of Java SE
 
       By constructor
 
-      By assigning values of one object into another
+      By assigning values of one obj into another
 
       By clone() method of Obj class
 ## 
-- object cloning <--> shallow copy
+- obj cloning <--> shallow copy
 
-      create exact copy of object -> clone() -> java.lang.Cloneable      
+      create exact copy of obj -> clone() -> java.lang.Cloneable      
 
-      syntax -> protected Object clone() throws CloneNotSupportedException 
+      syntax -> protected obj clone() throws CloneNotSupportedException 
 
       clone() saves extra processing compared to new keyword
  
@@ -407,7 +407,7 @@ Core concepts of Java SE
 		implement cloneable interface having no methods
 
 		clone() is protected -> have to provide our own clone() and
-		indirectly call Object.clone()
+		indirectly call obj.clone()
 
 		no constructor invoke -> no control over obj
 		construction  
@@ -418,13 +418,13 @@ Core concepts of Java SE
 ## 
 - Aggregation (has-a)
 
-      relationship between two classes -> aggregate class contains a reference
+      relationship between two classes -> aggregate class contains a ref
       to class it owns
 ## 
 - composition
 
-      When obj contains other obj, if contained object cannot
-      exist without existence of container object
+      When obj contains other obj, if contained obj cannot
+      exist without existence of container obj
 
       particular case of aggregation representing stronger relationship
       between two objs
@@ -471,22 +471,19 @@ Core concepts of Java SE
       how subtype is accepted when only supertype is defined
 	
       covariant return type: overriden method return type may vary in
-      same direction as sub ->
-                       override method by changing return type if return
-		       type of sub overriding method is subclass type
+      same direction as sub 
 		       
-      Obj as return type in super -> more concrete return type in child ->
-      covariant return type -> produce numbers from characters
+         no type casts in class hierarchy      
 ## 
-- compile-time polymorphism (static binding, early binding, or overloading)
+- polymorphism
 
-      (object type determined/call to method resolved) at
-      compile-time -> fast execution
-##	
-- runtime polymorphism (dynamic binding, late binding, overriding,
-   dynamic method dispatch)
-
-      (object type determined/call to overridden method resolved) at runtime.
+      compile-time: static binding, early binding, or overloading ->
+       (obj type determined/call to method resolved) at
+       compile-time -> fast execution
+	
+      runtime: dynamic binding, late binding, overriding, dynamic method
+        dispatch -> (obj type determined/call to overridden
+	 method resolved) at runtime.
 ##
 - overridden method
 
@@ -497,153 +494,151 @@ Core concepts of Java SE
       overridden method scope change in sub must be less
          restricitve <-> (public < default < protected < private)
 
-      called through reference variable of supe
+      called through ref var of sup
 
-      determination of method to be called is based on object being
-      referred to by reference var
+      determination of method to be called is based on obj being
+      referred to by ref var
 
-      data members cannot be overridden -> no Runtime Polymorphism by data members 
+      data members cannot be overridden -> no Runtime
+        Polymorphism by data members 
 
       private, final or static method in class -> static binding
 ## 
 - instanceof
 
-	compares the instance with type
+	compares instance with type
 ## 
 - abstract class
 
-	can have (abstract and non-abstract methods)/data member/constructor/
+      can have abstract and non-abstract methods)/data member/constructor/
 	main()/static methods
 
-	can have final methods -> force sub not to change method body 
+      can have final methods -> forces sub not to change method body 
 
-	can never be instantiated even if it contains constructor and
+      can never be instantiated even if it contains constructor and
 	implemented methods
 
-	can provide implementation of interface
+      can provide implementation of interface
 
-	can extend another class
+      can extend another class        
 
-        interface methods -> abstract by default
-
-        static + abstract -> not allowed
-## 
-- Marker interface
-
-	interface with no data member and member functions -> Serializable,
-	Cloneable
+      static + abstract -> not allowed
 ##
 - Interface
 
-	can't provide implementation of abstract class
+      can't provide implementation of abstract class
 	
-	can extend another interface
+      can extend another interface
 	
-	's Members are public by default
+      Members are public by default
 	
-	-> obj reference can be cast to interface reference when it
+      methods are abstract by default
+	
+      obj ref can be cast to interface ref when it
 	implements referenced interface
+	
+      Marker interface: interface with no data member
+	 and member functions -> Serializable, Cloneable
 ##
 - Exceptions
 
-	Checked Exception
+      Checked Exception -> checked at
+	  compile-time: SQLException,
+	  ClassNotFoundException, ...
 
-		checked at compile-time. SQLException, ClassNotFoundException, etc.
+      Unchecked Exception -> handled at
+	  runtime: ArithmaticException,
+	  NullPointerException,
+	  ArrayIndexOutOfBoundsException, ...
 
-	Unchecked Exception
+      Error: not recoverable -> cause program 
+	  to exit: OutOfMemoryError,
+	  AssertionError, ...
 
-		handled at runtime. ArithmaticException, NullPointerException,
-		ArrayIndexOutOfBoundsException, etc.
-
-	Error: not recoverable -> cause program to exit. OutOfMemoryError,
-	AssertionError, etc.
-
-	advantage of exception handling:  maintain normal flow of application.
+      exception handling:  maintains normal flow
+	 of app
 	
-	try block followed by either catch OR finally block
-##
-- throw -> to throw exception
+      try block followed by either catch OR
+	 finally block
 
-- throws -> to declare possible exceptions that may occure in method
-##
-- Hierarchy of Java Exception classes
+      throw -> to throw exception
+
+      throws -> to declare possible exceptions
+	  that may occure in method
+
+      Hierarchy of Java Exception classes:
 
 	Throwable -> Exception, Error
 	
 	Exception -> IOException, SQLException, ClassNotFoundException,
-	RuntimeException
+	  RuntimeException
 	
 	RuntimeException -> ArithmeticException, NullPointerException,
-	NumberFormatException, IndexOutOfBoundsException
+	  NumberFormatException, IndexOutOfBoundsException
 						
 	IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException,
-	StringIndexOutOfBoundsException
+	  StringIndexOutOfBoundsException
 	
 	Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
-##	
-- Common exception Scenarios
+
+      Common exception Scenarios:
 
 	divide number by zero -> ArithmeticException.
 	
-	performing operation on null variable -> NullPointerException	
+	operation on null var -> NullPointerException	
 	
-	variable formatting mismatched -> NumberFormatException
+	var formatting mismatched -> NumberFormatException
 	
 	array size exceed -> ArrayIndexOutOfBoundsException
-##	
-- Exception Propagation
+	
+      Exception Propagation:
 
 	[thrown from top -> not caught -> drops down previous]
-	--> continues until caught or reach the very bottom of call stack
+	--> continues until caught or reach very bottom of call stack
 	
 	Unchecked -> propagated by default
-## 
-- Nested try block
-
-	[sub-block -> one error & entire block -> another error]
-	-> nested exception
-## 
-- Finally:
+ 
+      Nested try block: one error in sub-block & another
+       error in entire block
+ 
+      Finally:
 
 	executes after try-catch
 
 	not executes if program exits
-##
-- custom exceptions: extends Exception
-##
-- One can not throw basic data type from a block
+
+      custom exception -> extend Exception
+
+      can not throw basic data type from block
 ##
 - String pool
 
-	space reserved in heap used to store strings
+	space reserved in heap to store strings
 	
- 	create string literal -> JVM checks string pool ->
+ 	when create string literal -> JVM checks
+	 string pool:
 	
-		If exists -> a reference returns
+		if exists -> a ref returns
 		
 		If not ->  new string instance creates 
 ##
-- create string object
+- create string obj
 
-	String Literal
+	String Literal:
 	
 		String s ="welcome";
 		
 		String s2="Welcome";//It doesn't create a new instance
 		
-	new keyword
+	new keyword:
 	
-		//creates two objects and one reference variable
-		String s=new String("Welcome");
-		
-		
-		new object in heap refered by s,
-		
-		literal object "Welcome" in string pool
-		
-		The ref variable s
+	  String s=new String("Welcome");
+	  //creates two objs and one ref var				
+	  //new obj in heap refered by s		
+	  //literal obj "Welcome" in string pool		
+	  //ref var s
 ##
-- String disadvantages compare to StringBuffer
+- String disadv. compare to StringBuffer
 
 	String  immutable
 	
@@ -658,7 +653,7 @@ Core concepts of Java SE
 
 	less efficient than StringBuilder.	
 ##
-- toString(): returns string representation of object ->
+- toString(): returns string representation of obj ->
    overriding -> desired output
 ##
 - String is in string pool until garbage collection -> not good
@@ -723,25 +718,25 @@ Core concepts of Java SE
 ##
 - Garbage Collection
 
-	removing unused objects from memory
+	removing unused objs from memory
 
 	gc() to garbage collect -> depends on JVM whether to perform
 ##
-- unreferencing an object by
+- unreferencing an obj by
 
-	nulling the reference
+	nulling the ref
 	
 		Employee e=new Employee(); -> e=null; 
 		
-	assigning reference to another
+	assigning ref to another
 	
 		Employee e1=new Employee();  
 		Employee e2=new Employee();  
 		e1=e2;//e1 available for garbage collection
 		
-	anonymous object -> new Employee(); 
+	anonymous obj -> new Employee(); 
 ##
-- An unreferenced object can be referenced again
+- An unreferenced obj can be referenced again
 ##
 - Java Runtime class
 
@@ -755,14 +750,14 @@ Core concepts of Java SE
 	
 	OutputStream -> FileOutputStream, ByteArrayOutputStream,
 	                FilterOutputStream, PipedOutputStream
-			ObjectOutputStream,
+			objOutputStream,
 			
 			FilterOutputStream -> DataOutputStream,
 			BufferedOutputStream, PrintStream
 
 	InputStream -> FileInputStream, ByteArrayInputStream,
 	               FilterInputStream, PipedInputStream
-		       ObjectInputStream
+		       objInputStream
 
 	               FilterInputStream -> DataInputStream,
 		          BufferedInputStream,
@@ -846,21 +841,21 @@ Using Console class:
 ##
 Serialization
 
- writing state of object into byte stream
+ writing state of obj into byte stream
  
  used in Hibernate, RMI, JPA, EJB and JMS
  
- used to travel object's state on network (known as marshaling).
+ used to travel obj's state on network (known as marshaling).
 
  to save state to storage for later restoration
 
  Serializable interface -> to serialize (super-)class ->
  to prevent  child class serialization ->
- implement writeObject()/readObject() along with throw NotSerializableException in subclass. 
+ implement writeobj()/readobj() along with throw NotSerializableException in sub. 
 ##
 transient data member can not be serialized
 ##
-Externalizable interface: write state of object into byte stream in compressed format
+Externalizable interface: write state of obj into byte stream in compressed format
 
 
 	Serializable -> marker interface -> no methods
@@ -875,7 +870,7 @@ Externalizable interface: write state of object into byte stream in compressed f
 ##
 Socket programming
  socket: endpoint for communications between machines -> connection mechanism: TCP
- communication between applications running on different JRE.
+ communication between apps running on different JRE.
  connection-oriented -> Socket and ServerSocket classes
  connectionless -> DatagramSocket
  
@@ -890,9 +885,9 @@ Socket programming
 
  client creats socket 
 
- connection established -> socket object for client 
+ connection established -> socket obj for client 
 
- server uses accept() to return a reference to new socket 
+ server uses accept() to return a ref to new socket 
 ##
 Reflection
 
@@ -926,7 +921,7 @@ javap
  
 	1) setAccessible(boolean status) throws SecurityException
 	  
-	2) invoke(Object method, Object... args) throws IllegalAccessException,
+	2) invoke(obj method, obj... args) throws IllegalAccessException,
 					  IllegalArgumentException, InvocationTargetException
 	1) getDeclaredMethod(String name,Class[] parameterTypes)throws NoSuchMethodException,
 	   SecurityException
@@ -935,7 +930,7 @@ access private constructor -> getDeclaredConstructor()
 ##
 Wrapper classes
 
-  conversion of objects to primitives (unboxing) and primitives to objects (autoboxing)
+  conversion of objs to primitives (unboxing) and primitives to objs (autoboxing)
 
 ##
 Unboxing and autoboxing -> 
@@ -985,7 +980,7 @@ JavaBean:
 	
  reusable software component
 	
- encapsulates many objects into one in order to access it from multiple
+ encapsulates many objs into one in order to access it from multiple
   places. 
 	
  easy maintenance. 
@@ -993,9 +988,9 @@ JavaBean:
 ##
 RMI (Remote Method Invocation)
 	
-      for distributed application
+      for distributed app
 	
-      allows object -> invoke methods on object in another JVM by stub (for client side) and skeleton
+      allows obj -> invoke methods on obj in another JVM by stub (for client side) and skeleton
 	
        stub: for client side
 	
@@ -1019,7 +1014,7 @@ RMI (Remote Method Invocation)
          tasks:
 		reads parameter for remote method
 	
-		invokes method on actual remote object
+		invokes method on actual remote obj
 	
 		writes and transmits (marshals) result to caller
 
@@ -1034,9 +1029,9 @@ RMI (Remote Method Invocation)
 	
 		Start registry service by rmiregistry
 	
-		Create and start remote application
+		Create and start remote app
 	
-		Create and start client application
+		Create and start client app
 	
 		HTTP-tunneling:
 	
@@ -1050,9 +1045,9 @@ JRMP (Java Remote Method Protocol):
 	
  Java-specific
 	
- stream-based protocol -> looks up and refers to remote objects
+ stream-based protocol -> looks up and refers to remote objs
 	
- requires both client and server to use objects
+ requires both client and server to use objs
 	
  wire level -> runs under RMI and over TCP/IP
 ##
@@ -1114,7 +1109,7 @@ threads:
           provide constructors/methods to create
 	
           perform operations on a thread.
-              extends Object class and implements Runnable interface.
+              extends obj class and implements Runnable interface.
 
 	Commonly used Constructors:
 		Thread()
@@ -1144,7 +1139,7 @@ Synchronization:
 
 	static synchronization:	
 
- synchronized static method -> lock will on class not object
+ synchronized static method -> lock will on class not obj
 
  notify(): unblock waiting thread
 
@@ -1216,7 +1211,7 @@ Java Future interface: result of concurrent process
 ##
 Array/Collection:
 
- store references
+ store refs
 
  manipulate data
 
@@ -1243,8 +1238,8 @@ Array/Collection:
 
 4)	ArrayList provides random access.	LinkedList does not provide random access.
 
-5)	ArrayList takes less memory overhead as it stores only object
-	LinkedList takes more memory overhead as it stores object and address
+5)	ArrayList takes less memory overhead as it stores only obj
+	LinkedList takes more memory overhead as it stores obj and address
 ##
 1)	Iterator traverses elements in forward direction only.
 	ListIterator traverses elements in backward and forward directions both.
@@ -1315,7 +1310,7 @@ HashMap contain null key with multiple null values, TreeMap cannot hold null key
 2)	HashMap contain one null key and multiple null values.
 	Hashtable cannot contain any null key or null value.
 
-3)	HashMap not thread-safe -> useful for non-threaded applications.
+3)	HashMap not thread-safe -> useful for non-threaded apps.
 	Hashtable is thread-safe, and it can be shared between various threads.
 
 4)	HashMap inherits AbstractMap class,	Hashtable inherits Dictionary class.
@@ -1328,7 +1323,7 @@ hashCode() -> same integer if two keys by calling equals() are identical.
 ##
 possible that two hash code numbers have different or same keys
 ##
-equals() -> override to check objects based on property.
+equals() -> override to check objs based on property.
 ##
 synchronize List, Set and Map by Collections
 ##
