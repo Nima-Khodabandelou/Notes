@@ -278,31 +278,31 @@ Core concepts of Java SE
 ##
 - static 
 
- static methods/variables -> shared among all objs of class 
+      static methods/variables -> shared among all objs of class 
 
- static vars
+      static vars
 
-  stored in class area, no need to create obj to access
+	  stored in class area, no need to create obj to access
 
-  get memory once in class area at time of class loading
+	  get memory once in class area at time of class loading
 
-  maker program memory efficient 
+	  maker program memory efficient 
 
-  belong to class rather than obj
+	  belong to class rather than obj
  
- static methods
+      static methods
 
-  can't use non-static data member
+	  can't use non-static data member
 
-  can't call non-static method directly
+	  can't call non-static method directly
+
+	  can't be overriden
   
-  can't be overriden
-  
- Static block
+      Static block
 
-  to initialize static data members
+	  to initialize static data members
 
-  execute before main method at time of class loading 
+	  execute before main method at time of class loading 
 ## 
 - Type promotion in Java
 
@@ -325,9 +325,9 @@ Core concepts of Java SE
 	
        to perform constructor chaining within same class
 	  
-       to pass as argument in method -> used in event handling 
+       to pass as arg in method -> used in event handling 
 
-       to pass as argument in constructor call -> for one
+       to pass as arg in constructor call -> for one
        obj in multiple classes
 	  
        to distinguish local/instance vars   
@@ -364,86 +364,83 @@ Core concepts of Java SE
 ##
 - main method
 
-      static -> Because object not required to call the static method.
+      is static -> Because obj not required to call static method
 
-      non-static main method -> JVM have to create its object first then
-      call main() -> extra memory allocation
+      non-static main method -> JVM creates obj first then
+      calls main() -> extra memory allocation
 ## 
 - abstract
 
-      method -> static -> become part of the class -> can directly call it which
+      method -> if be static -> becomes part of the class -> can directly call it which
       is unnecessary.
       
-      class -> can declare static variables and methods
+      class -> can declare static vars/methods
 ##
-- copy values of one object into another
+- copy values of one obj into another
 
       By constructor
 
-      By assigning the values of one object into another
+      By assigning values of one object into another
 
-      By clone() method of Object class
+      By clone() method of Obj class
 ## 
 - object cloning <--> shallow copy
 
-      create exact copy of object -> clone() method -> java.lang.Cloneable
-      interface 
+      create exact copy of object -> clone() -> java.lang.Cloneable      
 
       syntax -> protected Object clone() throws CloneNotSupportedException 
 
-      clone() method saves extra processing compared to new keyword
+      clone() saves extra processing compared to new keyword
  
       Advantage
 
-		don't need to write lengthy and repetitive codes.
+		no need to write lengthy and repetitive codes
 
-		easiest -> Just define parent class, implement Cloneable
-		in it, provide clone().
+		easiest -> define parent class, implement Cloneable
 
 		fastest way to copy array  
 
       Disadvantage
 
-		have to change a lot of syntaxes
+		hange lots of syntaxes
 
-		have to implement cloneable interface while it doesn't
-		have any methods. just to tell JVM.
+		implement cloneable interface having no methods
 
-		is protected -> have to provide our own clone() and
+		clone() is protected -> have to provide our own clone() and
 		indirectly call Object.clone()
 
-		doesn't invoke constructor -> no control over object
+		no constructor invoke -> no control over obj
 		construction  
 
-		If clone method in child class -> all of its superclasse
-		s should define clone() or inherit. 
+		clone() in child -> all supers should define clone() or inherit it 
 
-		supports only shallow copying -> need to override it if
-		need deep cloning.
+		only shallow copying -> need to override for deep copying
 ## 
 - Aggregation (has-a)
 
       relationship between two classes -> aggregate class contains a reference
-      to the class it owns
+      to class it owns
 ## 
 - composition
 
-      When an object contains other object, if contained object cannot
+      When obj contains other obj, if contained object cannot
       exist without existence of container object
 
       particular case of aggregation representing stronger relationship
-      between two objects.
-
-      Ex: Company contains Employees. Employee cannot exist without a class.
+      between two objs
+      
+      Ex: Company contains Employees. Employee cannot exist without company
 ## 
 - pointer
 
-      variable refers to memory address. not used in Java
+      var refering to memory address
+      
+      not used in Java
 
 ## 
 - Method overloading
 
-      multiple methods with same name but different signatures.
+      multiple methods with same name but different signatures
 
       ways:
 		Changing number of arguments
@@ -454,31 +451,31 @@ Core concepts of Java SE
 	
       Type promotion is method overloading
 
-      static method -> part of the class not the object -> can't be overridden
+      static method -> part of class not obj -> can't be overridden
 ## 
-- modify superclass throws while override in subclass
+- exceptions in sub/super
 
-      No exception in superclass & checked exception in subclass -> error
+      No exception in super & checked exception in sub -> error
 
-      No exception in superclass & unchecked exception in subclass
+      No exception in supe & unchecked exception in sub
 
-      exception in superclass (exc1) & exception other than exc1, exc1 child,
-      and runtime exception in SubClass -> error
+      exception in super (exc1) & exception other than exc1, exc1's child,
+      and runtime exception in Sub -> error
 
-      exception in superclass (exc1) & child exception of exc1 in SubClass
+      exception in super (exc1) & child exception of exc1 in Sub
 
-      exception in superclass & no exception in SubClass
+      exception in super & no exception in Sub
 ##   
 - covariance
 
       how subtype is accepted when only supertype is defined
 	
-      covariant return type: the overriden method return type may vary in
-      the same direction as the subclass ->
+      covariant return type: overriden method return type may vary in
+      same direction as sub ->
                        override method by changing return type if return
-		       type of subclass overriding method is subclass type.
+		       type of sub overriding method is subclass type
 		       
-      Object as return type in super -> more concrete return type in child ->
+      Obj as return type in super -> more concrete return type in child ->
       covariant return type -> produce numbers from characters
 ## 
 - compile-time polymorphism (static binding, early binding, or overloading)
@@ -493,21 +490,21 @@ Core concepts of Java SE
 ##
 - overridden method
 
-    Override <--> IS-A (super/sub relationship)
+      Override <--> IS-A (super/sub relationship)
 
-    override any overloaded method      
+      can override overloaded method      
  
-    change scope of overridden method in subclass to be less
-        restricitve <-> (public < default < protected < private)
+      overridden method scope change in sub must be less
+         restricitve <-> (public < default < protected < private)
 
-      called through reference variable of superclass
+      called through reference variable of supe
 
-      determination of the method to be called is based on object being
-      referred to by reference variable.
+      determination of method to be called is based on object being
+      referred to by reference var
 
       data members cannot be overridden -> no Runtime Polymorphism by data members 
 
-      private, final or static method in class -> static binding.
+      private, final or static method in class -> static binding
 ## 
 - instanceof
 
@@ -515,41 +512,37 @@ Core concepts of Java SE
 ## 
 - abstract class
 
-	can have abstract and non-abstract methods, data member, constructor,
-	and even main()
+	can have (abstract and non-abstract methods)/data member/constructor/
+	main()/static methods
 
-	can have constructors and static methods
-
-	can have final methods -> force subclass not to change method body 
+	can have final methods -> force sub not to change method body 
 
 	can never be instantiated even if it contains constructor and
 	implemented methods
 
 	can provide implementation of interface
 
-	can extend another Java class
-##  
-- interface methods -> abstract by default
+	can extend another class
 
-- static + abstract -> not allowed
+        interface methods -> abstract by default
+
+        static + abstract -> not allowed
 ## 
 - Marker interface
 
 	interface with no data member and member functions -> Serializable,
-	Cloneable.
+	Cloneable
 ##
 - Interface
 
-	can't provide implementation of abstract class.
+	can't provide implementation of abstract class
 	
 	can extend another interface
 	
-	Members of interface are public by default
+	's Members are public by default
 	
-	object reference can be cast to interface reference when it
+	-> obj reference can be cast to interface reference when it
 	implements referenced interface
-##
-- try block followed by either catch OR finally block
 ##
 - Exceptions
 
@@ -566,6 +559,8 @@ Core concepts of Java SE
 	AssertionError, etc.
 
 	advantage of exception handling:  maintain normal flow of application.
+	
+	try block followed by either catch OR finally block
 ##
 - throw -> to throw exception
 
