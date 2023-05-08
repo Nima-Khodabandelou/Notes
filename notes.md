@@ -29,6 +29,85 @@ Core concepts of Java SE
 	   
       5- Dependency Inversion: Decoupling software modules
       -> high/low-level modules and details depend on abstractions
+## 
+- OOP
+
+      Object
+
+         real-time entity having state and behavior
+      
+         instance of class
+      
+         instance variables <-> object state
+      
+         methods <-> object behavior
+      
+         create using new keyword.
+      
+         obj refs <-> initialize to null
+	 
+      Inheritance
+
+         code reusability -> sub need not redefine method of super
+         unless need to provide specific impl
+
+         Runtime polymorphism -> simulate inheritance with real-time objects
+         -> makes OOPs more realistic. 
+
+         provides data hiding -> super hide data from sub
+
+         Method overriding        
+
+      Abstraction
+
+	focus on what object does instead of how it does
+	
+      encapsulation
+
+	wraps code and data into single unit
+
+	read-only class 
+	
+	   private fileds
+	
+	   no setter
+	
+	   getter return private fields to main method 
+
+	write-only class
+	
+	  private fileds
+	
+	  no getter
+	
+	  setter set value passed from main to private fields 
+	  
+      Acccess modifiers
+
+	      Default: accessible within package
+
+	      Protected: accessible by class and sub-class of same package, or by
+	      sub-class in another package
+
+	      Public: accessible anywhere
+
+	      Private: accessible within class	
+	      
+      constructor
+
+	      special method to initialize state
+
+	      invoke when class instantiate, obj created, and memory
+	       allocated for object -> no sense to make it static
+
+	      default constructor called on obj creation
+	       using new keyword
+
+	      no explicit return type.
+
+	      not inherited
+
+	      can't be final	      
 ##
 - Main Java features
 
@@ -44,6 +123,9 @@ Core concepts of Java SE
       
       Robust <- Memory Efficient and Multi-Threaded
       
+      delete, next, main, exit or null are not keyword
+      
+      Local variables not initialize to default value      
 ##    
 - Java Does not support
 
@@ -56,7 +138,6 @@ Core concepts of Java SE
       call by reference
     
       structures and unions
-
 ##       
 - Path and Classpath
 
@@ -103,105 +184,18 @@ Core concepts of Java SE
 		  on each platform. 
 
 		System/Application: Loads files in classpath
-##             
-- Local variables not initialize to default value
-## 
-- Acccess modifiers
-
-      Default: accessible within package
-      
-      Protected: accessible by class and sub-class of same package, or by
-      sub-class in another package
-      
-      Public: accessible anywhere
-      
-      Private: accessible within class
-## 
-- delete, next, main, exit or null are not keyword
-## 
-- Abstraction
-
-	focus on what object does instead of how it does
-##	
-- encapsulation
-
-	wraps code and data into single unit
-
-	read-only class 
-	
-	  private fileds
-	
-	  no setter
-	
-	  getter return private fields to main method 
-
-	write-only class
-	
-	  private fileds
-	
-	  no getter
-	
-	  setter set value passed from main to private fields
 ##
 - package
 
-	group of similar classes/interfaces/sub-packages
-
-	access protection
-
-	no naming collision	
-## 
-- Inheritance
-
-      code reusability -> sub need not redefine method of super
-      unless need to provide specific impl
-
-      Runtime polymorphism -> simulate inheritance with real-time objects
-      -> makes OOPs more realistic. 
-
-      provides data hiding -> super hide data from sub
-
-      Method overriding 
-##
-- packages
+      group of similar classes/interfaces/sub-packages
 
       no name clashe
       
       easier access control.
       
-      hidden classes.
+      hidden classes
       
-      easier to locate related classes
-##
-- Object
-
-      real-time entity having state and behavior
-      
-      instance of class
-      
-      instance variables <-> object state
-      
-      methods <-> object behavior
-      
-      create using new keyword.
-      
-      obj refs <-> initialize to null
-##
-- constructor
-
-      special method to initialize state
-      
-      invoke when class instantiate, obj created, and memory
-       allocated for object -> no sense to make it static
-      
-      default constructor called on obj creation
-       using new keyword
-      
-      no explicit return type.
-      
-      not inherited
-      
-      can't be final           
+      easier to locate related classes   
 ##	  
 - method
 
@@ -217,67 +211,54 @@ Core concepts of Java SE
 ##
 - Final keyword
 
-      A final class cannot be subclassed.
+      final class cannot be subclassed.
 	
-      A final method cannot be overridden.
+      final method cannot be overridden.
 	
-      create and document a class carefully or declare it final for safety reasons.
+      create and document class carefully or declare it final for safety reasons.
 	
-      making a class final: no other programmer can improve it. can’t fix any
-      problem with it --> lose extensibility
+      final class: can’t be improvede or fixed -> lose extensibility
 	
-      If methods of class called by other methods, should consider making the
-      called methods final. Otherwise, overriding them can affect the work of callers.
+      make called methods of class final. Otherwise, overriding can affect callers
 	
-      If constructor calls other methods, should generally declare these methods final.
+      make constructor called methods final
 	
-      making all methods of the class final -> can extend the class
+      can extend class with all methods final
 	
-      marking the class itself final -> can't extend the class
-	
-      can’t reassign final reference variable, But the object it refers to is mutable.
+      can’t reassign final reference variable But object it refers to is mutable
       
       ex:
 	      final Cat cat = new Cat();
 	      cat.setWeight(5) -> valid
 	 
-      class constants should be uppercase nad final, with components separated by
-      underscore:
+      class constants: uppercaseو final, underscored:
 	
-      static final int MAX_WIDTH = 999;
+         static final int MAX_WIDTH = 999;
 	 
-      static final fileds -> initialize them	upon declaration in the static
-      initializer block
+      static final fileds: initialize upon declaration in static initializer block
 	
-      instance final fields -> initialize them upon declaration in the instance
-      initializer block in the constructor
+      instance final fields: initialize upon declaration in instance initializer
+      block in constructor
 	
-      A final argument can’t be changed inside a method
+      final argument can’t be changed inside method
       
-      constructor can never be final
-
-      interface can never be final      
+      constructor and interface can never be final      
  ##
 - Immutability
 
-      once create an object -> not allowed to change the content.
-	  If try to change and alteration successfully done -> a
-	  new object will be created.
+      create immut. object -> not allowed to change/update content ->
+	  If try to change and alteration successfully done -> 
+	  create new object
 	
-      immutable obj -> its state doesn’t change after it has been initialized.
-      ex: String class instantiated -> value never changes.
+      immut. obj -> state doesn’t change after initialization
 	
-      immutable object can’t be updated -> programs need to create a new object
-      for every change of state.
+      benefits:
 	
-      benefits of immutable obj:
-	
-		good for caching purposes <--> don’t have to worry about the
-		value changes
+		for caching 
 		
 		inherently thread-safe	
 		
-      create immutable class:
+      create immut class:
 	
 		Declare class as final
 		
@@ -289,106 +270,96 @@ Core concepts of Java SE
 		
 		Initialize all fields using constructor performing deep copy
 		
-		return copy of obj by cloning it rather than returning the
+		return copy of obj by cloning rather than returning
 		actual object reference
 		
-		deep copy -> getter function returns a clone of original object ->
-		             HashMap values didn’t change 
+		deep copy -> getter function returns clone of original obj ->
+		             HashMap values don't change 
 ##
 - static 
 
- static methods/variables -> shared among all the objects of the class. 
+ static methods/variables -> shared among all objs of class 
 
- static variables
+ static vars
 
-  stored in class area, do not need to create the object to
-  access such variables.
+  stored in class area, no need to create obj to access
 
-  gets memory only once in the class area at the time of class loading.
+  get memory once in class area at time of class loading
 
-  makes your program more memory efficient. 
+  maker program memory efficient 
 
-  belongs to the class rather than the object
+  belong to class rather than obj
  
- static method
+ static methods
 
   can't use non-static data member
 
   can't call non-static method directly
-  can't override static method
+  
+  can't be overriden
   
  Static block
 
-  to initialize the static data member.
+  to initialize static data members
 
-  executed before the main method at the time of classloading. 
+  execute before main method at time of class loading 
 ## 
 - Type promotion in Java
 
-      Byte -> Short -> Int 
+      Byte -> Short (2 byte) -> Int (4 byte) -> Long (8 byte) -> Float (4 byte) -> Double (8 byte)
 
-      Char -> Int
-
-      Int -> Long -> Float -> Double
+      Char (2 byte) -> Int      
 ## 
 - this and super
 
-      cannot be used in static context as they are non-static. 
+      non-static -> cannot be used in static context 
 
-      Can't use this() and super() both in constructor
+      Can't use both in constructor
+      
+      must be first statement in constructor
 	  
       this:	  
 	   
        possible but not good to refer static members <--> it is unnecessary to
         access static variables through objects
 	
-       to perform constructor chaining within the same class
+       to perform constructor chaining within same class
 	  
-       to pass as an argument in the method. used in the event handling 
+       to pass as argument in method -> used in event handling 
 
-       must be the first statement in constructor
-
-       to pass as argument in the constructor call. useful if have to use one
-       object in multiple classes
+       to pass as argument in constructor call -> for one
+       obj in multiple classes
 	  
-       as statement from method -> return type of method must be class type
+       to distinguish local/instance vars   
  
-       to distinguish local variable and instance variable   
- 
-       to invoke method of current class. If don't use 'this' keyword, compiler
+       to invoke method of current class -> If don't use 'this', compiler
        automatically adds
 	  
        advantages of passing this into method instead of current class object
 
          this is final -> cannot be assigned to any new value whereas current
-         class object might not be final.
+         class object might not be final
  
-         this can be used in the synchronized block.
+         this can be used in synchronized block
 		 
-       is the final reference in Java
+       is final reference in Java
 
       super:
 
-        to refer to immediate parent class obj
+        to refer to immediate parent class obj/instance var
 	
-	to refer to immediate parent class instance variable
+        to invoke immediate parent class method/constructor	
 	
-        to invoke the immediate parent class method.
-	
-        to invoke immediate parent class constructor.	
-	
-        instance of subclass created -> instance of parent class created
+        instance of sub creates -> instance of parent creates
         implicitly referred by super   
 	
-        for initializing super-class variables within sub-class constructor 
-	
-        must be first statement in constructor
+        for initializing super vars within sub constructor 
 	
         for constructor chaining
 		
-        Called implicitly by the class constructor if not provided 
+        Called implicitly by class constructor if not provided 
        
-        To differentiate between local and instance variables in class
+        To differentiate between local/instance vars in class
         constructor		
 ##
 - main method
