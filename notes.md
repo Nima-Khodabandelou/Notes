@@ -573,40 +573,40 @@
 
       interface 
       
-	 define a contract behavior between systems/codes/behaviors/services/...
-	 
-	 has public methods -> bad choice if not want to expose everything
-	 
-	 has default & static methods
-	 
-	 for designing small, concise bits of functionality across range of
-	  disparate & unrelated objects (i.e. a base for class hierarchy)
-	  
-	 for situation when API not change for a while
-	 
-	 for something similar to multiple inheritances since can impl multiple interfaces
-	 
-	 interface default method
-	        helps to extend interface functionality without breaking subs
-		to avoid utility classes
-		to support lambda in Collections
-		can't overr methods from java.lang.Object		
-	        if sub extends two interfaces with common default methods in each
-	           interface, then sub should impl the default method as well
+		 define a contract behavior between systems/codes/behaviors/services/...
 
-	  interface static method
-	        for utility like null check, collection sorting,...
-		for security -> sub can't overr it
+		 has public methods -> bad choice if not want to expose everything
 
-	  functional interface: has only one abstract method -> instantiate using lambda
+		 has default & static methods
+
+		 for designing small, concise bits of functionality across range of
+		  disparate & unrelated objects (i.e. a base for class hierarchy)
+
+		 for situation when API not change for a while
+
+		 for something similar to multiple inheritances since can impl multiple interfaces
+
+		 interface default method
+			helps to extend interface functionality without breaking subs
+			to avoid utility classes
+			to support lambda in Collections
+			can't overr methods from java.lang.Object		
+			if sub extends two interfaces with common default methods in each
+			   interface, then sub should impl the default method as well
+
+		  interface static method
+			for utility like null check, collection sorting,...
+			for security -> sub can't overr it
+
+		  functional interface: has only one abstract method -> instantiate using lambda
 
       use both abstract and interface      
-	 ex: a base interface with methods that every sub should impl
-	     if there comes other methods that only some subs should impl -> extend
-	     base interface and create a new interface containing those new methods.
-	     subs can choose to impl inter1 or inter2. if the number of methods grows
-	     a lot -> better to have an abstract class providing skeletal impl of inter2
-	       -> sub has flexibility to choose abstract class or interface
+		 ex: a base interface with methods that every sub should impl
+		     if there comes other methods that only some subs should impl -> extend
+		     base interface and create a new interface containing those new methods.
+		     subs can choose to impl inter1 or inter2. if the number of methods grows
+		     a lot -> better to have an abstract class providing skeletal impl of inter2
+		       -> sub has flexibility to choose abstract class or interface
        
 ##
 - Exceptions
