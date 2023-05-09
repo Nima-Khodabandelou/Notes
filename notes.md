@@ -184,7 +184,8 @@
 ##
 - package
 
-      group of similar classes/interfaces/sub-packages
+      group of similar classes/
+      s/sub-packages
 
       no name clash
       
@@ -507,7 +508,7 @@
 ## 
 - abstract class
 
-      can have abstract and non-abstract methods)/data member/constructor/
+      can have (abstract and non-abstract methods)/data member/constructor/
 	main()/static methods
 
       can have final methods -> forces sub not to change method body 
@@ -523,7 +524,7 @@
 ##
 - Interface
 
-      can't provide implementation of abstract class
+      can't provide impl of abstract class
 	
       can extend another interface
 	
@@ -536,6 +537,78 @@
 	
       Marker interface: interface with no data member
 	 and member functions -> Serializable, Cloneable
+##
+- Interface vs. Abstract class (note that some are rephrased of others)
+
+      abstract class
+	for inheritance concept
+	
+	to define default behavior for subs <-> childs should have same functionality
+	to declare non-public members ( in interface all methods must be public)
+	
+	for situation when there are many methods in base and some are common in subs
+	 (typically those common methods are implemented in abstract class and
+	 other non-common ones remain abstract to later be implemented by subs)
+	 
+	to add new (non-abstract) methods in the future for better forward compatibility (in case 
+	 of interface if add new methods then all classes implementing that
+	 interface should implement new methods)
+	 
+	to create multiple versions of a component: by updating abstract class, all
+	 childs automatically update but in case of interface if a new version
+	 needed then a new interface should be created
+	 
+	to partially implement class
+	
+	for objects that are closely related
+	 has some default implementations in abstract class and some tools
+	 for implementation in sub. every sub should use the base.
+	 if one has developed their own class hierarchy then it's not
+	 suitable to use base abstract class
+
+	sub can extend only one abstract but impl many interfaces
+	
+	sub need not to provide impl for all methods of base (contrary
+	to interface whose all methods should be implemented) 
+
+
+	   
+      interface 
+	 define a contract behavior between systems/codes/behaviors/services/...
+	 
+	 has public methods -> bad choice if not want to expose everything
+	 
+	 has default & static methods
+	 
+	 for designing small, concise bits of functionality across range of
+	  disparate & unrelated objects (i.e. a base for class hierarchy)
+	  
+	 for situation when API not change for a while
+	 
+	 for something similar to multiple inheritances since can impl multiple interfaces
+	 
+	 interface default method
+	        helps to extend interface functionality without breaking subs
+		to avoid utility classes
+		to support lambda in Collections
+		can't overr methods from java.lang.Object		
+	        if sub extends two interfaces with common default methods in each
+	           interface, then sub should impl the default method as well
+
+	  interface static method
+	        for utility like null check, collection sorting,...
+		for security -> sub can't overr it
+
+	  functional interface: has only one abstract method -> instantiate using lambda
+
+      use both abstract and interface      
+	 ex: a base interface with methods that every sub should impl
+	     if there comes other methods that only some subs should impl -> extend
+	     base interface and create a new interface containing those new methods.
+	     subs can choose to impl inter1 or inter2. if the number of methods grows
+	     a lot -> better to have an abstract class providing skeletal impl of inter2
+	       -> sub has flexibility to choose abstract class or interface
+       
 ##
 - Exceptions
 
