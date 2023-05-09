@@ -1,6 +1,3 @@
-# java_core
-
-Core concepts of Java SE
 ##
 - SOLID Principles (not specific to Java)
 
