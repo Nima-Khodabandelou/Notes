@@ -541,39 +541,38 @@
 - Interface vs. Abstract class (note that some are rephrased of others)
 
       abstract class
-	for inheritance concept
-	
-	to define default behavior for subs <-> childs should have same functionality
-	to declare non-public members ( in interface all methods must be public)
-	
-	for situation when there are many methods in base and some are common in subs
-	 (typically those common methods are implemented in abstract class and
-	 other non-common ones remain abstract to later be implemented by subs)
-	 
-	to add new (non-abstract) methods in the future for better forward compatibility (in case 
-	 of interface if add new methods then all classes implementing that
-	 interface should implement new methods)
-	 
-	to create multiple versions of a component: by updating abstract class, all
-	 childs automatically update but in case of interface if a new version
-	 needed then a new interface should be created
-	 
-	to partially implement class
-	
-	for objects that are closely related
-	 has some default implementations in abstract class and some tools
-	 for implementation in sub. every sub should use the base.
-	 if one has developed their own class hierarchy then it's not
-	 suitable to use base abstract class
+		for inheritance concept
 
-	sub can extend only one abstract but impl many interfaces
-	
-	sub need not to provide impl for all methods of base (contrary
-	to interface whose all methods should be implemented) 
+		to define default behavior for subs <-> childs should have same functionality
+		to declare non-public members ( in interface all methods must be public)
 
+		for situation when there are many methods in base and some are common in subs
+		 (typically those common methods are implemented in abstract class and
+		 other non-common ones remain abstract to later be implemented by subs)
 
-	   
+		to add new (non-abstract) methods in the future for better forward compatibility (in case 
+		 of interface if add new methods then all classes implementing that
+		 interface should implement new methods)
+
+		to create multiple versions of a component: by updating abstract class, all
+		 childs automatically update but in case of interface if a new version
+		 needed then a new interface should be created
+
+		to partially implement class
+
+		for objects that are closely related
+		 has some default implementations in abstract class and some tools
+		 for implementation in sub. every sub should use the base.
+		 if one has developed their own class hierarchy then it's not
+		 suitable to use base abstract class
+
+		sub can extend only one abstract but impl many interfaces
+
+		sub need not to provide impl for all methods of base (contrary
+		to interface whose all methods should be implemented) 
+
       interface 
+      
 	 define a contract behavior between systems/codes/behaviors/services/...
 	 
 	 has public methods -> bad choice if not want to expose everything
