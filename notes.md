@@ -70,294 +70,170 @@
 	      operator overloading
 	      call by ref
 	      structures and unions
+      Java is neutral w.r.t to O.S. architecture (32/64 bit)
 ##       
 - Path and Classpath
 
-       PATH: An environment variable used by the O.S. to locate the
-       executables
-
-       Classpath: Java specific used to locate class files/dir./
-       ZIP/JAR/...
+       PATH: An environment variable used by the O.S. to locate the executables
+       Classpath: Java specific used to locate class files/dir./ZIP/JAR/...
 ## 
 - Source files
 
       Each Java file -> multiple classes -> only one public
-
       Source file name -> same as class name
-## 
-- O.S. Architecture
-
-      Java is neutral w.r.t to O.S. architecture (32/64 bit)
 ## 
 - Interpreter/Compiler
 
-      Just-in-time (JIT): To improve performance by compiling parts of bytecode
-                        having similar functionality -> reducing compilation time  
+      Just-in-time (JIT): To improve performance by compiling parts of bytecode having similar functionality -> reducing compilation time  
 
-      Compiler: transforms instruction set of JVM to instruction set of specific
-      CPU (Java code to Bytecode)      
+      Compiler: transforms instruction set of JVM to instruction set of specific CPU (Java code to Bytecode)      
 
-      Classloader: Part of JRE for loading class files
-      Built-in classloaders
-      
-		Bootstrap
-		
-		  First classloader in native code (e.g. c++)
-		
-		  loads Java SE core libs and class files
-		
+      Classloader: Part of JRE for loading class files. Built-in classloaders:      
+		Bootstrap		
+		  First classloader in native code (e.g. c++)		
+		  loads Java SE core libs and class files		
 		  various implementations for various platforms
-
-		Extension
-		
-		  Child of Bootstrap
-		
-		  Loads core extension classes to be available to all apps running
-		  on each platform. 
-
+		Extension		
+		  Child of Bootstrap		
+		  Loads core extension classes to be available to all apps running on each platform.
 		System/app: Loads files in classpath
 ##
 - package
 
-      group of similar classes/
-      s/sub-packages
-
-      no name clash
-      
-      easier access control.
-      
-      hidden classes
-      
-      easier to locate related classes   
+      is a group of similar classes/sub-packages
+      for no name clash      
+      for easier access control.      
+      for hidden classes      
+      for easier locating the related classes   
 ##	  
 - method
 
       exposes obj behavior
-
       must have a return type
-
       is invoked explicitly
-
       is not provided by the compiler in any case.
-
       method name may or may not be same as class name      
 ##
 - Final keyword
 
-      final class cannot be subclassed.
-	
-      final method cannot be overridden.
-	
-      create and document class carefully or declare it final for safety reasons.
-	
-      final class: can’t be improvede or fixed -> lose extensibility
-	
-      make called methods of class final. Otherwise, overriding can affect callers
-	
-      make constructor called methods final
-	
-      can extend class with all methods final
-	
-      can’t reassign final ref variable But obj it refers to is mutable
-      
+      final class cannot be subclassed.	
+      final method cannot be overridden.	
+      create and document class carefully or declare it final for safety reasons.	
+      final class: can’t be improvede or fixed -> lose extensibility	
+      make called methods of class final. Otherwise, overriding can affect callers	
+      make constructor called methods final	
+      can extend class with all methods final	
+      can’t reassign final ref variable But obj it refers to is mutable      
       ex:
 	      final Cat cat = new Cat();
-	      cat.setWeight(5) -> valid
-	 
-      class constants: uppercaseو final, underscored:
-	
-         static final int MAX_WIDTH = 999;
-	 
-      static final fileds: init upon declaration in static init block
-	
-      instance final fields: init upon declaration in instance initializer
-      block in constructor
-	
-      final argument can’t be changed inside method
-      
+	      cat.setWeight(5) -> valid	 
+      class constants: uppercaseو final, underscored.	 
+      static final fileds: init upon declaration in static init block	
+      instance final fields: init upon declaration in instance initializer block in constructor	
+      final argument can’t be changed inside method      
       constructor and interface can never be final      
  ##
 - Immutability
 
-      create immut. obj -> not allowed to change/update content ->
-	  If try to change and alteration successfully done -> 
-	  create new obj
-	
-      immut. obj -> state doesn’t change after init
-	
-      benefits:
-	
-		for caching 
-		
-		inherently thread-safe	
-		
-      create immut class:
-	
-		Declare class as final
-		
-		all fields private
-		
-		No setter
-		
-		all mutable fields final
-		
-		Init all fields using constructor performing deep copy
-		
-		return copy of obj by cloning rather than returning
-		actual obj ref
-		
-		deep copy -> getter function returns clone of original obj ->
-		             HashMap values don't change 
+      create immut. obj -> not allowed to change/update content -> If try to change and alteration successfully done ->  create new obj	
+      immut. obj -> state doesn’t change after init      	
+      for caching 		
+      immut obj is inherently thread-safe			
+      To create immut class:	
+		Declare class as final		
+		all fields private		
+		No setter		
+		all mutable fields final		
+		Init all fields using constructor performing deep copy		
+		return copy of obj by cloning rather than returning actual obj ref		
+		deep copy -> getter function returns clone of original obj -> HashMap values don't change 
 ##
 - static 
 
       static methods/variables -> shared among all objs of class 
-
       static vars
-
 	  stored in class area, no need to create obj to access
-
 	  get memory once in class area at time of class loading
-
 	  maker program memory efficient 
-
-	  belong to class rather than obj
- 
+	  belong to class rather than obj 
       static methods
-
 	  can't use non-static data member
-
 	  can't call non-static method directly
-
-	  can't be overriden
-  
+	  can't be overriden  
       Static block
-
 	  to init static data members
-
 	  execute before main method at time of class loading 
 ## 
 - Type promotion in Java
 
       Byte -> Short (2 byte) -> Int (4 byte) -> Long (8 byte) -> Float (4 byte) -> Double (8 byte)
-
       Char (2 byte) -> Int      
 ## 
 - this and super
 
-      non-static -> cannot be used in static context 
-
-      Can't use both in constructor
-      
-      must be first statement in constructor
-	  
-      this:	  
-	   
-       possible but not good to refer static members <--> it is unnecessary to
-        access static variables through objs
-	
-       to perform constructor chaining within same class
-	  
+      non-static -> cannot be used in static context
+      Can't use both in constructor      
+      must be first statement in constructor	  
+      this:	   
+        possible but not good to refer static members <--> it is unnecessary to access static variables through objs	
+       to perform constructor chaining within same class	  
        to pass as arg in method -> used in event handling 
-
-       to pass as arg in constructor call -> for one
-       obj in multiple classes
-	  
-       to distinguish local/instance vars   
- 
-       to invoke method of current class -> If don't use 'this', compiler
-       automatically adds
-	  
+       to pass as arg in constructor call -> for one obj in multiple classes	  
+       to distinguish local/instance vars 
+       to invoke method of current class -> If don't use 'this', compiler automatically adds	  
        advantages of passing this into method instead of current class obj
-
-         this is final -> cannot be assigned to any new value whereas current
-         class obj might not be final
- 
-         this can be used in synchronized block
-		 
+         this is final -> cannot be assigned to any new value whereas current class obj might not be final 
+         this can be used in synchronized block		 
        is final ref in Java
-
       super:
-
-        to refer to immediate parent class obj/instance var
-	
+        to refer to immediate parent class obj/instance var	
         to invoke immediate parent class method/constructor	
-	
-        instance of sub creates -> instance of parent creates
-        implicitly referred by super   
-	
-        for init super vars within sub constructor 
-	
-        for constructor chaining
-		
-        Called implicitly by class constructor if not provided 
-       
-        To differentiate between local/instance vars in class
-        constructor		
+        instance of sub creates -> instance of parent creates implicitly referred by super 	
+        for init super vars within sub constructor 	
+        for constructor chaining		
+        Called implicitly by class constructor if not provided        
+        To differentiate between local/instance vars in class constructor		
 ##
 - main method
 
       is static -> Because obj not required to call static method
-
-      non-static main method -> JVM creates obj first then
-      calls main() -> extra memory allocation
+      non-static main method -> JVM creates obj first then calls main() -> extra memory allocation
 ## 
 - abstract
 
-      method -> if be static -> becomes part of the class -> can directly call it which
-      is unnecessary.
-      
+      method -> if be static -> becomes part of the class -> can directly call it which is unnecessary.      
       class -> can declare static vars/methods
 ##
 - copy values of one obj into another
 
       By constructor
-
       By assigning values of one obj into another
-
       By clone() method of Obj class
 ## 
 - obj cloning <--> shallow copy
 
-      create exact copy of obj -> clone() -> java.lang.Cloneable      
-
-      syntax -> protected obj clone() throws CloneNotSupportedException 
-
-      clone() saves extra processing compared to new keyword
- 
-      Advantage
-
+      create exact copy of obj -> clone() -> java.lang.Cloneable
+      syntax -> protected obj clone() throws CloneNotSupportedException
+      clone() saves extra processing compared to new keyword 
+      Advantages:
 		no need to write lengthy and repetitive codes
-
 		easiest -> define parent class, implement Cloneable
-
-		fastest way to copy array  
-
-      Disadvantage
-
+		fastest way to copy array 
+      Disadvantages:
 		hange lots of syntaxes
-
 		implement cloneable interface having no methods
-
-		clone() is protected -> have to provide our own clone() and
-		indirectly call obj.clone()
-
-		no constructor invoke -> no control over obj
-		construction  
-
-		clone() in child -> all supers should define clone() or inherit it 
-
+		clone() is protected -> have to provide our own clone() and indirectly call obj.clone()
+		no constructor invoke -> no control over obj construction
+		clone() in child -> all supers should define clone() or inherit it
 		only shallow copying -> need to override for deep copying
 ## 
 - Aggregation (has-a)
 
-      relationship between two classes -> aggregate class contains a ref
-      to class it owns
+      relationship between two classes -> aggregate class contains a ref to class it owns
 ## 
 - composition
 
-      When obj contains other obj, if contained obj cannot
-      exist without existence of container obj
+      When obj contains other obj, if contained obj cannot exist without existence of container obj
 
       particular case of aggregation representing stronger relationship
       between two objs
