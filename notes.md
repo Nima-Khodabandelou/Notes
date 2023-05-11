@@ -1,63 +1,51 @@
 ##
 - SOLID Principles (not specific to Java)
-
-      1- Single Responsibility for Each class -> There should be just one reason 
-             to change the class.
-	     Advantages:
-			Fewer tests for each class.
-			Lower coupling –> fewer dependencies.
-			Smaller and well-organized classes		 
-      2- Class shoud be Opened for Extension and Closed for Modification.	
-	     Otherwise -> modifying the existing code -> potential new bugs	   
-	     If fixing bugs -> extend the class
-      3- Liskov Substitution: If class A is a subtype of class B, one should
-             be able to replace B with A without disrupting the behavior of
-	     the program.	
-      4- Interface Segregation: larger interfaces be splited into smaller
-             ones -> More specific methods in each interface	   
-      5- Dependency Inversion: Decoupling software modules
-             -> high/low-level modules and details depend on abstractions
+###
+      1- Single Responsibility for Each class: There should be just one reason to change the class.	 
+      1-1- Advantages:
+           Fewer tests for each class.
+           Lower coupling –> fewer dependencies.
+           Smaller and well-organized classes		 
+      2- Class shoud be Opened for Extension and Closed for Modification. Otherwise, modifying the existing code -> potential new bugs.	If fixing bugs -> extend the class.
+      3- Liskov Substitution: If class A is a subtype of class B, one should be able to replace B with A without disrupting the behavior of the program.	
+      4- Interface Segregation: larger interfaces be splited into smaller ones -> More specific methods in each interface	   
+      5- Dependency Inversion. Decoupling software modules -> high/low-level modules and details depend on abstractions
 ## 
 - OOP
 
-      obj:
-         real-time entity having state and behavior      
-         instance of class      
-         instance variables <-> obj state      
-         methods <-> obj behavior      
-         create using new keyword.      
-         obj refs <-> init to null	 
+      Obj:
+	   real-time entity having state and behavior      
+	   instance of class      
+	   instance variables <-> obj state      
+           methods <-> obj behavior      
+           create using new keyword.      
+           obj refs <-> init to null	 
       Inheritance:
-         code reusability -> sub need not redefine method of super
-            unless need to provide specific impl.
-         Runtime polymorphism -> simulate inheritance with real-time objs
-            -> makes OOPs more realistic.
-         provides data hiding -> super hide data from sub
-         Method overriding
+           Code reusability -> sub need not redefine method of super unless need to provide specific impl.
+           Runtime polymorphism -> simulate inheritance with real-time objs -> makes OOPs more realistic.
+           Provides data hiding -> super hide data from sub
+           Method overriding
       Abstraction:
-	focus on what obj does instead of how it does	
-      encapsulation:
-	wraps code and data into single unit
-	read-only class:	
-	   private fileds	
-	   no setter	
-	   getter return private fields to main method
-	write-only class:	
-	  private fileds	
-	  no getter	
-	  setter set value passed from main to private fields	  
+          Focus on what obj does instead of how it does	
+      Encapsulation:      
+          Wraps code and data into single unit
+	      Read-only class	
+	          private fileds	
+	          no setter	
+	          getter return private fields to main method
+	      Write-only class	
+	          private fileds	
+	          no getter	
+	          setter set value passed from main to private fields	  
       Acccess modifiers:
 	      Default: accessible within package
-	      Protected: accessible by class and sub of same package, or by
-	         sub in another package
+	      Protected: accessible by class and sub of same package, or by sub in another package
 	      Public: accessible anywhere
 	      Private: accessible within class	      
-      constructor:
+      Constructor:
 	      special method to init state
-	      invoke when class instantiate, obj created, and memory
-	         allocated for obj -> no sense to make it static
-	      default constructor called on obj creation
-	         using new keyword
+	      invoke when class instantiate, obj created, and memory allocated for obj -> no sense to make it static
+	      default constructor called on obj creation using new keyword
 	      no explicit return type
 	      not inherited
 	      can't be final	      
@@ -66,14 +54,12 @@
 
       Statically typed language -> inherently secure
       For Desktop, Mobile, and Web      
-      Java compiler output is Bytecode (JVM specific set of instructions) rather 
-         than exe file -> secure and portable (Platform-independent)       
+      Java compiler output is Bytecode (JVM specific set of instructions) rather than exe file -> secure and portable (Platform-independent)       
       JVM:
-         executes Bytecodes
-         is part of JRE.
-	 is implemented for various platforms.
-	 can create a restricted execution environment (sandbox) preventing
-	    unrestricted access to the machine.
+		Executes Bytecodes.
+		Is part of JRE.
+		Is implemented for various platforms.
+		Can create a restricted execution environment (sandbox) preventing unrestricted access to the machine.
       High-level
       Multi-threaded      
       Memory Efficient and Multi-Threaded -> Robust     
