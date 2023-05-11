@@ -25,8 +25,7 @@
 ## 
 - OOP
 
-      obj
-
+      obj:
          real-time entity having state and behavior
       
          instance of class
