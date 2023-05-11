@@ -350,11 +350,11 @@
       throw -> to throw exception
       throws -> to declare possible exceptions that may occure in method
       Hierarchy of Java Exception classes:
-	 Throwable -> Exception, Error
-	 Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
-	 RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException, IndexOutOfBoundsException
-	 IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
-	 Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
+	Throwable -> Exception, Error
+	Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
+	RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException, IndexOutOfBoundsException
+	IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
+	Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
       Common exception Scenarios:
 	 divide number by zero -> ArithmeticException.
 	 Operation on null var -> NullPointerException	
