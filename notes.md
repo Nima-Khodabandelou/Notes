@@ -26,114 +26,68 @@
 - OOP
 
       obj:
-         real-time entity having state and behavior
-      
-         instance of class
-      
-         instance variables <-> obj state
-      
-         methods <-> obj behavior
-      
-         create using new keyword.
-      
-         obj refs <-> init to null
-	 
-      Inheritance
-
+         real-time entity having state and behavior      
+         instance of class      
+         instance variables <-> obj state      
+         methods <-> obj behavior      
+         create using new keyword.      
+         obj refs <-> init to null	 
+      Inheritance:
          code reusability -> sub need not redefine method of super
-         unless need to provide specific impl
-
+            unless need to provide specific impl.
          Runtime polymorphism -> simulate inheritance with real-time objs
-         -> makes OOPs more realistic. 
-
+            -> makes OOPs more realistic.
          provides data hiding -> super hide data from sub
-
-         Method overriding        
-
-      Abstraction
-
-	focus on what obj does instead of how it does
-	
-      encapsulation
-
+         Method overriding
+      Abstraction:
+	focus on what obj does instead of how it does	
+      encapsulation:
 	wraps code and data into single unit
-
-	read-only class 
-	
-	   private fileds
-	
-	   no setter
-	
-	   getter return private fields to main method 
-
-	write-only class
-	
-	  private fileds
-	
-	  no getter
-	
-	  setter set value passed from main to private fields 
-	  
-      Acccess modifiers
-
+	read-only class:	
+	   private fileds	
+	   no setter	
+	   getter return private fields to main method
+	write-only class:	
+	  private fileds	
+	  no getter	
+	  setter set value passed from main to private fields	  
+      Acccess modifiers:
 	      Default: accessible within package
-
 	      Protected: accessible by class and sub of same package, or by
-	      sub in another package
-
+	         sub in another package
 	      Public: accessible anywhere
-
-	      Private: accessible within class	
-	      
-      constructor
-
+	      Private: accessible within class	      
+      constructor:
 	      special method to init state
-
 	      invoke when class instantiate, obj created, and memory
-	       allocated for obj -> no sense to make it static
-
+	         allocated for obj -> no sense to make it static
 	      default constructor called on obj creation
-	       using new keyword
-
-	      no explicit return type.
-
+	         using new keyword
+	      no explicit return type
 	      not inherited
-
 	      can't be final	      
 ##
 - Main Java features
 
       Statically typed language -> inherently secure
-
-      For Desktop, Mobile, and Web
-      
+      For Desktop, Mobile, and Web      
       Java compiler output is Bytecode (JVM specific set of instructions) rather 
-       than exe file -> secure and portable (Platform-independent)
-       
+         than exe file -> secure and portable (Platform-independent)       
       JVM:
-            executes Bytecodes.
-            is part of JRE.
-	    is implemented for various platforms.
-	    can create a restricted execution environment (sandbox) preventing
-	      unrestricted access to the machine.
+         executes Bytecodes
+         is part of JRE.
+	 is implemented for various platforms.
+	 can create a restricted execution environment (sandbox) preventing
+	    unrestricted access to the machine.
       High-level
-
-      Multi-threaded
-      
-      Memory Efficient and Multi-Threaded -> Robust      
-    
-      Local variables not init. to default value      
-    
-      Does not support
-
+      Multi-threaded      
+      Memory Efficient and Multi-Threaded -> Robust     
+      Local variables not init. to default value    
+      Does not support:
 	      pointers (Handles it internally)
-
 	      goto
-
 	      operator overloading
-
 	      call by ref
-
 	      structures and unions
 ##       
 - Path and Classpath
