@@ -611,392 +611,256 @@ Serialization
 	  private constructor	
 	  static getInstance
 ##
-JavaBean:
+- JavaBean:
 	
- reusable software component	
- encapsulates many objs into one in order to access it from multiple places. 	
- easy maintenance. 
+	 reusable software component	
+	 encapsulates many objs into one in order to access it from multiple places. 	
+	 easy maintenance. 
 ##
-RMI (Remote Method Invocation)
+- RMI (Remote Method Invocation)
 	
-      for distributed app
-	
-      allows obj -> invoke methods on obj in another JVM by stub (for client side) and skeleton
-	
-       stub: for client side
-	
-         outgoing requests are routed through it
-	
+      for distributed app	
+      allows obj -> invoke methods on obj in another JVM by stub (for client side) and skeleton	
+      stub: for client side -> outgoing requests are routed through it.	
          tasks:
-		initiates connection
-	
-		writes and transmits (marshals) parameters
-	
-		waits for result.
-	
-		reads (unmarshals) result
-	
+		initiates connection	
+		writes and transmits (marshals) parameters	
+		waits for result.	
+		reads (unmarshals) result	
 		returns result to caller
-
-       skeleton: gateway for server side
-	
-         incoming requests routed through it 
-	
+       skeleton: gateway for server side -> incoming requests routed through it.	
          tasks:
-		reads parameter for remote method
-	
-		invokes method on actual remote obj
-	
+		reads parameter for remote method	
+		invokes method on actual remote obj	
 		writes and transmits (marshals) result to caller
-
-      RMI in programs:
-	
-		Create remote interface.
-	
-		Provide implementation of remote interface
-	
-		Compile implementation class and create stub and skeleton
-		 using rmic
-	
-		Start registry service by rmiregistry
-	
-		Create and start remote app
-	
-		Create and start client app
-	
-		HTTP-tunneling:
-	
-	         doesn't need setup to work within firewall
-	
-		 handles HTTP through proxy servers
-	
+      RMI in programs:	
+		Create remote interface.	
+		Provide implementation of remote interface	
+		Compile implementation class and create stub and skeleton using rmic	
+		Start registry service by rmiregistry	
+		Create and start remote app	
+		Create and start client app	
+		HTTP-tunneling:	
+	         doesn't need setup to work within firewall	
+		 handles HTTP through proxy servers	
 		 not allow outbound TCP
 ##
-JRMP (Java Remote Method Protocol):
+- JRMP (Java Remote Method Protocol):
 	
- Java-specific
-	
- stream-based protocol -> looks up and refers to remote objs
-	
- requires both client and server to use objs
-	
+ Java-specific	
+ stream-based protocol -> looks up and refers to remote objs	
+ requires both client and server to use objs	
  wire level -> runs under RMI and over TCP/IP
 ##
-Multitasking 
+- Multitasking 
 	
      to utilize CPU
-
-
-     Process-based Multitasking (Multiprocessing) ->
-	
-       an address for each process in memory
-
-     Thread-based Multitasking (Multithreading) ->
-	
-       same address space for threads
+     Process-based Multitasking (Multiprocessing) -> an address for each process in memory
+     Thread-based Multitasking (Multithreading) -> same address space for threads
 ##  
-Multithreading
+- Multithreading
  
-      thread: lightweight sub-process
-	
-      smallest unit of processing
-	
-      multithreading better than multiprocessing:
-	
-        threads use shared memory area
-	
+      thread:
+         lightweight sub-process	
+         smallest unit of processing	
+      multithreading better than multiprocessing:	
+        threads use shared memory area	
         context-switching between threads takes less time than process
-
-      Advantages:
-	
-         threads are independent
-	
-         no user block
-	
-         doesn't affect other threads in case of exception  
-	
+      Advantages:	
+         threads are independent	
+         no user block	
+         doesn't affect other threads in case of exception	
          saves time
 ##
-threads:
+- threads:
 	
-      Life cycle of a Thread (Thread States)
-	
-        New: thread created -> new state -> code not run yet
-	
-        Active: start() -> two states within: runnable and running
-	
+      Life cycle of a Thread (Thread States):	
+        New: thread created -> new state -> code not run yet	
+        Active: start() -> two states within: runnable and running	
         ready to run thread moved to runnable state -> time to run <- thread scheduler
-
       fixed time to each thread -> time over -> voluntarily gives up CPU to other thread
-
-      threads wait for their turn to run
- 
+      threads wait for their turn to run 
       Blocked/ Waiting <->  thread inactive 
+      two ways to create a thread:	
+        Thread class:	
+           provide constructors/methods to create	
+           perform operations on a thread.
+        extends obj class and implements Runnable interface.
 
-      two ways to create a thread:
-	
-        Thread class:
-	
-          provide constructors/methods to create
-	
-          perform operations on a thread.
-              extends obj class and implements Runnable interface.
-
-	Commonly used Constructors:
+      Commonly used Constructors:
 		Thread()
 		Thread(String name)
 		Thread(Runnable r)
 		Thread(Runnable r,String name)
 ##
-Synchronization:
+- Synchronization:
 
- control access of multiple threads to any shared resource To prevent
-
-  thread interference
-
-  consistency problem 
-
+ control access of multiple threads to any shared resource To prevent:
+   thread interference
+   consistency problem
  allows only one thread to be executed at a time 
-
  ways:
-
   	synchronized method
-
   	synchronized block
-
     	for specific resource of method
-
 		scope is smaller than method
-
-	static synchronization:	
-
- synchronized static method -> lock will on class not obj
-
+	static synchronization:	synchronized static method -> lock will on class not obj
  notify(): unblock waiting thread
-
  notifyAll(): unblock all threads in waiting state
 ##
-Deadlock: every thread waiting for resource held by some other waiting thread ->
-          Neither of thread executes nor gets chance to execute -> code breaks
+- Deadlock
 
-detect deadlock: run code on cmd -> collect Thread Dump, possible deadlock message 
-
-avoid deadlock:
-
-	no Nested lock: when provide locks to threads to give one lock to only one thread at     particular time
-
-	no unnecessary locks
-
-Use thread join: wait for thread until another thread finishes
+	every thread waiting for resource held by some other waiting thread -> Neither of thread executes nor gets chance to execute -> code breaks
+	detect deadlock: run code on cmd -> collect Thread Dump, possible deadlock message 
+	avoid deadlock:
+		no Nested lock: when provide locks to threads to give one lock to only one thread at particular time
+		no unnecessary locks
+	Use thread join: wait for thread until another thread finishes
 ##
-method/class used by multiple threads at time without any race condition -> class is thread-safe
+-  thread-safe class
 
- ways:
-
- 	Synchronization
-
-	 Volatile keyword
-
- 	ock based mechanism
-
- 	atomic wrapper classes
+       method/class used by multiple threads at time without any race condition
+	 ways:
+		Synchronization
+		Volatile keyword
+		ock based mechanism
+		atomic wrapper classes
 ##
-Java Thread pool
+- Java Thread pool
 
  threads group, supervised by service provider, waiting for task
-
  size depends on number of threads kept at reserve
-
  advantages:
-
   performance
-
   stability
 ##
-Concurrency:
-
- Executor Interface to execute new task
+- Concurrency: Executor Interface to execute new task
 ##
-BlockingQueue subinterface: for operations
+- BlockingQueue subinterface: for operations
 ##
-Callable interface can but Runnable can't:
+- Callable interface can but Runnable can't:
  return result
  throw checked exception
 ##
-Atomic action:
+- Atomic action:
+
  operation in a single unit of task without interference of other operations
  cannot be stopped between task
  Once started it fill stop after the completion of task
  examples: reads and writes operation for the primitive variable (except long and double)
 ##
-java.util.concurrent.locks.Lock pros over synchronized block:
+- java.util.concurrent.locks.Lock pros over synchronized block:
+
  guarantee of sequence in which waiting thread given access
  timeout option if lock not granted 
  Lock()/Unlock()/... can be called in different methods
 ##
-ExecutorService subinterface -> to managee lifecycle
+- ExecutorService subinterface -> to managee lifecycle
 ##
-Asynchronous Programming: one job completed by multiple threads -> maximum usability
+- Asynchronous Programming: one job completed by multiple threads -> maximum usability
 ##
-Java Future interface: result of concurrent process
+- Java Future interface: result of concurrent process
 ##
-Array/Collection:
+- Array/Collection:
 
  store refs
-
  manipulate data
-
  Arrays: fixed size, store homogeneous, no ready-made methods  
- 
  Collections: variable size, heterogeneous, readymade methods 
 ##
-1)	ArrayList not synchronized.	Vector: synchronized.
+- Comparisons
 
-2)	ArrayList not a legacy class.	Vector: legacy class.
+ArrayList not synchronized. Vector is synchronized.
+ArrayList is not a legacy class. Vector is legacy class.
+ArrayList increases its size by 50% of the array size. Vector increases its size by doubling the array size.
+ArrayList not thread-safe as not synchronized. Vector is thread-safe as it's every method is synchronized.
 
-3)	ArrayList increases its size by 50% of the array size.
-	Vector increases its size by doubling the array size.
+ArrayList uses a dynamic array.	LinkedList uses a doubly linked list.
+ArrayList not efficient for manipulation because too much is required. LinkedList efficient for manipulation.
+ArrayList better to store and fetch data. LinkedList better to manipulate data.
+ArrayList provides random access. LinkedList does not provide random access.
+ArrayList takes less memory overhead as it stores only obj. LinkedList takes more memory overhead as it stores obj and address
 
-4)	ArrayList not ?thread-safe? as not synchronized.
-	Vector list thread-safe as it's every method is synchronized.
-##
-1)	ArrayList uses a dynamic array.	LinkedList uses a doubly linked list.
+Iterator traverses elements in forward direction only. ListIterator traverses elements in backward and forward directions both.
+Iterator can be used in List, Set, and Queue. ListIterator can be used in List only.
+Iterator can only perform remove operation while traversing collection.	ListIterator can perform add, remove, and set operation while traversing collection.
 
-2)	ArrayList not efficient for manipulation because too much is required.
-	LinkedList efficient for manipulation.
+Iterator traverse legacy and non-legacy elements. Enumeration traverse only legacy elements.
+Iterator is fail-fast.	Enumeration is not fail-fast.
+Iterator is slower than Enumeration. Enumeration is faster than Iterator.
+Iterator can perform remove operation while traversing collection. Enumeration can perform only traverse operation on collection.
 
-3)	ArrayList better to store and fetch data.	LinkedList better to manipulate data.
-
-4)	ArrayList provides random access.	LinkedList does not provide random access.
-
-5)	ArrayList takes less memory overhead as it stores only obj
-	LinkedList takes more memory overhead as it stores obj and address
-##
-1)	Iterator traverses elements in forward direction only.
-	ListIterator traverses elements in backward and forward directions both.
-
-2)	Iterator can be used in List, Set, and Queue.
-	ListIterator can be used in List only.
-
-3)	Iterator can only perform remove operation while traversing collection.
-	ListIterator can perform add, remove, and
-     set operation while traversing collection.
-
-1)	Iterator traverse legacy and non-legacy elements.
-	Enumeration traverse only legacy elements.
-
-2)	Iterator is fail-fast.	Enumeration is not fail-fast.
-
-3)	Iterator is slower than Enumeration.
-	Enumeration is faster than Iterator.
-
-4)	Iterator can perform remove operation while traversing collection.
-	The Enumeration can perform only traverse operation on collection.
-##
-List contain duplicate elements
-
+List contains duplicate elements. 
 List is ordered collection maintains insertion order 
-
 List contains single legacy class which is Vector class whereas Set interface does not have any legacy class.
-
 List allow n number of null values whereas Set only allows single null value.
-##
+
 HashSet maintains no order, TreeSet maintains ascending order.
-
 HashSet impended by hash table, TreeSet implemented by Tree structure.
-
 HashSet performs faster than TreeSet.
-
 HashSet backed by HashMap, TreeSet backed by TreeMap.
-##
+
 Set contains values only, Map contains key and values.
-
 Set contains unique values, Map contain unique Keys with duplicate values.
-
 Set holds single number of null value, Map include single null key with n number of null values.
-##
+
 HashSet contains only values whereas HashMap includes entry (key, value).
-
 HashSet can iterate, HashMap needs to convert into Set to iterate.
-
 HashSet implements Set, HashMap implements Map
-
 HashSet no duplicate value, HashMap contain duplicate values with unique keys.
+HashSet contains only single number of null value whereas HashMap hold single null key with n number of null values.
 
-HashSet contains only single number of null value whereas HashMap hold single null key
- with n number of null values.
-##
 HashMap maintains no order, TreeMap maintains ascending order.
-
 HashMap implemented by hash table, TreeMap implemented by Tree 
-
 HashMap sorted by Key or value, TreeMap sorted by Key.
+HashMap contain null key with multiple null values, TreeMap cannot hold null key but can have multiple null values.
 
-HashMap contain null key with multiple null values, TreeMap cannot hold null key
- but can have multiple null values.
-##
-1)	HashMap not synchronized.
-	Hashtable synchronized.
+HashMap not synchronized. Hashtable synchronized.
+HashMap contain one null key and multiple null values. Hashtable cannot contain any null key or null value.
+HashMap not thread-safe -> useful for non-threaded apps. Hashtable is thread-safe, and it can be shared between various threads.
+HashMap inherits AbstractMap class, Hashtable inherits Dictionary class.
 
-2)	HashMap contain one null key and multiple null values.
-	Hashtable cannot contain any null key or null value.
-
-3)	HashMap not thread-safe -> useful for non-threaded apps.
-	Hashtable is thread-safe, and it can be shared between various threads.
-
-4)	HashMap inherits AbstractMap class,	Hashtable inherits Dictionary class.
-##
 Collection is interface, Collections is class.
-
 Collection -> List, Set, Queue. Collections -> sort and synchronize collection elements.
-##
+
 hashCode() -> same integer if two keys by calling equals() are identical.
-##
+
 possible that two hash code numbers have different or same keys
-##
+
 equals() -> override to check objs based on property.
-##
+
 synchronize List, Set and Map by Collections
 ##
-generic collection:
+- generic collection:
 
  not need typecasting if using generic class
-
  type-safe
-
  checked at compile time
-
  makes code bug detectable at compile time -> more stable code
 ##
-hash-collision: Two keys with same hash value
+- hash-collision
 
- to avoid -> keep Two separate entries in a single hash bucket
-
-             Separate Chaining
-
-             Open Addressing
+   Two keys with same hash value
+   to avoid:
+      keep Two separate entries in a single hash bucket
+      Separate Chaining
+      Open Addressing
 ##			 
-Dictionary: key-value pairs.
+- Dictionary: key-value pairs.
 ##
-load factor default size: 0.75.
-default capacity: initial capacity * load factor
+- Fail-fast iterator:
+     throws ConcurrentmodificationException in case of structural modification 
+     not require any extra space in memory.
 ##
-Fail-fast iterator: throws ConcurrentmodificationException in case of structural modification 
-                    not require any extra space in memory.
+- unmodifiableCollection() -> make Java ArrayList Read-Only
 ##
-unmodifiableCollection() -> make Java ArrayList Read-Only
-##
-remove duplicates from ArrayList:
+- remove duplicates from ArrayList
 
- by HashSet: not preserve insertion order.
-
- by LinkedHashSet: maintain insertion order
+      by HashSet: not preserve insertion order
+      by LinkedHashSet: maintain insertion order
 ##
-ex: sort ArrayList in descending order:
-##
-synchronize ArrayList:
+synchronize ArrayList
 
  Using Collections.synchronizedList() 
-
  Using CopyOnWriteArrayList<T>
 
