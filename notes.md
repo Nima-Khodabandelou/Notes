@@ -1,15 +1,12 @@
 ##
 - SOLID Principles (not specific to Java)
 
-      1- Single Responsibility for Each class -> Just one reason 
-      to change the class.
+      1- Single Responsibility for Each class -> There should be just one reason 
+          to change the class.
 
 		Advantages:
-
 			Fewer tests for each class.
-
 			Lower coupling –> fewer dependencies.
-
 			Smaller and well-organized classes
 		 
       2- Class shoud be Opened for Extension and Closed for Modification.
@@ -108,33 +105,38 @@
 ##
 - Main Java features
 
+      Statically typed language -> inherently secure
+
       For Desktop, Mobile, and Web
-
-      Platform-independent
-
-      Secure
-
+      
+      Java compiler output is Bytecode (JVM specific set of instructions) rather 
+       than exe file -> secure and portable (Platform-independent)
+       
+      JVM:
+            executes Bytecodes.
+            is part of JRE.
+	    is implemented for various platforms.
+	    can create a restricted execution environment (sandbox) preventing
+	      unrestricted access to the machine.
       High-level
 
       Multi-threaded
       
-      Robust <- Memory Efficient and Multi-Threaded
-      
-      delete, next, main, exit or null are not keyword
-      
-      Local variables not init to default value      
-##    
-- Java Does not support
+      Memory Efficient and Multi-Threaded -> Robust      
+    
+      Local variables not init. to default value      
+    
+      Does not support
 
-      pointers (Handles it internally)
-    
-      goto
-    
-      operator overloading
-    
-      call by ref
-    
-      structures and unions
+	      pointers (Handles it internally)
+
+	      goto
+
+	      operator overloading
+
+	      call by ref
+
+	      structures and unions
 ##       
 - Path and Classpath
 
