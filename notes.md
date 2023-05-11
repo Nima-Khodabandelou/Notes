@@ -21,6 +21,7 @@
            create using new keyword.      
            obj refs <-> init to null	
       CLass: It's purpose is encapsulating complexity by access modifiers (private or public). Defines structure and behavior (data and code) the will be shared by a set of objs. Data and codes are called members of the class
+      Polymorphism: one interface, multiple methods -> reduces complexity by using the interface by a group of related objs.
       Inheritance:
 	   one obj aquires the properties of another -> it becomes an specific instance of it's parent
            Code reusability -> sub need not redefine method of super unless need to provide specific impl.
