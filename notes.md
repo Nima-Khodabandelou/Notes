@@ -342,33 +342,33 @@
 ##
 - Exceptions
 
-	Checked Exception -> checked at compile-time: SQLException, ClassNotFoundException, ...
-	Unchecked Exception -> handled at runtime: ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, ...
-	Error: not recoverable -> cause program to exit: OutOfMemoryError, AssertionError, ...
-	exception handling maintains normal flow of app	
-	try block followed by either catch OR finally block
-	throw -> to throw exception
-	throws -> to declare possible exceptions that may occure in method
-	Hierarchy of Java Exception classes:
-	 Throwable -> Exception, Error
-	 Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
-	 RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException, IndexOutOfBoundsException
-	 IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
-	 Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
-	Common exception Scenarios:
-	 divide number by zero -> ArithmeticException.
-	 Operation on null var -> NullPointerException	
-	 var formatting mismatched -> NumberFormatException	
-	 array size exceed -> ArrayIndexOutOfBoundsException	
-	Exception Propagation:
-	 [thrown from top -> not caught -> drops down previous] -> continues until caught or reach very bottom of call stack
-	 Unchecked -> propagated by default 
-	Nested try block: one error in sub-block & another error in entire block 
-	Finally:
-	 executes after try-catch
-	 not executes if program exits
-	custom exception -> extend Exception
-	can not throw basic data type from block
+      Checked Exception -> checked at compile-time: SQLException, ClassNotFoundException, ...
+      Unchecked Exception -> handled at runtime: ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, ...
+      Error: not recoverable -> cause program to exit: OutOfMemoryError, AssertionError, ...
+      exception handling maintains normal flow of app	
+      try block followed by either catch OR finally block
+      throw -> to throw exception
+      throws -> to declare possible exceptions that may occure in method
+      Hierarchy of Java Exception classes:
+ Throwable -> Exception, Error
+ Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
+ RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException, IndexOutOfBoundsException
+ IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
+ Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
+      Common exception Scenarios:
+ divide number by zero -> ArithmeticException.
+ Operation on null var -> NullPointerException	
+ var formatting mismatched -> NumberFormatException	
+ array size exceed -> ArrayIndexOutOfBoundsException	
+      Exception Propagation:
+ [thrown from top -> not caught -> drops down previous] -> continues until caught or reach very bottom of call stack
+ Unchecked -> propagated by default 
+      Nested try block: one error in sub-block & another error in entire block 
+      Finally:
+ executes after try-catch
+ not executes if program exits
+      custom exception -> extend Exception
+      can not throw basic data type from block
 ##
 - String pool
 
