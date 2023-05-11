@@ -370,114 +370,103 @@
       custom exception -> extend Exception
       can not throw basic data type from block
 ##
-- String pool
+- String
 
-	space reserved in heap to store strings	
- 	when create string literal -> JVM checks string pool:	
-		if exists -> a ref returns		
-		If not ->  new string instance creates 
-##
-- create string obj
+      String pool:
+		space reserved in heap to store strings	
+		when create string literal -> JVM checks string pool:	
+			if exists -> a ref returns		
+			If not ->  new string instance creates 
 
-	String Literal:	
-		String s ="welcome";		
-		String s2="Welcome";//It doesn't create a new instance		
-	new keyword:	
-	  String s=new String("Welcome");
-	  //creates two objs and one ref var				
-	  //new obj in heap refered by s		
-	  //literal obj "Welcome" in string pool		
-	  //ref var s
-##
-- String disadv. compare to StringBuffer
-
-	String  immutable	
-	String  slow creates a new instance on concat 	
-	String  overrides  equals()  
-##
-- StringBuffer
-
-	synchronized -> thread safe -> two StringBuffer methods
-	can't be called simultaneously
-	less efficient than StringBuilder.	
-##
-- toString(): returns string representation of obj -> overriding -> desired output
-##
-- String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
+      create string obj:
+		String Literal:	
+			String s ="welcome";		
+			String s2="Welcome";//It doesn't create a new instance		
+		new keyword:	
+			String s=new String("Welcome");
+			//creates two objs and one ref var				
+			//new obj in heap refered by s		
+			//literal obj "Welcome" in string pool		
+			//ref var s
+      String disadv. compare to StringBuffer:
+		String  immutable	
+		String  slow creates a new instance on concat 	
+		String  overrides  equals()  
+      StringBuffer:
+		synchronized -> thread safe -> two StringBuffer methods
+		can't be called simultaneously
+		less efficient than StringBuilder.	
+      toString(): returns string representation of obj -> overriding -> desired output
+      String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
 ##
 - java.util.regex
 
-	MatchResult Interface	
-	Matcher class	
-	Pattern class	
-	PatternSyntaxException class
-##
-- Metacharacters
-
-	^, $, ., *, +, etc. <- not regular characters fro regex	engine -> use backslash to treat them ordinary.
+      MatchResult Interface	
+      Matcher class	
+      Pattern class	
+      PatternSyntaxException class
+      Metacharacters: ^, $, ., *, +, etc. <- not regular characters fro regex	engine -> use backslash to treat them ordinary.
 ##
 - Nested classes
 
-	can access all members of outer class including private ->  used for readability and maintainability	
-	static nested class	
-	non-static nested class (inner-class)	
-	disadvantages:	
+      can access all members of outer class including private ->  used for readability and maintainability	
+      static nested class	
+      non-static nested class (inner-class)	
+      disadvantages:	
 		Inner classes increase total number of classes
 		and workload of JVM less support by IDEs to inner class
 ##
 - inner class
 
-	Member Inner Class: created within class and outside method.		
-	Anonymous Inner Class:	
+      Member Inner Class: created within class and outside method.		
+      Anonymous Inner Class:	
 		created for implementing an interface or extending class.		
 		name is decided by compiler		
-	Local Inner Class:	
+      Local Inner Class:	
 		created within the method.		
 		local variable must be constant to access it in local inner class
 ##
 - nested interface
 
-	interface within class
-	public if declared inside interface
-	any access modifier if declared within class
-	static
-## 
-- class inside interface -> static nested class by compiler
+      interface within class
+      public if declared inside interface
+      any access modifier if declared within class
+      static
+      class inside interface -> static nested class by compiler
 ##
 - Garbage Collection
 
-	removing unused objs from memory
-	gc() to garbage collect -> depends on JVM whether to perform
+      removing unused objs from memory
+      gc() to garbage collect -> depends on JVM whether to perform
 ##
 - unreferencing an obj by
 
-	nulling the ref:	
+      nulling the ref:	
 		Employee e=new Employee(); -> e=null;		
-	assigning ref to another:	
+      assigning ref to another:	
 		Employee e1=new Employee();  
 		Employee e2=new Employee();  
 		e1=e2;//e1 available for garbage collection		
-	anonymous obj -> new Employee(); 
-##
-- An unreferenced obj can be referenced again
+      anonymous obj -> new Employee(); 
+      An unreferenced obj can be referenced again
 ##
 - Java Runtime class
 
-	-> to execute process, invoke GC, get total and free memory, ...
-	only one instance of Runtime class
-	Runtime.getRuntime() returns singleton instance of Runtime class.
+      -> to execute process, invoke GC, get total and free memory, ...
+      only one instance of Runtime class
+      Runtime.getRuntime() returns singleton instance of Runtime class.
 ##
 - hierarchy of InputStream and OutputStream
 	
-	OutputStream -> FileOutputStream, ByteArrayOutputStream, FilterOutputStream, PipedOutputStream, objOutputStream			
+      OutputStream -> FileOutputStream, ByteArrayOutputStream, FilterOutputStream, PipedOutputStream, objOutputStream			
 			FilterOutputStream -> DataOutputStream, BufferedOutputStream, PrintStream
-	InputStream -> FileInputStream, ByteArrayInputStream, FilterInputStream, PipedInputStream, objInputStream
+      InputStream -> FileInputStream, ByteArrayInputStream, FilterInputStream, PipedInputStream, objInputStream
 	               FilterInputStream -> DataInputStream, BufferedInputStream, PushBackInputStream
-	stream: sequence of data composed of bytes from source to destination
-	three automatic streams:
-		System.out: standard output 
-		System.in: standard input 
-		System.err: standard error
+      Stream: sequence of data composed of bytes from source to destination
+		three automatic streams:
+			System.out: standard output 
+			System.in: standard input 
+			System.err: standard error
       Reader/Writer class hierarchy -> character-oriented,
       InputStream/OutputStream class hierarchy -> byte-oriented.
       ByteStream:  input-output of 8-bit 
@@ -488,73 +477,73 @@
       CharacterStream : Reader classes and Writer classes.
       reading streams of characters -> FileReader
       BufferedOutputStream:      
-       internally uses buffer to store data.
-       more efficiency than writing data directly into stream. 
+		internally uses buffer to store data.
+		more efficiency than writing data directly into stream. 
       BufferedInputStream: read information from stream
 ##
-FilePermission:
+- FilePermission
 
-      alter permissions of a directory or file related to a path. -> two path types:      
-            all subdirectories and files  
-            all directory and files within directory excluding subdirectories.  
+      alter permissions of a directory or file related to a path.
+      two path types:      
+		all subdirectories and files  
+		all directory and files within directory excluding subdirectories.  
 ##
-FilterStream: filters read data, adds line numbers,...
+- FilterStream: filters read data, adds line numbers,...
 ##
-I/O filter
+- I/O filter
 
- reads one stream and writes to another
- usually altering data
-
+      reads one stream and writes to another
+      usually altering data
 ##
-take input from console:
+- take input from console:
 
       BufferedReader (efficient): use InputStreamReader to take input from console -> pass input to BufferedReader.
       Scanner class:
-	 breaks input into tokens	 
-	 provides many methods to read	 
-	 parse various primitive values	 
-	 widely used with regex
+		breaks input into tokens	 
+		provides many methods to read	 
+		parse various primitive values	 
+		widely used with regex
 ##    
-Using Console class:
+- Using Console class:
       read console input, texts, passwords (not be displayed to user).     
 ##
-Serialization
+- Serialization
 
- writing state of obj into byte stream 
- used in Hibernate, RMI, JPA, EJB and JMS 
- used to travel obj's state on network (known as marshaling).
- to save state to storage for later restoration
- Serializable interface -> to serialize (super-)class -> to prevent  child class serialization -> implement writeobj()/readobj() along with throw NotSerializableException in sub. 
- transient data member can not be serialized
+      writing state of obj into byte stream 
+      used in Hibernate, RMI, JPA, EJB and JMS 
+      used to travel obj's state on network (known as marshaling).
+      to save state to storage for later restoration
+      Serializable interface -> to serialize (super-)class -> to prevent  child class serialization -> implement writeobj()/readobj() along with throw NotSerializableException in sub. 
+      transient data member can not be serialized
 ##
 - Externalizable interface
 
       write state of obj into byte stream in compressed format
       Serializable -> marker interface:
-	            no methods
-                    No class constructor is called
-		    better performance	
+		no methods
+		No class constructor is called
+		better performance	
       Externalizable:
-          easy to implement
-          performance cost
-	  must call public default constructor
-	  contains two methods -> writeExternal and readExternal
+		easy to implement
+		performance cost
+		must call public default constructor
+		contains two methods -> writeExternal and readExternal
 ##
 - Socket programming
 
-	 socket: endpoint for communications between machines -> connection mechanism: TCP
-	 communication between apps running on different JRE.
-	 connection-oriented -> Socket and ServerSocket classes
-	 connectionless -> DatagramSocket 
-	 client needs:
+      socket: endpoint for communications between machines -> connection mechanism: TCP
+      communication between apps running on different JRE.
+      connection-oriented -> Socket and ServerSocket classes
+      connectionless -> DatagramSocket 
+      client needs:
 		server IP address
 		port number
-	 steps for TCP connection:
-		 server -> ServerSocket instantiation -> port number 
-		 server -> accept() method -> wait until client attempts to connect 
-		 client creats socket
-		 connection established -> socket obj for client
-		 server uses accept() to return a ref to new socket 
+      steps for TCP connection:
+		server -> ServerSocket instantiation -> port number 
+		server -> accept() method -> wait until client attempts to connect 
+		client creats socket
+		connection established -> socket obj for client
+		server uses accept() to return a ref to new socket 
 ##
 - Reflection: examining/ modifying runtime behavior of class  
 ##
@@ -563,16 +552,16 @@ Serialization
       get metadata of class at runtime 
       change runtime behavior 
       instantiate:      
-	  forName() -> load class dynamically <- if know fully qualified name of class (not for primitive types)
-	  getClass() -> returns instance of java.lang.Class <- if know type (also for primitives)
-	  .class -> If no instance but type available -> append ".class" to name of type (also for primitives)
+		forName() -> load class dynamically <- if know fully qualified name of class (not for primitive types)
+		getClass() -> returns instance of java.lang.Class <- if know type (also for primitives)
+		.class -> If no instance but type available -> append ".class" to name of type (also for primitives)
 ##
 - newInstance(): invoke constructor at runtime. 
 ##
 - javap
 
-	disassembles class file -> gives info about fields/constructors/ methods
-	(java.lang.Class + java.lang.reflect.Method) -> change class runtime behaviour -> access private method from outside <- 
+      disassembles class file -> gives info about fields/constructors/ methods
+      (java.lang.Class + java.lang.reflect.Method) -> change class runtime behaviour -> access private method from outside <- 
 		1) setAccessible(boolean status) throws SecurityException	  
 		2) invoke(obj method, obj... args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 		1) getDeclaredMethod(String name,Class[] parameterTypes)throws NoSuchMethodException, SecurityException
@@ -592,47 +581,47 @@ Serialization
 ##
 - System class
 	
-	 cannot be instantiated.	
-	 used for:	
+      cannot be instantiated.	
+      used for:	
 		Standard input	
 		Error output streams	
 		Standard output	
 		utility method to copy the portion of an array	
 		utilities to load files and libraries	
-	 fields:
-		 static printstream err	
-		 static inputstream in	
-		 standard output stream
+      fields:
+		static printstream err	
+		static inputstream in	
+		standard output stream
 ##
 - Singleton class:
 	
-	instantiates only once	
-	make by:	
-	  private constructor	
-	  static getInstance
+      instantiates only once	
+      make by:	
+		private constructor	
+		static getInstance
 ##
 - JavaBean:
 	
-	 reusable software component	
-	 encapsulates many objs into one in order to access it from multiple places. 	
-	 easy maintenance. 
+      reusable software component	
+      encapsulates many objs into one in order to access it from multiple places. 	
+      easy maintenance. 
 ##
 - RMI (Remote Method Invocation)
 	
       for distributed app	
       allows obj -> invoke methods on obj in another JVM by stub (for client side) and skeleton	
       stub: for client side -> outgoing requests are routed through it.	
-         tasks:
-		initiates connection	
-		writes and transmits (marshals) parameters	
-		waits for result.	
-		reads (unmarshals) result	
-		returns result to caller
+		tasks:
+			initiates connection	
+			writes and transmits (marshals) parameters	
+			waits for result.	
+			reads (unmarshals) result	
+			returns result to caller
        skeleton: gateway for server side -> incoming requests routed through it.	
-         tasks:
-		reads parameter for remote method	
-		invokes method on actual remote obj	
-		writes and transmits (marshals) result to caller
+		tasks:
+			reads parameter for remote method	
+			invokes method on actual remote obj	
+			writes and transmits (marshals) result to caller
       RMI in programs:	
 		Create remote interface.	
 		Provide implementation of remote interface	
@@ -641,51 +630,51 @@ Serialization
 		Create and start remote app	
 		Create and start client app	
 		HTTP-tunneling:	
-	         doesn't need setup to work within firewall	
+		 doesn't need setup to work within firewall	
 		 handles HTTP through proxy servers	
 		 not allow outbound TCP
 ##
 - JRMP (Java Remote Method Protocol):
 	
- Java-specific	
- stream-based protocol -> looks up and refers to remote objs	
- requires both client and server to use objs	
- wire level -> runs under RMI and over TCP/IP
+      Java-specific	
+      stream-based protocol -> looks up and refers to remote objs	
+      requires both client and server to use objs	
+      wire level -> runs under RMI and over TCP/IP
 ##
 - Multitasking 
 	
-     to utilize CPU
-     Process-based Multitasking (Multiprocessing) -> an address for each process in memory
-     Thread-based Multitasking (Multithreading) -> same address space for threads
+      to utilize CPU
+      Process-based Multitasking (Multiprocessing) -> an address for each process in memory
+      Thread-based Multitasking (Multithreading) -> same address space for threads
 ##  
 - Multithreading
  
       thread:
-         lightweight sub-process	
-         smallest unit of processing	
+		lightweight sub-process	
+		smallest unit of processing	
       multithreading better than multiprocessing:	
-        threads use shared memory area	
-        context-switching between threads takes less time than process
+		threads use shared memory area	
+		context-switching between threads takes less time than process
       Advantages:	
-         threads are independent	
-         no user block	
-         doesn't affect other threads in case of exception	
-         saves time
+		threads are independent	
+		no user block	
+		doesn't affect other threads in case of exception	
+		saves time
 ##
-- threads:
+- threads
 	
       Life cycle of a Thread (Thread States):	
-        New: thread created -> new state -> code not run yet	
-        Active: start() -> two states within: runnable and running	
-        ready to run thread moved to runnable state -> time to run <- thread scheduler
+		New: thread created -> new state -> code not run yet	
+		Active: start() -> two states within: runnable and running	
+		ready to run thread moved to runnable state -> time to run <- thread scheduler
       fixed time to each thread -> time over -> voluntarily gives up CPU to other thread
       threads wait for their turn to run 
       Blocked/ Waiting <->  thread inactive 
       two ways to create a thread:	
-        Thread class:	
-           provide constructors/methods to create	
-           perform operations on a thread.
-        extends obj class and implements Runnable interface.
+		Thread class:	
+			provide constructors/methods to create	
+			perform operations on a thread.
+		extends obj class and implements Runnable interface.
 
       Commonly used Constructors:
 		Thread()
@@ -695,32 +684,30 @@ Serialization
 ##
 - Synchronization:
 
- control access of multiple threads to any shared resource To prevent:
-   thread interference
-   consistency problem
- allows only one thread to be executed at a time 
- ways:
-  	synchronized method
-  	synchronized block
-    	for specific resource of method
-		scope is smaller than method
-	static synchronization:	synchronized static method -> lock will on class not obj
- notify(): unblock waiting thread
- notifyAll(): unblock all threads in waiting state
+      control access of multiple threads to any shared resource To prevent:
+		thread interference
+		consistency problem
+      allows only one thread to be executed at a time 
+      ways:
+		synchronized method
+		synchronized block
+		static synchronization:	synchronized static method -> lock will on class not obj
+      notify(): unblock waiting thread
+      notifyAll(): unblock all threads in waiting state
 ##
 - Deadlock
 
-	every thread waiting for resource held by some other waiting thread -> Neither of thread executes nor gets chance to execute -> code breaks
-	detect deadlock: run code on cmd -> collect Thread Dump, possible deadlock message 
-	avoid deadlock:
+      every thread waiting for resource held by some other waiting thread -> Neither of thread executes nor gets chance to execute -> code breaks
+      detect deadlock: run code on cmd -> collect Thread Dump, possible deadlock message 
+      avoid deadlock:
 		no Nested lock: when provide locks to threads to give one lock to only one thread at particular time
 		no unnecessary locks
-	Use thread join: wait for thread until another thread finishes
+      Use thread join: wait for thread until another thread finishes
 ##
 -  thread-safe class
 
-       method/class used by multiple threads at time without any race condition
-	 ways:
+      method/class used by multiple threads at time without any race condition
+      ways:
 		Synchronization
 		Volatile keyword
 		ock based mechanism
@@ -728,32 +715,32 @@ Serialization
 ##
 - Java Thread pool
 
- threads group, supervised by service provider, waiting for task
- size depends on number of threads kept at reserve
- advantages:
-  performance
-  stability
+      threads group, supervised by service provider, waiting for task
+      size depends on number of threads kept at reserve
+      advantages:
+		performance
+		stability
 ##
 - Concurrency: Executor Interface to execute new task
 ##
 - BlockingQueue subinterface: for operations
 ##
 - Callable interface can but Runnable can't:
- return result
- throw checked exception
+      return result
+      throw checked exception
 ##
 - Atomic action:
 
- operation in a single unit of task without interference of other operations
- cannot be stopped between task
- Once started it fill stop after the completion of task
- examples: reads and writes operation for the primitive variable (except long and double)
+      operation in a single unit of task without interference of other operations
+      cannot be stopped between task
+      Once started it fill stop after the completion of task
+      examples: reads and writes operation for the primitive variable (except long and double)
 ##
 - java.util.concurrent.locks.Lock pros over synchronized block:
 
- guarantee of sequence in which waiting thread given access
- timeout option if lock not granted 
- Lock()/Unlock()/... can be called in different methods
+      guarantee of sequence in which waiting thread given access
+      timeout option if lock not granted 
+      Lock()/Unlock()/... can be called in different methods
 ##
 - ExecutorService subinterface -> to managee lifecycle
 ##
@@ -763,94 +750,93 @@ Serialization
 ##
 - Array/Collection:
 
- store refs
- manipulate data
- Arrays: fixed size, store homogeneous, no ready-made methods  
- Collections: variable size, heterogeneous, readymade methods 
+      store refs
+      manipulate data
+      Arrays: fixed size, store homogeneous, no ready-made methods  
+      Collections: variable size, heterogeneous, readymade methods 
 ##
 - Comparisons
 
-ArrayList not synchronized. Vector is synchronized.
-ArrayList is not a legacy class. Vector is legacy class.
-ArrayList increases its size by 50% of the array size. Vector increases its size by doubling the array size.
-ArrayList not thread-safe as not synchronized. Vector is thread-safe as it's every method is synchronized.
+      ArrayList not synchronized. Vector is synchronized.
+      ArrayList is not a legacy class. Vector is legacy class.
+      ArrayList increases its size by 50% of the array size. Vector increases its size by doubling the array size.
+      ArrayList not thread-safe as not synchronized. Vector is thread-safe as it's every method is synchronized.
 
-ArrayList uses a dynamic array.	LinkedList uses a doubly linked list.
-ArrayList not efficient for manipulation because too much is required. LinkedList efficient for manipulation.
-ArrayList better to store and fetch data. LinkedList better to manipulate data.
-ArrayList provides random access. LinkedList does not provide random access.
-ArrayList takes less memory overhead as it stores only obj. LinkedList takes more memory overhead as it stores obj and address
+      ArrayList uses a dynamic array.	LinkedList uses a doubly linked list.
+      ArrayList not efficient for manipulation because too much is required. LinkedList efficient for manipulation.
+      ArrayList better to store and fetch data. LinkedList better to manipulate data.
+      ArrayList provides random access. LinkedList does not provide random access.
+      ArrayList takes less memory overhead as it stores only obj. LinkedList takes more memory overhead as it stores obj and address
 
-Iterator traverses elements in forward direction only. ListIterator traverses elements in backward and forward directions both.
-Iterator can be used in List, Set, and Queue. ListIterator can be used in List only.
-Iterator can only perform remove operation while traversing collection.	ListIterator can perform add, remove, and set operation while traversing collection.
+      Iterator traverses elements in forward direction only. ListIterator traverses elements in backward and forward directions both.
+      Iterator can be used in List, Set, and Queue. ListIterator can be used in List only.
+      Iterator can only perform remove operation while traversing collection.	ListIterator can perform add, remove, and set operation while traversing collection.
 
-Iterator traverse legacy and non-legacy elements. Enumeration traverse only legacy elements.
-Iterator is fail-fast.	Enumeration is not fail-fast.
-Iterator is slower than Enumeration. Enumeration is faster than Iterator.
-Iterator can perform remove operation while traversing collection. Enumeration can perform only traverse operation on collection.
+      Iterator traverse legacy and non-legacy elements. Enumeration traverse only legacy elements.
+      Iterator is fail-fast.	Enumeration is not fail-fast.
+      Iterator is slower than Enumeration. Enumeration is faster than Iterator.
+      Iterator can perform remove operation while traversing collection. Enumeration can perform only traverse operation on collection.
 
-List contains duplicate elements. 
-List is ordered collection maintains insertion order 
-List contains single legacy class which is Vector class whereas Set interface does not have any legacy class.
-List allow n number of null values whereas Set only allows single null value.
+      List contains duplicate elements. 
+      List is ordered collection maintains insertion order 
+      List contains single legacy class which is Vector class whereas Set interface does not have any legacy class.
+      List allow n number of null values whereas Set only allows single null value.
 
-HashSet maintains no order, TreeSet maintains ascending order.
-HashSet impended by hash table, TreeSet implemented by Tree structure.
-HashSet performs faster than TreeSet.
-HashSet backed by HashMap, TreeSet backed by TreeMap.
+      HashSet maintains no order, TreeSet maintains ascending order.
+      HashSet impended by hash table, TreeSet implemented by Tree structure.
+      HashSet performs faster than TreeSet.
+      HashSet backed by HashMap, TreeSet backed by TreeMap.
 
-Set contains values only, Map contains key and values.
-Set contains unique values, Map contain unique Keys with duplicate values.
-Set holds single number of null value, Map include single null key with n number of null values.
+      Set contains values only, Map contains key and values.
+      Set contains unique values, Map contain unique Keys with duplicate values.
+      Set holds single number of null value, Map include single null key with n number of null values.
 
-HashSet contains only values whereas HashMap includes entry (key, value).
-HashSet can iterate, HashMap needs to convert into Set to iterate.
-HashSet implements Set, HashMap implements Map
-HashSet no duplicate value, HashMap contain duplicate values with unique keys.
-HashSet contains only single number of null value whereas HashMap hold single null key with n number of null values.
+      HashSet contains only values whereas HashMap includes entry (key, value).
+      HashSet can iterate, HashMap needs to convert into Set to iterate.
+      HashSet implements Set, HashMap implements Map
+      HashSet no duplicate value, HashMap contain duplicate values with unique keys.
+      HashSet contains only single number of null value whereas HashMap hold single null key with n number of null values.
 
-HashMap maintains no order, TreeMap maintains ascending order.
-HashMap implemented by hash table, TreeMap implemented by Tree 
-HashMap sorted by Key or value, TreeMap sorted by Key.
-HashMap contain null key with multiple null values, TreeMap cannot hold null key but can have multiple null values.
+      HashMap maintains no order, TreeMap maintains ascending order.
+      HashMap implemented by hash table, TreeMap implemented by Tree 
+      HashMap sorted by Key or value, TreeMap sorted by Key.
+      HashMap contain null key with multiple null values, TreeMap cannot hold null key but can have multiple null values.
 
-HashMap not synchronized. Hashtable synchronized.
-HashMap contain one null key and multiple null values. Hashtable cannot contain any null key or null value.
-HashMap not thread-safe -> useful for non-threaded apps. Hashtable is thread-safe, and it can be shared between various threads.
-HashMap inherits AbstractMap class, Hashtable inherits Dictionary class.
+      HashMap not synchronized. Hashtable synchronized.
+      HashMap contain one null key and multiple null values. Hashtable cannot contain any null key or null value.
+      HashMap not thread-safe -> useful for non-threaded apps. Hashtable is thread-safe, and it can be shared between various threads.
+      HashMap inherits AbstractMap class, Hashtable inherits Dictionary class.
 
-Collection is interface, Collections is class.
-Collection -> List, Set, Queue. Collections -> sort and synchronize collection elements.
+      Collection is interface, Collections is class.
+      Collection -> List, Set, Queue. Collections -> sort and synchronize collection elements.
 
-hashCode() -> same integer if two keys by calling equals() are identical.
+      hashCode() -> same integer if two keys by calling equals() are identical. possible that two hash code numbers have different or same keys
 
-possible that two hash code numbers have different or same keys
+      equals() -> override to check objs based on property.
 
-equals() -> override to check objs based on property.
-
-synchronize List, Set and Map by Collections
+      synchronize List, Set and Map by Collections
 ##
 - generic collection:
 
- not need typecasting if using generic class
- type-safe
- checked at compile time
- makes code bug detectable at compile time -> more stable code
+      not need typecasting if using generic class
+       ype-safe
+      checked at compile time
+      makes code bug detectable at compile time -> more stable code
 ##
 - hash-collision
 
-   Two keys with same hash value
-   to avoid:
-      keep Two separate entries in a single hash bucket
-      Separate Chaining
-      Open Addressing
+      Two keys with same hash value
+      to avoid:
+		keep Two separate entries in a single hash bucket
+		Separate Chaining
+		Open Addressing
 ##			 
 - Dictionary: key-value pairs.
 ##
-- Fail-fast iterator:
-     throws ConcurrentmodificationException in case of structural modification 
-     not require any extra space in memory.
+- Fail-fast iterator
+- 
+      throws ConcurrentmodificationException in case of structural modification 
+      not require any extra space in memory.
 ##
 - unmodifiableCollection() -> make Java ArrayList Read-Only
 ##
@@ -861,6 +847,6 @@ synchronize List, Set and Map by Collections
 ##
 synchronize ArrayList
 
- Using Collections.synchronizedList() 
- Using CopyOnWriteArrayList<T>
+      Using Collections.synchronizedList() 
+      Using CopyOnWriteArrayList<T>
 
