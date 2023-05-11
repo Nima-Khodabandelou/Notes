@@ -102,6 +102,41 @@
 		  Loads core extension classes to be available to all apps running on each platform.
 		System/app: Loads files in classpath
 ##
+- servlet
+
+      Small program that executes on the server
+      For creating dynamically generated content. For ex. to look up for data in DB and then use it to dynamically generate a web page that is sent to browser -> better performance
+      is also conpiled to bytecode and executed by JVM -> is portable
+      To use servlet, server must support JVM and servlet container
+##
+- Important updates
+
+      JDK 8:
+		lambda exp. -> added functional programming features to Java, reduced amount of code to create things such as anonymous class, added -> operator, enhanced stream API (which is lambda-optimized) for pipeline operations on data
+		static and default methods in interfaces
+		type annotations
+		parallel processing for arrays
+      JDK 9:
+		modules -> jlink, JMOD, API lib. enhancements, improving legacy code
+		JShell
+		private method in interface
+		search feature for javadoc: @index
+		deprecated applet
+      JDK 10:
+		local vraiable type interface: let local variable type be inferred from initializer type -> var keyword
+      JDK 11:
+		var keyword in lambda
+		HTTP Client API
+		executor mode for single-file programs
+      JDks 14, 15, 16:
+		switch exp.
+		text blocks
+		instanceof
+		new class type 'record' for aggregating data
+		jpackage
+      JDK 17:
+		to seall class and interface to have control over the inheritance		
+##
 - package
 
       is a group of similar classes/sub-packages
