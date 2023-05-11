@@ -84,10 +84,14 @@
 ## 
 - Interpreter/Compiler
 
-      Just-in-time (JIT): To improve performance by compiling parts of bytecode having similar functionality -> reducing compilation time  
+      Just-in-time (JIT): To improve performance by compiling parts of bytecode having similar functionality to executable code during the execution of the program   
 
-      Compiler: transforms instruction set of JVM to instruction set of specific CPU (Java code to Bytecode)      
+      Compiler: transforms instruction set of JVM to instruction set of specific CPU (Java code to Bytecode)
+      
+      Parts of Java bytecode is compiled by JIT and the rest is just interpreted.
 
+      Since JVM handles the whole process, portability and security are still applied even with JIT
+      
       Classloader: Part of JRE for loading class files. Built-in classloaders:      
 		Bootstrap		
 		  First classloader in native code (e.g. c++)		
