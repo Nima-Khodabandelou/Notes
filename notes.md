@@ -649,9 +649,6 @@
 ##  
 - Multithreading
  
-      thread:
-		lightweight sub-process	
-		smallest unit of processing	
       multithreading better than multiprocessing:	
 		threads use shared memory area	
 		context-switching between threads takes less time than process
@@ -662,7 +659,8 @@
 		saves time
 ##
 - threads
-	
+      lightweight sub-process	
+      smallest unit of processing	
       Life cycle of a Thread (Thread States):	
 		New: thread created -> new state -> code not run yet	
 		Active: start() -> two states within: runnable and running	
@@ -704,7 +702,7 @@
 		no unnecessary locks
       Use thread join: wait for thread until another thread finishes
 ##
--  thread-safe class
+- thread-safe class
 
       method/class used by multiple threads at time without any race condition
       ways:
@@ -845,7 +843,7 @@
       by HashSet: not preserve insertion order
       by LinkedHashSet: maintain insertion order
 ##
-synchronize ArrayList
+- synchronize ArrayList
 
       Using Collections.synchronizedList() 
       Using CopyOnWriteArrayList<T>
