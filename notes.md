@@ -227,190 +227,111 @@
 		clone() in child -> all supers should define clone() or inherit it
 		only shallow copying -> need to override for deep copying
 ## 
-- Aggregation (has-a)
-
-      relationship between two classes -> aggregate class contains a ref to class it owns
+- Aggregation (has-a): relationship between two classes -> aggregate class contains a ref to class it owns
 ## 
 - composition
 
       When obj contains other obj, if contained obj cannot exist without existence of container obj
-
-      particular case of aggregation representing stronger relationship
-      between two objs
-      
+      particular case of aggregation representing stronger relationship between two objs      
       Ex: Company contains Employees. Employee cannot exist without company
 ## 
 - pointer
 
-      var refering to memory address
-      
+      var refering to memory address      
       not used in Java
-
 ## 
 - Method overloading
 
       multiple methods with same name but different signatures
-
-      ways:
-		Changing number of arguments
-		
+      ways to do:
+		Changing number of arguments		
 		Changing data type of arguments
 		
-      increases readability
-	
+      increases readability	
       Type promotion is method overloading
-
       static method -> part of class not obj -> can't be overridden
 ## 
 - exceptions in sub/super
 
       No exception in super & checked exception in sub -> error
-
       No exception in supe & unchecked exception in sub
-
-      exception in super (exc1) & exception other than exc1, exc1's child,
-      and runtime exception in Sub -> error
-
+      exception in super (exc1) & exception other than exc1, exc1's child, and runtime exception in Sub -> error
       exception in super (exc1) & child exception of exc1 in Sub
-
       exception in super & no exception in Sub
 ##   
 - covariance
 
-      how subtype is accepted when only supertype is defined
-	
-      covariant return type: overriden method return type may vary in
-      same direction as sub 
-		       
-         no type casts in class hierarchy      
+      how subtype is accepted when only supertype is defined	
+      covariant return type: overriden method return type may vary in same direction as sub 		       
 ## 
 - polymorphism
 
-      compile-time: static binding, early binding, or overloading ->
-       (obj type determined/call to method resolved) at
-       compile-time -> fast execution
-	
-      runtime: dynamic binding, late binding, overriding, dynamic method
-        dispatch -> (obj type determined/call to overridden
-	 method resolved) at runtime.
+      compile-time: static binding, early binding, or overloading -> (obj type determined/call to method resolved) at compile-time -> fast execution	
+      runtime: dynamic binding or late binding or overriding or dynamic method dispatch -> (obj type determined/call to overridden method resolved) at runtime.
 ##
-- overridden method
+- overridding method
 
       Override <--> IS-A (super/sub relationship)
-
-      can override overloaded method      
- 
-      overridden method scope change in sub must be less
-         restricitve <-> (public < default < protected < private)
-
+      One can override overloaded method 
+      overridden method scope change in sub must be less restricitve <-> (public < default < protected < private)
       called through ref var of sup
-
-      determination of method to be called is based on obj being
-      referred to by ref var
-
-      data members cannot be overridden -> no Runtime
-        Polymorphism by data members 
-
+      determination of method to be called is based on obj being referred to by ref var
+      data members cannot be overridden -> no Runtime Polymorphism by data members 
       private, final or static method in class -> static binding
 ## 
-- instanceof
-
-	compares instance with type
+- instanceof: compares instance with type
 ## 
 - abstract class
 
-      can have (abstract and non-abstract methods)/data member/constructor/
-	main()/static methods
-
+      can have (abstract and non-abstract methods)/data member/constructor/main()/static methods
       can have final methods -> forces sub not to change method body 
-
-      can never be instantiated even if it contains constructor and
-	implemented methods
-
+      can never be instantiated even if it contains constructor and implemented methods
       can provide implementation of interface
-
-      can extend another class        
-
+      can extend another class
       static + abstract -> not allowed
 ##
 - Interface
 
-      can't provide impl of abstract class
-	
-      can extend another interface
-	
-      Members are public by default
-	
-      methods are abstract by default
-	
-      obj ref can be cast to interface ref when it
-	implements referenced interface
-	
-      Marker interface: interface with no data member
-	 and member functions -> Serializable, Cloneable
+      can't provide impl of abstract class	
+      can extend another interface	
+      Members are public by default	
+      methods are abstract by default	
+      obj ref can be cast to interface ref when it implements referenced interface	
+      Marker interface: interface with no data member and member functions -> Serializable, Cloneable
 ##
-- Interface vs. Abstract class (note that some are rephrased of others)
+- Interface vs. Abstract class (note that some are just rephrased of others)
 
       abstract class
 		for inheritance concept
-
 		to define default behavior for subs <-> childs should have same functionality
 		to declare non-public members ( in interface all methods must be public)
-
-		for situation when there are many methods in base and some are common in subs
-		 (typically those common methods are implemented in abstract class and
-		 other non-common ones remain abstract to later be implemented by subs)
-
-		to add new (non-abstract) methods in the future for better forward compatibility (in case 
-		 of interface if add new methods then all classes implementing that
-		 interface should implement new methods)
-
-		to create multiple versions of a component: by updating abstract class, all
-		 childs automatically update but in case of interface if a new version
-		 needed then a new interface should be created
-
+		for situation when there are many methods in base and some are common in subs (typically those common methods are implemented in abstract class and other non-common ones remain abstract to later be implemented by subs)
+		to add new (non-abstract) methods in the future for better forward compatibility (in case of interface if add new methods then all classes implementing that interface should implement new methods)
+		to create multiple versions of a component: by updating abstract class, all childs automatically update but in case of interface if a new version needed then a new interface should be created
 		to partially implement class
-
-		for objects that are closely related
-		 has some default implementations in abstract class and some tools
-		 for implementation in sub. every sub should use the base.
-		 if one has developed their own class hierarchy then it's not
-		 suitable to use base abstract class
-
+		for objects that are closely related has some default implementations in abstract class and some tools for implementation in sub. every sub should use the base. if one has developed their own class hierarchy then it's not suitable to use base abstract class
 		sub can extend only one abstract but impl many interfaces
-
 		sub need not to provide impl for all methods of base (contrary
 		to interface whose all methods should be implemented) 
 
-      interface 
-      
+      interface       
 		 define a contract behavior between systems/codes/behaviors/services/...
-
 		 has public methods -> bad choice if not want to expose everything
-
 		 has default & static methods
-
-		 for designing small, concise bits of functionality across range of
-		  disparate & unrelated objects (i.e. a base for class hierarchy)
-
+		 for designing small, concise bits of functionality across range of  disparate & unrelated objects (i.e. a base for class hierarchy)
 		 for situation when API not change for a while
-
 		 for something similar to multiple inheritances since can impl multiple interfaces
-
-		 interface default method
+		 interface default method:
 			helps to extend interface functionality without breaking subs
 			to avoid utility classes
 			to support lambda in Collections
 			can't overr methods from java.lang.Object		
-			if sub extends two interfaces with common default methods in each
-			   interface, then sub should impl the default method as well
-
-		  interface static method
+			if sub extends two interfaces with common default methods in each interface, then sub should impl the default method as well
+		  interface static method:
 			for utility like null check, collection sorting,...
 			for security -> sub can't overr it
-
 		  functional interface: has only one abstract method -> instantiate using lambda
-
+		  
       use both abstract and interface      
 		 ex: a base interface with methods that every sub should impl
 		     if there comes other methods that only some subs should impl -> extend
@@ -418,100 +339,50 @@
 		     subs can choose to impl inter1 or inter2. if the number of methods grows
 		     a lot -> better to have an abstract class providing skeletal impl of inter2
 		       -> sub has flexibility to choose abstract class or interface
-       
 ##
 - Exceptions
 
-      Checked Exception -> checked at
-	  compile-time: SQLException,
-	  ClassNotFoundException, ...
-
-      Unchecked Exception -> handled at
-	  runtime: ArithmaticException,
-	  NullPointerException,
-	  ArrayIndexOutOfBoundsException, ...
-
-      Error: not recoverable -> cause program 
-	  to exit: OutOfMemoryError,
-	  AssertionError, ...
-
-      exception handling:  maintains normal flow
-	 of app
-	
-      try block followed by either catch OR
-	 finally block
-
+      Checked Exception -> checked at compile-time: SQLException, ClassNotFoundException, ...
+      Unchecked Exception -> handled at runtime: ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, ...
+      Error: not recoverable -> cause program to exit: OutOfMemoryError, AssertionError, ...
+      exception handling maintains normal flow of app	
+      try block followed by either catch OR finally block
       throw -> to throw exception
-
-      throws -> to declare possible exceptions
-	  that may occure in method
-
+      throws -> to declare possible exceptions that may occure in method
       Hierarchy of Java Exception classes:
-
-	Throwable -> Exception, Error
-	
-	Exception -> IOException, SQLException, ClassNotFoundException,
-	  RuntimeException
-	
-	RuntimeException -> ArithmeticException, NullPointerException,
-	  NumberFormatException, IndexOutOfBoundsException
-						
-	IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException,
-	  StringIndexOutOfBoundsException
-	
-	Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
-
+	 Throwable -> Exception, Error
+	 Exception -> IOException, SQLException, ClassNotFoundException, RuntimeException
+	 RuntimeException -> ArithmeticException, NullPointerException, NumberFormatException, IndexOutOfBoundsException
+	 IndexOutOfBoundsException -> ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
+	 Error -> StackOverflowError, VirtualMachineError, OutOfMemoryError	
       Common exception Scenarios:
-
-	divide number by zero -> ArithmeticException.
-	
-	operation on null var -> NullPointerException	
-	
-	var formatting mismatched -> NumberFormatException
-	
-	array size exceed -> ArrayIndexOutOfBoundsException
-	
+	 divide number by zero -> ArithmeticException.
+	 Operation on null var -> NullPointerException	
+	 var formatting mismatched -> NumberFormatException	
+	 array size exceed -> ArrayIndexOutOfBoundsException	
       Exception Propagation:
-
-	[thrown from top -> not caught -> drops down previous]
-	--> continues until caught or reach very bottom of call stack
-	
-	Unchecked -> propagated by default
- 
-      Nested try block: one error in sub-block & another
-       error in entire block
- 
+	 [thrown from top -> not caught -> drops down previous] -> continues until caught or reach very bottom of call stack
+	 Unchecked -> propagated by default 
+      Nested try block: one error in sub-block & another error in entire block 
       Finally:
-
-	executes after try-catch
-
-	not executes if program exits
-
+	 executes after try-catch
+	 not executes if program exits
       custom exception -> extend Exception
-
       can not throw basic data type from block
 ##
 - String pool
 
-	space reserved in heap to store strings
-	
- 	when create string literal -> JVM checks
-	 string pool:
-	
-		if exists -> a ref returns
-		
+	space reserved in heap to store strings	
+ 	when create string literal -> JVM checks string pool:	
+		if exists -> a ref returns		
 		If not ->  new string instance creates 
 ##
 - create string obj
 
-	String Literal:
-	
-		String s ="welcome";
-		
-		String s2="Welcome";//It doesn't create a new instance
-		
-	new keyword:
-	
+	String Literal:	
+		String s ="welcome";		
+		String s2="Welcome";//It doesn't create a new instance		
+	new keyword:	
 	  String s=new String("Welcome");
 	  //creates two objs and one ref var				
 	  //new obj in heap refered by s		
@@ -520,72 +391,49 @@
 ##
 - String disadv. compare to StringBuffer
 
-	String  immutable
-	
-	String  slow creates a new instance on concatThe 
-	
+	String  immutable	
+	String  slow creates a new instance on concat 	
 	String  overrides  equals()  
 ##
 - StringBuffer
 
 	synchronized -> thread safe -> two StringBuffer methods
 	can't be called simultaneously
-
 	less efficient than StringBuilder.	
 ##
-- toString(): returns string representation of obj ->
-   overriding -> desired output
+- toString(): returns string representation of obj -> overriding -> desired output
 ##
-- String is in string pool until garbage collection -> not good
-   for stornjng password -> CharArray() is better and can be set to blank 
+- String is in string pool until garbage collection -> not good for stornjng password -> CharArray() is better and can be set to blank 
 ##
 - java.util.regex
 
-	MatchResult Interface
-	
-	Matcher class
-	
-	Pattern class
-	
+	MatchResult Interface	
+	Matcher class	
+	Pattern class	
 	PatternSyntaxException class
 ##
 - Metacharacters
 
-	^, $, ., *, +, etc. <- not regular characters fro regex
-	engine -> use backslash to treat them ordinary.
+	^, $, ., *, +, etc. <- not regular characters fro regex	engine -> use backslash to treat them ordinary.
 ##
 - Nested classes
 
-	can access all members of outer class including private
-	->  used for readability and maintainability
-	
-	static nested class
-	
-	non-static nested class (inner-class)
-	
-	disadvantages
-	
+	can access all members of outer class including private ->  used for readability and maintainability	
+	static nested class	
+	non-static nested class (inner-class)	
+	disadvantages:	
 		Inner classes increase total number of classes
 		and workload of JVM less support by IDEs to inner class
 ##
 - inner class
 
-	Member Inner Class
-	
-		created within class and outside method.
-		
-	Anonymous Inner Class
-	
-		created for implementing an interface or extending class.
-		
-		name is decided by compiler
-		
-	Local Inner Class
-	
-		created within the method.
-		
-		local variable must be constant to access it in local
-		inner class
+	Member Inner Class: created within class and outside method.		
+	Anonymous Inner Class:	
+		created for implementing an interface or extending class.		
+		name is decided by compiler		
+	Local Inner Class:	
+		created within the method.		
+		local variable must be constant to access it in local inner class
 ##
 - nested interface
 
@@ -599,21 +447,16 @@
 - Garbage Collection
 
 	removing unused objs from memory
-
 	gc() to garbage collect -> depends on JVM whether to perform
 ##
 - unreferencing an obj by
 
-	nulling the ref
-	
-		Employee e=new Employee(); -> e=null; 
-		
-	assigning ref to another
-	
+	nulling the ref:	
+		Employee e=new Employee(); -> e=null;		
+	assigning ref to another:	
 		Employee e1=new Employee();  
 		Employee e2=new Employee();  
-		e1=e2;//e1 available for garbage collection
-		
+		e1=e2;//e1 available for garbage collection		
 	anonymous obj -> new Employee(); 
 ##
 - An unreferenced obj can be referenced again
@@ -621,250 +464,158 @@
 - Java Runtime class
 
 	-> to execute process, invoke GC, get total and free memory, ...
-
 	only one instance of Runtime class
-
 	Runtime.getRuntime() returns singleton instance of Runtime class.
 ##
 - hierarchy of InputStream and OutputStream
 	
-	OutputStream -> FileOutputStream, ByteArrayOutputStream,
-	                FilterOutputStream, PipedOutputStream
-			objOutputStream,
-			
-			FilterOutputStream -> DataOutputStream,
-			BufferedOutputStream, PrintStream
-
-	InputStream -> FileInputStream, ByteArrayInputStream,
-	               FilterInputStream, PipedInputStream
-		       objInputStream
-
-	               FilterInputStream -> DataInputStream,
-		          BufferedInputStream,
-	                  PushBackInputStream
-
+	OutputStream -> FileOutputStream, ByteArrayOutputStream, FilterOutputStream, PipedOutputStream, objOutputStream			
+			FilterOutputStream -> DataOutputStream, BufferedOutputStream, PrintStream
+	InputStream -> FileInputStream, ByteArrayInputStream, FilterInputStream, PipedInputStream, objInputStream
+	               FilterInputStream -> DataInputStream, BufferedInputStream, PushBackInputStream
 	stream: sequence of data composed of bytes from source to destination
-
 	three automatic streams:
-
 		System.out: standard output 
-
 		System.in: standard input 
-
 		System.err: standard error
-
-
-
       Reader/Writer class hierarchy -> character-oriented,
       InputStream/OutputStream class hierarchy -> byte-oriented.
-
       ByteStream:  input-output of 8-bit 
-
-      CharacterStream: input/output for 16-bit
- 
-      Important ByteStream class: FileInputStream and FileOutputStream.
-      
+      CharacterStream: input/output for 16-bit 
+      Important ByteStream class: FileInputStream and FileOutputStream.      
       Important CharacterStream class:  FileReader and FileWriter.
-
       ByteStream : InputStream classes and OutputStream
-
       CharacterStream : Reader classes and Writer classes.
-
-      reading streams of characters -> FileReader   
-    
-##
-      BufferedOutputStream
-      
+      reading streams of characters -> FileReader
+      BufferedOutputStream:      
        internally uses buffer to store data.
-       more efficiency than writing data directly into stream.
- 
-      BufferedInputStream
-      
-       read information from stream
+       more efficiency than writing data directly into stream. 
+      BufferedInputStream: read information from stream
 ##
 FilePermission:
 
-      alter permissions of a directory or file related to a path. -> two path types:
-      
-            all subdirectories and files 
- 
-            all directory and files within directory excluding subdirectories.
-  
+      alter permissions of a directory or file related to a path. -> two path types:      
+            all subdirectories and files  
+            all directory and files within directory excluding subdirectories.  
 ##
 FilterStream: filters read data, adds line numbers,...
 ##
 I/O filter
 
- reads one stream and writes to another,
+ reads one stream and writes to another
  usually altering data
 
 ##
 take input from console:
 
-      BufferedReader (efficient): use InputStreamReader to
-      take input from console -> pass input to BufferedReader.
-	
-
-      Scanner class
-	 breaks input into tokens 
-	 
-	 provides many methods to read
-	 
-	 parse various primitive values
-	 
+      BufferedReader (efficient): use InputStreamReader to take input from console -> pass input to BufferedReader.
+      Scanner class:
+	 breaks input into tokens	 
+	 provides many methods to read	 
+	 parse various primitive values	 
 	 widely used with regex
 ##    
 Using Console class:
-
-      read console input, texts, passwords (not be displayed to user).
-     
+      read console input, texts, passwords (not be displayed to user).     
 ##
 Serialization
 
- writing state of obj into byte stream
- 
- used in Hibernate, RMI, JPA, EJB and JMS
- 
+ writing state of obj into byte stream 
+ used in Hibernate, RMI, JPA, EJB and JMS 
  used to travel obj's state on network (known as marshaling).
-
  to save state to storage for later restoration
-
- Serializable interface -> to serialize (super-)class ->
- to prevent  child class serialization ->
- implement writeobj()/readobj() along with throw NotSerializableException in sub. 
+ Serializable interface -> to serialize (super-)class -> to prevent  child class serialization -> implement writeobj()/readobj() along with throw NotSerializableException in sub. 
+ transient data member can not be serialized
 ##
-transient data member can not be serialized
-##
-Externalizable interface: write state of obj into byte stream in compressed format
+- Externalizable interface
 
-
-	Serializable -> marker interface -> no methods
+      write state of obj into byte stream in compressed format
+      Serializable -> marker interface:
+	            no methods
                     No class constructor is called
-					better performance
-	
-	Externalizable: easy to implement
-                    performance cost
-					must call public default constructor
-					contains two methods -> writeExternal and readExternal
-
+		    better performance	
+      Externalizable:
+          easy to implement
+          performance cost
+	  must call public default constructor
+	  contains two methods -> writeExternal and readExternal
 ##
-Socket programming
- socket: endpoint for communications between machines -> connection mechanism: TCP
- communication between apps running on different JRE.
- connection-oriented -> Socket and ServerSocket classes
- connectionless -> DatagramSocket
- 
-	client needs:
+- Socket programming
+
+	 socket: endpoint for communications between machines -> connection mechanism: TCP
+	 communication between apps running on different JRE.
+	 connection-oriented -> Socket and ServerSocket classes
+	 connectionless -> DatagramSocket 
+	 client needs:
 		server IP address
 		port number
-
- steps for TCP connection:
-  server -> ServerSocket instantiation -> port number
- 
- server -> accept() method -> wait until client attempts to connect 
-
- client creats socket 
-
- connection established -> socket obj for client 
-
- server uses accept() to return a ref to new socket 
+	 steps for TCP connection:
+		 server -> ServerSocket instantiation -> port number 
+		 server -> accept() method -> wait until client attempts to connect 
+		 client creats socket
+		 connection established -> socket obj for client
+		 server uses accept() to return a ref to new socket 
 ##
-Reflection
-
- examining/ modifying runtime behavior of class 
- 
+- Reflection: examining/ modifying runtime behavior of class  
 ##
-java.lang.Class:
+- java.lang.Class:
 
-      get metadata of class at runtime
- 
-      change runtime behavior
- 
-      instantiate:
-      
+      get metadata of class at runtime 
+      change runtime behavior 
+      instantiate:      
 	  forName() -> load class dynamically <- if know fully qualified name of class (not for primitive types)
-
 	  getClass() -> returns instance of java.lang.Class <- if know type (also for primitives)
-
 	  .class -> If no instance but type available -> append ".class" to name of type (also for primitives)
 ##
-newInstance()
-
- invoke constructor at runtime. 
+- newInstance(): invoke constructor at runtime. 
 ##
-javap
+- javap
 
- disassembles class file -> gives info about fields/constructors/ methods
-
-(java.lang.Class + java.lang.reflect.Method) -> change class runtime behaviour
- -> access private method from outside <-
- 
-	1) setAccessible(boolean status) throws SecurityException
-	  
-	2) invoke(obj method, obj... args) throws IllegalAccessException,
-					  IllegalArgumentException, InvocationTargetException
-	1) getDeclaredMethod(String name,Class[] parameterTypes)throws NoSuchMethodException,
-	   SecurityException
+	disassembles class file -> gives info about fields/constructors/ methods
+	(java.lang.Class + java.lang.reflect.Method) -> change class runtime behaviour -> access private method from outside <- 
+		1) setAccessible(boolean status) throws SecurityException	  
+		2) invoke(obj method, obj... args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
+		1) getDeclaredMethod(String name,Class[] parameterTypes)throws NoSuchMethodException, SecurityException
 ##
-access private constructor -> getDeclaredConstructor()
+- access private constructor -> getDeclaredConstructor()
 ##
-Wrapper classes
-
-  conversion of objs to primitives (unboxing) and primitives to objs (autoboxing)
-
+- Wrapper classes: conversion of objs to primitives (unboxing) and primitives to objs (autoboxing)
 ##
-Unboxing and autoboxing -> 
+- Unboxing and autoboxing
 	
-      automatic in Java
-	
+      automatic in Java	
       valueOf()/xxxValue() for manual conversion
 ##
-native method implemented in another language
+- native method is implemented in another language
 ##
-strictfp: get same floating-point arithmetic result on all platforms
+- strictfp: get same floating-point arithmetic result on all platforms
 ##
-System class
+- System class
 	
- cannot be instantiated.
-	
- used for
-	
-	Standard input
-	
-	Error output streams
-	
-	Standard output
-	
-	utility method to copy the portion of an array
-	
-	utilities to load files and libraries
-	
- fields:
-	 static printstream err,
-	
-	 static inputstream in,
-	
-	 standard output stream.
+	 cannot be instantiated.	
+	 used for:	
+		Standard input	
+		Error output streams	
+		Standard output	
+		utility method to copy the portion of an array	
+		utilities to load files and libraries	
+	 fields:
+		 static printstream err	
+		 static inputstream in	
+		 standard output stream
 ##
-Singleton class:
+- Singleton class:
 	
- instantiates only once
-	
- make by
-	
-  private constructor
-	
-  static getInstance
+	instantiates only once	
+	make by:	
+	  private constructor	
+	  static getInstance
 ##
 JavaBean:
 	
- reusable software component
-	
- encapsulates many objs into one in order to access it from multiple
-  places. 
-	
+ reusable software component	
+ encapsulates many objs into one in order to access it from multiple places. 	
  easy maintenance. 
-
 ##
 RMI (Remote Method Invocation)
 	
