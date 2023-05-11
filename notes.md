@@ -2,21 +2,21 @@
 - SOLID Principles (not specific to Java)
 
       1- Single Responsibility for Each class -> There should be just one reason 
-            to change the class.
-		Advantages:
+             to change the class.
+	     Advantages:
 			Fewer tests for each class.
 			Lower coupling –> fewer dependencies.
 			Smaller and well-organized classes		 
       2- Class shoud be Opened for Extension and Closed for Modification.	
-	    Otherwise -> modifying the existing code -> potential new bugs	   
-	    If fixing bugs -> extend the class
+	     Otherwise -> modifying the existing code -> potential new bugs	   
+	     If fixing bugs -> extend the class
       3- Liskov Substitution: If class A is a subtype of class B, one should
-            be able to replace B with A without disrupting the behavior of
-	    the program.	
+             be able to replace B with A without disrupting the behavior of
+	     the program.	
       4- Interface Segregation: larger interfaces be splited into smaller
-            ones -> More specific methods in each interface	   
+             ones -> More specific methods in each interface	   
       5- Dependency Inversion: Decoupling software modules
-         -> high/low-level modules and details depend on abstractions
+             -> high/low-level modules and details depend on abstractions
 ## 
 - OOP
 
