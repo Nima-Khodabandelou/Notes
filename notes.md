@@ -1,6 +1,5 @@
 ##
 - SOLID Principles (not specific to Java)
-
       1- Single Responsibility for Each class -> There should be just one reason 
           to change the class.
 
