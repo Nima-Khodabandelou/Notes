@@ -19,8 +19,10 @@
 	   instance variables <-> obj state      
            methods <-> obj behavior      
            create using new keyword.      
-           obj refs <-> init to null	 
+           obj refs <-> init to null	
+      CLass: It's purpose is encapsulating complexity by access modifiers (private or public). Defines structure and behavior (data and code) the will be shared by a set of objs. Data and codes are called members of the class
       Inheritance:
+	   one obj aquires the properties of another -> it becomes an specific instance of it's parent
            Code reusability -> sub need not redefine method of super unless need to provide specific impl.
            Runtime polymorphism -> simulate inheritance with real-time objs -> makes OOPs more realistic.
            Provides data hiding -> super hide data from sub
@@ -28,7 +30,7 @@
       Abstraction:
           Focus on what obj does instead of how it does	
       Encapsulation:      
-          Wraps code and data into single unit
+          Wraps code and data into single unit: It's base is class
 	      Read-only class	
 	          private fileds	
 	          no setter	
