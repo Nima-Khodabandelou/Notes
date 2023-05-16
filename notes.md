@@ -300,6 +300,7 @@
       exception in super (exc1) & exception other than exc1, exc1's child, and runtime exception in Sub -> error
       exception in super (exc1) & child exception of exc1 in Sub
       exception in super & no exception in Sub
+
 ##   
 - covariance
 
