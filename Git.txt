@@ -1,0 +1,55 @@
+verify your connection through ssh:
+ssh -T git@github.com
+
+Generating a new SSH key:
+$ ssh-keygen -t ed25519 -C "your_email@example.com"
+
+Verify that you have a private key generated and loaded into SSH:
+ssh-add -l -E sha256
+
+Adding your SSH key to the ssh-agent:
+ Ensure the ssh-agent is running. start the ssh-agent in the background:
+ eval "$(ssh-agent -s)"
+ Add your SSH private key to the ssh-agent:
+ ssh-add ~/.ssh/id_ed25519
+
+Adding a new SSH key to your account:
+ Copy the SSH public key to your clipboard:
+ clip < ~/.ssh/id_ed25519.pub
+ go to github settings and Add this ssh to github
+
+cd folder_name
+
+all files in current dir:
+ls
+
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "MY_NAME@example.com"
+
+Initialize the local directory as a Git repository:
+git init
+
+Cloning from current GitHub repository
+git clone SSH key
+
+Stage the files for the first commit by adding them to the local repository:
+git add .
+
+By “git status” you can see the staged files
+
+Commit the files that you’ve staged in your local repository:
+
+git commit -m "First commit"
+
+In the Command prompt, add the URL for your repository where your local repository will be pushed:
+
+Set url via SSH:
+git remote set-url origin git@github.com:Nima-Khodabandelou/REST_API_MAVEN_PostgreSQL.git
+
+See current url:
+git config --get remote.origin.url
+
+git push -u origin main
+
+
+
