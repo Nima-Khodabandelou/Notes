@@ -1,0 +1,39 @@
+//open SQL shell(psql)
+//default server is localhost
+//default database is postgres
+//List of useful commands:
+ 
+help
+
+\l   list of existing databases
+
+\dt       list of all tables in current database
+
+\x       expanded display on -> shows a different formatting
+
+\du      see users
+
+CREATE DATABASE mydb;  
+
+\d          show any relations about the current database
+   
+CREATE USER miriam WITH LOGIN PASSWORD 'jw8s0F4' VALID UNTIL '2005-01-01';
+// Let's create table with name table_name and insert some data into it
+
+CREATE TABLE table_name ( 
+id BIGSERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+country VARCHAR(50) NOT NULL );
+
+INSERT INTO table_name (name, country) VALUES ('Nima', 'Iran');
+
+SELECT * FROM table_name;     -> shows id, name nad country in table_name
+
+SELECT COUNT(id) FROM table_name;    -> number of entries in table_name
+
+UPDATE table_name SET name = 'Jiji' WHERE id = 3;
+
+DELETE FROM table_name WHERE id = 2;
+
+// execute sql commands in sample_file.sql located in c:\sql_files
+\i C:\sql_files\sample_file.sql
