@@ -81,59 +81,6 @@
 					departments.forEach(d->d.department());
 				}
 			}
-##
-- Type promotion in Java
-
-      Ex:
-      public class TestClass	{  
-	    TestClass(int a, int b)  
-	    {  
-		System.out.println("a = "+a+" b = "+b);  
-	    }  
-	    TestClass(int a, float b)  
-	    {  
-		System.out.println("a = "+a+" b = "+b);  
-	    }  
-	    public static void main (String args[])  
-	    {  
-		byte a = 10;   
-		byte b = 15;  
-		TestClass testClass = new TestClass(a,b);  
-	    }  
-      }
-
-      ex:
-      class TestClass
-	  {  
-	    int i;   
-	  }  
-	  
-	  public class Main   
-	  {  
-	    public static void main (String args[])   
-	    {  
-		TestClass testClass = new TestClass();   
-		System.out.println(testClass.i);  
-	    }  
-      }  
-
-      ex:
-      class TestClass
-	  {  
-	    int test_a, test_b;  
-	    TestClass(int a, int b)   
-	    {  
-	    test_a = a;   
-	    test_b = b;   
-	    }  
-	    public static void main (String args[])   
-	    {  
-		TestClass testClass = new TestClass();   
-		System.out.println(testClass.test_a+" "+testClass.test_b);  
-	    }  
-      } 
-
-
 ## 
 - this and super
 
