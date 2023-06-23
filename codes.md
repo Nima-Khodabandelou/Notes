@@ -317,37 +317,6 @@
 		  e.age+" address: "+e.address);  
 	    }      
       }
-##
-- copy values of one object into another
-
-      ex: 
-      class Employee{  
-	    int id;  
-	    String name; 
-		
-	    Employee(int i,String n)
-		{  
-	    id = i;  
-	    name = n;  
-	    }  
-		
-	    Employee(Employee s)
-		{  
-	    id = s.id;  
-	    name =s.name;  
-	    }  
-		
-	    void show(){System.out.println(id+" "+name);}   
-		
-	    public static void main(String args[])
-		{  
-			Employee s1 = new Employee(111,"Karan");  
-			Employee s2 = new Employee(s1);
-			
-			s1.show();  
-			s2.show();  
-	    }  
-      }  
 ## 
 - object cloning <--> shallow copy
 
