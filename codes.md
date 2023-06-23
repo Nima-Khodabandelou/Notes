@@ -81,46 +81,7 @@
 					departments.forEach(d->d.department());
 				}
 			}
-##
-- Final keyword
-   
-      can’t reassign final reference variable, But the object it refers to is mutable.
-      
-      ex:
-	      final Cat cat = new Cat();
-	      cat.setWeight(5) -> valid	 
-      interface can never be final      
-      
-		public void methodWithFinalArguments(final int x) {
-			x=1;
-		}
-
-      ex:	
-		class Bike
-		{  
-			final int speedlimit;
-			
-			Bike()
-			{  
-				speedlimit=70;  
-				System.out.println(speedlimit);  
-			}
-			
-			public static void main(String args[])
-			{  
-			  new Bike();  
-			}  
-		}
-	
-      ex:
-      class Main
-	  {  
-	   public static void main(String args[]){  
-	    final int i;  
-	    i = 20;  
-	    System.out.println(i);  
-	   }  
-      }  		
+ 		
 ##
 - Immutability
 
