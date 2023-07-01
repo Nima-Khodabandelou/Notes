@@ -79,50 +79,7 @@
 				}
 				public void OrderInquiry() {
 					departments.forEach(d->d.department());
-				}
-			}
-
-## 
-- object cloning <--> shallow copy
-
-      ex: 
-      class Employee implements Cloneable{  
-			int number;  
-			String name;  
-
-			Employee(int number,String name){  
-			this.number=number;  
-			this.name=name;  
-		}  
-		public Object clone()throws CloneNotSupportedException{  
-			return super.clone();  
-      }  
-      public static void main(String args[]){  
-			try{  
-				Employee s1=new Employee(101,"amit");  
-
-				Employee s2=(Employee)s1.clone();  
-
-				System.out.println(s1.number+" "+s1.name);  
-				System.out.println(s2.number+" "+s2.name);  
-
-			}catch(CloneNotSupportedException c){}  
-
-			}  
-      }      
-## 
-- Aggregation (has-a)
-
-      ex:
-      public class Address {  
-		...		  
-      }  
-      public class Emp {  
-		int id;  
-		String name;  
-		Address address; 
-		...	
-      }  
+				}  
 ## 
 - Method overloading
 
