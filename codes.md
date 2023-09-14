@@ -643,38 +643,7 @@ class Multi3 implements Runnable
 		Thread t1 =new Thread(m1);   // Using the constructor Thread(Runnable r)  
 		t1.start();  
 	}  
-} 
-##
-Concurrency:
 
-	public class TestThread
-	{  
-	   public static void main(final String[] arguments) throws InterruptedException
-	   {  
-		  Executor e = Executors.newCachedThreadPool();  
-		  e.execute(new Thread());  
-		  ThreadPoolExecutor pool = (ThreadPoolExecutor)e;  
-		  pool.shutdown();  
-	   }  
-	   static class Thread implements Runnable
-	   {  
-		  public void run()
-		  {  
-			 try
-			 {  
-				Long duration = (long) (Math.random() * 5);  
-				System.out.println("Running Thread!");  
-				TimeUnit.SECONDS.sleep(duration);  
-				System.out.println("Thread Completed");  
-			 } 
-			 catch (InterruptedException ex)
-			 {  
-				ex.printStackTrace();  
-			 }  
-		  }  
-	   }  
-	}     
-##
 
 
 
